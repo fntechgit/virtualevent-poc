@@ -1,4 +1,6 @@
 import "schedule-lite/dist/index.css";
+import 'font-awesome/css/font-awesome.css';
+
 
 import React from "react";
 import Loadable from "@loadable/component";
