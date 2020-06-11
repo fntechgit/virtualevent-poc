@@ -24,6 +24,7 @@ export default class BlogIndexPage extends React.Component {
             landscape: true,
             updateCallback: ev => console.log('event updated', ev),
         };
+        
 
         return (
           <Layout>
