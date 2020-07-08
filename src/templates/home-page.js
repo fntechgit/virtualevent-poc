@@ -7,6 +7,7 @@ import Layout from '../components/Layout'
 
 import LobbyHeroComponent from '../components/LobbyHeroComponent'
 import ClockComponent from '../components/ClockComponent'
+import SidebarAdvertise from '../components/SidebarAdvertiseComponent'
 import ScheduleLiteComponent from '../components/ScheduleLiteComponent'
 import LiveEventWidgetComponent from '../components/LiveEventWidgetComponent'
 import SpeakersWidgetComponent from '../components/SpeakersWidgetComponent'
@@ -45,6 +46,7 @@ export const HomePageTemplate = class extends React.Component {
           <div className="columns">
             <div className="column is-one-quarter">
               <h2><b>Community</b></h2>
+              <SidebarAdvertise />
               <div className="sponsor-container">
                 <img src="/img/intel.png" alt="sponsor" />
               </div>
