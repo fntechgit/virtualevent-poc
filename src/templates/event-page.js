@@ -12,6 +12,7 @@ import ScheduleLiteComponent from '../components/ScheduleLiteComponent'
 import VideoComponent from '../components/VideoComponent'
 import TalkComponent from '../components/TalkComponent'
 import DocumentsComponent from '../components/DocumentsComponent'
+import SidebarAdvertise from '../components/SidebarAdvertiseComponent'
 
 import { getEventBySlug } from '../actions/event-actions'
 import { getDisqusSSO, getRocketChatSSO } from '../actions/user-actions'
@@ -116,9 +117,7 @@ export const EventPageTemplate = class extends React.Component {
           <section className="section px-4 py-6">
             <div className="columns">
               <div className="column is-one-quarter pb-6">
-                <div className="sponsor-container">
-                  <img src="/img/intel.png" alt="sponsor" />
-                </div>
+                <SidebarAdvertise section='event' id={event.id} />
               </div>
               <div className="column is-two-quarters pb-6">
                 {/* <div className="rocket-container"> */}
@@ -144,9 +143,7 @@ export const EventPageTemplate = class extends React.Component {
               {/* </div> */}
             </div>
             <div className="column is-one-quarter has-text-centered pb-6">
-              <div className="sponsor-container">
-                <img src="/img/intel.png" alt="sponsor" />
-              </div>
+              <SidebarAdvertise section='event' id={event.id} />
             </div>
           </div>
         </section >

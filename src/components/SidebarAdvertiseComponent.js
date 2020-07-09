@@ -13,25 +13,25 @@ const SidebarAdvertise = ({ section, id }) => {
   if (sectionAds.length > 0) {
     return (
       sectionAds.map((ad, index) => {
-        if (id && ad.id === id) {
-          return (
+        return (
+          ad.id ?
+            ad.id === id ?
+              <div className={`${styles.sponsorContainer} sponsor-container`} key={index}>
+                <img src={ad.image} alt="sponsor" />
+                <button className={`${styles.button} button is-large`}>
+                  <b>{ad.text}</b>
+                </button>
+              </div>
+              :
+              null
+            :
             <div className={`${styles.sponsorContainer} sponsor-container`} key={index}>
               <img src={ad.image} alt="sponsor" />
               <button className={`${styles.button} button is-large`}>
                 <b>{ad.text}</b>
               </button>
             </div>
-          )
-        } else {
-          return (
-            <div className={`${styles.sponsorContainer} sponsor-container`} key={index}>
-              <img src={ad.image} alt="sponsor" />
-              <button className={`${styles.button} button is-large`}>
-                <b>{ad.text}</b>
-              </button>
-            </div>
-          )
-        }
+        )
       })
     )
   } else {
