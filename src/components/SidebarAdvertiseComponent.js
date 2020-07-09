@@ -2,14 +2,12 @@ import React from 'react'
 
 import styles from '../styles/sidebar-advertise.module.scss'
 
-import Ads from '../content/ads.json'
+import Content from '../content/ads.json'
 
 const SidebarAdvertise = ({ section, id }) => {
 
-  const sectionAds = Ads.find(ad => ad.section === section).ads;
-
-  console.log(sectionAds);
-
+  const sectionAds = Content.ads.find(ad => ad.section === section).ads;
+  
   if (sectionAds.length > 0) {
     return (
       sectionAds.map((ad, index) => {

@@ -1,22 +1,24 @@
-[
-  {
-    "section": "lobby",
-    "ads": [
-      {
-        "image": "/img/intel.png",
-        "text": "Learn more",
-        "id": null
-      }
-    ]
-  },
-  {
-    "section": "event",
-    "ads": [
-      {
-        "image": "/img/intel.png",
-        "text": "Learn more",
-        "id": null
-      }
-    ]
-  }
-]
+{
+  "ads": [
+    {
+      "section": "lobby",
+      "ads": [
+        {
+          "image": "/img/intel.png",
+          "text": "Learn more",
+          "id": null
+        }
+      ]
+    },
+    {
+      "section": "event",
+      "ads": [
+        {
+          "image": "/img/intel.png",
+          "text": "Learn more",
+          "id": null
+        }
+      ]
+    }
+  ]
+}
