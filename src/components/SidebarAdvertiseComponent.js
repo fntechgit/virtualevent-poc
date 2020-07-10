@@ -4,9 +4,9 @@ import styles from '../styles/sidebar-advertise.module.scss'
 
 import Content from '../content/ads.json'
 
-const SidebarAdvertise = ({ section, id }) => {
+const SidebarAdvertise = ({ section, column, id }) => {
 
-  const sectionAds = Content.ads.find(ad => ad.section === section).ads;
+  const sectionAds = Content.ads.find(ad => ad.section === section).columns.find(c => c.column === column).ads;
   
   if (sectionAds.length > 0) {
     return (

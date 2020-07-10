@@ -90,7 +90,7 @@ export const EventPageTemplate = class extends React.Component {
                 <TalkComponent event={event} summit={summit} noStream={true} />
               </div>
               <div className="column" style={{ position: 'relative' }}>
-                <DisqusComponent disqusSSO={user.disqusSSO} event={event} />
+                <DisqusComponent disqusSSO={user.disqusSSO} room={event} title="Join the conversation"/>
               </div>
             </div>
           </section>
@@ -117,7 +117,7 @@ export const EventPageTemplate = class extends React.Component {
           <section className="section px-4 py-6">
             <div className="columns">
               <div className="column is-one-quarter pb-6">
-                <SidebarAdvertise section='event' id={event.id} />
+                <SidebarAdvertise section='event' column="left" />
               </div>
               <div className="column is-two-quarters pb-6">
                 {/* <div className="rocket-container"> */}

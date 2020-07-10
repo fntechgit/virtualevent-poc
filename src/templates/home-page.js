@@ -9,10 +9,12 @@ import LobbyHeroComponent from '../components/LobbyHeroComponent'
 import ClockComponent from '../components/ClockComponent'
 import SidebarAdvertise from '../components/SidebarAdvertiseComponent'
 import ScheduleLiteComponent from '../components/ScheduleLiteComponent'
+import DisqusComponent from '../components/DisqusComponent'
 import LiveEventWidgetComponent from '../components/LiveEventWidgetComponent'
 import SpeakersWidgetComponent from '../components/SpeakersWidgetComponent'
 
 import { getSummitData } from '../actions/summit-actions'
+import { getDisqusSSO } from '../actions/user-actions'
 
 export const HomePageTemplate = class extends React.Component {
 
@@ -30,13 +32,17 @@ export const HomePageTemplate = class extends React.Component {
     this.props.getSummitData();
   }
 
+  componentDidMount() {
+    this.props.getDisqusSSO();
+  }
+
   onEventChange(ev) {
     navigate(`/a/event/${ev}`);
   }
 
   render() {
 
-    const { loggedUser, summit, now } = this.props;
+    const { loggedUser, user, summit, now } = this.props;
 
     return (
       <React.Fragment>
@@ -46,7 +52,7 @@ export const HomePageTemplate = class extends React.Component {
           <div className="columns">
             <div className="column is-one-quarter">
               <h2><b>Community</b></h2>
-              <SidebarAdvertise section='lobby' />
+              <SidebarAdvertise section='lobby' column="left"/>
             </div>
             <div className="column is-half">
               <LiveEventWidgetComponent />
@@ -55,13 +61,14 @@ export const HomePageTemplate = class extends React.Component {
                 eventClick={(ev) => this.onEventChange(ev)}
                 landscape={true}
                 yourSchedule={false}
-                showNav={false}
+                showNav={false}                                          
               />
               <SpeakersWidgetComponent
                 accessToken={loggedUser.accessToken}
                 title="Today's Speakers"
                 now={now}
               />
+              <DisqusComponent disqusSSO={user.disqusSSO} room={summit} style={{ position: 'static' }} />
             </div>
             <div className="column is-one-quarter pb-6">
               <h2><b>My Info</b></h2>
@@ -72,9 +79,11 @@ export const HomePageTemplate = class extends React.Component {
                 yourSchedule={true}                
                 showNav={true}
               />
+              <SidebarAdvertise section='lobby' column="right"/>
             </div>
           </div>
         </div>
+        {/* <ClockComponent summit={summit} now={now} /> */}
       </React.Fragment>
     )
   }
@@ -83,20 +92,24 @@ export const HomePageTemplate = class extends React.Component {
 HomePageTemplate.propTypes = {
   loggedUser: PropTypes.object,
   summit: PropTypes.object,
+  user: PropTypes.object,
   eventId: PropTypes.string,
   getSummitData: PropTypes.func,
+  getDisqusSSO: PropTypes.func,
 }
 
-const HomePage = ({ loggedUser, location, summit, getSummitData, now }) => {
+const HomePage = ({ loggedUser, user, location, summit, getSummitData, getDisqusSSO, now }) => {
 
   return (
     <Layout>
       <HomePageTemplate
         loggedUser={loggedUser}
         location={location}
+        user={user}
         summit={summit}
         now={now}
         getSummitData={getSummitData}
+        getDisqusSSO={getDisqusSSO}
       />
     </Layout>
   )
@@ -109,14 +122,16 @@ HomePage.propTypes = {
   location: PropTypes.object,
 }
 
-const mapStateToProps = ({ loggedUserState, summitState }) => ({
+const mapStateToProps = ({ loggedUserState, userState, summitState }) => ({
   loggedUser: loggedUserState,
+  user: userState,
   summit: summitState.summit,
   now: summitState.nowUtc,
 })
 
 export default connect(mapStateToProps,
   {
-    getSummitData
+    getSummitData,
+    getDisqusSSO
   }
 )(HomePage);

@@ -24,11 +24,13 @@ collections:
         fields:
           - {label: "Sponsor Ads", name: "ads", widget: list, fields: [
               {label: "Section", name: "section", widget: string},
-              {label: "Ads", name: "ads", widget: list, fields: [
-                {label: "Image", name: "image", widget: image},
-                {label: "Text", name: "text", widget: string},
-                {label: "Specific Event", name: "id", widget: string, required: false}
-              ]}
+              {label: "Columns", name: "columns", widget: list, fields: [
+                {label: "Ads", name: "ads", widget: list, required: false, fields: [
+                  {label: "Image", name: "image", widget: image},
+                  {label: "Text", name: "text", widget: string},
+                  {label: "Specific Event", name: "id", widget: string, required: false}
+                ]}
+              ]},              
             ]}
   - name: "blog"
     label: "Blog"

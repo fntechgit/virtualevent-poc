@@ -2,21 +2,47 @@
   "ads": [
     {
       "section": "lobby",
-      "ads": [
+      "columns": [
         {
-          "image": "/img/intel.png",
-          "text": "Learn more",
-          "id": null
+          "column": "left",
+          "ads": [
+            {
+              "image": "/img/intel.png",
+              "text": "Learn more",
+              "id": null
+            }
+          ]
+        },
+        {
+          "column": "center",
+          "ads": []
+        },
+        {
+          "column": "right",
+          "ads": [
+            {
+              "image": "/img/intel.png",
+              "text": "Learn more",
+              "id": null
+            }
+          ]
         }
       ]
     },
     {
       "section": "event",
-      "ads": [
+      "columns": [
         {
-          "image": "/img/intel.png",
-          "text": "Learn more",
-          "id": null
+          "column": "left",
+          "ads": []
+        },
+        {
+          "column": "left",
+          "ads": []
+        },
+        {
+          "column": "left",
+          "ads": []
         }
       ]
     }
