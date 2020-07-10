@@ -39,6 +39,7 @@ export const HomePageTemplate = class extends React.Component {
 
     return (
       <React.Fragment>
+        <ClockComponent summit={summit} now={now} />
         <LobbyHeroComponent />
         <div className="px-5 py-5 mb-6">
           <div className="columns">
@@ -55,8 +56,7 @@ export const HomePageTemplate = class extends React.Component {
                 eventClick={(ev) => this.onEventChange(ev)}
                 landscape={true}
                 yourSchedule={false}
-                showFilters={false}
-                showNav={false}                
+                showNav={false}
               />
               <SpeakersWidgetComponent
                 accessToken={loggedUser.accessToken}
@@ -70,14 +70,12 @@ export const HomePageTemplate = class extends React.Component {
                 accessToken={loggedUser.accessToken}
                 eventClick={(ev) => this.onEventChange(ev)}
                 landscape={true}
-                yourSchedule={false}
-                showFilters={true}
-                showNav={false}
+                yourSchedule={true}                
+                showNav={true}
               />
             </div>
           </div>
         </div>
-        <ClockComponent summit={summit} now={now} />
       </React.Fragment>
     )
   }

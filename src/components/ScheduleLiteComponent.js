@@ -12,7 +12,7 @@ const ScheduleComponent = class extends React.Component {
 
   render() {
 
-    const { accessToken, landscape, yourSchedule, showFilters, showNav } = this.props;
+    const { accessToken, landscape, yourSchedule, showNav } = this.props;
 
     const scheduleProps = {
       apiBaseUrl: envVariables.SUMMIT_API_BASE_URL,
@@ -25,7 +25,6 @@ const ScheduleComponent = class extends React.Component {
       summitId: parseInt(envVariables.SUMMIT_ID),
       landscape,
       yourSchedule,
-      showFilters,
       showNav,
       updateCallback: ev => console.log('event updated', ev),
       onEventClick: ev => this.props.eventClick(ev),
