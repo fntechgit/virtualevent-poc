@@ -8,7 +8,11 @@
           "ads": [
             {
               "image": "/img/intel.png",
-              "text": "Learn more",
+              "text": null,
+              "button": {
+                "text": "Learn more",
+                "link": "#"
+              },
               "id": null
             }
           ]
@@ -21,8 +25,21 @@
           "column": "right",
           "ads": [
             {
-              "image": "/img/intel.png",
-              "text": "Learn more",
+              "image": "/img/ad_Lenovo.png",
+              "text": null,
+              "button": {
+                "text": "Learn more",
+                "link": "#"
+              },
+              "id": null
+            },
+            {
+              "image": "/img/ad_YO.png",
+              "text": null,
+              "button": {
+                "text": "Learn more",
+                "link": "#"
+              },
               "id": null
             }
           ]
