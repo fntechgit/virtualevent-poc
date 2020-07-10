@@ -14,6 +14,15 @@
                 "link": "#"
               },
               "id": null
+            },
+            {
+              "image": "/img/ad_subscribe.png",
+              "text": null,
+              "button": {
+                "text": "Subscribe",
+                "link": "#"
+              },
+              "id": null
             }
           ]
         },
@@ -51,7 +60,17 @@
       "columns": [
         {
           "column": "left",
-          "ads": []
+          "ads": [
+            {
+              "image": "/img/intel.png",
+              "text": null,
+              "button": {
+                "text": "Learn more",
+                "link": "#"
+              },
+              "id": null
+            }
+          ]
         },
         {
           "column": "left",
