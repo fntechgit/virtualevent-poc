@@ -25,11 +25,11 @@ collections:
           - {label: "Sponsor Ads", name: "ads", widget: list, fields: [
               {label: "Section", name: "section", widget: string},
               {label: "Columns", name: "columns", widget: list, fields: [
-                {label: "Column", name: "column", widget: select, options: [
+                {label: "Column", name: "column", widget: select, required: false, options: [
                   { label: "Left", value: "left" },
                   { label: "Center", value: "center" },
                   { label: "Right", value: "right" },
-                ]},               
+                ]},
                 {label: "Ads", name: "ads", widget: list, required: false, fields: [
                   {label: "Image", name: "image", widget: image},
                   {label: "Text", name: "text", widget: string},
