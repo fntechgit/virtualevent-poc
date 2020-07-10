@@ -49,10 +49,18 @@ export const HomePageTemplate = class extends React.Component {
               </div>
             </div>
             <div className="column is-half">
-              <LiveEventWidgetComponent summitId={summit.id} />
+              <LiveEventWidgetComponent />
+              <ScheduleLiteComponent
+                accessToken={loggedUser.accessToken}
+                eventClick={(ev) => this.onEventChange(ev)}
+                landscape={true}
+                yourSchedule={false}
+                showFilters={false}
+                showNav={false}                
+              />
               <SpeakersWidgetComponent
                 accessToken={loggedUser.accessToken}
-                summitId={summit.id}
+                title="Today's Speakers"
                 now={now}
               />
             </div>
@@ -61,6 +69,10 @@ export const HomePageTemplate = class extends React.Component {
               <ScheduleLiteComponent
                 accessToken={loggedUser.accessToken}
                 eventClick={(ev) => this.onEventChange(ev)}
+                landscape={true}
+                yourSchedule={false}
+                showFilters={true}
+                showNav={false}
               />
             </div>
           </div>

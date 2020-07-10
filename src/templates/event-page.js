@@ -122,7 +122,7 @@ export const EventPageTemplate = class extends React.Component {
               </div>
               <div className="column is-two-quarters pb-6">
                 {/* <div className="rocket-container"> */}
-                <ScheduleLiteComponent accessToken={loggedUser.accessToken} eventClick={(ev) => this.onEventChange(ev)} />
+                <ScheduleLiteComponent accessToken={loggedUser.accessToken} landscape={true} eventClick={(ev) => this.onEventChange(ev)} />
                 {/* <RocketChatComponent rocketChatSSO={user.rocketChatSSO} embedded={false} /> */}
                 {/* </div> */}
               </div>
@@ -139,7 +139,7 @@ export const EventPageTemplate = class extends React.Component {
               {/* <div className="rocket-container"> */}
               <span>Event not found</span>
               <br />
-              <ScheduleLiteComponent accessToken={loggedUser.accessToken} eventClick={(ev) => this.onEventChange(ev)} />
+              <ScheduleLiteComponent accessToken={loggedUser.accessToken} landscape={true} eventClick={(ev) => this.onEventChange(ev)} />
               {/*   <RocketChatComponent accessToken={loggedUser.accessToken} embedded={false} /> */}
               {/* </div> */}
             </div>
