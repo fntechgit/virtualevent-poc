@@ -16,22 +16,26 @@ const SidebarAdvertise = ({ section, column, id }) => {
             ad.id === id ?
               <div className={`${styles.sponsorContainer} sponsor-container`} key={index}>
                 <img src={ad.image} alt="sponsor" />
-                <a className={styles.link} href={ad.button.link}>
-                  <button className={`${styles.button} button is-large`}>
-                    <b>{ad.button.text}</b>
-                  </button>
-                </a>
+                { ad.button.text && ad.button.link &&
+                  <a className={styles.link} href={ad.button.link}>
+                    <button className={`${styles.button} button is-large`}>
+                      <b>{ad.button.text}</b>
+                    </button>
+                  </a>
+                }
               </div>
               :
               null
             :
             <div className={`${styles.sponsorContainer} sponsor-container`} key={index}>
                 <img src={ad.image} alt="sponsor" />
-                <a className={styles.link} href={ad.button.link}>
-                  <button className={`${styles.button} button is-large`}>
-                    <b>{ad.button.text}</b>
-                  </button>
-                </a>
+                { ad.button.text && ad.button.link &&
+                  <a className={styles.link} href={ad.button.link}>
+                    <button className={`${styles.button} button is-large`}>
+                      <b>{ad.button.text}</b>
+                    </button>
+                  </a>
+                }
               </div>
         )
       })
