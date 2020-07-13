@@ -7,10 +7,10 @@
           "column": "left",
           "columnAds": [
             {
-              "image": "/img/intel.png",
+              "image": "/img/yoco-sponsor-ads-large-insurtion-vert.png",
               "button": {
-                "text": "Learn more",
-                "link": "#"
+                "text": "",
+                "link": ""
               },
               "id": null
             },
