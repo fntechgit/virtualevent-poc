@@ -5,10 +5,9 @@
       "columns": [
         {
           "column": "left",
-          "ads": [
+          "columnAds": [
             {
               "image": "/img/intel.png",
-              "text": null,
               "button": {
                 "text": "Learn more",
                 "link": "#"
@@ -17,7 +16,6 @@
             },
             {
               "image": "/img/ad_subscribe.png",
-              "text": null,
               "button": {
                 "text": "Subscribe",
                 "link": "#"
@@ -28,14 +26,13 @@
         },
         {
           "column": "center",
-          "ads": []
+          "columnAds": []
         },
         {
           "column": "right",
-          "ads": [
+          "columnAds": [
             {
               "image": "/img/ad_Lenovo.png",
-              "text": null,
               "button": {
                 "text": "Learn more",
                 "link": "#"
@@ -44,7 +41,6 @@
             },
             {
               "image": "/img/ad_YO.png",
-              "text": null,
               "button": {
                 "text": "Learn more",
                 "link": "#"
@@ -60,10 +56,9 @@
       "columns": [
         {
           "column": "left",
-          "ads": [
+          "columnAds": [
             {
               "image": "/img/intel.png",
-              "text": null,
               "button": {
                 "text": "Learn more",
                 "link": "#"
@@ -74,11 +69,11 @@
         },
         {
           "column": "left",
-          "ads": []
+          "columnAds": []
         },
         {
           "column": "left",
-          "ads": []
+          "columnAds": []
         }
       ]
     }

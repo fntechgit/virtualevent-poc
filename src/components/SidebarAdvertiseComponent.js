@@ -6,7 +6,7 @@ import Content from '../content/ads.json'
 
 const SidebarAdvertise = ({ section, column, id }) => {
 
-  const sectionAds = Content.ads.find(ad => ad.section === section).columns.find(c => c.column === column).ads;
+  const sectionAds = Content.ads.find(ad => ad.section === section).columns.find(c => c.column === column).columnAds;
 
   if (sectionAds.length > 0) {
     return (

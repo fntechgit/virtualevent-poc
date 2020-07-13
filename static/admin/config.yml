@@ -25,19 +25,17 @@ collections:
           - {label: "Sponsor Ads", name: "ads", widget: list, fields: [
               {label: "Section", name: "section", widget: string},
               {label: "Columns", name: "columns", widget: list, fields: [
-                {label: "Column", name: "column", widget: select, required: false, options: [
+                {label: "Column", name: "column", widget: select, options: [
                   { label: "Left", value: "left" },
                   { label: "Center", value: "center" },
                   { label: "Right", value: "right" },
                 ]},
-                {label: "Ads", name: "ads", widget: list, required: false, fields: [
+                {label: "Ads", name: "columnAds", widget: list, required: false, fields: [
                   {label: "Image", name: "image", widget: image},
-                  {label: "Text", name: "text", widget: string},
                   {label: "Button", name: button, widget: object, fields: [
-                    {label: "Text", name: "text", widget: string},
                     {label: "Link", name: "link", widget: string}
                   ]},
                   {label: "Specific Event?", name: "id", widget: string, required: false}
                 ]}
-              ]},              
+              ]},
             ]}
