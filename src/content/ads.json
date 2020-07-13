@@ -68,11 +68,11 @@
           ]
         },
         {
-          "column": "left",
+          "column": "center",
           "columnAds": []
         },
         {
-          "column": "left",
+          "column": "right",
           "columnAds": []
         }
       ]
