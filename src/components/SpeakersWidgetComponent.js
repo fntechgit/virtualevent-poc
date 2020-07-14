@@ -39,7 +39,7 @@ const SpeakersWidgetComponent = class extends React.Component {
         </Helmet>
         <div>
           <ClockComponent summit={summit} />
-          <SpeakersWidget {...widgetProps} />
+          {now && <SpeakersWidget {...widgetProps} />}
         </div>
       </>
     )
