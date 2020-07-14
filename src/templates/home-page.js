@@ -6,7 +6,6 @@ import { connect } from 'react-redux'
 import Layout from '../components/Layout'
 
 import LobbyHeroComponent from '../components/LobbyHeroComponent'
-import ClockComponent from '../components/ClockComponent'
 import SidebarAdvertise from '../components/SidebarAdvertiseComponent'
 import ScheduleLiteComponent from '../components/ScheduleLiteComponent'
 import DisqusComponent from '../components/DisqusComponent'
@@ -42,11 +41,10 @@ export const HomePageTemplate = class extends React.Component {
 
   render() {
 
-    const { loggedUser, user, summit, now } = this.props;
+    const { loggedUser, user, summit } = this.props;
 
     return (
       <React.Fragment>
-        <ClockComponent summit={summit} now={now} />
         <LobbyHeroComponent />
         <div className="px-5 py-5 mb-6">
           <div className="columns">
@@ -66,7 +64,6 @@ export const HomePageTemplate = class extends React.Component {
               <SpeakersWidgetComponent
                 accessToken={loggedUser.accessToken}
                 title="Today's Speakers"
-                now={now}
               />
               <DisqusComponent disqusSSO={user.disqusSSO} room={summit} style={{ position: 'static' }} />
             </div>
@@ -83,7 +80,6 @@ export const HomePageTemplate = class extends React.Component {
             </div>
           </div>
         </div>
-        {/* <ClockComponent summit={summit} now={now} /> */}
       </React.Fragment>
     )
   }
@@ -98,7 +94,7 @@ HomePageTemplate.propTypes = {
   getDisqusSSO: PropTypes.func,
 }
 
-const HomePage = ({ loggedUser, user, location, summit, getSummitData, getDisqusSSO, now }) => {
+const HomePage = ({ loggedUser, user, location, summit, getSummitData, getDisqusSSO }) => {
 
   return (
     <Layout>
@@ -107,7 +103,6 @@ const HomePage = ({ loggedUser, user, location, summit, getSummitData, getDisqus
         location={location}
         user={user}
         summit={summit}
-        now={now}
         getSummitData={getSummitData}
         getDisqusSSO={getDisqusSSO}
       />
@@ -126,7 +121,6 @@ const mapStateToProps = ({ loggedUserState, userState, summitState }) => ({
   loggedUser: loggedUserState,
   user: userState,
   summit: summitState.summit,
-  now: summitState.nowUtc,
 })
 
 export default connect(mapStateToProps,
