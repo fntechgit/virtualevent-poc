@@ -15,9 +15,7 @@ const SpeakersWidgetComponent = class extends React.Component {
 
   render() {
 
-    const { accessToken, title, now } = this.props;
-
-    console.log(now);
+    const { accessToken, title, now, summit } = this.props;
 
     const widgetProps = {
       apiBaseUrl: envVariables.SUMMIT_API_BASE_URL,
@@ -40,7 +38,7 @@ const SpeakersWidgetComponent = class extends React.Component {
           <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/awesome-bootstrap-checkbox/1.0.2/awesome-bootstrap-checkbox.min.css" />
         </Helmet>
         <div>
-          <ClockComponent summit={parseInt(envVariables.SUMMIT_ID)} now={now} />
+          <ClockComponent summit={summit} />
           <SpeakersWidget {...widgetProps} />
         </div>
       </>
@@ -49,6 +47,7 @@ const SpeakersWidgetComponent = class extends React.Component {
 }
 
 const mapStateToProps = ({ summitState }) => ({
+  summit: summitState.summit,
   now: summitState.nowUtc,
 })
 
