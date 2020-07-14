@@ -26,7 +26,16 @@
         },
         {
           "column": "center",
-          "columnAds": []
+          "columnAds": [
+            {
+              "image": "/img/ad_subscribe.png",
+              "button": {
+                "text": "Subscribe",
+                "link": "#"
+              },
+              "id": null
+            }
+          ]
         },
         {
           "column": "right",

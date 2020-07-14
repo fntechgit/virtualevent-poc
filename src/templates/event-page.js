@@ -12,7 +12,7 @@ import ScheduleLiteComponent from '../components/ScheduleLiteComponent'
 import VideoComponent from '../components/VideoComponent'
 import TalkComponent from '../components/TalkComponent'
 import DocumentsComponent from '../components/DocumentsComponent'
-import SidebarAdvertise from '../components/SidebarAdvertiseComponent'
+import AdvertiseComponent from '../components/AdvertiseComponent'
 
 import { getEventBySlug } from '../actions/event-actions'
 import { getDisqusSSO, getRocketChatSSO } from '../actions/user-actions'
@@ -90,7 +90,7 @@ export const EventPageTemplate = class extends React.Component {
                 <TalkComponent event={event} summit={summit} noStream={true} />
               </div>
               <div className="column" style={{ position: 'relative' }}>
-                <DisqusComponent disqusSSO={user.disqusSSO} room={event} title="Join the conversation"/>
+                <DisqusComponent disqusSSO={user.disqusSSO} event={event} summit={summit} title="Join the conversation"/>
               </div>
             </div>
           </section>
@@ -117,7 +117,7 @@ export const EventPageTemplate = class extends React.Component {
           <section className="section px-4 py-6">
             <div className="columns">
               <div className="column is-one-quarter pb-6">
-                <SidebarAdvertise section='event' column="left" />
+                <AdvertiseComponent section='event' column="left" />
               </div>
               <div className="column is-two-quarters pb-6">
                 {/* <div className="rocket-container"> */}
@@ -143,7 +143,7 @@ export const EventPageTemplate = class extends React.Component {
               {/* </div> */}
             </div>
             <div className="column is-one-quarter has-text-centered pb-6">
-              <SidebarAdvertise section='event' id={event.id} />
+              <AdvertiseComponent section='event' id={event.id} />
             </div>
           </div>
         </section >

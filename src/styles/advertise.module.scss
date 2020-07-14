@@ -1,0 +1,60 @@
+.link {
+  width: 80%;
+  margin: 0 auto;
+
+  .button {
+    align-self: center;
+    border-radius: 3px;
+    bottom: 5rem;
+    width: 100%;
+  }
+}
+
+.sponsor-container-center {
+  margin-top: 3rem;
+  height: 250px;  
+  background-color: #ff5a32;
+  display: flex;
+
+  .container-text {
+    display: flex;
+    padding: 3rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .ad-text {
+      display: inline-flex;
+      color: #fff;
+      font-size: 24px;
+      text-align: center;
+    }
+
+    .link {
+      margin-top: 3rem;
+      width: 100%;
+      display: inline-flex;
+
+      .button {
+        width: 60%;
+        border-radius: 3px;
+        bottom: 0;
+        margin: 0 auto;
+      }
+    }
+  }
+
+  .container-image {
+    width: 80%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
+
+}
+
+.sponsor-container {
+  display: flex;
+  flex-direction: column;
+}

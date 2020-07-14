@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 import Layout from '../components/Layout'
 
 import LobbyHeroComponent from '../components/LobbyHeroComponent'
-import SidebarAdvertise from '../components/SidebarAdvertiseComponent'
+import AdvertiseComponent from '../components/AdvertiseComponent'
 import ScheduleLiteComponent from '../components/ScheduleLiteComponent'
 import DisqusComponent from '../components/DisqusComponent'
 import LiveEventWidgetComponent from '../components/LiveEventWidgetComponent'
@@ -50,10 +50,11 @@ export const HomePageTemplate = class extends React.Component {
           <div className="columns">
             <div className="column is-one-quarter">
               <h2><b>Community</b></h2>
-              <SidebarAdvertise section='lobby' column="left"/>
-            </div>
+              <AdvertiseComponent section='lobby' column="left"/>
+            </div>            
             <div className="column is-half">
-              <LiveEventWidgetComponent />
+            <LiveEventWidgetComponent />
+              <DisqusComponent disqusSSO={user.disqusSSO} summit={summit} style={{ position: 'static' }} />
               <ScheduleLiteComponent
                 accessToken={loggedUser.accessToken}
                 eventClick={(ev) => this.onEventChange(ev)}
@@ -65,7 +66,7 @@ export const HomePageTemplate = class extends React.Component {
                 accessToken={loggedUser.accessToken}
                 title="Today's Speakers"
               />
-              <DisqusComponent disqusSSO={user.disqusSSO} room={summit} style={{ position: 'static' }} />
+              <AdvertiseComponent section='lobby' column="center"/>
             </div>
             <div className="column is-one-quarter pb-6">
               <h2><b>My Info</b></h2>
@@ -76,10 +77,11 @@ export const HomePageTemplate = class extends React.Component {
                 yourSchedule={true}                
                 showNav={true}
               />
-              <SidebarAdvertise section='lobby' column="right"/>
+              <AdvertiseComponent section='lobby' column="right"/>
             </div>
           </div>
         </div>
+        {/* <ClockComponent summit={summit} now={now} /> */}
       </React.Fragment>
     )
   }
