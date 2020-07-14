@@ -65,6 +65,12 @@ export const HomePageTemplate = class extends React.Component {
               <SpeakersWidgetComponent
                 accessToken={loggedUser.accessToken}
                 title="Today's Speakers"
+                bigPics={true}
+              />
+              <SpeakersWidgetComponent
+                accessToken={loggedUser.accessToken}
+                title="Featured Speakers"
+                bigPics={false}
               />
               <AdvertiseComponent section='lobby' column="center"/>
             </div>

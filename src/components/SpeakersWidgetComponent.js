@@ -15,7 +15,7 @@ const SpeakersWidgetComponent = class extends React.Component {
 
   render() {
 
-    const { accessToken, title, now, summit } = this.props;
+    const { accessToken, title, bigPics, now, summit } = this.props;
 
     const widgetProps = {
       apiBaseUrl: envVariables.SUMMIT_API_BASE_URL,
@@ -23,8 +23,8 @@ const SpeakersWidgetComponent = class extends React.Component {
       summitId: parseInt(envVariables.SUMMIT_ID),
       accessToken: accessToken,
       title,
+      bigPics,
       speakerCount: 3,
-      bigPics: true,
       title: title,
       date: parseInt(now, 10),
       // speakerIds: [1, 187, 190],
