@@ -18,7 +18,7 @@ import { updateProfilePicture, updateProfile, getIDPProfile } from '../actions/u
 
 import styles from '../styles/full-profile.module.scss'
 
-export const FullProfilePageTemplate = ({ loggedUser, user, getIDPProfile, updateProfile, updateProfilePicture, addWidgetRef, updateWidgets }) => {
+export const FullProfilePageTemplate = ({ user, getIDPProfile, updateProfile, updateProfilePicture, addWidgetRef, updateWidgets }) => {
 
     const [showProfile, setShowProfile] = useState(false);
     const [personalProfile, setPersonalProfile] = useState({
@@ -295,7 +295,7 @@ export const FullProfilePageTemplate = ({ loggedUser, user, getIDPProfile, updat
                                     </div>
                                 </div>
                                 {personalProfile.gender === 'Specify' &&
-                                    <>
+                                    <React.Fragment>
                                         <div className={`columns is-mobile ${styles.inputRow}`}>
                                             <div className={`column is-half ${styles.inputField}`}></div>
                                             <div className={`column is-half ${styles.inputField}`}>
@@ -309,7 +309,7 @@ export const FullProfilePageTemplate = ({ loggedUser, user, getIDPProfile, updat
                                                 />
                                             </div>
                                         </div>
-                                    </>
+                                    </React.Fragment>
                                 }
                                 <div className={`columns is-mobile ${styles.inputRow}`}>
                                     <div className={`column is-half ${styles.inputField}`}>
@@ -515,7 +515,6 @@ export const FullProfilePageTemplate = ({ loggedUser, user, getIDPProfile, updat
                     <div className="column is-3">
                         <div className={styles.header}>My Schedule</div>
                         <ScheduleLiteComponent
-                            accessToken={loggedUser.accessToken}
                             onEventClick={(ev) => onEventChange(ev)}
                             onViewAllEventsClick={() => onViewAllEventsClick()}
                             title=''
@@ -541,7 +540,7 @@ export const FullProfilePageTemplate = ({ loggedUser, user, getIDPProfile, updat
                     closePopup={() => handleTogglePopup(!showProfile)}
                 />
             }
-        </React.Fragment >
+        </React.Fragment>
     )
 };
 
@@ -550,7 +549,6 @@ const OrchestedTemplate = withOrchestra(FullProfilePageTemplate);
 const FullProfilePage = (
     {
         location,
-        loggedUser,
         user,
         getIDPProfile,
         updateProfile,
@@ -560,7 +558,6 @@ const FullProfilePage = (
     return (
         <Layout location={location}>
             <OrchestedTemplate
-                loggedUser={loggedUser}
                 user={user}
                 getIDPProfile={getIDPProfile}
                 updateProfile={updateProfile}
@@ -570,7 +567,6 @@ const FullProfilePage = (
 }
 
 FullProfilePage.propTypes = {
-    loggedUser: PropTypes.object,
     user: PropTypes.object,
     getIDPProfile: PropTypes.func,
     updateProfile: PropTypes.func,
@@ -578,15 +574,13 @@ FullProfilePage.propTypes = {
 }
 
 FullProfilePageTemplate.propTypes = {
-    loggedUser: PropTypes.object,
     user: PropTypes.object,
     getIDPProfile: PropTypes.func,
     updateProfile: PropTypes.func,
     updateProfilePicture: PropTypes.func,
 }
 
-const mapStateToProps = ({ loggedUserState, userState }) => ({
-    loggedUser: loggedUserState,
+const mapStateToProps = ({ userState }) => ({
     user: userState,
 })
 

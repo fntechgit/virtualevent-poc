@@ -18,10 +18,11 @@ import SpeakersWidgetComponent from '../components/SpeakersWidgetComponent'
 import SponsorComponent from '../components/SponsorComponent'
 import SimpleChatWidgetComponent from '../components/SimpleChatWidgetComponent'
 import { AttendeesList, AccessTracker } from '../components/AttendeeToAttendeeWidgetComponent'
+import AttendanceTrackerComponent from '../components/AttendanceTrackerComponent'
 
 import { getDisqusSSO, getUserProfile } from '../actions/user-actions'
+
 import envVariables from "../utils/envVariables";
-import {AttendanceTracker} from "openstack-uicore-foundation/lib/components";
 
 export const HomePageTemplate = class extends React.Component {
 
@@ -43,7 +44,7 @@ export const HomePageTemplate = class extends React.Component {
   }
 
   render() {
-    const { loggedUser, user, addWidgetRef, updateWidgets } = this.props;
+    const { user, addWidgetRef, updateWidgets } = this.props;
     let { summit } = SummitObject;
 
     return (
@@ -71,7 +72,6 @@ export const HomePageTemplate = class extends React.Component {
                 title="Public conversation"
               />
               <ScheduleLiteComponent
-                accessToken={loggedUser.accessToken}
                 onEventClick={(ev) => this.onEventChange(ev)}
                 onViewAllEventsClick={() => this.onViewAllEventsClick()}
                 landscape={HomeSettings.centerColumn.schedule.showAllEvents}
@@ -86,14 +86,12 @@ export const HomePageTemplate = class extends React.Component {
               />
               {HomeSettings.centerColumn.speakers.showTodaySpeakers &&
                 <SpeakersWidgetComponent
-                  accessToken={loggedUser.accessToken}
                   title="Today's Speakers"
                   bigPics={true}
                 />
               }
               {HomeSettings.centerColumn.speakers.showFeatureSpeakers &&
                 <SpeakersWidgetComponent
-                  accessToken={loggedUser.accessToken}
                   title="Featured Speakers"
                   bigPics={false}
                   featured={true}
@@ -104,9 +102,8 @@ export const HomePageTemplate = class extends React.Component {
             </div>
             <div className="column is-one-quarter pb-6">
               <h2><b>My Info</b></h2>
-              <SimpleChatWidgetComponent accessToken={loggedUser.accessToken} title="Private Chat" />
+              <SimpleChatWidgetComponent title="Private Chat" />
               <ScheduleLiteComponent
-                accessToken={loggedUser.accessToken}
                 onEventClick={(ev) => this.onEventChange(ev)}
                 onViewAllEventsClick={() => this.onViewAllEventsClick()}
                 title='My Schedule'
@@ -135,7 +132,6 @@ const OrchestedTemplate = withOrchestra(HomePageTemplate);
 const HomePage = (
   {
     location,
-    loggedUser,
     user,
     getUserProfile,
     getDisqusSSO
@@ -143,14 +139,8 @@ const HomePage = (
 ) => {  
   return (
     <Layout location={location}>
-      <AttendanceTracker
-          sourceName="LOBBY"
-          summitId={SummitObject.summit.id}
-          apiBaseUrl={envVariables.SUMMIT_API_BASE_URL}
-          accessToken={loggedUser.accessToken}
-      />
+      <AttendanceTrackerComponent sourceName="LOBBY" />
       <OrchestedTemplate
-        loggedUser={loggedUser}
         user={user}
         getUserProfile={getUserProfile}
         getDisqusSSO={getDisqusSSO}
@@ -160,27 +150,19 @@ const HomePage = (
 }
 
 HomePage.propTypes = {
-  loggedUser: PropTypes.object,
   user: PropTypes.object,
   getUserProfile: PropTypes.func,
   getDisqusSSO: PropTypes.func,
 }
 
 HomePageTemplate.propTypes = {
-  loggedUser: PropTypes.object,
   user: PropTypes.object,
   getUserProfile: PropTypes.func,
   getDisqusSSO: PropTypes.func,
 }
 
-const mapStateToProps = ({ loggedUserState, userState }) => ({
-  loggedUser: loggedUserState,
+const mapStateToProps = ({ userState }) => ({
   user: userState,
 })
 
-export default connect(mapStateToProps,
-  {
-    getDisqusSSO,
-    getUserProfile
-  }
-)(HomePage);
+export default connect(mapStateToProps, { getDisqusSSO, getUserProfile } )(HomePage);
