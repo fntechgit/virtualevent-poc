@@ -17,6 +17,7 @@ import LiveEventWidgetComponent from '../components/LiveEventWidgetComponent'
 import SpeakersWidgetComponent from '../components/SpeakersWidgetComponent'
 import SponsorComponent from '../components/SponsorComponent'
 import SimpleChatWidgetComponent from '../components/SimpleChatWidgetComponent'
+import { AttendeesList, AccessTracker } from '../components/AttendeeToAttendeeWidgetComponent'
 
 import { getDisqusSSO, getUserProfile } from '../actions/user-actions'
 import envVariables from "../utils/envVariables";
@@ -118,6 +119,9 @@ export const HomePageTemplate = class extends React.Component {
                 updateCallback={updateWidgets}
               />
               <AdvertiseComponent section='lobby' column="right" />
+              <h2><b>Looking this page</b></h2>
+              <AccessTracker userProfile={user.userProfile} />
+              <AttendeesList />
             </div>
           </div>
         </div>
