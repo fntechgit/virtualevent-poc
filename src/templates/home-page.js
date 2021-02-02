@@ -46,7 +46,6 @@ export const HomePageTemplate = class extends React.Component {
   render() {
     const { user, addWidgetRef, updateWidgets } = this.props;
     let { summit } = SummitObject;
-
     return (
       <React.Fragment>
         <LobbyHeroComponent />
@@ -117,7 +116,7 @@ export const HomePageTemplate = class extends React.Component {
               />
               <AdvertiseComponent section='lobby' column="right" />
               <h2><b>Looking this page</b></h2>
-              <AccessTracker userProfile={user.userProfile} />
+              <AccessTracker user={user} />
               <AttendeesList />
             </div>
           </div>

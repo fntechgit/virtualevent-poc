@@ -35,12 +35,14 @@ export const AttendeesList = () => {
     );
 }
 
-  export const AccessTracker = ({userProfile}) => {
-    const {email, first_name, last_name, pic} = userProfile
+  export const AccessTracker = ({user}) => {
+    const {email, first_name, last_name, pic} = user.userProfile
     const widgetProps = {
       user: {
         fullName: `${first_name} ${last_name}`,
         email: email,
+        company: user.company,
+        title: null,
         picUrl: pic
       },
       summitId: parseInt(process.env.GATSBY_SUMMIT_ID),   //parseInt(envVariables.SUMMIT_ID)
