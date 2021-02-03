@@ -36,14 +36,15 @@ export const AttendeesList = () => {
 }
 
   export const AccessTracker = ({user}) => {
-    const {email, first_name, last_name, pic} = user.userProfile
+    const {email, first_name, last_name} = user.userProfile
+    const {picture, company} = user.idpProfile
     const widgetProps = {
       user: {
         fullName: `${first_name} ${last_name}`,
         email: email,
-        company: user.company,
+        company: company,
         title: null,
-        picUrl: pic
+        picUrl: picture
       },
       summitId: parseInt(process.env.GATSBY_SUMMIT_ID),   //parseInt(envVariables.SUMMIT_ID)
       ...sbAuthProps
