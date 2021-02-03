@@ -115,7 +115,7 @@ export const HomePageTemplate = class extends React.Component {
                 updateCallback={updateWidgets}
               />
               <AdvertiseComponent section='lobby' column="right" />
-              <h2><b>Looking this page</b></h2>
+              <h2><b>Looking at this page</b></h2>
               <AccessTracker user={user} />
               <AttendeesList />
             </div>
