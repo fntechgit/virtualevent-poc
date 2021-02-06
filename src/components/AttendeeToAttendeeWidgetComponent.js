@@ -14,19 +14,22 @@ const sbAuthProps = {
   supabaseKey: process.env.GATSBY_SUPABASE_KEY
 };
 
-export const AttendeesList = () => {
+export const AttendeesList = (props) => {
   //const [accessInfo, setAccessInfo] = useState({});
 
   const handleItemClick = (itemInfo) => {
     //setAccessInfo(itemInfo)
     const attendee = itemInfo.attendees
     Swal.fire("Attendee info", `Full Name: ${attendee.full_name}<br/>email: ${attendee.email}<br/>IP Address: ${itemInfo.attendee_ip}<br/>Access Time<br/>${itemInfo.updated_at}<br/>`);
-    console.log(itemInfo)
+    //console.log(itemInfo)
+    if (props.onOneToOneChatClick) {
+      props.onOneToOneChatClick(`${attendee.idp_user_id}`);
+    }
   }
 
-  const handleCTA = (itemInfo) => {
-    console.log(itemInfo)
-  }
+  // const handleCTA = (itemInfo) => {
+  //   console.log(itemInfo)
+  // }
 
   return (
     <div style={{margin: '20px auto'}}>
@@ -36,16 +39,17 @@ export const AttendeesList = () => {
 }
 
   export const AccessTracker = ({user}) => {
-    console.log('AccessTracker -> user', user)
+    //console.log('AccessTracker -> user', user)
     const {email, first_name, last_name} = user.userProfile
-    const {picture, company, job_title} = user.idpProfile
+    const {picture, company, job_title, sub} = user.idpProfile
     const widgetProps = {
       user: {
         fullName: `${first_name} ${last_name}`,
         email: email,
         company: company,
         title: job_title,
-        picUrl: picture
+        picUrl: picture,
+        idpUserId: sub
       },
       summitId: parseInt(process.env.GATSBY_SUMMIT_ID),   //parseInt(envVariables.SUMMIT_ID)
       ...sbAuthProps

@@ -43,9 +43,14 @@ export const HomePageTemplate = class extends React.Component {
     navigate('/a/schedule')
   }
 
+  onOneToOneChatClick(partnerUserId) {
+    this.simpleChatWidgetRef && this.simpleChatWidgetRef.startOneToOneChat(partnerUserId)
+  }
+
   render() {
     const { user, addWidgetRef, updateWidgets } = this.props;
     let { summit } = SummitObject;
+
     return (
       <React.Fragment>
         <LobbyHeroComponent />
@@ -101,7 +106,7 @@ export const HomePageTemplate = class extends React.Component {
             </div>
             <div className="column is-one-quarter pb-6">
               <h2><b>My Info</b></h2>
-              <SimpleChatWidgetComponent title="Private Chat" />
+              <SimpleChatWidgetComponent title="Private Chat" childRef={ref => (this.simpleChatWidgetRef = ref)} />
               <ScheduleLiteComponent
                 onEventClick={(ev) => this.onEventChange(ev)}
                 onViewAllEventsClick={() => this.onViewAllEventsClick()}
@@ -117,7 +122,7 @@ export const HomePageTemplate = class extends React.Component {
               <AdvertiseComponent section='lobby' column="right" />
               <h2><b>Looking at this page</b></h2>
               <AccessTracker user={user} />
-              <AttendeesList />
+              <AttendeesList onOneToOneChatClick={partnerUserId => this.onOneToOneChatClick(partnerUserId)} />
             </div>
           </div>
         </div>
