@@ -3001,10 +3001,10 @@ atob@^2.1.2:
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
   integrity sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==
 
-attendee-to-attendee-widget@^1.0.18:
-  version "1.0.18"
-  resolved "https://registry.yarnpkg.com/attendee-to-attendee-widget/-/attendee-to-attendee-widget-1.0.18.tgz#f9d302f109c28b11b1d7bd8155075c403f3a7258"
-  integrity sha512-ym3+ty8S/DPRYDkuXsnuEBYLBzxCKaRDp4Yv2RkmacLrBYlsaxpXxpWnrHNbyPEohSvIX2FcpWGMLJ//3P+1EQ==
+attendee-to-attendee-widget@^1.0.19:
+  version "1.0.19"
+  resolved "https://registry.yarnpkg.com/attendee-to-attendee-widget/-/attendee-to-attendee-widget-1.0.19.tgz#319b0fefefdad7f9da9bf554d41ed1f0e810a00f"
+  integrity sha512-CXZeEiamowiC+nsKZ63dxL8yua6psreGS8vvZyBL73VT8Miar6p0fUpM67Rh/eSs1fDIrtTKenK4ytX8ur2s7Q==
   dependencies:
     "@supabase/supabase-js" "^1.3.2"
     public-ip "^4.0.3"
