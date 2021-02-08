@@ -122,7 +122,7 @@ export const HomePageTemplate = class extends React.Component {
               <AdvertiseComponent section='lobby' column="right" />
               <h2><b>Looking at this page</b></h2>
               <AccessTracker user={user} />
-              <AttendeesList onOneToOneChatClick={partnerUserId => this.onOneToOneChatClick(partnerUserId)} />
+              <AttendeesList onOneToOneChatClick={partnerUserId => this.onOneToOneChatClick(partnerUserId)} user={user} />
             </div>
           </div>
         </div>

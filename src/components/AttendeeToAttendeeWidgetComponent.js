@@ -14,17 +14,24 @@ const sbAuthProps = {
   supabaseKey: process.env.GATSBY_SUPABASE_KEY
 };
 
-export const AttendeesList = (props) => {
+export const AttendeesList = ({onOneToOneChatClick, user}) => {
   //const [accessInfo, setAccessInfo] = useState({});
 
   const handleItemClick = (itemInfo) => {
     //setAccessInfo(itemInfo)
     const attendee = itemInfo.attendees
-    Swal.fire("Attendee info", `Full Name: ${attendee.full_name}<br/>email: ${attendee.email}<br/>IP Address: ${itemInfo.attendee_ip}<br/>Access Time<br/>${itemInfo.updated_at}<br/>`);
-    //console.log(itemInfo)
-    if (props.onOneToOneChatClick) {
-      props.onOneToOneChatClick(`${attendee.idp_user_id}`);
-    }
+
+    Swal.fire({
+      title: 'Attendee info',
+      text: `Full Name: ${attendee.full_name}<br/>email: ${attendee.email}<br/>IP Address: ${itemInfo.attendee_ip}<br/>Access Time<br/>${itemInfo.updated_at}<br/>`,
+      showCancelButton: true,
+      confirmButtonText: 'Start Chat',
+      cancelButtonText: 'Close'
+    }).then((result) => {
+      if (result.value && onOneToOneChatClick && attendee.idp_user_id !== user.idpProfile.sub) {
+        onOneToOneChatClick(`${attendee.idp_user_id}`);
+      }
+    })
   }
 
   // const handleCTA = (itemInfo) => {
@@ -39,7 +46,7 @@ export const AttendeesList = (props) => {
 }
 
   export const AccessTracker = ({user}) => {
-    //console.log('AccessTracker -> user', user)
+    console.log('AccessTracker -> user', user)
     const {email, first_name, last_name} = user.userProfile
     const {picture, company, job_title, sub} = user.idpProfile
     const widgetProps = {
