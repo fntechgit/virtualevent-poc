@@ -24,7 +24,7 @@
   },
   "leftColumn": {
     "schedule": {
-      "display": false,
+      "display": true,
       "title": "Full Event Schedule"
     },
     "disqus": {
