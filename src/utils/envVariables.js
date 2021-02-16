@@ -12,7 +12,9 @@ const envVariables = {
   AUTHORIZED_DEFAULT_PATH: typeof window === 'object' ? window.AUTHORIZED_DEFAULT_PATH : process.env.GATSBY_AUTHORIZED_DEFAULT_PATH,
   STREAM_IO_API_KEY: typeof window === 'object' ? window.STREAM_IO_API_KEY : process.env.GATSBY_STREAM_IO_API_KEY,
   STREAM_IO_SSO_SLUG: typeof window === 'object' ? window.STREAM_IO_SSO_SLUG : process.env.GATSBY_STREAM_IO_SSO_SLUG,
-  MUX_ENV_KEY: typeof window === 'object' ? window.MUX_ENV_KEY : process.env.GATSBY_MUX_ENV_KEY
+  MUX_ENV_KEY: typeof window === 'object' ? window.MUX_ENV_KEY : process.env.GATSBY_MUX_ENV_KEY,
+  SUPABASE_URL: typeof window === 'object' ? window.SUPABASE_URL : process.env.GATSBY_SUPABASE_URL,
+  SUPABASE_KEY: typeof window === 'object' ? window.SUPABASE_KEY : process.env.GATSBY_SUPABASE_KEY
 }
 
 export default envVariables;

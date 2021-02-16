@@ -3001,13 +3001,16 @@ atob@^2.1.2:
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
   integrity sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==
 
-attendee-to-attendee-widget@^1.0.20:
-  version "1.0.20"
-  resolved "https://registry.yarnpkg.com/attendee-to-attendee-widget/-/attendee-to-attendee-widget-1.0.20.tgz#b8013c7575b5746633834b86b749b0a3401ec5d2"
-  integrity sha512-Troj6rxeS7IUhd+4KY23ThxO8Npv+2u5x8Ed4fVie4tjsWALNafHjiQ+bgcGN+xvGowhYXDTDAmZjL+xgGSRIA==
+attendee-to-attendee-widget@^1.0.24:
+  version "1.0.24"
+  resolved "https://registry.yarnpkg.com/attendee-to-attendee-widget/-/attendee-to-attendee-widget-1.0.24.tgz#4b4f3f681f72c3117b1e50dcd4499404331a342d"
+  integrity sha512-g4xKn7gGezWAS1/KnQjrmx2kSMPwXzYaN/py7Sqh7wAXxw6ehVcvvg9b89+C5N9kDtNJwfhYuviJ3/6/lg3FqA==
   dependencies:
     "@supabase/supabase-js" "^1.3.2"
+    lodash.debounce "^4.0.8"
     public-ip "^4.0.3"
+    react-infinite-scroll-component "^6.0.0"
+    react-tabs "^3.2.0"
 
 attr-accept@^2.0.0:
   version "2.2.2"
@@ -4230,6 +4233,11 @@ clone-response@1.0.2, clone-response@^1.0.2:
   integrity sha1-0dyXOSAxTfZ/vrlCI7TuNQI56Ws=
   dependencies:
     mimic-response "^1.0.0"
+
+clsx@^1.1.0:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/clsx/-/clsx-1.1.1.tgz#98b3134f9abbdf23b2663491ace13c5c03a73188"
+  integrity sha512-6/bPho624p3S2pMyvP5kKBPXnI3ufHLObBFCfgx+LkeR5lg2XYy2hqZqUf45ypD8COn2bhgGJSUE+l5dhNBieA==
 
 coa@^2.0.2:
   version "2.0.2"
@@ -13710,7 +13718,7 @@ prop-types-extra@^1.0.1:
     react-is "^16.3.2"
     warning "^4.0.0"
 
-prop-types@^15.0.0, prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.6, prop-types@^15.5.7, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@^15.0.0, prop-types@^15.5.0, prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.6, prop-types@^15.5.7, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -14311,6 +14319,13 @@ react-immutable-proptypes@^2.1.0:
   dependencies:
     invariant "^2.2.2"
 
+react-infinite-scroll-component@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/react-infinite-scroll-component/-/react-infinite-scroll-component-6.0.0.tgz#b5834b81dad51c764e5d217e1007b14bed0ed5e7"
+  integrity sha512-GK/amOgk4J/MLw8Kpp8K6MdDdX5QLJheVSSnhI6c2b6gvMwziCE2m1GDVrMyAyP7gDjgA0YH7pxdIoQya842LQ==
+  dependencies:
+    throttle-debounce "^2.1.0"
+
 react-input-autosize@^2.2.1, react-input-autosize@^2.2.2:
   version "2.2.2"
   resolved "https://registry.yarnpkg.com/react-input-autosize/-/react-input-autosize-2.2.2.tgz#fcaa7020568ec206bc04be36f4eb68e647c4d8c2"
@@ -14627,6 +14642,14 @@ react-style-singleton@^2.1.0:
     get-nonce "^1.0.0"
     invariant "^2.2.4"
     tslib "^1.0.0"
+
+react-tabs@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/react-tabs/-/react-tabs-3.2.0.tgz#0fd8d595ef26d3684da876c27a3cc90392dffb40"
+  integrity sha512-q7oNapNRoYTQq8gDhApXwdBheuuN5qQ4YvUaQUAkb6OSSttJulBAvxJ0FS6W5uojvMxbbIZKu1f2I+GXISoLjw==
+  dependencies:
+    clsx "^1.1.0"
+    prop-types "^15.5.0"
 
 react-textarea-autosize@^7.1.0:
   version "7.1.2"

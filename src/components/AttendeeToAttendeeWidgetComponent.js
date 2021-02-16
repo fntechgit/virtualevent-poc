@@ -2,19 +2,14 @@ import React from 'react'
 import { RealTimeAttendeesList, Tracker } from 'attendee-to-attendee-widget'
 import 'attendee-to-attendee-widget/dist/index.css'
 //import Swal from 'sweetalert2';
-//import envVariables from '../utils/envVariables';
-
-// const sbAuthProps = {
-//   supabaseUrl: envVariables.SUPABASE_URL,
-//   supabaseKey: envVariables.SUPABASE_KEY
-// };
+import envVariables from '../utils/envVariables';
 
 const sbAuthProps = {
-  supabaseUrl: process.env.GATSBY_SUPABASE_URL,
-  supabaseKey: process.env.GATSBY_SUPABASE_KEY
+  supabaseUrl: envVariables.SUPABASE_URL,
+  supabaseKey: envVariables.SUPABASE_KEY
 };
 
-export const AttendeesList = ({onOneToOneChatClick, user}) => {
+export const AttendeesList = ({onOneToOneChatClick, user, title}) => {
   //const [accessInfo, setAccessInfo] = useState({});
 
   const handleItemClick = (itemInfo) => {
@@ -43,27 +38,27 @@ export const AttendeesList = ({onOneToOneChatClick, user}) => {
 
   return (
     <div style={{margin: '20px auto'}}>
-        <RealTimeAttendeesList onItemClick={handleItemClick} {...sbAuthProps} />
+        <RealTimeAttendeesList onItemClick={handleItemClick} {...sbAuthProps} title={title} summitId={parseInt(envVariables.SUMMIT_ID)} />
     </div>
     );
 }
 
-  export const AccessTracker = ({user}) => {
-    console.log('AccessTracker -> user', user)
-    const {email, first_name, last_name} = user.userProfile
-    const {picture, company, job_title, sub} = user.idpProfile
-    const widgetProps = {
-      user: {
-        fullName: `${first_name} ${last_name}`,
-        email: email,
-        company: company,
-        title: job_title,
-        picUrl: picture,
-        idpUserId: sub
-      },
-      summitId: parseInt(process.env.GATSBY_SUMMIT_ID),   //parseInt(envVariables.SUMMIT_ID)
-      ...sbAuthProps
-    };
+export const AccessTracker = ({user}) => {
+  console.log('AccessTracker -> user', user)
+  const {email, first_name, last_name} = user.userProfile
+  const {picture, company, job_title, sub} = user.idpProfile
+  const widgetProps = {
+    user: {
+      fullName: `${first_name} ${last_name}`,
+      email: email,
+      company: company,
+      title: job_title,
+      picUrl: picture,
+      idpUserId: sub
+    },
+    summitId: parseInt(envVariables.SUMMIT_ID),
+    ...sbAuthProps
+  };
 
-    return <Tracker {...widgetProps} />
+  return <Tracker {...widgetProps} />
 }
