@@ -79,8 +79,8 @@ export const FullProfilePageTemplate = ({ user, getIDPProfile, updateProfile, up
             setShowEmail(user.idpProfile.public_profile_show_email);
             setBio(user.idpProfile.bio || '');
             setAddress({
-                street: user.idpProfile.street_address || '',
-                floor: user.idpProfile.street_address2 || '',
+                street: user.idpProfile.address1 || '',
+                floor: user.idpProfile.address2 || '',
                 city: user.idpProfile.locality || '',
                 state: user.idpProfile.region || '',
                 zipCode: user.idpProfile.postal_code || '',
