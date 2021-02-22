@@ -39,6 +39,7 @@ export const FullProfilePageTemplate = ({ user, getIDPProfile, updateProfile, up
     //const [showPicture, setShowPicture] = useState(undefined)
     const [showEmail, setShowEmail] = useState(undefined)
     const [bio, setBio] = useState('')
+    const [statementOfInterest, setStatementOfInterest] = useState('')
 
     const [address, setAddress] = useState({
         street: '',
@@ -79,6 +80,7 @@ export const FullProfilePageTemplate = ({ user, getIDPProfile, updateProfile, up
             //setShowPicture(user.idpProfile.public_profile_show_photo);
             setShowEmail(user.idpProfile.public_profile_show_email);
             setBio(user.idpProfile.bio || '');
+            setStatementOfInterest(user.idpProfile.statement_of_interest || '');
             setAddress({
                 street: user.idpProfile.address1 || '',
                 floor: user.idpProfile.address2 || '',
@@ -125,6 +127,7 @@ export const FullProfilePageTemplate = ({ user, getIDPProfile, updateProfile, up
                 //public_profile_show_photo: showPicture,
                 public_profile_show_email: showEmail,
                 bio: bio,
+                statement_of_interest: statementOfInterest,
                 address1: address.street,
                 address2: address.floor,
                 city: address.city,
@@ -181,6 +184,9 @@ export const FullProfilePageTemplate = ({ user, getIDPProfile, updateProfile, up
                 break;
             case 'bio':
                 setBio(user.idpProfile.bio || '');
+                break;
+            case 'statementOfInterest':
+                setStatementOfInterest(user.idpProfile.statement_of_interest || '');
                 break;
             case 'address':
                 setAddress({
@@ -421,12 +427,26 @@ export const FullProfilePageTemplate = ({ user, getIDPProfile, updateProfile, up
                             <div className={styles.form}>
                                 <div className={`columns is-mobile ${styles.inputRow}`}>
                                     <div className={`column is-full ${styles.inputField}`}>
+                                        <b>Bio</b>
                                         <textarea
                                             className={`textarea ${styles.textarea}`}
                                             placeholder=''
                                             rows="6"
                                             onChange={e => setBio(e.target.value)}
                                             value={bio}
+                                        >
+                                        </textarea>
+                                    </div>
+                                </div>
+                                <div className={`columns is-mobile ${styles.inputRow}`}>
+                                    <div className={`column is-full ${styles.inputField}`}>
+                                        <b>Statement of Interest</b>
+                                        <textarea
+                                            className={`textarea ${styles.textarea}`}
+                                            placeholder=''
+                                            rows="6"
+                                            onChange={e => setStatementOfInterest(e.target.value)}
+                                            value={statementOfInterest}
                                         >
                                         </textarea>
                                     </div>
