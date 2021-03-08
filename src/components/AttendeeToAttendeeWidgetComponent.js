@@ -1,4 +1,5 @@
-import React from 'react'
+import React, {useEffect, useRef} from 'react'
+import { connect } from 'react-redux'
 import { RealTimeAttendeesList, Tracker } from 'attendee-to-attendee-widget'
 import 'attendee-to-attendee-widget/dist/index.css'
 //import Swal from 'sweetalert2';
@@ -43,8 +44,10 @@ export const AttendeesList = ({onOneToOneChatClick, user, title}) => {
     );
 }
 
-export const AccessTracker = ({user}) => {
-  console.log('AccessTracker -> user', user)
+const AccessTracker = ({user, isLoggedUser}) => {
+  const trackerRef = useRef();
+  //console.log('AccessTracker -> user', user)
+
   const {email, first_name, last_name} = user.userProfile
   const {picture, company, job_title, sub} = user.idpProfile
   const widgetProps = {
@@ -60,5 +63,19 @@ export const AccessTracker = ({user}) => {
     ...sbAuthProps
   };
 
-  return <Tracker {...widgetProps} />
+  useEffect(() => {
+    console.log('AccessTracker -> useEffect', isLoggedUser)
+    if (!isLoggedUser) {
+      trackerRef.current.signOut()
+    }
+  }, [isLoggedUser])
+
+  return <Tracker {...widgetProps} ref={trackerRef} />
 }
+
+const mapStateToProps = ({ loggedUserState, userState }) => ({
+  isLoggedUser: loggedUserState.isLoggedUser,
+  user: userState
+})
+
+export default connect(mapStateToProps)(AccessTracker)
