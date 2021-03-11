@@ -10,7 +10,7 @@
     "@types/markerclustererplus": "^2.1.33",
     "@types/react": "^16.9.42",
     "awesome-bootstrap-checkbox": "^1.0.1",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "blob-polyfill": "^4.0.20200601",
     "browser-tabs-lock": "^1.2.11",
     "bulma": "^0.9.0",
