@@ -24,6 +24,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
 
     .ad-text {
       display: inline-flex;
@@ -64,6 +65,10 @@
 .sponsor-container img {
   padding-top: 2em;
   width: 100%;
+}
+
+.first-sponsor-container img {
+  padding-top: 0;
 }
 
 @media (min-width: 1921px) {

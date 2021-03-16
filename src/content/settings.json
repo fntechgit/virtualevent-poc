@@ -1,3 +1,9 @@
 {
-  "favicon": "/img/favicon.png"
+  "favicon": "/img/openinfraarrows.png",
+  "widgets": {
+    "chat": {
+      "showQA": false,
+      "showHelp": false
+    }
+  }
 }

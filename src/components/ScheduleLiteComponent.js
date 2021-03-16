@@ -1,27 +1,30 @@
 import React from "react"
 import { Helmet } from 'react-helmet'
 
-import envVariables from '../utils/envVariables';
-import expiredToken from '../utils/expiredToken';
-
 // these two libraries are client-side only
-import ScheduleLite from 'schedule-lite/dist';
-import 'schedule-lite/dist/index.css';
+import ScheduleLite from 'schedule-lite';
+import 'schedule-lite/index.css';
 
+import withAccessToken from "../utils/withAccessToken";
+
+import { getEnvVariable, SUMMIT_API_BASE_URL, MARKETING_API_BASE_URL, SUMMIT_ID } from '../utils/envVariables';
+import expiredToken from '../utils/expiredToken';
 import HomeSettings from '../content/home-settings.json'
 
-const ScheduleComponent = class extends React.Component {
+const ScheduleLiteComponent = class extends React.Component {
 
   render() {
 
+    const { className } = this.props;
+
     const scheduleProps = {
-      apiBaseUrl: envVariables.SUMMIT_API_BASE_URL,
-      marketingApiBaseUrl: envVariables.MARKETING_API_BASE_URL,
+      apiBaseUrl: getEnvVariable(SUMMIT_API_BASE_URL),
+      marketingApiBaseUrl: getEnvVariable(MARKETING_API_BASE_URL),
       eventBaseUrl: "/a/event",
       trackBaseUrl: "/a/tracks",
       speakerBaseUrl: "/a/speakers",
       roomBaseUrl: "/a/rooms",
-      summitId: parseInt(envVariables.SUMMIT_ID),
+      summitId: parseInt(getEnvVariable(SUMMIT_ID)),
       showUTC: true,
       showDetails: true,
       onAuthError: (err, res) => expiredToken(err),
@@ -29,8 +32,6 @@ const ScheduleComponent = class extends React.Component {
       subtitle: "All times below are listed in CDT unless otherwise noted",
       defaultImage: HomeSettings.schedule_default_image
     };
-
-    const { className } = this.props;
 
     return (
       <React.Fragment>
@@ -45,4 +46,4 @@ const ScheduleComponent = class extends React.Component {
   }
 }
 
-export default ScheduleComponent
+export default withAccessToken(ScheduleLiteComponent)

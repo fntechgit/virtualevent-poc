@@ -1,5 +1,9 @@
 @import './colors.scss';
 
+.first-container {
+  margin-top: 0px !important;
+}
+
 .big-image-container {
   display: flex;
   flex-direction: column;
@@ -53,6 +57,7 @@
     background-color: $color_secondary;
     color: $color_text_light;
     border: 0px;
+    margin-bottom: 2em;
   }
 }
 
@@ -114,6 +119,24 @@
 
   &:not(:first-of-type) {
     margin-top: 2rem;
+  }
+}
+
+.carousel-container {
+  display: flex;
+  flex-direction: column;
+
+  span {
+    margin-bottom: 2rem;
+  }
+
+  a {
+    width: 100%;
+    text-align: center;
+  }
+
+  img {
+    margin: 1rem auto;
   }
 }
 

@@ -2,41 +2,41 @@ import React from "react"
 import { Helmet } from 'react-helmet'
 import { connect } from "react-redux";
 
-import envVariables from '../utils/envVariables';
-import expiredToken from '../utils/expiredToken';
+import SpeakersWidget from 'speakers-widget';
+import 'speakers-widget/index.css';
 
-// these two libraries are client-side only
-import SpeakersWidget from 'speakers-widget/dist';
-import 'speakers-widget/dist/index.css';
+import withAccessToken from "../utils/withAccessToken";
+
+import { getEnvVariable, SUMMIT_API_BASE_URL,  MARKETING_API_BASE_URL, SUMMIT_ID } from '../utils/envVariables';
+import expiredToken from '../utils/expiredToken';
 
 const SpeakersWidgetComponent = class extends React.Component {
 
   render() {
 
-    const { accessToken, title, bigPics, now } = this.props;
+    const { accessToken, now, ...props } = this.props;
+
+    if (accessToken == null) return null
 
     const widgetProps = {
-      apiBaseUrl: envVariables.SUMMIT_API_BASE_URL,
-      marketingApiBaseUrl: envVariables.MARKETING_API_BASE_URL,
-      summitId: parseInt(envVariables.SUMMIT_ID),
       accessToken: accessToken,
-      title,
-      bigPics,
-      title: title,
+      apiBaseUrl: getEnvVariable(SUMMIT_API_BASE_URL),
+      marketingApiBaseUrl: getEnvVariable(MARKETING_API_BASE_URL),
+      summitId: parseInt(getEnvVariable(SUMMIT_ID)),
       date: now,
-      // speakerIds: [1, 187, 190],
       onAuthError: (err, res) => expiredToken(err),
+      ...props
     };
 
     return (
-      <>
+      <React.Fragment>
         <Helmet>
           <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/awesome-bootstrap-checkbox/1.0.2/awesome-bootstrap-checkbox.min.css" />
         </Helmet>
         <div>
           <SpeakersWidget {...widgetProps} />
         </div>
-      </>
+      </React.Fragment>
     )
   }
 }
@@ -45,5 +45,4 @@ const mapStateToProps = ({ clockState }) => ({
   now: clockState.nowUtc
 })
 
-
-export default connect(mapStateToProps, {})(SpeakersWidgetComponent)
+export default withAccessToken(connect(mapStateToProps, {})(SpeakersWidgetComponent))

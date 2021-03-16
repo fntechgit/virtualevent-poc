@@ -16,35 +16,25 @@ import URI from "urijs"
 import { Redirect, navigate } from '@reach/router'
 import { connect } from 'react-redux';
 import { AbstractAuthorizationCallbackRoute } from "openstack-uicore-foundation/lib/components";
-import { getUserProfile } from '../actions/user-actions'
+import { getIDPProfile } from '../actions/user-actions'
 
-import envVariables from '../utils/envVariables'
+import { getEnvVariable, IDP_BASE_URL, OAUTH2_CLIENT_ID } from '../utils/envVariables'
 
 class AuthorizationCallbackRoute extends AbstractAuthorizationCallbackRoute {
 
   constructor(props) {
-    super(envVariables.IDP_BASE_URL, envVariables.OAUTH2_CLIENT_ID, props);
+    super(getEnvVariable(IDP_BASE_URL), getEnvVariable(OAUTH2_CLIENT_ID), props);
   }
 
   _callback(backUrl) {
+    this.props.getIDPProfile();
     navigate(URI.decode(backUrl));
   }
-
+  
   _redirect2Error(error) {
-    return (
-      <div render={props => {
-        return <Redirect to={`/error?error=${error}`} />
-      }} />
-    )
+    console.log(`AuthorizationCallbackRoute error ${error}`);
+    return <Redirect to={`/error?error=${error}`} />;
   }
 }
 
-const mapStateToProps = ({ loggedUserState }) => ({
-  accessToken: loggedUserState.accessToken,
-  idToken: loggedUserState.idToken,
-  sessionState: loggedUserState.sessionState,
-})
-
-export default connect(mapStateToProps, {
-  getUserProfile
-})(AuthorizationCallbackRoute)
+export default connect(null, { getIDPProfile })(AuthorizationCallbackRoute)

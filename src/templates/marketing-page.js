@@ -2,15 +2,18 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { graphql, navigate } from 'gatsby'
+
 import Masonry from 'react-masonry-css'
 import Slider from "react-slick"
+
 import Layout from '../components/Layout'
 import MarketingHeroComponent from '../components/MarketingHeroComponent'
-import ScheduleLiteComponent from "../components/ScheduleLiteComponent"
+import ScheduleLiteComponent from '../components/ScheduleLiteComponent'
 import DisqusComponent from '../components/DisqusComponent'
+
+import Content, { HTMLContent } from '../components/Content'
 import Countdown from '../components/Countdown'
 import Link from '../components/Link'
-import Content, { HTMLContent } from '../components/Content'
 
 import '../styles/style.scss'
 
@@ -22,9 +25,6 @@ import SummitObject from '../content/summit.json'
 import { getDisqusSSO } from '../actions/user-actions'
 
 import styles from "../styles/marketing.module.scss"
-import envVariables from "../utils/envVariables";
-import {AttendanceTracker} from "openstack-uicore-foundation/lib/components";
-
 
 export const MarketingPageTemplate = class extends React.Component {
 
@@ -35,7 +35,7 @@ export const MarketingPageTemplate = class extends React.Component {
   }
 
   render() {
-    let { content, contentComponent, summit_phase, user, loggedUser, isLoggedUser, location } = this.props;
+    let { content, contentComponent, summit_phase, user, isLoggedUser, location } = this.props;
     let { summit } = SummitObject;
 
     const PageContent = contentComponent || Content
@@ -62,11 +62,6 @@ export const MarketingPageTemplate = class extends React.Component {
       <React.Fragment>
         <MarketingHeroComponent summit={summit} isLoggedUser={isLoggedUser} location={location} />
         {summit && <Countdown summit={summit} className='is-hidden-tablet' />}
-        <AttendanceTracker
-            summitId={summit.id}
-            apiBaseUrl={envVariables.SUMMIT_API_BASE_URL}
-            accessToken={loggedUser.accessToken}
-        />
         <div className="columns" id="marketing-columns">
           <div className="column is-half px-6 pt-3 pb-0 mt-3" style={{ position: 'relative' }}>
             {MarketingSite.leftColumn.schedule.display &&
@@ -75,7 +70,6 @@ export const MarketingPageTemplate = class extends React.Component {
                 <ScheduleLiteComponent
                   {...scheduleProps}
                   page="marketing-site"
-                  accessToken={loggedUser.accessToken}
                   landscape={true}
                   showAllEvents={true}
                   showNav={false}
@@ -195,7 +189,7 @@ MarketingPageTemplate.propTypes = {
   isLoggedUser: PropTypes.bool,
 }
 
-const MarketingPage = ({ location, data, summit_phase, user, loggedUser, isLoggedUser, getDisqusSSO }) => {
+const MarketingPage = ({ location, data, summit_phase, user, isLoggedUser, getDisqusSSO }) => {
   const { frontmatter, html } = data.markdownRemark
 
   return (
@@ -206,7 +200,6 @@ const MarketingPage = ({ location, data, summit_phase, user, loggedUser, isLogge
         location={location}
         summit_phase={summit_phase}
         user={user}
-        loggedUser={loggedUser}
         isLoggedUser={isLoggedUser}
         getDisqusSSO={getDisqusSSO}
       />
@@ -222,7 +215,6 @@ MarketingPage.propTypes = {
   }),
   summit_phase: PropTypes.number,
   user: PropTypes.object,
-  loggedUser: PropTypes.object,
   isLoggedUser: PropTypes.bool,
   getSummitData: PropTypes.func,
   getDisqusSSO: PropTypes.func,
@@ -231,7 +223,6 @@ MarketingPage.propTypes = {
 const mapStateToProps = ({ clockState, loggedUserState, userState }) => ({
   summit_phase: clockState.summit_phase,
   isLoggedUser: loggedUserState.isLoggedUser,
-  loggedUser: loggedUserState,
   user: userState,
 })
 

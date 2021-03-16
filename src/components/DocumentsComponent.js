@@ -1,13 +1,18 @@
 import React from 'react'
+import Link from '../components/Link'
 import styles from '../styles/documents.module.scss'
 
 const DocumentsComponent = ({ event, sponsor, ...props }) => {
 
   const getMaterials = (event) => {
     let materials = [];
+
+    const mediaUploads = event.media_uploads?.filter(mu => mu.display_on_site);
+
     if (event.links?.length > 0) materials = [...materials, ...event.links]
     if (event.videos?.length > 0) materials = [...materials, ...event.videos]
     if (event.slides?.length > 0) materials = [...materials, ...event.slides]
+    if (mediaUploads?.length > 0) materials = [...materials, ...mediaUploads]
     return materials;
   }
 
@@ -23,9 +28,9 @@ const DocumentsComponent = ({ event, sponsor, ...props }) => {
 
   if (sortedMaterials.length > 0) {
     return (
-      <div className={`${sponsor ? '' : 'column is-one-quarter'}`} {...props} >
+      <div className={`${sponsor ? '' : 'column is-full'}`} {...props} >
         <div className={`${styles.docsContainer}`} style={{ marginTop: '1em' }}>
-          <div className={`navbar-brand ${styles.title}`}>Documents</div>
+          <div className={`navbar-brand ${styles.title}`}>Media/Links</div>
           <hr />
           {sortedMaterials.map((material, index) => {
             return (

@@ -1,18 +1,39 @@
 import React from 'react'
 import { Link } from 'gatsby'
+import { connect } from 'react-redux'
 
 import styles from '../styles/navbar.module.scss';
 import LogoutButton from './LogoutButton';
 
-import envVariables from '../utils/envVariables'
+import { updateProfilePicture, updateProfile } from '../actions/user-actions'
+
+import { getEnvVariable, AUTHORIZED_DEFAULT_PATH } from '../utils/envVariables'
 
 const UserNavbar = class extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       active: false,
+      showProfile: false,
       navBarActiveClass: '',
     }
+  }
+
+  handlePictureUpdate = (picture) => {
+    this.props.updateProfilePicture(picture);
+  }
+
+  handleProfileUpdate = (profile) => {
+    this.props.updateProfile(profile)
+  }
+
+  handleTogglePopup = (profile) => {
+    if (profile) {
+      document.body.classList.add('is-clipped');
+    } else {
+      document.body.classList.remove('is-clipped');
+    }
+    this.setState({showProfile: profile})
   }
 
   toggleHamburger = () => {
@@ -37,13 +58,26 @@ const UserNavbar = class extends React.Component {
 
   render() {
 
-    let { isLoggedUser } = this.props;
+    let { isLoggedUser, userProfile } = this.props;
+    let { showProfile } = this.state;
 
-    let defaultPath = envVariables.AUTHORIZED_DEFAULT_PATH ? envVariables.AUTHORIZED_DEFAULT_PATH : '/a/';
+    let defaultPath = getEnvVariable(AUTHORIZED_DEFAULT_PATH) ? getEnvVariable(AUTHORIZED_DEFAULT_PATH) : '/a/';
 
     return (
       <nav className={`${styles.navbar} ${styles.userNavbar}`} role="navigation" aria-label="main navigation">
-        <div className={styles.navbarBrand}>
+        <div className={styles.navbarMobile}>
+          <div className={styles.navbarBrand}>
+            <div className={styles.navbarItem}>
+              <Link className={`${styles.button} ${styles.isLarge} ${styles.lobbyButton}`} to={defaultPath}>
+                <strong>Lobby</strong>
+              </Link>
+            </div>
+          </div>
+          <div className={styles.navbarEnd}>
+            <div className={styles.navbarItem}>
+              <LogoutButton styles={styles} isLoggedUser={isLoggedUser} />
+            </div>
+          </div>
         </div>
 
         <div id="navbarBasicExample" className={`${styles.navbarMenu} ${this.state.navBarActiveClass}`}>
@@ -72,4 +106,4 @@ const UserNavbar = class extends React.Component {
   }
 }
 
-export default UserNavbar
+export default connect(null, { updateProfilePicture, updateProfile })(UserNavbar)

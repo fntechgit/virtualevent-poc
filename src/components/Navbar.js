@@ -10,7 +10,7 @@ import Content from '../content/navbar.json'
 
 import SummitObject from '../content/summit.json'
 
-import envVariables from '../utils/envVariables'
+import { getEnvVariable, AUTHORIZED_DEFAULT_PATH } from '../utils/envVariables';
 
 const Navbar = class extends React.Component {
   constructor(props) {
@@ -46,7 +46,7 @@ const Navbar = class extends React.Component {
     let { isLoggedUser, logo } = this.props;
 
     let { summit } = SummitObject
-    let defaultPath = envVariables.AUTHORIZED_DEFAULT_PATH ? envVariables.AUTHORIZED_DEFAULT_PATH : '/a/';
+    let defaultPath = getEnvVariable(AUTHORIZED_DEFAULT_PATH) ? getEnvVariable(AUTHORIZED_DEFAULT_PATH) : '/a/';
     
     return (
       <React.Fragment>

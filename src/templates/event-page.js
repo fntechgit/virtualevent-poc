@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { navigate } from 'gatsby'
 import { connect } from 'react-redux'
 
-import envVariables from '../utils/envVariables';
 import SummitObject from '../content/summit.json'
 
 import Layout from '../components/Layout'
@@ -14,17 +13,15 @@ import SimpleChatWidgetComponent from '../components/SimpleChatWidgetComponent'
 import VideoComponent from '../components/VideoComponent'
 import TalkComponent from '../components/TalkComponent'
 import DocumentsComponent from '../components/DocumentsComponent'
-import EventHeroComponent from '../components/EventHeroComponent'
+import VideoBanner from '../components/VideoBanner'
 import NoTalkComponent from '../components/NoTalkComponent'
 import HeroComponent from '../components/HeroComponent'
-import ScheduleLiteComponent from '../components/ScheduleLiteComponent'
+import AttendanceTrackerComponent from '../components/AttendanceTrackerComponent'
 
 import { getEventById } from '../actions/event-actions'
 import { getDisqusSSO } from '../actions/user-actions'
 
-import { PHASES } from '../utils/phasesUtils';
-
-import { AttendanceTracker } from "openstack-uicore-foundation/lib/components";
+import { PHASES } from '../utils/phasesUtils'
 
 export const EventPageTemplate = class extends React.Component {
 
@@ -78,7 +75,7 @@ export const EventPageTemplate = class extends React.Component {
   }
 
   render() {
-    const { loggedUser, event, eventId, eventsPhases, user, loading } = this.props;
+    const { event, eventId, eventsPhases, user, loading } = this.props;
     const { firstRender } = this.state;
     let { summit } = SummitObject;
     let currentEvent = eventsPhases.find(e => e.id == eventId);
@@ -93,40 +90,23 @@ export const EventPageTemplate = class extends React.Component {
     } else {
       if (event) {
         return (
-          <>
-            {/* <EventHeroComponent /> */}
+          <React.Fragment>
             <section className="section px-0 py-0" style={{ marginBottom: event.class_name !== 'Presentation' || eventStarted < PHASES.DURING || !event.streaming_url ? '-3rem' : '' }}>
               <div className="columns is-gapless">
                 {eventStarted >= PHASES.DURING && event.streaming_url ?
                   <div className="column is-three-quarters px-0 py-0">
                     <VideoComponent url={event.streaming_url} title={event.title} namespace={summit.name} />
                     {event.meeting_url &&
-                      <div className="join-zoom-container">
-                        <span>
-                          Take the virtual mic and participate!
-                        </span>
-                        <a className="zoom-link" href={event.meeting_url} target="_blank">
-                          <button className="zoom-button button">
-                            <b>Join now</b>
-                          </button>
-                        </a>
-                        <a target="_blank" rel="noreferrer" style={{ textDecoration: 'none' }}>
-                        </a>
-                      </div>
+                      <VideoBanner event={event} />
                     }
                   </div>
                   :
-                  <>
-                    <div className="column is-three-quarters px-0 py-0 is-hidden-mobile">
-                      <NoTalkComponent eventStarted={eventStarted} event={event} summit={summit} />
-                    </div>
-                    <div className="column is-hidden-tablet">
-                      <NoTalkComponent eventStarted={eventStarted} event={event} summit={summit} />
-                    </div>
-                  </>
+                  <div className="column is-three-quarters px-0 py-0 is-full-mobile">
+                    <NoTalkComponent eventStarted={eventStarted} event={event} summit={summit} />
+                  </div>
                 }
-                <div className="column" style={{ position: 'relative', borderBottom: '1px solid #d3d3d3' }}>
-                  <DisqusComponent disqusSSO={user.disqusSSO} event={event} summit={summit} title="Public Conversation" />
+                <div className="column is-hidden-mobile" style={{ position: 'relative', borderBottom: '1px solid #d3d3d3' }}>
+                  <DisqusComponent hideMobile={true} disqusSSO={user.disqusSSO} event={event} summit={summit} title="Public Conversation" />
                 </div>
               </div>
             </section>
@@ -145,29 +125,12 @@ export const EventPageTemplate = class extends React.Component {
                   </div>
                   <div className="column px-5 py-6 is-one-quarter">
                     <DocumentsComponent event={event} sponsor={true} style={{ marginBottom: '15px' }} />
-                    <SimpleChatWidgetComponent accessToken={loggedUser.accessToken} />
+                    <SimpleChatWidgetComponent />
                   </div>
-                  {/*
-                  <div className="column is-three-quarters">
-                     <ScheduleLiteComponent
-                      accessToken={loggedUser.accessToken}
-                      onEventClick={(ev) => this.onEventChange(ev)}
-                      onViewAllEventsClick={() => this.onViewAllEventsClick()}
-                      landscape={false}
-                      showDetails={false}
-                      yourSchedule={false}
-                      showFilters={false}
-                      showNav={false}
-                      trackId={event.track ? event.track.id : null}
-                      eventCount={3}
-                      title={event.track ? `Happening Now on ${event.track.name}` : 'Happening Now'}
-                    />
-                  </div>
-                  */}
                 </div>
               </section>
             }
-          </>
+          </React.Fragment>
         )
       } else {
         return <HeroComponent title="Loading event" />
@@ -178,7 +141,7 @@ export const EventPageTemplate = class extends React.Component {
 
 const EventPage = (
   {
-    loggedUser,
+    location,
     loading,
     event,
     eventId,
@@ -190,19 +153,15 @@ const EventPage = (
 ) => {
 
   return (
-    <Layout>
+    <Layout location={location}>
       {event && event.id &&
-        <AttendanceTracker
+        <AttendanceTrackerComponent
           key={`att-tracker-${event.id}`}
           sourceId={event.id}
           sourceName="EVENT"
-          summitId={SummitObject.summit.id}
-          apiBaseUrl={envVariables.SUMMIT_API_BASE_URL}
-          accessToken={loggedUser.accessToken}
         />
       }
       <EventPageTemplate
-        loggedUser={loggedUser}
         event={event}
         loading={loading}
         eventId={eventId}
@@ -216,7 +175,6 @@ const EventPage = (
 }
 
 EventPage.propTypes = {
-  loggedUser: PropTypes.object,
   loading: PropTypes.bool,
   event: PropTypes.object,
   eventId: PropTypes.string,
@@ -227,7 +185,6 @@ EventPage.propTypes = {
 }
 
 EventPageTemplate.propTypes = {
-  loggedUser: PropTypes.object,
   event: PropTypes.object,
   loading: PropTypes.bool,
   eventId: PropTypes.string,
@@ -239,18 +196,16 @@ EventPageTemplate.propTypes = {
 
 const mapStateToProps = (
   {
-    loggedUserState,
     eventState,
     userState,
     clockState,
   }
 ) => ({
 
-  loggedUser: loggedUserState,
   loading: eventState.loading,
   event: eventState.event,
   eventsPhases: clockState.events_phases,
-  user: userState,
+  user: userState
 })
 
 export default connect(

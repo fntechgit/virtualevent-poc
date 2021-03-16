@@ -77,12 +77,6 @@ module.exports = {
       resolve: `gatsby-plugin-create-client-paths`,
       options: { prefixes: [`/auth/*`, `/a/*`] },
     },
-    // {
-    //   resolve: `gatsby-plugin-disqus`,
-    //   options: {
-    //     shortname: `fnvirtual-poc`
-    //   }
-    // },
     {
       resolve: 'gatsby-plugin-netlify-cms',
       options: {

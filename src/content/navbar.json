@@ -3,12 +3,14 @@
     {
       "title": "Lobby",
       "link": "/a/",
-      "display": true
+      "display": true,
+      "requiresAuth": false
     },
     {
       "title": "Schedule",
       "link": "/a/schedule",
-      "display": true
+      "display": true,
+      "requiresAuth": false
     },
     {
       "title": "Code of Conduct",
@@ -18,7 +20,8 @@
     {
       "title": "About",
       "link": "/about-event",
-      "display": true
+      "display": true,
+      "requiresAuth": false
     },
     {
       "title": "Who we are",
