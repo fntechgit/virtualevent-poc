@@ -32,7 +32,6 @@ export const AttendeesList = ({onOneToOneChatClick, user, title}) => {
     //   }
     // })
   }
-
   // const handleCTA = (itemInfo) => {
   //   console.log(itemInfo)
   // }
