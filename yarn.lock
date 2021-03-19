@@ -14036,12 +14036,13 @@ react-aria-menubutton@^6.0.0:
     react-display-name "^0.2.4"
     teeny-tap "^0.2.0"
 
-react-avatar-editor@11.0.9:
-  version "11.0.9"
-  resolved "https://registry.yarnpkg.com/react-avatar-editor/-/react-avatar-editor-11.0.9.tgz#74d11f0ccb61dd2aca9c0c1d777d13cfd6ed5530"
-  integrity sha512-FGYdygcY1ca9PVScHCsm4H28ZLaBPxc/jz2cRhPFjmgMD7fwdYTE5AjBGDCr28jIlRNC1Vm4WERTKxSdDscFDA==
+"react-avatar-editor@https://github.com/fntechgit/react-avatar-editor/releases/download/v11.1.0/react-avatar-editor-11.1.0.tgz":
+  version "11.1.0"
+  resolved "https://github.com/fntechgit/react-avatar-editor/releases/download/v11.1.0/react-avatar-editor-11.1.0.tgz#c34a369e43e55c21982defef31cd0ab173b87b07"
   dependencies:
-    prop-types "^15.5.8"
+    "@babel/plugin-transform-runtime" "^7.12.1"
+    "@babel/runtime" "^7.12.5"
+    prop-types "^15.7.2"
 
 react-bootstrap@^0.31.5:
   version "0.31.5"

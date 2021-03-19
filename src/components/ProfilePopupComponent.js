@@ -116,7 +116,7 @@ const ProfilePopupComponent = ({ userProfile, idpLoading, closePopup, showProfil
                 scale={scale}
                 borderRadius={5}
                 rotate={parseFloat(rotate)}
-                crossOrigin="anonymous"
+                allowCrossOrigin={true}
               />
               <div className={styles.imageUpload}>
                 <label htmlFor="file-input">
