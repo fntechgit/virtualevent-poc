@@ -106,9 +106,8 @@ export const HomePageTemplate = class extends React.Component {
             </div>
             <div className="column is-one-quarter pb-6">
               <h2><b>My Info</b></h2>
-              <SimpleChatWidgetComponent title="Private Chat" childRef={ref => (this.simpleChatWidgetRef = ref)} />
               <AccessTracker />
-              <AttendeesList onOneToOneChatClick={partnerUserId => this.onOneToOneChatClick(partnerUserId)} user={user} title="Attendance" />
+              <AttendeesList user={user} title="Attendance" />
               <ScheduleLiteComponent
                 onEventClick={(ev) => this.onEventChange(ev)}
                 onViewAllEventsClick={() => this.onViewAllEventsClick()}

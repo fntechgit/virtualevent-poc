@@ -31,6 +31,8 @@ class SimpleChatWidgetComponent extends React.Component {
   render() {
     const { accessToken } = this.props;
 
+    console.log('startOneToOneChat accessToken', accessToken)
+
     if (accessToken == null) return null
 
     const widgetProps = {
