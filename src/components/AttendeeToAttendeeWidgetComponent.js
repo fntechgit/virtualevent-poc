@@ -24,6 +24,8 @@ export const AttendeesList = withAccessToken(({user, title, accessToken}) => {
   //const [accessInfo, setAccessInfo] = useState({});
   const chatRef = useRef()
 
+  console.log('AttendeesList accessToken', accessToken)
+
   const handleItemClick = (itemInfo) => {
     //setAccessInfo(itemInfo)
     const attendee = itemInfo.attendees
