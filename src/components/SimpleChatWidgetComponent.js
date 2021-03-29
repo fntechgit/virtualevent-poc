@@ -9,24 +9,7 @@ import withAccessToken from "../utils/withAccessToken";
 import envVariables from '../utils/envVariables';
 import GeneralSettings from '../content/settings.json'
 
-//const SimpleChatWidgetComponent = class extends React.Component {
 class SimpleChatWidgetComponent extends React.Component {
-
-  simpleChatWidgetRef = React.createRef();
-
-  componentDidMount() {
-    const { childRef } = this.props;
-    childRef(this);
-  }
-
-  componentWillUnmount() {
-    const { childRef } = this.props;
-    childRef(undefined);
-  }
-
-  startOneToOneChat = (partnerId) => {
-    this.simpleChatWidgetRef.current.startOneToOneChat(partnerId)
-  }
 
   render() {
     const { accessToken } = this.props;
@@ -52,7 +35,7 @@ class SimpleChatWidgetComponent extends React.Component {
           <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/awesome-bootstrap-checkbox/1.0.2/awesome-bootstrap-checkbox.min.css" />
         </Helmet>
         <div style={{height: 500}}>
-          <SimpleChatWidget {...widgetProps} {...this.props}  ref={this.simpleChatWidgetRef} />
+          <SimpleChatWidget {...widgetProps} {...this.props}  />
         </div>
       </React.Fragment>
     )

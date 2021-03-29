@@ -24,6 +24,22 @@ export const AttendeesList = withAccessToken(({user, title, accessToken}) => {
   //const [accessInfo, setAccessInfo] = useState({});
   const chatRef = useRef()
 
+  const {email, first_name, last_name} = user.userProfile
+  const {picture, company, job_title, sub} = user.idpProfile
+  const widgetProps = {
+    user: {
+      fullName: `${first_name} ${last_name}`,
+      email: email,
+      company: company,
+      title: job_title,
+      picUrl: picture,
+      idpUserId: sub
+    },
+    summitId: parseInt(envVariables.SUMMIT_ID),
+    ...chatProps,
+    ...sbAuthProps
+  };
+
   console.log('AttendeesList accessToken', accessToken)
 
   const handleItemClick = (itemInfo) => {
@@ -51,8 +67,8 @@ export const AttendeesList = withAccessToken(({user, title, accessToken}) => {
 
   return (
     <div style={{margin: '20px auto'}}>
-        {accessToken && <SimpleChat {...chatProps} accessToken={accessToken} ref={chatRef} />}
-        <RealTimeAttendeesList onItemClick={handleItemClick} {...sbAuthProps} title={title} summitId={parseInt(envVariables.SUMMIT_ID)} />
+        {accessToken && <SimpleChat {...widgetProps} accessToken={accessToken} ref={chatRef} />}
+        <RealTimeAttendeesList onItemClick={handleItemClick} {...widgetProps} title={title} />
     </div>
     );
 })

@@ -16,7 +16,6 @@ import DisqusComponent from '../components/DisqusComponent'
 import LiveEventWidgetComponent from '../components/LiveEventWidgetComponent'
 import SpeakersWidgetComponent from '../components/SpeakersWidgetComponent'
 import SponsorComponent from '../components/SponsorComponent'
-import SimpleChatWidgetComponent from '../components/SimpleChatWidgetComponent'
 import AccessTracker, { AttendeesList } from '../components/AttendeeToAttendeeWidgetComponent'
 import AttendanceTrackerComponent from '../components/AttendanceTrackerComponent'
 
