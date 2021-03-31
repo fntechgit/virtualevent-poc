@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react'
+import React, {useEffect, useRef, useState} from 'react'
 import { connect } from 'react-redux'
 import { RealTimeAttendeesList, SimpleChat, Tracker } from 'attendee-to-attendee-widget'
 //import Swal from 'sweetalert2';
@@ -22,6 +22,7 @@ const chatProps = {
 
 export const AttendeesList = withAccessToken(({user, title, accessToken}) => {
   //const [accessInfo, setAccessInfo] = useState({});
+  const [pageTracked, setPageTracked] = useState(false);
   const chatRef = useRef()
 
   const {email, first_name, last_name} = user.userProfile
@@ -65,10 +66,16 @@ export const AttendeesList = withAccessToken(({user, title, accessToken}) => {
   //   console.log(itemInfo)
   // }
 
+  useEffect(() => {
+    setTimeout(() => {
+      setPageTracked(true)
+    }, 3000)
+  }, [])
+
   return (
     <div style={{margin: '20px auto'}}>
         {accessToken && <SimpleChat {...widgetProps} accessToken={accessToken} ref={chatRef} />}
-        <RealTimeAttendeesList onItemClick={handleItemClick} {...widgetProps} title={title} />
+        {pageTracked && <RealTimeAttendeesList onItemClick={handleItemClick} {...widgetProps} title={title} />}
     </div>
     );
 })
