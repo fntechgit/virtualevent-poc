@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react'
+import React, {useEffect, useRef} from 'react'
 import { connect } from 'react-redux'
 import { RealTimeAttendeesList, SimpleChat, Tracker } from 'attendee-to-attendee-widget'
 //import Swal from 'sweetalert2';
@@ -20,9 +20,8 @@ const chatProps = {
   openDir: "left"
 };
 
-export const AttendeesList = withAccessToken(({user, title, accessToken}) => {
+const AttendeesList = withAccessToken(({user, title, accessToken, pageTracked}) => {
   //const [accessInfo, setAccessInfo] = useState({});
-  const [pageTracked, setPageTracked] = useState(false);
   const chatRef = useRef()
 
   const {email, first_name, last_name} = user.userProfile
@@ -41,7 +40,9 @@ export const AttendeesList = withAccessToken(({user, title, accessToken}) => {
     ...sbAuthProps
   };
 
-  console.log('AttendeesList accessToken', accessToken)
+  //console.log('AttendeesList accessToken', accessToken)
+
+  console.log('AttendeesList pageTracked', pageTracked)
 
   const handleItemClick = (itemInfo) => {
     //setAccessInfo(itemInfo)
@@ -66,12 +67,6 @@ export const AttendeesList = withAccessToken(({user, title, accessToken}) => {
   //   console.log(itemInfo)
   // }
 
-  useEffect(() => {
-    setTimeout(() => {
-      setPageTracked(true)
-    }, 3000)
-  }, [])
-
   return (
     <div style={{margin: '20px auto'}}>
         {accessToken && <SimpleChat {...widgetProps} accessToken={accessToken} ref={chatRef} />}
@@ -80,7 +75,13 @@ export const AttendeesList = withAccessToken(({user, title, accessToken}) => {
     );
 })
 
-const AccessTracker = ({user, isLoggedUser}) => {
+AttendeesList.defaultProps = {
+  pageTracked: true
+};
+
+export { AttendeesList }
+
+const AccessTracker = ({user, isLoggedUser, onPageTracked}) => {
   const trackerRef = useRef();
 
   const {email, first_name, last_name} = user.userProfile
@@ -104,7 +105,7 @@ const AccessTracker = ({user, isLoggedUser}) => {
     }
   }, [isLoggedUser])
 
-  return <Tracker {...widgetProps} ref={trackerRef} />
+  return <Tracker {...widgetProps} ref={trackerRef} onPageTracked={onPageTracked} />
 }
 
 const mapStateToProps = ({ loggedUserState, userState }) => ({

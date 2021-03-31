@@ -3063,10 +3063,10 @@ atob@^2.1.2:
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
   integrity sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==
 
-attendee-to-attendee-widget@^1.1.4:
-  version "1.1.4"
-  resolved "https://registry.yarnpkg.com/attendee-to-attendee-widget/-/attendee-to-attendee-widget-1.1.4.tgz#95e2f5102a538c719fbe96a87d19821af2e91e09"
-  integrity sha512-NI7VFwpzq0FR9HBqnaK+xpYjMSzkP1Kc2ED5yBi1egTaFMZ2MkvBs5OWDNPTf8nDSgUf6Kx7MTAMUcDpK0b/qQ==
+attendee-to-attendee-widget@^1.1.5:
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/attendee-to-attendee-widget/-/attendee-to-attendee-widget-1.1.5.tgz#8f874696a4161d310f80e92688ff95b2e025c8b4"
+  integrity sha512-7MF/sYHPbfMoxpJxFVZRDPIYgL2uZ4AgD6if2/xs7mH7bPz2lI/FBBOtshhfn43iWR37gPpG/KV4FTHLCvskKA==
   dependencies:
     "@fortawesome/fontawesome-svg-core" "^1.2.35"
     "@fortawesome/free-solid-svg-icons" "^5.15.3"

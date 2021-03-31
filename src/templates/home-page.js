@@ -28,6 +28,7 @@ export const HomePageTemplate = class extends React.Component {
   constructor(props) {
     super(props);
     this.onEventChange = this.onEventChange.bind(this);
+    this.state = { pageTracked: false }
   }
 
   componentDidMount() {
@@ -105,8 +106,8 @@ export const HomePageTemplate = class extends React.Component {
             </div>
             <div className="column is-one-quarter pb-6">
               <h2><b>My Info</b></h2>
-              <AccessTracker />
-              <AttendeesList user={user} title="Attendance" />
+              <AccessTracker onPageTracked={() => this.setState({pageTracked: true})}/>
+              <AttendeesList user={user} title="Attendance" pageTracked={this.state.pageTracked} />
               <ScheduleLiteComponent
                 onEventClick={(ev) => this.onEventChange(ev)}
                 onViewAllEventsClick={() => this.onViewAllEventsClick()}
