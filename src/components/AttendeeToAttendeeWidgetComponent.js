@@ -20,7 +20,7 @@ const chatProps = {
   openDir: "left"
 };
 
-const AttendeesList = withAccessToken(({user, title, accessToken, pageTracked}) => {
+export const AttendeesList = withAccessToken(({user, title, accessToken}) => {
   //const [accessInfo, setAccessInfo] = useState({});
   const chatRef = useRef()
 
@@ -40,9 +40,7 @@ const AttendeesList = withAccessToken(({user, title, accessToken, pageTracked}) 
     ...sbAuthProps
   };
 
-  //console.log('AttendeesList accessToken', accessToken)
-
-  console.log('AttendeesList pageTracked', pageTracked)
+  console.log('AttendeesList accessToken', accessToken)
 
   const handleItemClick = (itemInfo) => {
     //setAccessInfo(itemInfo)
@@ -70,18 +68,12 @@ const AttendeesList = withAccessToken(({user, title, accessToken, pageTracked}) 
   return (
     <div style={{margin: '20px auto'}}>
         {accessToken && <SimpleChat {...widgetProps} accessToken={accessToken} ref={chatRef} />}
-        {pageTracked && <RealTimeAttendeesList onItemClick={handleItemClick} {...widgetProps} title={title} />}
+        <RealTimeAttendeesList onItemClick={handleItemClick} {...widgetProps} title={title} />
     </div>
     );
 })
 
-AttendeesList.defaultProps = {
-  pageTracked: true
-};
-
-export { AttendeesList }
-
-const AccessTracker = ({user, isLoggedUser, onPageTracked}) => {
+const AccessTracker = ({user, isLoggedUser}) => {
   const trackerRef = useRef();
 
   const {email, first_name, last_name} = user.userProfile
@@ -105,7 +97,7 @@ const AccessTracker = ({user, isLoggedUser, onPageTracked}) => {
     }
   }, [isLoggedUser])
 
-  return <Tracker {...widgetProps} ref={trackerRef} onPageTracked={onPageTracked} />
+  return <Tracker {...widgetProps} ref={trackerRef} />
 }
 
 const mapStateToProps = ({ loggedUserState, userState }) => ({
