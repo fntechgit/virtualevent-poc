@@ -40,7 +40,7 @@ export const AttendeesList = withAccessToken(({user, title, accessToken}) => {
     ...sbAuthProps
   };
 
-  console.log('AttendeesList accessToken', accessToken)
+  //console.log('AttendeesList accessToken', accessToken)
 
   const handleItemClick = (itemInfo) => {
     //setAccessInfo(itemInfo)
