@@ -1,7 +1,6 @@
 import React, {useEffect, useRef} from 'react'
 import { connect } from 'react-redux'
 import { RealTimeAttendeesList, SimpleChat, Tracker } from 'attendee-to-attendee-widget'
-//import Swal from 'sweetalert2';
 import envVariables from '../utils/envVariables';
 import withAccessToken from "../utils/withAccessToken";
 
@@ -25,7 +24,7 @@ export const AttendeesList = withAccessToken(({user, title, accessToken}) => {
   const chatRef = useRef()
 
   const {email, first_name, last_name} = user.userProfile
-  const {picture, company, job_title, sub} = user.idpProfile
+  const {picture, company, job_title, sub, github_user, linked_in_profile, twitter_name, wechat_user} = user.idpProfile
   const widgetProps = {
     user: {
       fullName: `${first_name} ${last_name}`,
@@ -33,13 +32,22 @@ export const AttendeesList = withAccessToken(({user, title, accessToken}) => {
       company: company,
       title: job_title,
       picUrl: picture,
-      idpUserId: sub
+      idpUserId: sub,
+      socialInfo: {
+        githubUser: github_user,	
+        linkedInProfile: linked_in_profile,
+        twitterName: twitter_name,
+        wechatUser: wechat_user
+      },
+      badgeFeatures: ['feat 1', 'feat 2'], //attendee.ticket.badge.features
+      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.'
     },
     summitId: parseInt(envVariables.SUMMIT_ID),
     ...chatProps,
     ...sbAuthProps
   };
 
+  //console.log('AttendeesList user', user)
   //console.log('AttendeesList accessToken', accessToken)
 
   const handleItemClick = (itemInfo) => {
@@ -48,25 +56,13 @@ export const AttendeesList = withAccessToken(({user, title, accessToken}) => {
     if (attendee.idp_user_id != user.idpProfile.sub) {
       chatRef.current.startOneToOneChat(`${attendee.idp_user_id}`)
     }
-
-    // Swal.fire({
-    //   title: 'Attendee info',
-    //   text: `Full Name: ${attendee.full_name}<br/>email: ${attendee.email}<br/>IP Address: ${itemInfo.attendee_ip}<br/>Access Time<br/>${itemInfo.updated_at}<br/>`,
-    //   showCancelButton: true,
-    //   confirmButtonText: 'Start Chat',
-    //   cancelButtonText: 'Close'
-    // }).then((result) => {
-    //   if (result.value && attendee.idp_user_id !== user.idpProfile.sub) {
-    //     startOneToOneChat(`${attendee.idp_user_id}`)
-    //   }
-    // })
   }
   // const handleCTA = (itemInfo) => {
   //   console.log(itemInfo)
   // }
 
   return (
-    <div style={{margin: '20px auto'}}>
+    <div style={{margin: '20px auto', position: 'relative'}}>
         {accessToken && <SimpleChat {...widgetProps} accessToken={accessToken} ref={chatRef} />}
         <RealTimeAttendeesList onItemClick={handleItemClick} {...widgetProps} title={title} />
     </div>
@@ -77,7 +73,7 @@ const AccessTracker = ({user, isLoggedUser}) => {
   const trackerRef = useRef();
 
   const {email, first_name, last_name} = user.userProfile
-  const {picture, company, job_title, sub} = user.idpProfile
+  const {picture, company, job_title, sub, github_user, linked_in_profile, twitter_name, wechat_user} = user.idpProfile
   const widgetProps = {
     user: {
       fullName: `${first_name} ${last_name}`,
@@ -85,7 +81,15 @@ const AccessTracker = ({user, isLoggedUser}) => {
       company: company,
       title: job_title,
       picUrl: picture,
-      idpUserId: sub
+      idpUserId: sub,
+      socialInfo: {
+        githubUser: github_user,	
+        linkedInProfile: linked_in_profile,
+        twitterName: twitter_name,
+        wechatUser: wechat_user
+      },
+      badgeFeatures: ['feat 1', 'feat 2'], //attendee.ticket.badge.features
+      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.'
     },
     summitId: parseInt(envVariables.SUMMIT_ID),
     ...sbAuthProps
