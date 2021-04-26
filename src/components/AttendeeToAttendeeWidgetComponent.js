@@ -23,7 +23,7 @@ export const AttendeesList = withAccessToken(({user, title, accessToken}) => {
   //const [accessInfo, setAccessInfo] = useState({});
   const chatRef = useRef()
 
-  const {email, first_name, last_name} = user.userProfile
+  const {email, first_name, last_name, bio} = user.userProfile
   const {picture, company, job_title, sub, github_user, linked_in_profile, twitter_name, wechat_user} = user.idpProfile
   const widgetProps = {
     user: {
@@ -40,15 +40,15 @@ export const AttendeesList = withAccessToken(({user, title, accessToken}) => {
         wechatUser: wechat_user
       },
       badgeFeatures: ['feat 1', 'feat 2'], //attendee.ticket.badge.features
-      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.'
+      bio: bio
     },
     summitId: parseInt(envVariables.SUMMIT_ID),
     ...chatProps,
     ...sbAuthProps
   };
 
-  //console.log('AttendeesList user', user)
-  console.log('AttendeesList accessToken', accessToken)
+  console.log('AttendeesList user', user)
+  //console.log('AttendeesList accessToken', accessToken)
 
   const handleItemClick = (itemInfo) => {
     //setAccessInfo(itemInfo)
@@ -72,7 +72,7 @@ export const AttendeesList = withAccessToken(({user, title, accessToken}) => {
 const AccessTracker = ({user, isLoggedUser}) => {
   const trackerRef = useRef();
 
-  const {email, first_name, last_name} = user.userProfile
+  const {email, first_name, last_name, bio} = user.userProfile
   const {picture, company, job_title, sub, github_user, linked_in_profile, twitter_name, wechat_user} = user.idpProfile
   const widgetProps = {
     user: {
@@ -89,7 +89,7 @@ const AccessTracker = ({user, isLoggedUser}) => {
         wechatUser: wechat_user
       },
       badgeFeatures: ['feat 1', 'feat 2'], //attendee.ticket.badge.features
-      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.'
+      bio: bio
     },
     summitId: parseInt(envVariables.SUMMIT_ID),
     ...sbAuthProps
