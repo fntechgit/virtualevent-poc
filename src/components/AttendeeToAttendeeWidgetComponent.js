@@ -48,7 +48,7 @@ export const AttendeesList = withAccessToken(({user, title, accessToken}) => {
   };
 
   //console.log('AttendeesList user', user)
-  //console.log('AttendeesList accessToken', accessToken)
+  console.log('AttendeesList accessToken', accessToken)
 
   const handleItemClick = (itemInfo) => {
     //setAccessInfo(itemInfo)
