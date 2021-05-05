@@ -1,6 +1,6 @@
 import React, {useEffect, useRef} from 'react'
 import { connect } from 'react-redux'
-import { RealTimeAttendeesList, SimpleChat, Tracker } from 'attendee-to-attendee-widget'
+import { AttendeeToAttendeeContainer, Tracker } from 'attendee-to-attendee-widget'
 import envVariables from '../utils/envVariables';
 import withAccessToken from "../utils/withAccessToken";
 
@@ -16,23 +16,28 @@ const chatProps = {
   apiBaseUrl: envVariables.IDP_BASE_URL,
   forumSlug: envVariables.STREAM_IO_SSO_SLUG,
   onAuthError: (err, res) => console.log(err),
-  openDir: "left"
+  openDir: "left",
+  accessToken: null,
 };
 
 export const AttendeesList = withAccessToken(({user, title, accessToken}) => {
   //const [accessInfo, setAccessInfo] = useState({});
-  const chatRef = useRef()
+  // const chatRef = useRef()
 
   const {email, first_name, last_name, bio} = user.userProfile
   const {picture, company, job_title, sub, github_user, linked_in_profile, twitter_name, wechat_user} = user.idpProfile
+  
+  chatProps.accessToken = accessToken;
+  
   const widgetProps = {
     user: {
+      id: sub.toString(),
+      idpUserId: sub.toString(),
       fullName: `${first_name} ${last_name}`,
       email: email,
       company: company,
       title: job_title,
       picUrl: picture,
-      idpUserId: sub,
       socialInfo: {
         githubUser: github_user,	
         linkedInProfile: linked_in_profile,
@@ -43,28 +48,18 @@ export const AttendeesList = withAccessToken(({user, title, accessToken}) => {
       bio: bio
     },
     summitId: parseInt(envVariables.SUMMIT_ID),
+    height: 500,
     ...chatProps,
     ...sbAuthProps
   };
 
-  console.log('AttendeesList user', user)
-  //console.log('AttendeesList accessToken', accessToken)
-
-  const handleItemClick = (itemInfo) => {
-    //setAccessInfo(itemInfo)
-    const attendee = itemInfo.attendees
-    if (attendee.idp_user_id != user.idpProfile.sub) {
-      chatRef.current.startOneToOneChat(`${attendee.idp_user_id}`)
-    }
-  }
-  // const handleCTA = (itemInfo) => {
-  //   console.log(itemInfo)
-  // }
+  //console.log('AttendeesList user', user)
+  console.log('AttendeesList accessToken', accessToken)
 
   return (
     <div style={{margin: '20px auto', position: 'relative'}}>
-        {accessToken && <SimpleChat {...widgetProps} accessToken={accessToken} ref={chatRef} />}
-        <RealTimeAttendeesList onItemClick={handleItemClick} {...widgetProps} title={title} />
+        {/* {accessToken && <SimpleChat {...widgetProps} accessToken={accessToken} ref={chatRef} />} */}
+        <AttendeeToAttendeeContainer {...widgetProps} title={title} />
     </div>
     );
 })
