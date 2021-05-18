@@ -3070,10 +3070,10 @@ atob@^2.1.2:
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
   integrity sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==
 
-attendee-to-attendee-widget@^1.1.32:
-  version "1.1.32"
-  resolved "https://registry.yarnpkg.com/attendee-to-attendee-widget/-/attendee-to-attendee-widget-1.1.32.tgz#150b41af509e65f095b50ef76b856a6885d1ceb7"
-  integrity sha512-70fQexsHxQ9wayLINfKevdI1P/6evBwjtsH6RniSNpSpWohGueMdteZPsUNX2n9l+dOpd+D3UrE3NglXFj9U7A==
+attendee-to-attendee-widget@^1.1.33:
+  version "1.1.33"
+  resolved "https://registry.yarnpkg.com/attendee-to-attendee-widget/-/attendee-to-attendee-widget-1.1.33.tgz#228e0e9e0dc8ce219031b869d6ae93ad1d405e56"
+  integrity sha512-VDrb/1CwX7uFYIQHaI3M03gPCB6JMA3DUdGrJdUfLEkrxhas61ZyqOdW8+eLv+srDd/vI9fnT8XwJXGdcz00RA==
   dependencies:
     "@supabase/supabase-js" "^1.11.12"
     bulma "^0.9.2"
