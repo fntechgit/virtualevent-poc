@@ -14,10 +14,11 @@ const sbAuthProps = {
 const chatProps = {
   streamApiKey: envVariables.STREAM_IO_API_KEY,
   apiBaseUrl: envVariables.IDP_BASE_URL,
+  chatApiBaseUrl: 'https://chat-api.dev.fnopen.com',
   forumSlug: envVariables.STREAM_IO_SSO_SLUG,
   onAuthError: (err, res) => console.log(err),
   openDir: "left",
-  accessToken: null,
+  accessToken: null
 };
 
 export const AttendeesList = withAccessToken(({user, title, accessToken}) => {
@@ -56,10 +57,14 @@ export const AttendeesList = withAccessToken(({user, title, accessToken}) => {
   //console.log('AttendeesList user', user)
   console.log('AttendeesList accessToken', accessToken)
 
+  const getAccessToken = async () => {
+    return accessToken
+  }
+
   return (
     <div style={{margin: '20px auto', position: 'relative'}}>
         {/* {accessToken && <SimpleChat {...widgetProps} accessToken={accessToken} ref={chatRef} />} */}
-        <AttendeeToAttendeeContainer {...widgetProps} title={title} />
+        <AttendeeToAttendeeContainer {...widgetProps} title={title} getAccessToken={getAccessToken} />
     </div>
     );
 })
