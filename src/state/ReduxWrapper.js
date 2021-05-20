@@ -37,7 +37,7 @@ const composeEnhancers = typeof window === 'object' && window.__REDUX_DEVTOOLS_E
 
 const store = createStore(persistedReducers, composeEnhancers(applyMiddleware(thunk)));
 
-const onRehydrateComplete = () => {}
+const onRehydrateComplete = () => { }
 
 const persistor = persistStore(store, null, onRehydrateComplete);
 

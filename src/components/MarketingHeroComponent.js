@@ -5,6 +5,8 @@ import Slider from "react-slick";
 import URI from "urijs";
 import { doLogin } from "openstack-uicore-foundation/lib/methods";
 
+import RegistrationLiteComponent from './RegistrationLiteComponent';
+
 import MarketingSite from '../content/marketing-site.json'
 import { PHASES } from '../utils/phasesUtils';
 import styles from '../styles/lobby-hero.module.scss'
@@ -84,6 +86,7 @@ class MarketingHeroComponent extends React.Component {
                       }
                     </React.Fragment>
                   }
+                  <RegistrationLiteComponent />
                 </div>
               </div>
             </div>
