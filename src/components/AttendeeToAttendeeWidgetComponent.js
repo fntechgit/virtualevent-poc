@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { connect } from "react-redux";
-import EventsData from "../content/events.json";
+//import EventsData from "../content/events.json";
 import { AttendeeToAttendeeContainer, Tracker } from "attendee-to-attendee-widget";
 import {
   getEnvVariable,
@@ -67,7 +67,7 @@ export const AttendeesList = withAccessToken(({ user, title, accessToken }) => {
     ...sbAuthProps,
   };
 
-  console.log("EventsData", EventsData);
+  //console.log("EventsData", EventsData);
 
   //console.log('AttendeesList user', user)
   console.log("AttendeesList accessToken", accessToken);
