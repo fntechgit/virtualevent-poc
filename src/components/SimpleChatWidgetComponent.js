@@ -6,7 +6,7 @@ import 'simple-chat-widget/index.css';
 
 import withAccessToken from "../utils/withAccessToken";
 
-import envVariables from '../utils/envVariables';
+import { getEnvVariable, STREAM_IO_API_KEY, IDP_BASE_URL, STREAM_IO_SSO_SLUG } from '../utils/envVariables';
 import GeneralSettings from '../content/settings.json'
 
 class SimpleChatWidgetComponent extends React.Component {
@@ -18,9 +18,9 @@ class SimpleChatWidgetComponent extends React.Component {
 
     const widgetProps = {
       accessToken: accessToken,
-      streamApiKey: envVariables.STREAM_IO_API_KEY,
-      apiBaseUrl: envVariables.IDP_BASE_URL,
-      forumSlug: envVariables.STREAM_IO_SSO_SLUG,
+      streamApiKey: getEnvVariable(STREAM_IO_API_KEY),
+      apiBaseUrl: getEnvVariable(IDP_BASE_URL),
+      forumSlug: getEnvVariable(STREAM_IO_SSO_SLUG),
       onAuthError: (err, res) => console.log(err),
       openDir: "left",
       title: "Private Chat",

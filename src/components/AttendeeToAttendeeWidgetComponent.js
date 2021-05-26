@@ -1,21 +1,31 @@
 import React, { useEffect, useRef } from "react";
 import { connect } from "react-redux";
+import EventsData from "../content/events.json";
 import { AttendeeToAttendeeContainer, Tracker } from "attendee-to-attendee-widget";
-import envVariables from "../utils/envVariables";
+import {
+  getEnvVariable,
+  CHAT_API_BASE_URL,
+  IDP_BASE_URL,
+  STREAM_IO_API_KEY,
+  STREAM_IO_SSO_SLUG,
+  SUMMIT_ID,
+  SUPABASE_URL,
+  SUPABASE_KEY,
+} from "../utils/envVariables";
 import withAccessToken from "../utils/withAccessToken";
 
 import "attendee-to-attendee-widget/dist/index.css";
 
 const sbAuthProps = {
-  supabaseUrl: envVariables.SUPABASE_URL,
-  supabaseKey: envVariables.SUPABASE_KEY,
+  supabaseUrl: getEnvVariable(SUPABASE_URL),
+  supabaseKey: getEnvVariable(SUPABASE_KEY),
 };
 
 const chatProps = {
-  streamApiKey: envVariables.STREAM_IO_API_KEY,
-  apiBaseUrl: envVariables.IDP_BASE_URL,
-  chatApiBaseUrl: "https://chat-api.dev.fnopen.com",
-  forumSlug: envVariables.STREAM_IO_SSO_SLUG,
+  streamApiKey: getEnvVariable(STREAM_IO_API_KEY),
+  apiBaseUrl: getEnvVariable(IDP_BASE_URL),
+  chatApiBaseUrl: getEnvVariable(CHAT_API_BASE_URL),
+  forumSlug: getEnvVariable(STREAM_IO_SSO_SLUG),
   onAuthError: (err, res) => console.log(err),
   openDir: "left",
   accessToken: null,
@@ -51,11 +61,13 @@ export const AttendeesList = withAccessToken(({ user, title, accessToken }) => {
       bio: bio,
       canChat: true, //based on badge features
     },
-    summitId: parseInt(envVariables.SUMMIT_ID),
+    summitId: parseInt(getEnvVariable(SUMMIT_ID)),
     height: 500,
     ...chatProps,
     ...sbAuthProps,
   };
+
+  console.log("EventsData", EventsData);
 
   //console.log('AttendeesList user', user)
   console.log("AttendeesList accessToken", accessToken);
@@ -94,7 +106,7 @@ const AccessTracker = ({ user, isLoggedUser }) => {
       badgeFeatures: ["feat 1", "feat 2"], //attendee.ticket.badge.features
       bio: bio,
     },
-    summitId: parseInt(envVariables.SUMMIT_ID),
+    summitId: parseInt(getEnvVariable(SUMMIT_ID)),
     ...sbAuthProps,
   };
 
