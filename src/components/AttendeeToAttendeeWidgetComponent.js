@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { connect } from "react-redux";
-//import EventsData from "../content/events.json";
+// import SummitData from "../content/summit.json";
+// import EventsData from "../content/events.json";
 import { AttendeeToAttendeeContainer, Tracker } from "attendee-to-attendee-widget";
 import {
   getEnvVariable,
@@ -32,7 +33,7 @@ const chatProps = {
   activityName: "dev-keynote",
 };
 
-export const AttendeesList = withAccessToken(({ user, title, accessToken }) => {
+export const AttendeesWidget = withAccessToken(({ user, accessToken }) => {
   //const [accessInfo, setAccessInfo] = useState({});
   // const chatRef = useRef()
 
@@ -47,7 +48,6 @@ export const AttendeesList = withAccessToken(({ user, title, accessToken }) => {
       idpUserId: sub.toString(),
       fullName: `${first_name} ${last_name}`,
       email: email,
-      role: "admin",
       company: company,
       title: job_title,
       picUrl: picture,
@@ -67,9 +67,11 @@ export const AttendeesList = withAccessToken(({ user, title, accessToken }) => {
     ...sbAuthProps,
   };
 
-  //console.log("EventsData", EventsData);
+  // console.log("SummitData", SummitData);
+  // console.log("EventsData", EventsData);
 
-  //console.log('AttendeesList user', user)
+  console.log("AttendeesList user", user);
+  // console.log("idpUserId", sub.toString());
   console.log("AttendeesList accessToken", accessToken);
 
   const getAccessToken = async () => {
@@ -79,7 +81,7 @@ export const AttendeesList = withAccessToken(({ user, title, accessToken }) => {
   return (
     <div style={{ margin: "20px auto", position: "relative" }}>
       {/* {accessToken && <SimpleChat {...widgetProps} accessToken={accessToken} ref={chatRef} />} */}
-      <AttendeeToAttendeeContainer {...widgetProps} title={title} getAccessToken={getAccessToken} />
+      <AttendeeToAttendeeContainer {...widgetProps} getAccessToken={getAccessToken} />
     </div>
   );
 });

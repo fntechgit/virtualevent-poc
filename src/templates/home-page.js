@@ -16,7 +16,7 @@ import DisqusComponent from "../components/DisqusComponent";
 import LiveEventWidgetComponent from "../components/LiveEventWidgetComponent";
 import SpeakersWidgetComponent from "../components/SpeakersWidgetComponent";
 import SponsorComponent from "../components/SponsorComponent";
-import AccessTracker, { AttendeesList } from "../components/AttendeeToAttendeeWidgetComponent";
+import AccessTracker, { AttendeesWidget } from "../components/AttendeeToAttendeeWidgetComponent";
 import AttendanceTrackerComponent from "../components/AttendanceTrackerComponent";
 
 import { getDisqusSSO, getUserProfile } from "../actions/user-actions";
@@ -100,7 +100,7 @@ export const HomePageTemplate = class extends React.Component {
                 <b>My Info</b>
               </h2>
               <AccessTracker />
-              <AttendeesList user={user} title="Attendance" />
+              <AttendeesWidget user={user} />
               <ScheduleLiteComponent
                 onEventClick={(ev) => this.onEventChange(ev)}
                 onViewAllEventsClick={() => this.onViewAllMyEventsClick()}
