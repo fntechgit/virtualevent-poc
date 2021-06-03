@@ -29,8 +29,13 @@ const chatProps = {
   forumSlug: getEnvVariable(STREAM_IO_SSO_SLUG),
   onAuthError: (err, res) => console.log(err),
   openDir: "left",
-  accessToken: null,
-  activityName: "dev-keynote",
+  getAccessToken: async () => {},  
+  activity: {
+    id: 206,
+    name:
+      'Global Collaboration Driving Innovation in a Multi-Billion Dollar Market', //Widget will create this activity room or add members to it
+    imgUrl: 'https://www.gravatar.com/avatar/ed3aa6518abef1c091b9a891b8f43e83'
+  }
 };
 
 export const AttendeesWidget = withAccessToken(({ user, accessToken }) => {
@@ -40,7 +45,9 @@ export const AttendeesWidget = withAccessToken(({ user, accessToken }) => {
   const { email, first_name, last_name, bio } = user.userProfile;
   const { picture, company, job_title, sub, github_user, linked_in_profile, twitter_name, wechat_user } = user.idpProfile;
 
-  chatProps.accessToken = accessToken;
+  const getAccessToken = async () =>  accessToken;
+
+  chatProps.getAccessToken = getAccessToken;
 
   const widgetProps = {
     user: {
@@ -48,6 +55,7 @@ export const AttendeesWidget = withAccessToken(({ user, accessToken }) => {
       idpUserId: sub.toString(),
       fullName: `${first_name} ${last_name}`,
       email: email,
+      groups: ['admins'],
       company: company,
       title: job_title,
       picUrl: picture,
@@ -62,7 +70,7 @@ export const AttendeesWidget = withAccessToken(({ user, accessToken }) => {
       canChat: true, //based on badge features
     },
     summitId: parseInt(getEnvVariable(SUMMIT_ID)),
-    height: 500,
+    height: 400,
     ...chatProps,
     ...sbAuthProps,
   };
@@ -73,10 +81,6 @@ export const AttendeesWidget = withAccessToken(({ user, accessToken }) => {
   console.log("AttendeesList user", user);
   // console.log("idpUserId", sub.toString());
   console.log("AttendeesList accessToken", accessToken);
-
-  const getAccessToken = async () => {
-    return accessToken;
-  };
 
   return (
     <div style={{ margin: "20px auto", position: "relative" }}>
