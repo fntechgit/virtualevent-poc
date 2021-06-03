@@ -110,7 +110,7 @@ export const HomePageTemplate = class extends React.Component {
                 <b>My Info</b>
               </h2>
               <AccessTracker />
-              {/* <AttendeesWidget user={user} /> */}
+              <AttendeesWidget user={user} />
               <ScheduleLiteComponent
                 onEventClick={(ev) => this.onEventChange(ev)}
                 onViewAllEventsClick={() => this.onViewAllMyEventsClick()}
