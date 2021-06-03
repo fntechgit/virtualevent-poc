@@ -79,7 +79,7 @@ export const AttendeesWidget = withAccessToken(({ user, accessToken }) => {
   // console.log("EventsData", EventsData);
 
   console.log("AttendeesList user", user);
-  // console.log("idpUserId", sub.toString());
+  console.log("idpUserId", sub.toString());
   console.log("AttendeesList accessToken", accessToken);
 
   return (
