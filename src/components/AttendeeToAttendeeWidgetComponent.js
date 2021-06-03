@@ -2,7 +2,10 @@ import React, { useEffect, useRef } from "react";
 import { connect } from "react-redux";
 // import SummitData from "../content/summit.json";
 // import EventsData from "../content/events.json";
-import { AttendeeToAttendeeContainer, Tracker } from "attendee-to-attendee-widget";
+import {
+  AttendeeToAttendeeContainer,
+  Tracker,
+} from "attendee-to-attendee-widget";
 import {
   getEnvVariable,
   CHAT_API_BASE_URL,
@@ -29,13 +32,12 @@ const chatProps = {
   forumSlug: getEnvVariable(STREAM_IO_SSO_SLUG),
   onAuthError: (err, res) => console.log(err),
   openDir: "left",
-  getAccessToken: async () => {},  
+  getAccessToken: async () => {},
   activity: {
     id: 206,
-    name:
-      'Global Collaboration Driving Innovation in a Multi-Billion Dollar Market', //Widget will create this activity room or add members to it
-    imgUrl: 'https://www.gravatar.com/avatar/ed3aa6518abef1c091b9a891b8f43e83'
-  }
+    name: "Global Collaboration Driving Innovation in a Multi-Billion Dollar Market", //Widget will create this activity room or add members to it
+    imgUrl: "https://www.gravatar.com/avatar/ed3aa6518abef1c091b9a891b8f43e83",
+  },
 };
 
 export const AttendeesWidget = withAccessToken(({ user, accessToken }) => {
@@ -43,9 +45,18 @@ export const AttendeesWidget = withAccessToken(({ user, accessToken }) => {
   // const chatRef = useRef()
 
   const { email, first_name, last_name, bio } = user.userProfile;
-  const { picture, company, job_title, sub, github_user, linked_in_profile, twitter_name, wechat_user } = user.idpProfile;
+  const {
+    picture,
+    company,
+    job_title,
+    sub,
+    github_user,
+    linked_in_profile,
+    twitter_name,
+    wechat_user,
+  } = user.idpProfile;
 
-  const getAccessToken = async () =>  accessToken;
+  const getAccessToken = async () => accessToken;
 
   chatProps.getAccessToken = getAccessToken;
 
@@ -55,7 +66,7 @@ export const AttendeesWidget = withAccessToken(({ user, accessToken }) => {
       idpUserId: sub.toString(),
       fullName: `${first_name} ${last_name}`,
       email: email,
-      groups: ['admins'],
+      groups: ["admins"],
       company: company,
       title: job_title,
       picUrl: picture,
@@ -78,14 +89,17 @@ export const AttendeesWidget = withAccessToken(({ user, accessToken }) => {
   // console.log("SummitData", SummitData);
   // console.log("EventsData", EventsData);
 
-  console.log("AttendeesList user", user);
-  console.log("idpUserId", sub.toString());
-  console.log("AttendeesList accessToken", accessToken);
+  console.log("AttendeesList--->user", user);
+  console.log("AttendeesList--->idpUserId", sub.toString());
+  console.log("AttendeesList--->accessToken", accessToken);
 
   return (
     <div style={{ margin: "20px auto", position: "relative" }}>
       {/* {accessToken && <SimpleChat {...widgetProps} accessToken={accessToken} ref={chatRef} />} */}
-      <AttendeeToAttendeeContainer {...widgetProps} getAccessToken={getAccessToken} />
+      <AttendeeToAttendeeContainer
+        {...widgetProps}
+        getAccessToken={getAccessToken}
+      />
     </div>
   );
 });
@@ -94,7 +108,16 @@ const AccessTracker = ({ user, isLoggedUser }) => {
   const trackerRef = useRef();
 
   const { email, first_name, last_name, bio } = user.userProfile;
-  const { picture, company, job_title, sub, github_user, linked_in_profile, twitter_name, wechat_user } = user.idpProfile;
+  const {
+    picture,
+    company,
+    job_title,
+    sub,
+    github_user,
+    linked_in_profile,
+    twitter_name,
+    wechat_user,
+  } = user.idpProfile;
   const widgetProps = {
     user: {
       fullName: `${first_name} ${last_name}`,

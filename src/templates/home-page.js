@@ -16,7 +16,9 @@ import DisqusComponent from "../components/DisqusComponent";
 import LiveEventWidgetComponent from "../components/LiveEventWidgetComponent";
 import SpeakersWidgetComponent from "../components/SpeakersWidgetComponent";
 import SponsorComponent from "../components/SponsorComponent";
-import AccessTracker, { AttendeesWidget } from "../components/AttendeeToAttendeeWidgetComponent";
+import AccessTracker, {
+  AttendeesWidget,
+} from "../components/AttendeeToAttendeeWidgetComponent";
 import AttendanceTrackerComponent from "../components/AttendanceTrackerComponent";
 
 import { getDisqusSSO, getUserProfile } from "../actions/user-actions";
@@ -87,9 +89,19 @@ export const HomePageTemplate = class extends React.Component {
                 title="Up Next"
                 eventCount={4}
               />
-              {HomeSettings.centerColumn.speakers.showTodaySpeakers && <SpeakersWidgetComponent title="Today's Speakers" bigPics={true} />}
+              {HomeSettings.centerColumn.speakers.showTodaySpeakers && (
+                <SpeakersWidgetComponent
+                  title="Today's Speakers"
+                  bigPics={true}
+                />
+              )}
               {HomeSettings.centerColumn.speakers.showFeatureSpeakers && (
-                <SpeakersWidgetComponent title="Featured Speakers" bigPics={false} featured={true} date={null} />
+                <SpeakersWidgetComponent
+                  title="Featured Speakers"
+                  bigPics={false}
+                  featured={true}
+                  date={null}
+                />
               )}
               <AdvertiseComponent section="lobby" column="center" />
             </div>
@@ -98,7 +110,7 @@ export const HomePageTemplate = class extends React.Component {
                 <b>My Info</b>
               </h2>
               <AccessTracker />
-              <AttendeesWidget user={user} />
+              {/* <AttendeesWidget user={user} /> */}
               <ScheduleLiteComponent
                 onEventClick={(ev) => this.onEventChange(ev)}
                 onViewAllEventsClick={() => this.onViewAllMyEventsClick()}
@@ -126,7 +138,11 @@ const HomePage = ({ location, user, getUserProfile, getDisqusSSO }) => {
   return (
     <Layout location={location}>
       <AttendanceTrackerComponent sourceName="LOBBY" />
-      <OrchestedTemplate user={user} getUserProfile={getUserProfile} getDisqusSSO={getDisqusSSO} />
+      <OrchestedTemplate
+        user={user}
+        getUserProfile={getUserProfile}
+        getDisqusSSO={getDisqusSSO}
+      />
     </Layout>
   );
 };
@@ -147,4 +163,6 @@ const mapStateToProps = ({ userState }) => ({
   user: userState,
 });
 
-export default connect(mapStateToProps, { getDisqusSSO, getUserProfile })(HomePage);
+export default connect(mapStateToProps, { getDisqusSSO, getUserProfile })(
+  HomePage
+);
