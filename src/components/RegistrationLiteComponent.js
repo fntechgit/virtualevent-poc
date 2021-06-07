@@ -16,7 +16,7 @@ import MarketingData from '../content/colors.json'
 import { getUrlParam } from "../utils/fragmentParser";
 
 import { doLogin } from 'openstack-uicore-foundation/lib/methods'
-import { getEnvVariable, AUTHORIZED_DEFAULT_PATH } from '../utils/envVariables'
+import { getEnvVariable, AUTHORIZED_DEFAULT_PATH, SUMMIT_API_BASE_URL } from '../utils/envVariables'
 
 const RegistrationLiteComponent = ({ userProfile, showPopup, location }) => {
 
@@ -37,6 +37,7 @@ const RegistrationLiteComponent = ({ userProfile, showPopup, location }) => {
     }
 
     const widgetProps = {
+        apiBaseUrl: getEnvVariable(SUMMIT_API_BASE_URL),
         summitData: SummitData.summit,
         profileData: userProfile,
         marketingData: MarketingData.colors,
