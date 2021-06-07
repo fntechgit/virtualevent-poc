@@ -86,7 +86,7 @@ class MarketingHeroComponent extends React.Component {
                       }
                     </React.Fragment>
                   }
-                  <RegistrationLiteComponent />
+                  <RegistrationLiteComponent location={this.props.location}/>
                 </div>
               </div>
             </div>

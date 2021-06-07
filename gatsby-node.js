@@ -273,10 +273,14 @@ exports.sourceNodes = async ({
   createNodeId,
   createContentDigest
 }) => {
-  const { createNode } = actions
+  const { createNode } = actions;
+
+  const params = {
+    expand: 'event_types,tracks,track_groups,presentation_levels,locations.rooms,locations.floors,order_extra_questions.values'
+  }
 
   const summit = await axios.get(
-    `${process.env.GATSBY_SUMMIT_API_BASE_URL}/api/public/v1/summits/${process.env.GATSBY_SUMMIT_ID}?expand=event_types%2C+tracks%2C+track_groups%2C+presentation_levels%2C+locations.rooms%2C+locations.floors`
+    `${process.env.GATSBY_SUMMIT_API_BASE_URL}/api/public/v1/summits/${process.env.GATSBY_SUMMIT_ID}`, { params }
   ).then((response) => response.data)
     .catch(e => console.log('ERROR: ', e));
 
