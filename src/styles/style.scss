@@ -1,8 +1,8 @@
-@import './colors.scss';
+@import "./colors.scss";
 
 html,
 body {
-  font-family: 'Nunito Sans', sans-serif !important;
+  font-family: "Nunito Sans", sans-serif !important;
   margin: 0;
   padding: 0;
   height: 100%;
@@ -60,7 +60,7 @@ div.content {
 div.title {
   font-weight: 700 !important;
   color: #333333 !important;
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: "Nunito Sans", sans-serif;
 }
 
 h2 {
@@ -103,8 +103,6 @@ h2 {
   }
 }
 
-
-
 #marketing-slider {
   .slick-track {
     height: 424px;
@@ -131,7 +129,7 @@ h2 {
 }
 
 /* Style your items */
-.my-masonry-grid_column>div {
+.my-masonry-grid_column > div {
   /* change div to reference your elements you put in <Masonry> */
   margin-bottom: 0px;
 
@@ -154,7 +152,6 @@ h2 {
 }
 
 .talk {
-
   &__break {
     background-color: $color_secondary;
     min-height: 92vh !important;
@@ -176,7 +173,8 @@ h2 {
     font-weight: bold;
   }
 
-  &__title {}
+  &__title {
+  }
 
   &__speaker {
     &--name {
@@ -220,7 +218,8 @@ h2 {
     align-items: flex-end;
   }
 
-  &__etherpad {}
+  &__etherpad {
+  }
 }
 
 .join-zoom-container {
@@ -252,7 +251,7 @@ h2 {
 
 .outerWrapper___lGus2 {
   .widget-title {
-    font-family: 'Nunito Sans', sans-serif;
+    font-family: "Nunito Sans", sans-serif;
     font-weight: 700;
     font-size: 30px;
     line-height: 33px;
@@ -262,7 +261,7 @@ h2 {
 }
 
 .widget-title {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 18px !important;
 }
 
@@ -282,6 +281,8 @@ h2 {
 
   span.navbar-brand {
     background-color: #fff;
+  }
+  > span {
     border-bottom: 1px solid #eee;
   }
   #disqus_thread {
@@ -419,7 +420,6 @@ h2 {
   }
 
   .talk {
-
     &__break {
       height: auto;
     }
@@ -483,5 +483,26 @@ h2 {
     &__break {
       min-height: 100vh !important;
     }
+  }
+}
+
+/* extra questions */
+[id^="chl_wrapper"] {
+  .checkboxes-div {
+    > div {
+      display: flex;
+      align-content: center;
+      label {
+        padding-left: 15px;
+      }
+    }
+  }
+}
+
+[id^="rl_wrapper"] {
+  display: flex;
+  flex-direction: column;
+  div {
+    padding-left: 10px !important;
   }
 }

@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from "react"
-import { Helmet } from 'react-helmet'
+import { navigate } from "gatsby"
 import { connect } from "react-redux";
+import URI from "urijs"
+
+import {
+    getAccessToken
+  } from 'openstack-uicore-foundation/lib/methods';
 
 // these two libraries are client-side only
 import RegistrationLiteWidget from 'summit-registration-lite/dist';
@@ -10,7 +15,10 @@ import SummitData from '../content/summit.json'
 import MarketingData from '../content/colors.json'
 import { getUrlParam } from "../utils/fragmentParser";
 
-const RegistrationLiteComponent = ({ userProfile, showPopup }) => {
+import { doLogin } from 'openstack-uicore-foundation/lib/methods'
+import { getEnvVariable, AUTHORIZED_DEFAULT_PATH } from '../utils/envVariables'
+
+const RegistrationLiteComponent = ({ userProfile, showPopup, location }) => {
 
     useEffect(() => {
         setIsActive(getUrlParam('registration'))
@@ -18,9 +26,15 @@ const RegistrationLiteComponent = ({ userProfile, showPopup }) => {
 
     const [isActive, setIsActive] = useState(showPopup);
 
-    //const { userProfile } = this.props;
+    const getBackURL = () => {
+        let defaultLocation = getEnvVariable(AUTHORIZED_DEFAULT_PATH) ? getEnvVariable(AUTHORIZED_DEFAULT_PATH) : '/a/';
+        let backUrl = `${location.state?.backUrl ? location.state.backUrl : defaultLocation}`;
+        return URI.encode(backUrl);
+    }
 
-    console.log('user profile', userProfile)
+    const onClickLogin = (provider) => {
+        doLogin(getBackURL(), provider);
+    }
 
     const widgetProps = {
         summitData: SummitData.summit,
@@ -30,16 +44,15 @@ const RegistrationLiteComponent = ({ userProfile, showPopup }) => {
             { button_color: '#082238', provider_label: 'FNid', provider_param: 'fnid' },
             { button_color: '#0370C5', provider_label: 'Facebook', provider_param: 'facebook' }
         ],
-        authUser: (provider) => console.log('login with ', provider),
-        getAccessToken: () => console.log('access token request'),
+        authUser: (provider) => onClickLogin(provider),
+        getAccessToken: async () => await getAccessToken(),
         closeWidget: () => setIsActive(false),
-        goToExtraQuestions: () => console.log('extra questions required')
+        goToExtraQuestions: () => navigate('/a/extra-questions'),
+        goToEvent: () => navigate('/a/'),
     };
 
     return (
         <React.Fragment>
-            <Helmet>
-            </Helmet>
             <button onClick={() => setIsActive(true)}>
                 <b>Open popup</b>
             </button>

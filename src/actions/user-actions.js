@@ -14,6 +14,7 @@ import Swal from 'sweetalert2';
 
 import { customErrorHandler, customBadgeHandler } from '../utils/customErrorHandler';
 import { isAuthorizedUser } from '../utils/authorizedGroups';
+import { navigate } from 'gatsby-link';
 
 export const GET_DISQUS_SSO            = 'GET_DISQUS_SSO';
 export const GET_ROCKETCHAT_SSO        = 'GET_ROCKETCHAT_SSO';
@@ -25,6 +26,7 @@ export const UPDATE_PASSWORD           = 'UPDATE_PASSWORD';
 export const SET_AUTHORIZED_USER       = 'SET_AUTHORIZED_USER';
 export const SET_USER_TICKET           = 'SET_USER_TICKET';
 export const UPDATE_PROFILE_PIC        = 'UPDATE_PROFILE_PIC';
+export const UPDATE_EXTRA_QUESTIONS    = 'UPDATE_EXTRA_QUESTIONS';
 export const START_LOADING_IDP_PROFILE = 'START_LOADING_IDP_PROFILE';
 export const STOP_LOADING_IDP_PROFILE  = 'STOP_LOADING_IDP_PROFILE';
 export const GET_IDP_PROFILE           = 'GET_IDP_PROFILE';
@@ -73,7 +75,7 @@ export const getUserProfile = () => async (dispatch) => {
 
   let params = {
     access_token: accessToken,
-    expand: 'groups,summit_tickets,summit_tickets.badge,summit_tickets.badge.features,summit_tickets.badge.type,favorite_summit_events,feedback,schedule_summit_events,rsvp,rsvp.answers'
+    expand: 'groups,summit_tickets,summit_tickets,summit_tickets.owner,summit_tickets.owner.extra_questions,summit_tickets.badge,summit_tickets.badge.features,summit_tickets.badge.type,favorite_summit_events,feedback,schedule_summit_events,rsvp,rsvp.answers'
   };
 
   dispatch(startLoading());
@@ -154,11 +156,11 @@ export const getIDPProfile = () => async (dispatch) => {
     .catch(() => dispatch(createAction(STOP_LOADING_IDP_PROFILE)()));
 }
 
-export const addToSchedule = (event) => (dispatch, getState) => {  
+export const addToSchedule = (event) => (dispatch, getState) => {
   dispatch(createAction(ADD_TO_SCHEDULE)(event));
 }
 
-export const removeFromSchedule = (event) => (dispatch, getState) => {    
+export const removeFromSchedule = (event) => (dispatch, getState) => {
   dispatch(createAction(REMOVE_FROM_SCHEDULE)(event));
 }
 
@@ -235,3 +237,44 @@ export const updatePassword = (password) => async (dispatch) => {
     })
     .catch(() => dispatch(createAction(STOP_LOADING_IDP_PROFILE)()));
 }
+
+export const saveExtraQuestions = (extra_questions) => async (dispatch, getState) => {
+
+  const { userState: { userProfile: { summit_tickets } } } = getState();
+
+  const { owner } = summit_tickets[0];
+
+  let normalizedEntity = {
+    attendee_email: owner.email,
+    attendee_first_name: owner.first_name,
+    attendee_last_name: owner.last_name,
+    attendee_company: owner.company,
+    disclaimer_accepted: owner.disclaimer_accepted,
+    extra_questions
+  };
+
+  const accessToken = await getAccessToken();
+
+  dispatch(startLoading());
+
+  let params = {
+    access_token: accessToken,
+    expand: 'owner, owner.extra_questions'
+  };  
+
+  return putRequest(
+    null,
+    createAction(UPDATE_EXTRA_QUESTIONS),
+    `${window.API_BASE_URL}/api/v1/summits/all/orders/all/tickets/${summit_tickets[0].id}`,
+    normalizedEntity,
+    customErrorHandler
+  )(params)(dispatch).then(() => {
+    Swal.fire('Success', "Extra questions saved successfully", "success");
+    navigate('/')
+  }
+  ).catch(e => {
+    dispatch(stopLoading());
+    Swal.fire('Error', "Error saving your questions. Please retry.", "warning");
+    return (e);
+  });
+};
