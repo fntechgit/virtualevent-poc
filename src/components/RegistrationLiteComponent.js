@@ -5,7 +5,7 @@ import URI from "urijs"
 
 import {
     getAccessToken
-  } from 'openstack-uicore-foundation/lib/methods';
+} from 'openstack-uicore-foundation/lib/methods';
 
 // these two libraries are client-side only
 import RegistrationLiteWidget from 'summit-registration-lite/dist';
@@ -13,10 +13,13 @@ import 'summit-registration-lite/dist/index.css';
 
 import SummitData from '../content/summit.json'
 import MarketingData from '../content/colors.json'
+import MarketingSite from '../content/marketing-site.json'
 import { getUrlParam } from "../utils/fragmentParser";
 
 import { doLogin } from 'openstack-uicore-foundation/lib/methods'
 import { getEnvVariable, AUTHORIZED_DEFAULT_PATH, SUMMIT_API_BASE_URL } from '../utils/envVariables'
+
+import styles from '../styles/lobby-hero.module.scss'
 
 const RegistrationLiteComponent = ({ userProfile, showPopup, location }) => {
 
@@ -54,8 +57,9 @@ const RegistrationLiteComponent = ({ userProfile, showPopup, location }) => {
 
     return (
         <React.Fragment>
-            <button onClick={() => setIsActive(true)}>
-                <b>Open popup</b>
+            <button className={`${styles.button} button is-large`} onClick={() => setIsActive(true)}>
+                <i className={`fa fa-2x fa-edit icon is-large`}></i>
+                <b>{MarketingSite.heroBanner.buttons.registerButton.text}</b>
             </button>
             <div>
                 {isActive && <RegistrationLiteWidget {...widgetProps} />}
