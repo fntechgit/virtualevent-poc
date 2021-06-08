@@ -62,7 +62,7 @@ class MarketingHeroComponent extends React.Component {
                   {summit_phase >= PHASES.DURING && isLoggedUser ?
                     <React.Fragment>
                       {MarketingSite.heroBanner.buttons.registerButton.display &&
-                        userProfile?.summit_tickets.length === 0 &&
+                        !userProfile?.summit_tickets?.length > 0 &&
                         <a className={styles.link}>
                           <RegistrationLiteComponent location={this.props.location} />
                         </a>
