@@ -18,10 +18,10 @@ import Link from '../components/Link'
 class MarketingHeroComponent extends React.Component {
 
   getBackURL = () => {
-    let { location } = this.props;    
+    let { location } = this.props;
     let defaultLocation = getEnvVariable(AUTHORIZED_DEFAULT_PATH) ? getEnvVariable(AUTHORIZED_DEFAULT_PATH) : '/a/';
-    let backUrl = location.state?.backUrl ? location.state.backUrl : defaultLocation;    
-    return URI.encode(backUrl);    
+    let backUrl = location.state?.backUrl ? location.state.backUrl : defaultLocation;
+    return URI.encode(backUrl);
   }
 
   onClickLogin = () => {
@@ -30,7 +30,7 @@ class MarketingHeroComponent extends React.Component {
 
   render() {
 
-    const { summit, summit_phase, isLoggedUser } = this.props;
+    const { summit_phase, isLoggedUser, userProfile } = this.props;
 
     const sliderSettings = {
       autoplay: true,
@@ -60,26 +60,34 @@ class MarketingHeroComponent extends React.Component {
                 <h4>{MarketingSite.heroBanner.time}</h4>
                 <div className={styles.heroButtons}>
                   {summit_phase >= PHASES.DURING && isLoggedUser ?
-                    <Link className={styles.link} to={`${getEnvVariable(AUTHORIZED_DEFAULT_PATH) ? getEnvVariable(AUTHORIZED_DEFAULT_PATH) : '/a/'}`}>
-                      <button className={`${styles.button} button is-large`}>
-                        <i className={`fa fa-2x fa-sign-in icon is-large`}></i>
-                        <b>Enter</b>
-                      </button>
-                    </Link>
+                    <React.Fragment>
+                      {MarketingSite.heroBanner.buttons.registerButton.display &&
+                        userProfile?.summit_tickets.length === 0 &&
+                        <a className={styles.link}>
+                          <RegistrationLiteComponent location={this.props.location} />
+                        </a>
+                      }
+                      <Link className={styles.link} to={`${getEnvVariable(AUTHORIZED_DEFAULT_PATH) ? getEnvVariable(AUTHORIZED_DEFAULT_PATH) : '/a/'}`}>
+                        <button className={`${styles.button} button is-large`}>
+                          <i className={`fa fa-2x fa-sign-in icon is-large`}></i>
+                          <b>Enter</b>
+                        </button>
+                      </Link>
+                    </React.Fragment>
                     :
                     <React.Fragment>
                       {MarketingSite.heroBanner.buttons.registerButton.display &&
-                        <a className={styles.link}>
-                          <RegistrationLiteComponent location={this.props.location}/>
-                        </a>
+                        <span className={styles.link}>
+                          <RegistrationLiteComponent location={this.props.location} />
+                        </span>
                       }
                       {MarketingSite.heroBanner.buttons.loginButton.display && !isLoggedUser &&
-                        <a className={styles.link}>
+                        <span className={styles.link}>
                           <button className={`${styles.button} button is-large`} onClick={() => this.onClickLogin()}>
                             <i className={`fa fa-2x fa-sign-in icon is-large`}></i>
                             <b>{MarketingSite.heroBanner.buttons.loginButton.text}</b>
                           </button>
-                        </a>
+                        </span>
                       }
                     </React.Fragment>
                   }
@@ -106,8 +114,9 @@ class MarketingHeroComponent extends React.Component {
   }
 }
 
-const mapStateToProps = ({ clockState }) => ({
+const mapStateToProps = ({ clockState, userState }) => ({
   summit_phase: clockState.summit_phase,
+  userProfile: userState.userProfile
 })
 
 export default connect(mapStateToProps, null)(MarketingHeroComponent);

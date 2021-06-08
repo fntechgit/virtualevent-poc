@@ -17,7 +17,7 @@ import MarketingSite from '../content/marketing-site.json'
 import { getUrlParam } from "../utils/fragmentParser";
 
 import { doLogin } from 'openstack-uicore-foundation/lib/methods'
-import { getEnvVariable, AUTHORIZED_DEFAULT_PATH, SUMMIT_API_BASE_URL } from '../utils/envVariables'
+import { getEnvVariable, SUMMIT_API_BASE_URL } from '../utils/envVariables'
 
 import styles from '../styles/lobby-hero.module.scss'
 
@@ -30,8 +30,7 @@ const RegistrationLiteComponent = ({ userProfile, showPopup, location }) => {
     const [isActive, setIsActive] = useState(showPopup);
 
     const getBackURL = () => {
-        let defaultLocation = getEnvVariable(AUTHORIZED_DEFAULT_PATH) ? getEnvVariable(AUTHORIZED_DEFAULT_PATH) : '/a/';
-        let backUrl = `${location.state?.backUrl ? location.state.backUrl : defaultLocation}`;
+        let backUrl = '/#registration=1';
         return URI.encode(backUrl);
     }
 
@@ -70,7 +69,7 @@ const RegistrationLiteComponent = ({ userProfile, showPopup, location }) => {
 
 
 const mapStateToProps = ({ userState }) => ({
-    userProfile: userState.userProfile
+    userProfile: userState.idpProfile
 })
 
 export default connect(mapStateToProps, {})(RegistrationLiteComponent)
