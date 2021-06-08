@@ -69,11 +69,8 @@ class MarketingHeroComponent extends React.Component {
                     :
                     <React.Fragment>
                       {MarketingSite.heroBanner.buttons.registerButton.display &&
-                        <a className={styles.link} href={`${getEnvVariable(REGISTRATION_BASE_URL)}/a/${summit.slug}/`} target="_blank" rel="noreferrer">
-                          <button className={`${styles.button} button is-large`}>
-                            <i className={`fa fa-2x fa-edit icon is-large`}></i>
-                            <b>{MarketingSite.heroBanner.buttons.registerButton.text}</b>
-                          </button>
+                        <a className={styles.link}>
+                          <RegistrationLiteComponent location={this.props.location}/>
                         </a>
                       }
                       {MarketingSite.heroBanner.buttons.loginButton.display && !isLoggedUser &&
@@ -86,7 +83,6 @@ class MarketingHeroComponent extends React.Component {
                       }
                     </React.Fragment>
                   }
-                  <RegistrationLiteComponent location={this.props.location}/>
                 </div>
               </div>
             </div>
