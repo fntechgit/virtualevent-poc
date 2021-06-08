@@ -1,7 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import { connect } from "react-redux";
-// import SummitData from "../content/summit.json";
-// import EventsData from "../content/events.json";
 import { getUrlParam } from "../utils/fragmentParser";
 import { getAccessToken } from "openstack-uicore-foundation/lib/methods";
 import {
@@ -26,9 +24,7 @@ const sbAuthProps = {
   supabaseKey: getEnvVariable(SUPABASE_KEY),
 };
 
-export const AttendeesWidget = ({ user }) => {
-  //const [accessInfo, setAccessInfo] = useState({});
-
+export const AttendeesWidget = ({ user, event }) => {
   //Deep linking support
   const chatRef = useRef();
   const [dlAction, setDlAction] = useState(null);
@@ -43,6 +39,15 @@ export const AttendeesWidget = ({ user }) => {
     console.log("dlStarDirectChatParam", dlStarDirectChatParam);
 
     //setDlAction(null);
+
+    if (event) {
+      //Widget will create this activity room or add members to it
+      chatProps.activity = {
+        id: event.id,
+        name: event.title,
+        imgUrl: event.image,
+      };
+    }
   }, []);
 
   const { email, first_name, last_name, bio } = user.userProfile;
@@ -64,18 +69,22 @@ export const AttendeesWidget = ({ user }) => {
     forumSlug: getEnvVariable(STREAM_IO_SSO_SLUG),
     onAuthError: (err, res) => console.log(err),
     openDir: "left",
-    activity: {
-      id: 206,
-      name: "Global Collaboration Driving Innovation in a Multi-Billion Dollar Market", //Widget will create this activity room or add members to it
-      imgUrl:
-        "https://www.gravatar.com/avatar/ed3aa6518abef1c091b9a891b8f43e83",
-    },
+    activity: null,
     getAccessToken: async () => {
       const accessToken = await getAccessToken();
       console.log("AttendeesList->getAccessToken", accessToken);
       return accessToken;
     },
   };
+
+  if (event) {
+    //Widget will create this activity room or add members to it
+    chatProps.activity = {
+      id: event.id,
+      name: event.title,
+      imgUrl: event.image,
+    };
+  }
 
   const widgetProps = {
     user: {
@@ -102,12 +111,6 @@ export const AttendeesWidget = ({ user }) => {
     ...chatProps,
     ...sbAuthProps,
   };
-
-  // console.log("SummitData", SummitData);
-  // console.log("EventsData", EventsData);
-
-  //console.log("AttendeesList--->user", user);
-  //console.log("AttendeesList--->idpUserId", sub.toString());
 
   return (
     <div style={{ margin: "20px auto", position: "relative" }}>
