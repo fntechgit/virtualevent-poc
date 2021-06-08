@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useEffect, useRef } from "react";
 import { connect } from "react-redux";
 // import SummitData from "../content/summit.json";
@@ -127,3 +128,176 @@ const mapStateToProps = ({ loggedUserState, userState }) => ({
 });
 
 export default connect(mapStateToProps)(AccessTracker);
+=======
+import React, { useEffect, useRef, useState } from "react";
+import { connect } from "react-redux";
+import { getUrlParam } from "../utils/fragmentParser";
+import { getAccessToken } from "openstack-uicore-foundation/lib/methods";
+import {
+  AttendeeToAttendeeContainer,
+  Tracker,
+} from "attendee-to-attendee-widget";
+import {
+  getEnvVariable,
+  CHAT_API_BASE_URL,
+  IDP_BASE_URL,
+  STREAM_IO_API_KEY,
+  STREAM_IO_SSO_SLUG,
+  SUMMIT_ID,
+  SUPABASE_URL,
+  SUPABASE_KEY,
+} from "../utils/envVariables";
+
+import "attendee-to-attendee-widget/dist/index.css";
+
+const sbAuthProps = {
+  supabaseUrl: getEnvVariable(SUPABASE_URL),
+  supabaseKey: getEnvVariable(SUPABASE_KEY),
+};
+
+export const AttendeesWidget = ({ user, event }) => {
+  //Deep linking support
+  const chatRef = useRef();
+  const [dlAction, setDlAction] = useState(null);
+
+  useEffect(() => {
+    const dlGotoRoomParam = getUrlParam("gotoroom");
+    const dlStarSupportChatParam = getUrlParam("startsupportchat");
+    const dlStarDirectChatParam = getUrlParam("startdirectchat");
+
+    console.log("dlGotoRoomParam", dlGotoRoomParam);
+    console.log("dlStarSupportChatParam", dlStarSupportChatParam);
+    console.log("dlStarDirectChatParam", dlStarDirectChatParam);
+
+    //setDlAction(null);
+
+    if (event) {
+      //Widget will create this activity room or add members to it
+      chatProps.activity = {
+        id: event.id,
+        name: event.title,
+        imgUrl: event.image,
+      };
+    }
+  }, []);
+
+  const { email, first_name, last_name, bio } = user.userProfile;
+  const {
+    picture,
+    company,
+    job_title,
+    sub,
+    github_user,
+    linked_in_profile,
+    twitter_name,
+    wechat_user,
+  } = user.idpProfile;
+
+  const chatProps = {
+    streamApiKey: getEnvVariable(STREAM_IO_API_KEY),
+    apiBaseUrl: getEnvVariable(IDP_BASE_URL),
+    chatApiBaseUrl: getEnvVariable(CHAT_API_BASE_URL),
+    forumSlug: getEnvVariable(STREAM_IO_SSO_SLUG),
+    onAuthError: (err, res) => console.log(err),
+    openDir: "left",
+    activity: null,
+    getAccessToken: async () => {
+      const accessToken = await getAccessToken();
+      console.log("AttendeesList->getAccessToken", accessToken);
+      return accessToken;
+    },
+  };
+
+  if (event) {
+    //Widget will create this activity room or add members to it
+    chatProps.activity = {
+      id: event.id,
+      name: event.title,
+      imgUrl: event.image,
+    };
+  }
+
+  const widgetProps = {
+    user: {
+      id: sub.toString(),
+      idpUserId: sub.toString(),
+      fullName: `${first_name} ${last_name}`,
+      email: email,
+      groups: ["admins"],
+      company: company,
+      title: job_title,
+      picUrl: picture,
+      socialInfo: {
+        githubUser: github_user,
+        linkedInProfile: linked_in_profile,
+        twitterName: twitter_name,
+        wechatUser: wechat_user,
+      },
+      badgeFeatures: ["feat 1", "feat 2"], //attendee.ticket.badge.features
+      bio: bio,
+      canChat: true, //based on badge features
+    },
+    summitId: parseInt(getEnvVariable(SUMMIT_ID)),
+    height: 400,
+    ...chatProps,
+    ...sbAuthProps,
+  };
+
+  return (
+    <div style={{ margin: "20px auto", position: "relative" }}>
+      <AttendeeToAttendeeContainer {...widgetProps} ref={chatRef} />
+    </div>
+  );
+};
+
+const AccessTracker = ({ user, isLoggedUser }) => {
+  const trackerRef = useRef();
+
+  const { email, first_name, last_name, bio } = user.userProfile;
+  const {
+    picture,
+    company,
+    job_title,
+    sub,
+    github_user,
+    linked_in_profile,
+    twitter_name,
+    wechat_user,
+  } = user.idpProfile;
+  const widgetProps = {
+    user: {
+      fullName: `${first_name} ${last_name}`,
+      email: email,
+      company: company,
+      title: job_title,
+      picUrl: picture,
+      idpUserId: sub,
+      socialInfo: {
+        githubUser: github_user,
+        linkedInProfile: linked_in_profile,
+        twitterName: twitter_name,
+        wechatUser: wechat_user,
+      },
+      badgeFeatures: ["feat 1", "feat 2"], //attendee.ticket.badge.features
+      bio: bio,
+    },
+    summitId: parseInt(getEnvVariable(SUMMIT_ID)),
+    ...sbAuthProps,
+  };
+
+  useEffect(() => {
+    if (!isLoggedUser) {
+      trackerRef.current.signOut();
+    }
+  }, [isLoggedUser]);
+
+  return <Tracker {...widgetProps} ref={trackerRef} />;
+};
+
+const mapStateToProps = ({ loggedUserState, userState }) => ({
+  isLoggedUser: loggedUserState.isLoggedUser,
+  user: userState,
+});
+
+export default connect(mapStateToProps)(AccessTracker);
+>>>>>>> 364293d2456c62294a846f6fe6a3ec0b69761afe
