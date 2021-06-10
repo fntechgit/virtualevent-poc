@@ -44,7 +44,7 @@ const RegistrationLiteComponent = ({ userProfile, showPopup, location }) => {
         profileData: userProfile,
         marketingData: MarketingData.colors,
         loginOptions: [
-            { button_color: '#082238', provider_label: 'FNid', provider_param: 'fnid' },
+            { button_color: '#082238', provider_label: 'FNid' },
             { button_color: '#0370C5', provider_label: 'Facebook', provider_param: 'facebook' }
         ],
         authUser: (provider) => onClickLogin(provider),
