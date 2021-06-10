@@ -1,142 +1,8 @@
-<<<<<<< HEAD
-import React, { useEffect, useRef } from "react";
-import { connect } from "react-redux";
-// import SummitData from "../content/summit.json";
-// import EventsData from "../content/events.json";
-import { AttendeeToAttendeeContainer, Tracker } from "attendee-to-attendee-widget";
-import {
-  getEnvVariable,
-  CHAT_API_BASE_URL,
-  IDP_BASE_URL,
-  STREAM_IO_API_KEY,
-  STREAM_IO_SSO_SLUG,
-  SUMMIT_ID,
-  SUPABASE_URL,
-  SUPABASE_KEY,
-} from "../utils/envVariables";
-import withAccessToken from "../utils/withAccessToken";
-
-import "attendee-to-attendee-widget/dist/index.css";
-
-const sbAuthProps = {
-  supabaseUrl: getEnvVariable(SUPABASE_URL),
-  supabaseKey: getEnvVariable(SUPABASE_KEY),
-};
-
-const chatProps = {
-  streamApiKey: getEnvVariable(STREAM_IO_API_KEY),
-  apiBaseUrl: getEnvVariable(IDP_BASE_URL),
-  chatApiBaseUrl: getEnvVariable(CHAT_API_BASE_URL),
-  forumSlug: getEnvVariable(STREAM_IO_SSO_SLUG),
-  onAuthError: (err, res) => console.log(err),
-  openDir: "left",
-  accessToken: null,
-  activityName: "dev-keynote",
-};
-
-export const AttendeesWidget = withAccessToken(({ user, accessToken }) => {
-  //const [accessInfo, setAccessInfo] = useState({});
-  // const chatRef = useRef()
-
-  const { email, first_name, last_name, bio } = user.userProfile;
-  const { picture, company, job_title, sub, github_user, linked_in_profile, twitter_name, wechat_user } = user.idpProfile;
-
-  chatProps.accessToken = accessToken;
-
-  const widgetProps = {
-    user: {
-      id: sub.toString(),
-      idpUserId: sub.toString(),
-      fullName: `${first_name} ${last_name}`,
-      email: email,
-      company: company,
-      title: job_title,
-      picUrl: picture,
-      socialInfo: {
-        githubUser: github_user,
-        linkedInProfile: linked_in_profile,
-        twitterName: twitter_name,
-        wechatUser: wechat_user,
-      },
-      badgeFeatures: ["feat 1", "feat 2"], //attendee.ticket.badge.features
-      bio: bio,
-      canChat: true, //based on badge features
-    },
-    summitId: parseInt(getEnvVariable(SUMMIT_ID)),
-    height: 500,
-    ...chatProps,
-    ...sbAuthProps,
-  };
-
-  // console.log("SummitData", SummitData);
-  // console.log("EventsData", EventsData);
-
-  console.log("AttendeesList user", user);
-  // console.log("idpUserId", sub.toString());
-  console.log("AttendeesList accessToken", accessToken);
-
-  const getAccessToken = async () => {
-    return accessToken;
-  };
-
-  return (
-    <div style={{ margin: "20px auto", position: "relative" }}>
-      {/* {accessToken && <SimpleChat {...widgetProps} accessToken={accessToken} ref={chatRef} />} */}
-      <AttendeeToAttendeeContainer {...widgetProps} getAccessToken={getAccessToken} />
-    </div>
-  );
-});
-
-const AccessTracker = ({ user, isLoggedUser }) => {
-  const trackerRef = useRef();
-
-  const { email, first_name, last_name, bio } = user.userProfile;
-  const { picture, company, job_title, sub, github_user, linked_in_profile, twitter_name, wechat_user } = user.idpProfile;
-  const widgetProps = {
-    user: {
-      fullName: `${first_name} ${last_name}`,
-      email: email,
-      company: company,
-      title: job_title,
-      picUrl: picture,
-      idpUserId: sub,
-      socialInfo: {
-        githubUser: github_user,
-        linkedInProfile: linked_in_profile,
-        twitterName: twitter_name,
-        wechatUser: wechat_user,
-      },
-      badgeFeatures: ["feat 1", "feat 2"], //attendee.ticket.badge.features
-      bio: bio,
-    },
-    summitId: parseInt(getEnvVariable(SUMMIT_ID)),
-    ...sbAuthProps,
-  };
-
-  useEffect(() => {
-    if (!isLoggedUser) {
-      trackerRef.current.signOut();
-    }
-  }, [isLoggedUser]);
-
-  return <Tracker {...widgetProps} ref={trackerRef} />;
-};
-
-const mapStateToProps = ({ loggedUserState, userState }) => ({
-  isLoggedUser: loggedUserState.isLoggedUser,
-  user: userState,
-});
-
-export default connect(mapStateToProps)(AccessTracker);
-=======
 import React, { useEffect, useRef, useState } from "react";
 import { connect } from "react-redux";
 import { getUrlParam } from "../utils/fragmentParser";
 import { getAccessToken } from "openstack-uicore-foundation/lib/methods";
-import {
-  AttendeeToAttendeeContainer,
-  Tracker,
-} from "attendee-to-attendee-widget";
+import { AttendeeToAttendeeContainer, permissions, Tracker } from "attendee-to-attendee-widget";
 import {
   getEnvVariable,
   CHAT_API_BASE_URL,
@@ -155,43 +21,34 @@ const sbAuthProps = {
   supabaseKey: getEnvVariable(SUPABASE_KEY),
 };
 
+const adminGroups = ["administrators", "super-admins"];
+
 export const AttendeesWidget = ({ user, event }) => {
   //Deep linking support
-  const chatRef = useRef();
-  const [dlAction, setDlAction] = useState(null);
+  const sdcRef = useRef();
+  const shcRef = useRef();
+  const sqacRef = useRef();
+  const ocrRef = useRef();
 
   useEffect(() => {
-    const dlGotoRoomParam = getUrlParam("gotoroom");
-    const dlStarSupportChatParam = getUrlParam("startsupportchat");
-    const dlStarDirectChatParam = getUrlParam("startdirectchat");
+    const starHelpChatParam = getUrlParam("starthelpchat");
+    const starQAChatParam = getUrlParam("startqachat");
+    const starDirectChatParam = getUrlParam("startdirectchat");
+    const openChatRoomParam = getUrlParam("openchatroom");
 
-    console.log("dlGotoRoomParam", dlGotoRoomParam);
-    console.log("dlStarSupportChatParam", dlStarSupportChatParam);
-    console.log("dlStarDirectChatParam", dlStarDirectChatParam);
-
-    //setDlAction(null);
-
-    if (event) {
-      //Widget will create this activity room or add members to it
-      chatProps.activity = {
-        id: event.id,
-        name: event.title,
-        imgUrl: event.image,
-      };
+    if (starHelpChatParam) {
+      setTimeout(() => shcRef.current.startHelpChat(), 2000);
+    } else if (starQAChatParam) {
+      setTimeout(() => sqacRef.current.startQAChat(), 2000);
+    } else if (starDirectChatParam) {
+      setTimeout(() => sdcRef.current.startDirectChat(starDirectChatParam), 2000);
+    } else if (openChatRoomParam) {
+      setTimeout(() => ocrRef.current.openChatRoom(openChatRoomParam), 2000);
     }
   }, []);
 
-  const { email, first_name, last_name, bio } = user.userProfile;
-  const {
-    picture,
-    company,
-    job_title,
-    sub,
-    github_user,
-    linked_in_profile,
-    twitter_name,
-    wechat_user,
-  } = user.idpProfile;
+  const { email, first_name, last_name, bio, groups } = user.userProfile;
+  const { picture, company, job_title, sub, github_user, linked_in_profile, twitter_name, wechat_user } = user.idpProfile;
 
   const chatProps = {
     streamApiKey: getEnvVariable(STREAM_IO_API_KEY),
@@ -223,7 +80,6 @@ export const AttendeesWidget = ({ user, event }) => {
       idpUserId: sub.toString(),
       fullName: `${first_name} ${last_name}`,
       email: email,
-      groups: ["admins"],
       company: company,
       title: job_title,
       picUrl: picture,
@@ -233,9 +89,27 @@ export const AttendeesWidget = ({ user, event }) => {
         twitterName: twitter_name,
         wechatUser: wechat_user,
       },
-      badgeFeatures: ["feat 1", "feat 2"], //attendee.ticket.badge.features
+      badgeFeatures: [
+        {
+          title: "feat 1",
+          imgUrl: "https://www.instituteofexcellence.com/wp-content/uploads/check-mark-badge.png",
+        },
+        {
+          title: "feat 2",
+          imgUrl: "https://www.instituteofexcellence.com/wp-content/uploads/check-mark-badge.png",
+        },
+      ], //attendee.ticket.badge.features
       bio: bio,
-      canChat: true, //based on badge features
+      hasPermission: (permission) => {
+        switch (permission) {
+          case permissions.MANAGE_ROOMS:
+            return groups && groups.map((g) => g.code).filter((g) => adminGroups.includes(g)).length > 0;
+          case permissions.CHAT:
+            return true; //based on badge features
+          default:
+            return false;
+        }
+      },
     },
     summitId: parseInt(getEnvVariable(SUMMIT_ID)),
     height: 400,
@@ -245,7 +119,7 @@ export const AttendeesWidget = ({ user, event }) => {
 
   return (
     <div style={{ margin: "20px auto", position: "relative" }}>
-      <AttendeeToAttendeeContainer {...widgetProps} ref={chatRef} />
+      <AttendeeToAttendeeContainer {...widgetProps} ref={{ sdcRef, shcRef, sqacRef, ocrRef }} />
     </div>
   );
 };
@@ -254,16 +128,7 @@ const AccessTracker = ({ user, isLoggedUser }) => {
   const trackerRef = useRef();
 
   const { email, first_name, last_name, bio } = user.userProfile;
-  const {
-    picture,
-    company,
-    job_title,
-    sub,
-    github_user,
-    linked_in_profile,
-    twitter_name,
-    wechat_user,
-  } = user.idpProfile;
+  const { picture, company, job_title, sub, github_user, linked_in_profile, twitter_name, wechat_user } = user.idpProfile;
   const widgetProps = {
     user: {
       fullName: `${first_name} ${last_name}`,
@@ -278,7 +143,16 @@ const AccessTracker = ({ user, isLoggedUser }) => {
         twitterName: twitter_name,
         wechatUser: wechat_user,
       },
-      badgeFeatures: ["feat 1", "feat 2"], //attendee.ticket.badge.features
+      badgeFeatures: [
+        {
+          title: "feat 1",
+          imgUrl: "https://www.instituteofexcellence.com/wp-content/uploads/check-mark-badge.png",
+        },
+        {
+          title: "feat 2",
+          imgUrl: "https://www.instituteofexcellence.com/wp-content/uploads/check-mark-badge.png",
+        },
+      ], //attendee.ticket.badge.features
       bio: bio,
     },
     summitId: parseInt(getEnvVariable(SUMMIT_ID)),
@@ -300,4 +174,3 @@ const mapStateToProps = ({ loggedUserState, userState }) => ({
 });
 
 export default connect(mapStateToProps)(AccessTracker);
->>>>>>> 364293d2456c62294a846f6fe6a3ec0b69761afe
