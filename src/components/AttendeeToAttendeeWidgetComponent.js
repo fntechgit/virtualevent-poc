@@ -47,7 +47,7 @@ export const AttendeesWidget = ({ user, event }) => {
     }
   }, []);
 
-  const { groups } = user.userProfile;
+  const { email, groups } = user.userProfile;
   const { sub } = user.idpProfile;
 
   const chatProps = {
@@ -78,6 +78,7 @@ export const AttendeesWidget = ({ user, event }) => {
     user: {
       id: sub.toString(),
       idpUserId: sub.toString(),
+      email: email,
       hasPermission: (permission) => {
         switch (permission) {
           case permissions.MANAGE_ROOMS:
