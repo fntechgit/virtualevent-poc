@@ -19,9 +19,7 @@ import SponsorComponent from "../components/SponsorComponent";
 import NoTalkComponent from "../components/NoTalkComponent";
 import HeroComponent from "../components/HeroComponent";
 import ScheduleLiteComponent from "../components/ScheduleLiteComponent";
-import AccessTracker, {
-  AttendeesWidget,
-} from "../components/AttendeeToAttendeeWidgetComponent";
+import AccessTracker, { AttendeesWidget } from "../components/AttendeeToAttendeeWidgetComponent";
 import AttendanceTrackerComponent from "../components/AttendanceTrackerComponent";
 
 import { getEventById } from "../actions/event-actions";
@@ -74,14 +72,8 @@ export const EventPageTemplate = class extends React.Component {
     if (eventId !== nextProps.eventId) return true;
     if (event?.id !== nextProps.event?.id) return true;
     const currentPhase = eventsPhases.find((e) => e.id == eventId)?.phase;
-    const nextCurrentPhase = nextProps.eventsPhases.find(
-      (e) => e.id == eventId
-    )?.phase;
-    if (
-      currentPhase !== nextCurrentPhase &&
-      !(currentPhase === 0 && nextCurrentPhase === 1)
-    )
-      return true;
+    const nextCurrentPhase = nextProps.eventsPhases.find((e) => e.id == eventId)?.phase;
+    if (currentPhase !== nextCurrentPhase && !(currentPhase === 0 && nextCurrentPhase === 1)) return true;
     return false;
   }
 
@@ -90,14 +82,8 @@ export const EventPageTemplate = class extends React.Component {
     const { firstRender } = this.state;
     let { summit } = SummitObject;
     let currentEvent = eventsPhases.find((e) => e.id == eventId);
-    let eventStarted =
-      currentEvent && currentEvent.phase !== null ? currentEvent.phase : null;
-    let firstHalf =
-      currentEvent?.phase === 0
-        ? nowUtc < (event?.start_date + event?.end_date) / 2
-          ? true
-          : false
-        : null;
+    let eventStarted = currentEvent && currentEvent.phase !== null ? currentEvent.phase : null;
+    let firstHalf = currentEvent?.phase === 0 ? (nowUtc < (event?.start_date + event?.end_date) / 2 ? true : false) : null;
 
     if (!firstRender && !loading && !event) {
       return <HeroComponent title="Event not found" redirectTo="/a/schedule" />;
@@ -113,32 +99,18 @@ export const EventPageTemplate = class extends React.Component {
             <section
               className="section px-0 py-0"
               style={{
-                marginBottom:
-                  event.class_name !== "Presentation" ||
-                  eventStarted < PHASES.DURING ||
-                  !event.streaming_url
-                    ? "-3rem"
-                    : "",
+                marginBottom: event.class_name !== "Presentation" || eventStarted < PHASES.DURING || !event.streaming_url ? "-3rem" : "",
               }}
             >
               <div className="columns is-gapless">
                 {eventStarted >= PHASES.DURING && event.streaming_url ? (
                   <div className="column is-three-quarters px-0 py-0">
-                    <VideoComponent
-                      url={event.streaming_url}
-                      title={event.title}
-                      namespace={summit.name}
-                      firstHalf={firstHalf}
-                    />
+                    <VideoComponent url={event.streaming_url} title={event.title} namespace={summit.name} firstHalf={firstHalf} />
                     {event.meeting_url && <VideoBanner event={event} />}
                   </div>
                 ) : (
                   <div className="column is-three-quarters px-0 py-0 is-full-mobile">
-                    <NoTalkComponent
-                      eventStarted={eventStarted}
-                      event={event}
-                      summit={summit}
-                    />
+                    <NoTalkComponent eventStarted={eventStarted} event={event} summit={summit} />
                   </div>
                 )}
                 <div
@@ -148,13 +120,7 @@ export const EventPageTemplate = class extends React.Component {
                     borderBottom: "1px solid #d3d3d3",
                   }}
                 >
-                  <DisqusComponent
-                    hideMobile={true}
-                    disqusSSO={user.disqusSSO}
-                    event={event}
-                    summit={summit}
-                    title="Public Conversation"
-                  />
+                  <DisqusComponent hideMobile={true} disqusSSO={user.disqusSSO} event={event} summit={summit} title="Public Conversation" />
                 </div>
               </div>
             </section>
@@ -163,32 +129,17 @@ export const EventPageTemplate = class extends React.Component {
                 <div className="columns mx-0 my-0">
                   <div className="column is-three-quarters is-full-mobile">
                     <div className="px-5 py-5">
-                      <TalkComponent
-                        eventStarted={eventStarted}
-                        event={event}
-                        summit={summit}
-                      />
+                      <TalkComponent eventStarted={eventStarted} event={event} summit={summit} />
                     </div>
                     <div className="px-5 py-0">
                       <SponsorComponent page="event" />
                     </div>
                     <div className="is-hidden-tablet">
-                      <DisqusComponent
-                        hideMobile={false}
-                        disqusSSO={user.disqusSSO}
-                        event={event}
-                        summit={summit}
-                        title="Public Conversation"
-                      />
-                      ∆
+                      <DisqusComponent hideMobile={false} disqusSSO={user.disqusSSO} event={event} summit={summit} title="Public Conversation" />∆
                     </div>
                     {event.etherpad_link && (
                       <div className="column is-three-quarters">
-                        <Etherpad
-                          className="talk__etherpad"
-                          etherpad_link={event.etherpad_link}
-                          userName={user.userProfile.first_name}
-                        />
+                        <Etherpad className="talk__etherpad" etherpad_link={event.etherpad_link} userName={user.userProfile.first_name} />
                       </div>
                     )}
                     <ScheduleLiteComponent
@@ -200,11 +151,7 @@ export const EventPageTemplate = class extends React.Component {
                       showNav={false}
                       trackId={event.track ? event.track.id : null}
                       eventCount={3}
-                      title={
-                        event.track
-                          ? `Up Next on ${event.track.name}`
-                          : "Up Next"
-                      }
+                      title={event.track ? `Up Next on ${event.track.name}` : "Up Next"}
                     />
                   </div>
                   <div className="column px-0 py-0 is-one-quarter is-full-mobile">
@@ -225,26 +172,10 @@ export const EventPageTemplate = class extends React.Component {
   }
 };
 
-const EventPage = ({
-  location,
-  loading,
-  event,
-  eventId,
-  user,
-  eventsPhases,
-  nowUtc,
-  getEventById,
-  getDisqusSSO,
-}) => {
+const EventPage = ({ location, loading, event, eventId, user, eventsPhases, nowUtc, getEventById, getDisqusSSO }) => {
   return (
     <Layout location={location}>
-      {event && event.id && (
-        <AttendanceTrackerComponent
-          key={`att-tracker-${event.id}`}
-          sourceId={event.id}
-          sourceName="EVENT"
-        />
-      )}
+      {event && event.id && <AttendanceTrackerComponent key={`att-tracker-${event.id}`} sourceId={event.id} sourceName="EVENT" />}
       <EventPageTemplate
         event={event}
         loading={loading}

@@ -37,18 +37,18 @@ export const AttendeesWidget = ({ user, event }) => {
     const openChatRoomParam = getUrlParam("openchatroom");
 
     if (starHelpChatParam) {
-      setTimeout(() => shcRef.current.startHelpChat(), 2000);
+      shcRef.current.startHelpChat();
     } else if (starQAChatParam) {
-      setTimeout(() => sqacRef.current.startQAChat(), 2000);
+      sqacRef.current.startQAChat();
     } else if (starDirectChatParam) {
-      setTimeout(() => sdcRef.current.startDirectChat(starDirectChatParam), 2000);
+      sdcRef.current.startDirectChat(starDirectChatParam);
     } else if (openChatRoomParam) {
-      setTimeout(() => ocrRef.current.openChatRoom(openChatRoomParam), 2000);
+      ocrRef.current.openChatRoom(openChatRoomParam);
     }
   }, []);
 
-  const { email, first_name, last_name, bio, groups } = user.userProfile;
-  const { picture, company, job_title, sub, github_user, linked_in_profile, twitter_name, wechat_user } = user.idpProfile;
+  const { groups } = user.userProfile;
+  const { sub } = user.idpProfile;
 
   const chatProps = {
     streamApiKey: getEnvVariable(STREAM_IO_API_KEY),
@@ -78,28 +78,6 @@ export const AttendeesWidget = ({ user, event }) => {
     user: {
       id: sub.toString(),
       idpUserId: sub.toString(),
-      fullName: `${first_name} ${last_name}`,
-      email: email,
-      company: company,
-      title: job_title,
-      picUrl: picture,
-      socialInfo: {
-        githubUser: github_user,
-        linkedInProfile: linked_in_profile,
-        twitterName: twitter_name,
-        wechatUser: wechat_user,
-      },
-      badgeFeatures: [
-        {
-          title: "feat 1",
-          imgUrl: "https://www.instituteofexcellence.com/wp-content/uploads/check-mark-badge.png",
-        },
-        {
-          title: "feat 2",
-          imgUrl: "https://www.instituteofexcellence.com/wp-content/uploads/check-mark-badge.png",
-        },
-      ], //attendee.ticket.badge.features
-      bio: bio,
       hasPermission: (permission) => {
         switch (permission) {
           case permissions.MANAGE_ROOMS:
@@ -131,28 +109,28 @@ const AccessTracker = ({ user, isLoggedUser }) => {
   const { picture, company, job_title, sub, github_user, linked_in_profile, twitter_name, wechat_user } = user.idpProfile;
   const widgetProps = {
     user: {
+      idpUserId: sub,
       fullName: `${first_name} ${last_name}`,
       email: email,
       company: company,
       title: job_title,
       picUrl: picture,
-      idpUserId: sub,
       socialInfo: {
         githubUser: github_user,
         linkedInProfile: linked_in_profile,
         twitterName: twitter_name,
         wechatUser: wechat_user,
       },
-      badgeFeatures: [
-        {
-          title: "feat 1",
-          imgUrl: "https://www.instituteofexcellence.com/wp-content/uploads/check-mark-badge.png",
-        },
-        {
-          title: "feat 2",
-          imgUrl: "https://www.instituteofexcellence.com/wp-content/uploads/check-mark-badge.png",
-        },
-      ], //attendee.ticket.badge.features
+      // badgeFeatures: [
+      //   {
+      //     title: "Test badge feat 1",
+      //     imgUrl: "https://www.instituteofexcellence.com/wp-content/uploads/check-mark-badge.png",
+      //   },
+      //   {
+      //     title: "Test badge feat 1",
+      //     imgUrl: "https://www.instituteofexcellence.com/wp-content/uploads/check-mark-badge.png",
+      //   },
+      // ], //attendee.ticket.badge.features
       bio: bio,
     },
     summitId: parseInt(getEnvVariable(SUMMIT_ID)),
