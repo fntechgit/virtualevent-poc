@@ -111,7 +111,7 @@
   "devDependencies": {
     "@babel/core": "^7.10.4",
     "babel-preset-gatsby": "^0.12.1",
-    "devcert": "1.1.0",
+    "devcert": "1.1.2",
     "gatsby-plugin-webpack-speed-measure": "^0.1.1",
     "prettier": "^2.0.5"
   },
