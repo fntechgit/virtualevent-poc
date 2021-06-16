@@ -18,13 +18,17 @@ import { getUrlParam } from "../utils/fragmentParser";
 
 import { doLogin } from 'openstack-uicore-foundation/lib/methods'
 import { getEnvVariable, SUMMIT_API_BASE_URL } from '../utils/envVariables'
+import { requireExtraQuestions } from '../utils/userUtils'
 
 import styles from '../styles/lobby-hero.module.scss'
+import { getUserProfile } from "../actions/user-actions";
+import { getThirdPartyProviders } from "../actions/summit-actions";
 
-const RegistrationLiteComponent = ({ userProfile, showPopup, location }) => {
+const RegistrationLiteComponent = ({ userProfile, registrationProfile, showPopup, getThirdPartyProviders, thirdPartyProviders, location }) => {
 
     useEffect(() => {
         setIsActive(getUrlParam('registration'))
+        getThirdPartyProviders();
     }, [])
 
     const [isActive, setIsActive] = useState(showPopup);
@@ -41,16 +45,20 @@ const RegistrationLiteComponent = ({ userProfile, showPopup, location }) => {
     const widgetProps = {
         apiBaseUrl: getEnvVariable(SUMMIT_API_BASE_URL),
         summitData: SummitData.summit,
-        profileData: userProfile,
+        profileData: registrationProfile,
         marketingData: MarketingData.colors,
         loginOptions: [
             { button_color: '#082238', provider_label: 'FNid' },
             { button_color: '#0370C5', provider_label: 'Facebook', provider_param: 'facebook' }
         ],
+        requireExtraQuestions: userProfile?.summit_tickets?.length > 0 && requireExtraQuestions(userProfile),
         authUser: (provider) => onClickLogin(provider),
         getAccessToken: async () => await getAccessToken(),
         closeWidget: () => setIsActive(false),
-        goToExtraQuestions: () => navigate('/a/extra-questions'),
+        goToExtraQuestions: async () => {
+            await getUserProfile();
+            navigate('/a/extra-questions')
+        },
         goToEvent: () => navigate('/a/'),
     };
 
@@ -68,8 +76,10 @@ const RegistrationLiteComponent = ({ userProfile, showPopup, location }) => {
 }
 
 
-const mapStateToProps = ({ userState }) => ({
-    userProfile: userState.idpProfile
+const mapStateToProps = ({ userState, summitState }) => ({
+    registrationProfile: userState.idpProfile,
+    userProfile: userState.userProfile,
+    thirdPartyProviders: summitState.third_party_providers
 })
 
-export default connect(mapStateToProps, {})(RegistrationLiteComponent)
+export default connect(mapStateToProps, { getThirdPartyProviders })(RegistrationLiteComponent)

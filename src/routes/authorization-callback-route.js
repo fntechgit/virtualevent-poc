@@ -16,7 +16,7 @@ import URI from "urijs"
 import { Redirect, navigate } from '@reach/router'
 import { connect } from 'react-redux';
 import { AbstractAuthorizationCallbackRoute } from "openstack-uicore-foundation/lib/components";
-import { getIDPProfile } from '../actions/user-actions'
+import { getIDPProfile, getUserProfile } from '../actions/user-actions'
 
 import { getEnvVariable, IDP_BASE_URL, OAUTH2_CLIENT_ID } from '../utils/envVariables'
 
@@ -28,6 +28,7 @@ class AuthorizationCallbackRoute extends AbstractAuthorizationCallbackRoute {
 
   _callback(backUrl) {
     this.props.getIDPProfile();
+    this.props.getUserProfile();
     navigate(URI.decode(backUrl));
   }
   
@@ -38,4 +39,4 @@ class AuthorizationCallbackRoute extends AbstractAuthorizationCallbackRoute {
   }
 }
 
-export default connect(null, { getIDPProfile })(AuthorizationCallbackRoute)
+export default connect(null, { getIDPProfile, getUserProfile })(AuthorizationCallbackRoute)

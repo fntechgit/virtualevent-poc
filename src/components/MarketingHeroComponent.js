@@ -13,6 +13,8 @@ import styles from '../styles/lobby-hero.module.scss'
 
 import { getEnvVariable, AUTHORIZED_DEFAULT_PATH, REGISTRATION_BASE_URL } from '../utils/envVariables'
 
+import { requireExtraQuestions } from '../utils/userUtils';
+
 import Link from '../components/Link'
 
 class MarketingHeroComponent extends React.Component {
@@ -62,7 +64,7 @@ class MarketingHeroComponent extends React.Component {
                   {summit_phase >= PHASES.DURING && isLoggedUser ?
                     <React.Fragment>
                       {MarketingSite.heroBanner.buttons.registerButton.display &&
-                        !userProfile?.summit_tickets?.length > 0 &&
+                        (!userProfile?.summit_tickets?.length > 0 || requireExtraQuestions(userProfile)) &&
                         <a className={styles.link}>
                           <RegistrationLiteComponent location={this.props.location} />
                         </a>
@@ -77,6 +79,7 @@ class MarketingHeroComponent extends React.Component {
                     :
                     <React.Fragment>
                       {MarketingSite.heroBanner.buttons.registerButton.display &&
+                        !userProfile?.summit_tickets?.length > 0 &&
                         <span className={styles.link}>
                           <RegistrationLiteComponent location={this.props.location} />
                         </span>

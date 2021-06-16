@@ -10,6 +10,7 @@ import SummitObject from '../content/summit.json';
 import { customErrorHandler } from '../utils/customErrorHandler';
 
 export const GET_SUMMIT_DATA = 'GET_SUMMIT_DATA';
+export const GET_THIRD_PARTY_PROVIDERS = 'GET_THIRD_PARTY_PROVIDERS';
 export const SUMMIT_PHASE_AFTER = 'SUMMIT_PHASE_AFTER'
 export const SUMMIT_PHASE_DURING = 'SUMMIT_PHASE_DURING'
 export const SUMMIT_PHASE_BEFORE = 'SUMMIT_PHASE_BEFORE'
@@ -28,6 +29,23 @@ export const getSummitData = () => (dispatch) => {
     customErrorHandler
   )({})(dispatch).then(() => {
     dispatch(stopLoading());
+  }).catch(e => {
+    dispatch(stopLoading());
+    return (e);
+  });
+}
+
+export const getThirdPartyProviders = () => (dispatch) => {
+  dispatch(startLoading());
+
+  return getRequest(
+    null,
+    createAction(GET_THIRD_PARTY_PROVIDERS),
+    `${window.SUMMIT_API_BASE_URL}/oauth2/.well-known/openid-configuration`,
+    customErrorHandler
+  )({})(dispatch).then(payload => {    
+    dispatch(stopLoading());
+    return (payload)
   }).catch(e => {
     dispatch(stopLoading());
     return (e);
