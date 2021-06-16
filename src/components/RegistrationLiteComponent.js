@@ -42,15 +42,43 @@ const RegistrationLiteComponent = ({ userProfile, registrationProfile, showPopup
         doLogin(getBackURL(), provider);
     }
 
+    const formatThirdPartyProviders = (providers_array) => {
+        const providers = [
+            { button_color: '#082238', provider_label: 'FNid' },
+        ]
+        providers_array.map(p => {
+            switch (p) {
+                case 'facebook': {
+                    const provider = { button_color: '#0370C5', provider_label: 'Facebook', provider_param: 'facebook' };
+                    providers.push(provider);
+                    break;
+                }
+                case 'google': {
+                    const provider = { button_color: '#DD4437', provider_label: 'Google', provider_param: 'google' };
+                    providers.push(provider);
+                    break;
+                }
+                case 'apple': {
+                    const provider = { button_color: '#000000', provider_label: 'Apple ID', provider_param: 'apple' };
+                    providers.push(provider);
+                    break;
+                }
+                case 'microsoft': {
+                    const provider = { button_color: '#2272E7', provider_label: 'Microsoft', provider_param: 'microsoft' };
+                    providers.push(provider);
+                    break;
+                }
+            }
+        })
+        return providers;
+    }
+
     const widgetProps = {
         apiBaseUrl: getEnvVariable(SUMMIT_API_BASE_URL),
         summitData: SummitData.summit,
         profileData: registrationProfile,
         marketingData: MarketingData.colors,
-        loginOptions: [
-            { button_color: '#082238', provider_label: 'FNid' },
-            { button_color: '#0370C5', provider_label: 'Facebook', provider_param: 'facebook' }
-        ],
+        loginOptions: formatThirdPartyProviders(thirdPartyProviders),
         requireExtraQuestions: userProfile?.summit_tickets?.length > 0 && requireExtraQuestions(userProfile),
         authUser: (provider) => onClickLogin(provider),
         getAccessToken: async () => await getAccessToken(),
