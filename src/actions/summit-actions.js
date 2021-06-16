@@ -41,9 +41,9 @@ export const getThirdPartyProviders = () => (dispatch) => {
   return getRequest(
     null,
     createAction(GET_THIRD_PARTY_PROVIDERS),
-    `${window.SUMMIT_API_BASE_URL}/oauth2/.well-known/openid-configuration`,
+    `${window.IDP_BASE_URL}/oauth2/.well-known/openid-configuration`,
     customErrorHandler
-  )({})(dispatch).then(payload => {    
+  )({})(dispatch).then(payload => {
     dispatch(stopLoading());
     return (payload)
   }).catch(e => {
