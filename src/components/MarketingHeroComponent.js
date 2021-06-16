@@ -16,9 +16,15 @@ import Link from '../components/Link'
 class MarketingHeroComponent extends React.Component {
 
   getBackURL = () => {
-    let { location } = this.props;    
+    let { location } = this.props;  
+    
+    console.log('deeplinking', location.hash);
+    
     let defaultLocation = getEnvVariable(AUTHORIZED_DEFAULT_PATH) ? getEnvVariable(AUTHORIZED_DEFAULT_PATH) : '/a/';
     let backUrl = location.state?.backUrl ? location.state.backUrl : defaultLocation;    
+
+    if (location.hash) backUrl += location.hash
+
     return URI.encode(backUrl);    
   }
 
