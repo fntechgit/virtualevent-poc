@@ -23,7 +23,7 @@ const sbAuthProps = {
 
 const adminGroups = ["administrators", "super-admins"];
 
-export const AttendeesWidget = ({ user, event }) => {
+export const AttendeesWidget = ({ user, event, location }) => {
   //Deep linking support
   const sdcRef = useRef();
   const shcRef = useRef();
