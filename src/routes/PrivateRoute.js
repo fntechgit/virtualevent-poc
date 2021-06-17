@@ -37,9 +37,9 @@ const PrivateRoute = ({ component: Component, isLoggedIn, location, eventId, use
   }, [userProfile, hasTicket, isAuthorized]);
 
   if (!isLoggedIn) {
-    navigate('/', {
+    navigate('/' , {
       state: {
-        backUrl: `${location.pathname}`
+        backUrl: `${location.pathname}${location.hash}`
       }
     })
     return null
