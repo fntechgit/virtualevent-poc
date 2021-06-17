@@ -18,7 +18,6 @@ import { getUrlParam } from "../utils/fragmentParser";
 
 import { doLogin } from 'openstack-uicore-foundation/lib/methods'
 import { getEnvVariable, SUMMIT_API_BASE_URL } from '../utils/envVariables'
-import { requireExtraQuestions } from '../utils/userUtils'
 
 import styles from '../styles/lobby-hero.module.scss'
 import { getUserProfile } from "../actions/user-actions";
@@ -64,6 +63,11 @@ const RegistrationLiteComponent = ({ userProfile, registrationProfile, showPopup
                         providers.push(provider);
                         break;
                     }
+                    case 'linkedin': {
+                        const provider = { button_color: '#3FA2F7', provider_label: 'LinkedIn', provider_param: p };
+                        providers.push(provider);
+                        break;
+                    }                    
                     case 'microsoft': {
                         const provider = { button_color: '#2272E7', provider_label: 'Microsoft', provider_param: p };
                         providers.push(provider);
@@ -81,7 +85,6 @@ const RegistrationLiteComponent = ({ userProfile, registrationProfile, showPopup
         profileData: registrationProfile,
         marketingData: MarketingData.colors,
         loginOptions: formatThirdPartyProviders(thirdPartyProviders),
-        requireExtraQuestions: userProfile?.summit_tickets?.length > 0 && requireExtraQuestions(userProfile),
         authUser: (provider) => onClickLogin(provider),
         getAccessToken: async () => await getAccessToken(),
         closeWidget: () => setIsActive(false),

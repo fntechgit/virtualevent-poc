@@ -270,6 +270,7 @@ export const saveExtraQuestions = (extra_questions) => async (dispatch, getState
     customErrorHandler
   )(params)(dispatch).then(() => {
     Swal.fire('Success', "Extra questions saved successfully", "success");
+    dispatch(getUserProfile());
     navigate('/')
   }
   ).catch(e => {

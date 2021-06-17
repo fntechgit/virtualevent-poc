@@ -7,6 +7,7 @@ import { PHASES } from '../utils/phasesUtils'
 import { getUserProfile } from "../actions/user-actions";
 import { checkEvents } from "../actions/event-actions";
 import HeroComponent from '../components/HeroComponent'
+import { requireExtraQuestions } from '../utils/userUtils'
 
 const PrivateRoute = ({ component: Component, isLoggedIn, location, eventId, user: { loading, userProfile, hasTicket, isAuthorized }, summit_phase, getUserProfile, checkEvents, ...rest }) => {
 
@@ -61,6 +62,20 @@ const PrivateRoute = ({ component: Component, isLoggedIn, location, eventId, use
       }
     })
     return null
+  }
+
+
+  if (hasTicket === true && isAuthorized === false && requireExtraQuestions(userProfile) && location.pathname === "/a/extra-questions") {
+    return (<Component location={location} eventId={eventId} {...rest} />);
+  }
+
+  if (hasTicket === true && isAuthorized === false && requireExtraQuestions(userProfile) && location.pathname !== "/a/extra-questions") {
+    return (
+      <HeroComponent
+        title="You need to complete some extra questions before entering the event"
+        redirectTo="/a/extra-questions"
+      />
+    );
   }
 
   if (isAuthorized === false && summit_phase === PHASES.BEFORE) {
