@@ -16,26 +16,26 @@ import { customErrorHandler, customBadgeHandler } from '../utils/customErrorHand
 import { isAuthorizedUser } from '../utils/authorizedGroups';
 import { navigate } from 'gatsby-link';
 
-export const GET_DISQUS_SSO            = 'GET_DISQUS_SSO';
-export const GET_ROCKETCHAT_SSO        = 'GET_ROCKETCHAT_SSO';
-export const GET_USER_PROFILE          = 'GET_USER_PROFILE';
-export const REQUEST_USER_PROFILE      = 'REQUEST_USER_PROFILE';
-export const START_LOADING_PROFILE     = 'START_LOADING_PROFILE';
-export const STOP_LOADING_PROFILE      = 'STOP_LOADING_PROFILE';
-export const UPDATE_PASSWORD           = 'UPDATE_PASSWORD';
-export const SET_AUTHORIZED_USER       = 'SET_AUTHORIZED_USER';
-export const SET_USER_TICKET           = 'SET_USER_TICKET';
-export const UPDATE_PROFILE_PIC        = 'UPDATE_PROFILE_PIC';
-export const UPDATE_EXTRA_QUESTIONS    = 'UPDATE_EXTRA_QUESTIONS';
+export const GET_DISQUS_SSO = 'GET_DISQUS_SSO';
+export const GET_ROCKETCHAT_SSO = 'GET_ROCKETCHAT_SSO';
+export const GET_USER_PROFILE = 'GET_USER_PROFILE';
+export const REQUEST_USER_PROFILE = 'REQUEST_USER_PROFILE';
+export const START_LOADING_PROFILE = 'START_LOADING_PROFILE';
+export const STOP_LOADING_PROFILE = 'STOP_LOADING_PROFILE';
+export const UPDATE_PASSWORD = 'UPDATE_PASSWORD';
+export const SET_AUTHORIZED_USER = 'SET_AUTHORIZED_USER';
+export const SET_USER_TICKET = 'SET_USER_TICKET';
+export const UPDATE_PROFILE_PIC = 'UPDATE_PROFILE_PIC';
+export const UPDATE_EXTRA_QUESTIONS = 'UPDATE_EXTRA_QUESTIONS';
 export const START_LOADING_IDP_PROFILE = 'START_LOADING_IDP_PROFILE';
-export const STOP_LOADING_IDP_PROFILE  = 'STOP_LOADING_IDP_PROFILE';
-export const GET_IDP_PROFILE           = 'GET_IDP_PROFILE';
-export const UPDATE_IDP_PROFILE        = 'UPDATE_IDP_PROFILE';
-export const SCAN_BADGE                = 'SCAN_BADGE';
-export const SCAN_BADGE_SUCCESS        = 'SCAN_BADGE_SUCCESS';
-export const SCAN_BADGE_ERROR          = 'SCAN_BADGE_ERROR';
-export const ADD_TO_SCHEDULE           = 'ADD_TO_SCHEDULE';
-export const REMOVE_FROM_SCHEDULE      = 'REMOVE_FROM_SCHEDULE';
+export const STOP_LOADING_IDP_PROFILE = 'STOP_LOADING_IDP_PROFILE';
+export const GET_IDP_PROFILE = 'GET_IDP_PROFILE';
+export const UPDATE_IDP_PROFILE = 'UPDATE_IDP_PROFILE';
+export const SCAN_BADGE = 'SCAN_BADGE';
+export const SCAN_BADGE_SUCCESS = 'SCAN_BADGE_SUCCESS';
+export const SCAN_BADGE_ERROR = 'SCAN_BADGE_ERROR';
+export const ADD_TO_SCHEDULE = 'ADD_TO_SCHEDULE';
+export const REMOVE_FROM_SCHEDULE = 'REMOVE_FROM_SCHEDULE';
 
 export const getDisqusSSO = () => async (dispatch) => {
 
@@ -244,13 +244,17 @@ export const saveExtraQuestions = (extra_questions) => async (dispatch, getState
 
   const { owner } = summit_tickets[0];
 
+  const extraQuestionsAnswers = extra_questions.map(q => {
+    return { question_id: q.id, answer: `${q.value}` }
+  })
+
   let normalizedEntity = {
     attendee_email: owner.email,
     attendee_first_name: owner.first_name,
     attendee_last_name: owner.last_name,
     attendee_company: owner.company,
     disclaimer_accepted: owner.disclaimer_accepted,
-    extra_questions
+    extra_questions: extraQuestionsAnswers
   };
 
   const accessToken = await getAccessToken();
@@ -260,7 +264,7 @@ export const saveExtraQuestions = (extra_questions) => async (dispatch, getState
   let params = {
     access_token: accessToken,
     expand: 'owner, owner.extra_questions'
-  };  
+  };
 
   return putRequest(
     null,
