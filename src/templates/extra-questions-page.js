@@ -21,8 +21,12 @@ export const ExtraQuestionsPageTemplate = ({ user, loading, saveExtraQuestions }
 
     useState(() => {
         const userAnswers = user.summit_tickets[0].owner.extra_questions;
-        extraQuestions.map(q => {
-            const newAnswer = { name: q.name, id: q.id, value: '' };
+        extraQuestions.map(question => {
+            const userAnswer = userAnswers.filter(a => a.question_id === question.id);
+            let newAnswer = { name: question.name, id: question.id, value: '' };
+            if (userAnswer.length > 0) {
+                newAnswer = { ...newAnswer, value: userAnswer[0].value };
+            }
             setAnswers(answers => [...answers, newAnswer])
         });
 
@@ -42,8 +46,8 @@ export const ExtraQuestionsPageTemplate = ({ user, loading, saveExtraQuestions }
         let newAnswer = answers.find(a => a.id === parseInt(id));
         newAnswer.value = value;
 
-        setAnswers(answers => [...answers.filter(a => a.id !== parseInt(id)), newAnswer]);        
-    }    
+        setAnswers(answers => [...answers.filter(a => a.id !== parseInt(id)), newAnswer]);
+    }
 
     const getAnswer = (question) => answers.find(a => a.id === question.id).value;
 
@@ -94,7 +98,7 @@ export const ExtraQuestionsPageTemplate = ({ user, loading, saveExtraQuestions }
 
                 );
             case 'ComboBox':
-                questionValues = questionValues.map(val => ({...val, value: val.id}));
+                questionValues = questionValues.map(val => ({ ...val, value: val.id }));
                 return (
                     <div key={question.id} className={`${styles.questionWrapper} columns`}>
                         <div className="column is-one-third">{question.label} <b>{question.mandatory ? '*' : ''}</b></div>
@@ -109,7 +113,7 @@ export const ExtraQuestionsPageTemplate = ({ user, loading, saveExtraQuestions }
                     </div>
                 );
             case 'CheckBoxList':
-                questionValues = questionValues.map(val => ({...val, value: val.id}));
+                questionValues = questionValues.map(val => ({ ...val, value: val.id }));
                 const answerValue = getAnswer(question) ? getAnswer(question).split(',').map(ansVal => parseInt(ansVal)) : [];
                 return (
                     <div key={question.id} className={`${styles.questionWrapper} columns`}>
@@ -125,7 +129,7 @@ export const ExtraQuestionsPageTemplate = ({ user, loading, saveExtraQuestions }
                     </div>
                 );
             case 'RadioButtonList':
-                questionValues = questionValues.map(val => ({...val, value: val.id}));
+                questionValues = questionValues.map(val => ({ ...val, value: val.id }));
                 return (
                     <div key={question.id} className={`${styles.questionWrapper} columns`}>
                         <div className="column is-one-third">{question.label} <b>{question.mandatory ? '*' : ''}</b></div>
@@ -156,7 +160,7 @@ export const ExtraQuestionsPageTemplate = ({ user, loading, saveExtraQuestions }
                             return getInput(question)
                         })}
                     </div>
-                    <button className={`${styles.buttonSave} button is-large`} onClick={() => saveExtraQuestions(extraQuestions)}>
+                    <button className={`${styles.buttonSave} button is-large`} onClick={() => saveExtraQuestions(answers)}>
                         Save and Continue
                     </button>
                 </div>
