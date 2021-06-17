@@ -46,30 +46,32 @@ const RegistrationLiteComponent = ({ userProfile, registrationProfile, showPopup
         const providers = [
             { button_color: '#082238', provider_label: 'FNid' },
         ]
-        providers_array.map(p => {
-            switch (p) {
-                case 'facebook': {
-                    const provider = { button_color: '#0370C5', provider_label: 'Facebook', provider_param: 'facebook' };
-                    providers.push(provider);
-                    break;
+        if (providers_array?.length > 0) {
+            providers_array.map(p => {
+                switch (p) {
+                    case 'facebook': {
+                        const provider = { button_color: '#0370C5', provider_label: 'Facebook', provider_param: p };
+                        providers.push(provider);
+                        break;
+                    }
+                    case 'google': {
+                        const provider = { button_color: '#DD4437', provider_label: 'Google', provider_param: p };
+                        providers.push(provider);
+                        break;
+                    }
+                    case 'apple': {
+                        const provider = { button_color: '#000000', provider_label: 'Apple ID', provider_param: p };
+                        providers.push(provider);
+                        break;
+                    }
+                    case 'microsoft': {
+                        const provider = { button_color: '#2272E7', provider_label: 'Microsoft', provider_param: p };
+                        providers.push(provider);
+                        break;
+                    }
                 }
-                case 'google': {
-                    const provider = { button_color: '#DD4437', provider_label: 'Google', provider_param: 'google' };
-                    providers.push(provider);
-                    break;
-                }
-                case 'apple': {
-                    const provider = { button_color: '#000000', provider_label: 'Apple ID', provider_param: 'apple' };
-                    providers.push(provider);
-                    break;
-                }
-                case 'microsoft': {
-                    const provider = { button_color: '#2272E7', provider_label: 'Microsoft', provider_param: 'microsoft' };
-                    providers.push(provider);
-                    break;
-                }
-            }
-        })
+            })
+        }
         return providers;
     }
 
