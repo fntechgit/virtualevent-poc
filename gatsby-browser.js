@@ -20,6 +20,7 @@ window.STREAM_IO_SSO_SLUG = process.env.GATSBY_STREAM_IO_SSO_SLUG;
 window.MUX_ENV_KEY = process.env.GATSBY_MUX_ENV_KEY;
 window.SUPABASE_URL = process.env.GATSBY_SUPABASE_URL;
 window.SUPABASE_KEY = process.env.GATSBY_SUPABASE_KEY;
+window.CHAT_API_BASE_URL = process.env.GATSBY_CHAT_API_BASE_URL;
 
 
 export const onClientEntry = () => {

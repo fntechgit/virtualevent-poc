@@ -50,6 +50,9 @@ export const AttendeesWidget = ({ user, event, location }) => {
   const { email, groups } = user.userProfile;
   const { sub } = user.idpProfile;
 
+  console.log('IDP_BASE_URL', getEnvVariable(IDP_BASE_URL));
+  console.log('CHAT_API_BASE_URL', getEnvVariable(CHAT_API_BASE_URL));
+
   const chatProps = {
     streamApiKey: getEnvVariable(STREAM_IO_API_KEY),
     apiBaseUrl: getEnvVariable(IDP_BASE_URL),
