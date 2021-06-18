@@ -50,16 +50,6 @@ const PrivateRoute = ({ component: Component, isLoggedIn, location, eventId, use
     )
   }
 
-  if (isAuthorized === false && hasTicket === false) {
-    navigate('/authz/ticket', {
-      state: {
-        error: 'no-ticket'
-      }
-    })
-    return null
-  }
-
-
   if (hasTicket === true && isAuthorized === false && requireExtraQuestions(userProfile) && location.pathname === "/a/extra-questions") {
     return (<Component location={location} eventId={eventId} {...rest} />);
   }
@@ -71,6 +61,15 @@ const PrivateRoute = ({ component: Component, isLoggedIn, location, eventId, use
         redirectTo="/a/extra-questions"
       />
     );
+  }
+
+  if (isAuthorized === false && hasTicket === false) {
+    navigate('/authz/ticket', {
+      state: {
+        error: 'no-ticket'
+      }
+    })
+    return null
   }
 
   if (isAuthorized === false && summit_phase === PHASES.BEFORE) {
