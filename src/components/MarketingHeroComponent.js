@@ -11,9 +11,7 @@ import MarketingSite from '../content/marketing-site.json'
 import { PHASES } from '../utils/phasesUtils';
 import styles from '../styles/lobby-hero.module.scss'
 
-import { getEnvVariable, AUTHORIZED_DEFAULT_PATH, REGISTRATION_BASE_URL } from '../utils/envVariables'
-
-import { requireExtraQuestions } from '../utils/userUtils';
+import { getEnvVariable, AUTHORIZED_DEFAULT_PATH } from '../utils/envVariables'
 
 import Link from '../components/Link'
 
