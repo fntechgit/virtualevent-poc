@@ -67,7 +67,7 @@ const RegistrationLiteComponent = ({ userProfile, registrationProfile, showPopup
                         const provider = { button_color: '#3FA2F7', provider_label: 'LinkedIn', provider_param: p };
                         providers.push(provider);
                         break;
-                    }                    
+                    }
                     case 'microsoft': {
                         const provider = { button_color: '#2272E7', provider_label: 'Microsoft', provider_param: p };
                         providers.push(provider);
