@@ -16,11 +16,14 @@ import styles from '../styles/extra-questions.module.scss'
 export const ExtraQuestionsPageTemplate = ({ user, loading, saveExtraQuestions }) => {
 
     const [answers, setAnswers] = useState([]);
+    const [disclaimer, setDisclaimer] = useState();
 
     const extraQuestions = SummitObject.summit.order_extra_questions.sort((a, b) => (a.order > b.order) ? 1 : -1);
 
     useState(() => {
         const userAnswers = user.summit_tickets[0].owner.extra_questions;
+        const userDisclaimer = user.summit_tickets[0].owner.disclaimer_accepted;        
+        setDisclaimer(userDisclaimer);        
         extraQuestions.map(question => {
             const userAnswer = userAnswers.filter(a => a.question_id === question.id);
             let newAnswer = { name: question.name, id: question.id, value: '' };
@@ -31,6 +34,21 @@ export const ExtraQuestionsPageTemplate = ({ user, loading, saveExtraQuestions }
         });
 
     }, [])
+
+    const mandatoryQuestions = () => {
+        const mandatoryQuestions = extraQuestions.filter(question => question.mandatory === true);        
+        const mandatoryAnswers = mandatoryQuestions.every(question => {
+            const answer = answers.find(a => a.id === question.id);            
+            return answer.value;
+        });
+        if(SummitObject.summit.registration_disclaimer_mandatory){
+            return disclaimer && mandatoryAnswers;
+        } else {
+            return mandatoryAnswers;
+        }
+    }    
+
+    const handleDisclaimer = () => setDisclaimer(!disclaimer);
 
     const handleChange = (ev) => {
         let { value, id } = ev.target;
@@ -160,7 +178,16 @@ export const ExtraQuestionsPageTemplate = ({ user, loading, saveExtraQuestions }
                             return getInput(question)
                         })}
                     </div>
-                    <button className={`${styles.buttonSave} button is-large`} onClick={() => saveExtraQuestions(answers)}>
+                    <div className={`columns ${styles.disclaimer}`}>
+                        <div className="column is-1">
+                            <input type="checkbox" checked={disclaimer} onChange={handleDisclaimer}/>
+                            <b>{SummitObject.summit.registration_disclaimer_mandatory ? '*' : ''}</b>
+                        </div>
+                        <div className="column is-11">
+                            <span dangerouslySetInnerHTML={{ __html: SummitObject.summit.registration_disclaimer_content }} />
+                        </div>
+                    </div>
+                    <button className={`${styles.buttonSave} button is-large`} disabled={!mandatoryQuestions()} onClick={() => saveExtraQuestions(answers, disclaimer)}>
                         Save and Continue
                     </button>
                 </div>
