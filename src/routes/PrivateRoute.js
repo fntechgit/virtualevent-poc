@@ -63,7 +63,7 @@ const PrivateRoute = ({ component: Component, isLoggedIn, location, eventId, use
     );
   }
 
-  if (isAuthorized === false && hasTicket === false) {
+  if (isAuthorized === false && hasTicket === false && location.pathname !== "/a/extra-questions") {
     navigate('/authz/ticket', {
       state: {
         error: 'no-ticket'
