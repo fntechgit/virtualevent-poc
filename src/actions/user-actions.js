@@ -238,7 +238,7 @@ export const updatePassword = (password) => async (dispatch) => {
     .catch(() => dispatch(createAction(STOP_LOADING_IDP_PROFILE)()));
 }
 
-export const saveExtraQuestions = (extra_questions) => async (dispatch, getState) => {
+export const saveExtraQuestions = (extra_questions, disclaimer) => async (dispatch, getState) => {
 
   const { userState: { userProfile: { summit_tickets } } } = getState();
 
@@ -253,7 +253,7 @@ export const saveExtraQuestions = (extra_questions) => async (dispatch, getState
     attendee_first_name: owner.first_name,
     attendee_last_name: owner.last_name,
     attendee_company: owner.company,
-    disclaimer_accepted: owner.disclaimer_accepted,
+    disclaimer_accepted: disclaimer,
     extra_questions: extraQuestionsAnswers
   };
 
