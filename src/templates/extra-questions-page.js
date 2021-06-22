@@ -38,8 +38,8 @@ export const ExtraQuestionsPageTemplate = ({ user, loading, saveExtraQuestions }
     const mandatoryQuestions = () => {
         const mandatoryQuestions = extraQuestions.filter(question => question.mandatory === true);        
         const mandatoryAnswers = mandatoryQuestions.every(question => {
-            const answer = answers.find(a => a.id === question.id);            
-            return answer.value;
+            const answer = answers.find(a => a.id === question.id);
+            return answer && answer.value;
         });
         if(SummitObject.summit.registration_disclaimer_mandatory){
             return disclaimer && mandatoryAnswers;
