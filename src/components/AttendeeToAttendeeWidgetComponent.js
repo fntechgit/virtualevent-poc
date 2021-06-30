@@ -47,11 +47,8 @@ export const AttendeesWidget = ({ user, event, location }) => {
     }
   }, []);
 
-  const { email, groups } = user.userProfile;
+  const { email, groups, summit_tickets } = user.userProfile;
   const { sub } = user.idpProfile;
-
-  console.log('IDP_BASE_URL', getEnvVariable(IDP_BASE_URL));
-  console.log('CHAT_API_BASE_URL', getEnvVariable(CHAT_API_BASE_URL));
 
   const chatProps = {
     streamApiKey: getEnvVariable(STREAM_IO_API_KEY),
@@ -85,9 +82,14 @@ export const AttendeesWidget = ({ user, event, location }) => {
       hasPermission: (permission) => {
         switch (permission) {
           case permissions.MANAGE_ROOMS:
-            return groups && groups.map((g) => g.code).filter((g) => adminGroups.includes(g)).length > 0;
+            return groups && groups.map((g) => g.code).filter(g => adminGroups.includes(g)).length > 0;
           case permissions.CHAT:
-            return true; //based on badge features
+            const accessLevels = summit_tickets.flatMap(x => x.badge.type.access_levels)
+              .filter((v, i, a) => a.map(item => item.id).indexOf(v.id) === i)  //distinct
+              .map(a => a.name.toUpperCase());
+            const canChat = accessLevels.includes('CHAT');
+            console.log('Can chat?', canChat);
+            return canChat;
           default:
             return false;
         }
@@ -109,7 +111,7 @@ export const AttendeesWidget = ({ user, event, location }) => {
 const AccessTracker = ({ user, isLoggedUser }) => {
   const trackerRef = useRef();
 
-  const { email, first_name, last_name, bio } = user.userProfile;
+  const { email, first_name, last_name, bio, summit_tickets } = user.userProfile;
   const { picture, company, job_title, sub, github_user, linked_in_profile, twitter_name, wechat_user } = user.idpProfile;
   const widgetProps = {
     user: {
@@ -125,16 +127,7 @@ const AccessTracker = ({ user, isLoggedUser }) => {
         twitterName: twitter_name,
         wechatUser: wechat_user,
       },
-      // badgeFeatures: [
-      //   {
-      //     title: "Test badge feat 1",
-      //     imgUrl: "https://www.instituteofexcellence.com/wp-content/uploads/check-mark-badge.png",
-      //   },
-      //   {
-      //     title: "Test badge feat 1",
-      //     imgUrl: "https://www.instituteofexcellence.com/wp-content/uploads/check-mark-badge.png",
-      //   },
-      // ], //attendee.ticket.badge.features
+      getBadgeFeatures: () => summit_tickets.flatMap(st => st.badge.features).filter((v, i, a) => a.map(item => item.id).indexOf(v.id) === i),
       bio: bio,
     },
     summitId: parseInt(getEnvVariable(SUMMIT_ID)),

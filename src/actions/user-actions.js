@@ -73,7 +73,7 @@ export const getUserProfile = () => async (dispatch) => {
 
   let params = {
     access_token: accessToken,
-    expand: 'groups,summit_tickets,summit_tickets.badge,summit_tickets.badge.features,summit_tickets.badge.type,favorite_summit_events,feedback,schedule_summit_events,rsvp,rsvp.answers'
+    expand: 'groups,summit_tickets,summit_tickets.badge,summit_tickets.badge.features,summit_tickets.badge.type, summit_tickets.badge.type.access_levels,favorite_summit_events,feedback,schedule_summit_events,rsvp,rsvp.answers'
   };
 
   dispatch(startLoading());
