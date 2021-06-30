@@ -52,6 +52,12 @@ const TemplateWrapper = ({ children, location, marketing }) => {
           sizes="32x32"
         />
 
+        <link 
+          rel="apple-touch-icon"  
+          //href={`${withPrefix('/')}img/favicon.ico`}
+          href={`${withPrefix('/')}img/apple-touch-icon.png`}
+        />
+
         <meta name="theme-color" content="#fff" />
 
         <meta property="og:type" content="business.business" />
