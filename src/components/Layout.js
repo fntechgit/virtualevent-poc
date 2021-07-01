@@ -52,14 +52,13 @@ const TemplateWrapper = ({ children, location, marketing }) => {
           sizes="32x32"
         />
 
-        <link 
-          rel="apple-touch-icon"  
-          //href={`${withPrefix('/')}img/favicon.ico`}
-          href={`${withPrefix('/')}img/apple-touch-icon.png`}
-        />
+        <link rel="apple-touch-icon" href={`${withPrefix('/')}img/touch-icon-iphone.png`} />
+	      <link rel="apple-touch-icon" sizes="152x152" href={`${withPrefix('/')}img/touch-icon-ipad.png`} />
+	      <link rel="apple-touch-icon" sizes="180x180" href={`${withPrefix('/')}img/touch-icon-iphone-retina.png`} />
+	      <link rel="apple-touch-icon" sizes="167x167" href={`${withPrefix('/')}img/touch-icon-ipad-retina.png`} />
 
+	      <meta name="apple-mobile-web-app-title" content="FNvirtual show" />
         <meta name="theme-color" content="#fff" />
-
         <meta property="og:type" content="business.business" />
         <meta property="og:title" content={title} />
         <meta property="og:url" content="/" />
