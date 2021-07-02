@@ -85,11 +85,13 @@ export const AttendeesWidget = ({ user, event, location }) => {
             return groups && groups.map((g) => g.code).filter(g => adminGroups.includes(g)).length > 0;
           case permissions.CHAT:
             const accessLevels = summit_tickets.flatMap(x => x.badge.type.access_levels)
-              .filter((v, i, a) => a.map(item => item.id).indexOf(v.id) === i)  //distinct
-              .map(a => a.name.toUpperCase());
-            const canChat = accessLevels.includes('CHAT');
-            console.log('Can chat?', canChat);
-            return canChat;
+              .filter((v, i, a) => a.map(item => item.id).indexOf(v.id) === i);  //distinct
+            if (accessLevels && accessLevels.length > 0) {
+              const canChat = accessLevels.map(a => a.name.toUpperCase()).includes('CHAT');
+              console.log('AL', accessLevels.map(a => a.name.toUpperCase()));
+              return canChat;
+            }
+            return false;              
           default:
             return false;
         }
