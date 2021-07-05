@@ -16,14 +16,14 @@ import MarketingData from '../content/colors.json'
 import MarketingSite from '../content/marketing-site.json'
 import { getUrlParam } from "../utils/fragmentParser";
 
-import { doLogin } from 'openstack-uicore-foundation/lib/methods'
+import { doLogin, passwordlessStart, passwordlessLogin } from 'openstack-uicore-foundation/lib/methods'
 import { getEnvVariable, SUMMIT_API_BASE_URL } from '../utils/envVariables'
 
 import styles from '../styles/lobby-hero.module.scss'
-import { getUserProfile } from "../actions/user-actions";
+import { getUserProfile, getIDPProfile } from "../actions/user-actions";
 import { getThirdPartyProviders } from "../actions/summit-actions";
 
-const RegistrationLiteComponent = ({ userProfile, registrationProfile, showPopup, getThirdPartyProviders, thirdPartyProviders, location }) => {
+const RegistrationLiteComponent = ({ registrationProfile, showPopup, getThirdPartyProviders, thirdPartyProviders, getUserProfile, getIDPProfile, location }) => {
 
     useEffect(() => {
         setIsActive(getUrlParam('registration'))
@@ -79,6 +79,31 @@ const RegistrationLiteComponent = ({ userProfile, registrationProfile, showPopup
         return providers;
     }
 
+    const getPasswordlessCode = (email) => {
+        const params = {
+            connection: "email",
+            send: "code",
+            email
+        }
+
+        return passwordlessStart(params)
+    };
+
+    const loginPasswordless = (code, email) => {
+        const params = {
+            connection: "email",
+            otp: code,
+            email
+        }
+        
+        return passwordlessLogin(params)((dispatch) => console.log('dispatch...', dispatch))
+            .then((res) => {                
+                getIDPProfile();
+            }, (err) => {                
+                return err
+            })
+    };
+
     const widgetProps = {
         apiBaseUrl: getEnvVariable(SUMMIT_API_BASE_URL),
         summitData: SummitData.summit,
@@ -86,6 +111,8 @@ const RegistrationLiteComponent = ({ userProfile, registrationProfile, showPopup
         marketingData: MarketingData.colors,
         loginOptions: formatThirdPartyProviders(thirdPartyProviders),
         authUser: (provider) => onClickLogin(provider),
+        getPasswordlessCode: async (email) => await getPasswordlessCode(email),
+        loginWithCode: async (code, email) => await loginPasswordless(code, email),
         getAccessToken: async () => await getAccessToken(),
         closeWidget: () => setIsActive(false),
         goToExtraQuestions: async () => {
@@ -115,4 +142,4 @@ const mapStateToProps = ({ userState, summitState }) => ({
     thirdPartyProviders: summitState.third_party_providers
 })
 
-export default connect(mapStateToProps, { getThirdPartyProviders })(RegistrationLiteComponent)
+export default connect(mapStateToProps, { getThirdPartyProviders, getUserProfile, getIDPProfile })(RegistrationLiteComponent)
