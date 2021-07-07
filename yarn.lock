@@ -14548,6 +14548,11 @@ react-onclickoutside@^6.5.0:
   resolved "https://registry.yarnpkg.com/react-onclickoutside/-/react-onclickoutside-6.10.0.tgz#05abb592575b08b4d129003494056b9dff46eeeb"
   integrity sha512-7i2L3ef+0ILXpL6P+Hg304eCQswh4jl3ynwR71BSlMU49PE2uk31k8B2GkP6yE9s2D4jTGKnzuSpzWxu4YxfQQ==
 
+react-otp-input@^2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/react-otp-input/-/react-otp-input-2.4.0.tgz#0f0a3de1d8c8d564e2e4fbe5d6b7b56e29e3a6e6"
+  integrity sha512-AIgl7u4sS9BTNCxX1xlaS5fPWay/Zml8Ho5LszXZKXrH1C/TiFsTQGmtl13UecQYO3mSF3HUzG2rrDf0sjEFmg==
+
 react-overlays@^0.7.4:
   version "0.7.4"
   resolved "https://registry.yarnpkg.com/react-overlays/-/react-overlays-0.7.4.tgz#ef2ec652c3444ab8aa014262b18f662068e56d5c"
@@ -17093,14 +17098,15 @@ sudo-prompt@^8.2.0:
   integrity sha512-rlBo3HU/1zAJUrkY6jNxDOC9eVYliG6nS4JA8u8KAshITd07tafMc/Br7xQwCSseXwJ2iCcHCE8SNWX3q8Z+kw==
 
 summit-registration-lite@^1.0.33:
-  version "1.0.32"
-  resolved "https://registry.yarnpkg.com/summit-registration-lite/-/summit-registration-lite-1.0.32.tgz#c7f84e7a9fd6f65691d2dbbaa83909188a4f2967"
-  integrity sha512-8/rhKVKMgQdP3pDu19yYQhb/Wirwiz+MtN2LkT+oi+lAlLofrbzpwMUZz+GwJvbB2HyMO+yWa68qFHVmPfYpww==
+  version "1.0.33"
+  resolved "https://registry.yarnpkg.com/summit-registration-lite/-/summit-registration-lite-1.0.33.tgz#ec842d3f4abebd105f1593a3ab15bb645248c748"
+  integrity sha512-jB+nXq/8cFJ5fYczV/CmRIKCSr6MpnxFTkvJ/F/tMrg7SUVy2zdcvMLTFbMFY5iTySvdUCzR2iNEzHdPl629Ew==
   dependencies:
     "@stripe/react-stripe-js" "^1.4.1"
     "@stripe/stripe-js" "^1.15.0"
     dropzone "^5.9.2"
     react-hook-form "^7.6.7"
+    react-otp-input "^2.4.0"
     react-spring "^9.1.2"
     react-use "^17.2.4"
     resize-observer-polyfill "^1.5.1"
