@@ -15,9 +15,9 @@ const withAccessToken = (WrappedComponent) => (props) => {
 
   const isLoggedUser = useSelector(state => state.loggedUserState.isLoggedUser);
 
-  if (!isLoggedUser) return (<WrappedComponent {...props} />);
-
   const [accessToken, setAccessToken] = useState(null);
+
+  if (!isLoggedUser) return (<WrappedComponent {...props} />);
 
   useConstructor(async() => {
     try {
