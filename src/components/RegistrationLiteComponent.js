@@ -16,14 +16,14 @@ import MarketingData from '../content/colors.json'
 import MarketingSite from '../content/marketing-site.json'
 import { getUrlParam } from "../utils/fragmentParser";
 
-import { doLogin, passwordlessStart, passwordlessLogin } from 'openstack-uicore-foundation/lib/methods'
+import { doLogin, passwordlessStart } from 'openstack-uicore-foundation/lib/methods'
 import { getEnvVariable, SUMMIT_API_BASE_URL } from '../utils/envVariables'
 
 import styles from '../styles/lobby-hero.module.scss'
-import { getUserProfile, getIDPProfile } from "../actions/user-actions";
+import { getUserProfile, setPasswordlessLogin } from "../actions/user-actions";
 import { getThirdPartyProviders } from "../actions/summit-actions";
 
-const RegistrationLiteComponent = ({ registrationProfile, showPopup, getThirdPartyProviders, thirdPartyProviders, getUserProfile, getIDPProfile, location }) => {
+const RegistrationLiteComponent = ({ registrationProfile, showPopup, getThirdPartyProviders, thirdPartyProviders, getUserProfile, setPasswordlessLogin, location }) => {
 
     useEffect(() => {
         setIsActive(getUrlParam('registration'))
@@ -95,13 +95,8 @@ const RegistrationLiteComponent = ({ registrationProfile, showPopup, getThirdPar
             otp: code,
             email
         }
-        
-        return passwordlessLogin(params)((dispatch) => console.log('dispatch...', dispatch))
-            .then((res) => {                
-                getIDPProfile();
-            }, (err) => {                
-                return err
-            })
+
+        setPasswordlessLogin(params);
     };
 
     const widgetProps = {
@@ -142,4 +137,4 @@ const mapStateToProps = ({ userState, summitState }) => ({
     thirdPartyProviders: summitState.third_party_providers
 })
 
-export default connect(mapStateToProps, { getThirdPartyProviders, getUserProfile, getIDPProfile })(RegistrationLiteComponent)
+export default connect(mapStateToProps, { getThirdPartyProviders, getUserProfile, setPasswordlessLogin })(RegistrationLiteComponent)

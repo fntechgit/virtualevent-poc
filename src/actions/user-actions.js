@@ -8,6 +8,7 @@ import {
   createAction,
   stopLoading,
   startLoading,
+  passwordlessLogin
 } from 'openstack-uicore-foundation/lib/methods';
 
 import Swal from 'sweetalert2';
@@ -283,3 +284,12 @@ export const saveExtraQuestions = (extra_questions, disclaimer) => async (dispat
     return (e);
   });
 };
+
+export const setPasswordlessLogin = (params) => (dispatch, getState) => {  
+  return dispatch(passwordlessLogin(params))
+    .then((res) => {      
+      dispatch(getUserProfile());
+    }, (err) => {
+      return new Promise((resolve) => resolve(err))
+    })
+}
