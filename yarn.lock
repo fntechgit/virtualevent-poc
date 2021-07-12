@@ -3690,6 +3690,13 @@ browser-tabs-lock@^1.2.11:
   dependencies:
     lodash ">=4.17.19"
 
+browser-tabs-lock@^1.2.14:
+  version "1.2.14"
+  resolved "https://registry.yarnpkg.com/browser-tabs-lock/-/browser-tabs-lock-1.2.14.tgz#f4ba30810d20199a1858c102da1f91e339250728"
+  integrity sha512-ssSpCRcvFe4vc098LDnrJOQDfZiG35KhQGB9hthTbwJk5mmUkePwhcMlW61NH3YuIE2Y9uGLqf9yxEBKbaDlaw==
+  dependencies:
+    lodash ">=4.17.21"
+
 browserify-aes@^1.0.0, browserify-aes@^1.0.4:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/browserify-aes/-/browserify-aes-1.2.0.tgz#326734642f403dabc3003209853bb70ad428ef48"
@@ -10872,7 +10879,7 @@ lodash.without@^4.4.0:
   resolved "https://registry.yarnpkg.com/lodash.without/-/lodash.without-4.4.0.tgz#3cd4574a00b67bae373a94b748772640507b7aac"
   integrity sha1-PNRXSgC2e643OpS3SHcmQFB7eqw=
 
-lodash@>=4.17.19, lodash@^4.0.0, lodash@^4.0.1, lodash@^4.1.1, lodash@^4.16.2, lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.20, lodash@^4.17.3, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.2.0, lodash@^4.2.1, lodash@^4.3.0, lodash@~4.17.10:
+lodash@>=4.17.19, lodash@>=4.17.21, lodash@^4.0.0, lodash@^4.0.1, lodash@^4.1.1, lodash@^4.16.2, lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.20, lodash@^4.17.3, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.2.0, lodash@^4.2.1, lodash@^4.3.0, lodash@~4.17.10:
   version "4.17.21"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
@@ -12583,10 +12590,10 @@ open@^7.0.3:
     is-docker "^2.0.0"
     is-wsl "^2.1.1"
 
-openstack-uicore-foundation@^3.0.23:
-  version "3.0.23"
-  resolved "https://registry.yarnpkg.com/openstack-uicore-foundation/-/openstack-uicore-foundation-3.0.23.tgz#e855febbd90dfec39b69c28ac0bc514919877399"
-  integrity sha512-h0HcZVDrDD8vgS/hNuwudeeLIsCvaS030klZiX05R7A2I+PL9z34pxpGGsFW94QbqDTysJSOeMOm5DgOBCfISQ==
+openstack-uicore-foundation@^3.0.27:
+  version "3.0.27"
+  resolved "https://registry.yarnpkg.com/openstack-uicore-foundation/-/openstack-uicore-foundation-3.0.27.tgz#175f0a5259905e9d4a1e4ac00ba0b6217eb54aa7"
+  integrity sha512-hciS7FQGwx/TFy0iBEDS63R70TJtedI5SkmnKs5raUUg8c4mfM4DerSz++TUEYOTI4oClrJBzR0XdwnxIW+BPg==
 
 opentracing@^0.14.4:
   version "0.14.5"
@@ -17097,13 +17104,14 @@ sudo-prompt@^8.2.0:
   resolved "https://registry.yarnpkg.com/sudo-prompt/-/sudo-prompt-8.2.5.tgz#cc5ef3769a134bb94b24a631cc09628d4d53603e"
   integrity sha512-rlBo3HU/1zAJUrkY6jNxDOC9eVYliG6nS4JA8u8KAshITd07tafMc/Br7xQwCSseXwJ2iCcHCE8SNWX3q8Z+kw==
 
-summit-registration-lite@^1.0.36:
-  version "1.0.36"
-  resolved "https://registry.yarnpkg.com/summit-registration-lite/-/summit-registration-lite-1.0.36.tgz#4386e3c1be4fbd43be07980f4ee4c8c8d1b99b82"
-  integrity sha512-LSJ+0zqLOJK6XJLFABHc1okq+5lXeDdJuvKR/nVPOzv9U5m4I+sOqdNYTkZAxIdyza6ZLoj/Hc0DjoqzmKbVDw==
+summit-registration-lite@^1.0.39:
+  version "1.0.39"
+  resolved "https://registry.yarnpkg.com/summit-registration-lite/-/summit-registration-lite-1.0.39.tgz#bc3b67ea783906b77b0fa6cf785fcfd470a2b4c7"
+  integrity sha512-wDG4J0CtnVJSKzlbKaadUZqWj2E6sO9NATCqegVaL1UmmFv4PETYh1ll4TGZsO6kDLUmPWDXmk5n+d3BFGq8RQ==
   dependencies:
     "@stripe/react-stripe-js" "^1.4.1"
     "@stripe/stripe-js" "^1.15.0"
+    browser-tabs-lock "^1.2.14"
     dropzone "^5.9.2"
     react-hook-form "^7.6.7"
     react-otp-input "^2.4.0"
