@@ -23,14 +23,15 @@ import styles from '../styles/lobby-hero.module.scss'
 import { getUserProfile, setPasswordlessLogin } from "../actions/user-actions";
 import { getThirdPartyProviders } from "../actions/summit-actions";
 
-const RegistrationLiteComponent = ({ registrationProfile, showPopup, getThirdPartyProviders, thirdPartyProviders, getUserProfile, setPasswordlessLogin, location }) => {
+const RegistrationLiteComponent = ({ registrationProfile, getThirdPartyProviders, thirdPartyProviders, getUserProfile, setPasswordlessLogin, location }) => {
+
+    const [isActive, setIsActive] = useState(false);
 
     useEffect(() => {
         setIsActive(getUrlParam('registration'))
         getThirdPartyProviders();
     }, [])
 
-    const [isActive, setIsActive] = useState(showPopup);
 
     const getBackURL = () => {
         let backUrl = '/#registration=1';
@@ -95,6 +96,8 @@ const RegistrationLiteComponent = ({ registrationProfile, showPopup, getThirdPar
             otp: code,
             email
         }
+        
+        navigate('/#registration=1');
 
         setPasswordlessLogin(params);
     };
