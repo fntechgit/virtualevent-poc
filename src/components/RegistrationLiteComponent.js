@@ -23,7 +23,7 @@ import styles from '../styles/lobby-hero.module.scss'
 import { getUserProfile, setPasswordlessLogin } from "../actions/user-actions";
 import { getThirdPartyProviders } from "../actions/summit-actions";
 
-const RegistrationLiteComponent = ({ registrationProfile, getThirdPartyProviders, thirdPartyProviders, getUserProfile, setPasswordlessLogin, location }) => {
+const RegistrationLiteComponent = ({ registrationProfile, getThirdPartyProviders, thirdPartyProviders, getUserProfile, setPasswordlessLogin, location, loadingProfile, loadingIDP }) => {
 
     const [isActive, setIsActive] = useState(false);
 
@@ -96,7 +96,7 @@ const RegistrationLiteComponent = ({ registrationProfile, getThirdPartyProviders
             otp: code,
             email
         }
-        
+
         navigate('/#registration=1');
 
         return setPasswordlessLogin(params);
@@ -108,6 +108,7 @@ const RegistrationLiteComponent = ({ registrationProfile, getThirdPartyProviders
         profileData: registrationProfile,
         marketingData: MarketingData.colors,
         loginOptions: formatThirdPartyProviders(thirdPartyProviders),
+        loading: loadingProfile || loadingIDP,
         authUser: (provider) => onClickLogin(provider),
         getPasswordlessCode: async (email) => await getPasswordlessCode(email),
         loginWithCode: async (code, email) => await loginPasswordless(code, email),
@@ -137,6 +138,8 @@ const RegistrationLiteComponent = ({ registrationProfile, getThirdPartyProviders
 const mapStateToProps = ({ userState, summitState }) => ({
     registrationProfile: userState.idpProfile,
     userProfile: userState.userProfile,
+    loadingProfile: userState.loading,
+    loadingIDP: userState.loadingIDP,
     thirdPartyProviders: summitState.third_party_providers
 })
 
