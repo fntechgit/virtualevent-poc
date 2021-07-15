@@ -99,7 +99,7 @@ const RegistrationLiteComponent = ({ registrationProfile, getThirdPartyProviders
         
         navigate('/#registration=1');
 
-        setPasswordlessLogin(params);
+        return setPasswordlessLogin(params);
     };
 
     const widgetProps = {

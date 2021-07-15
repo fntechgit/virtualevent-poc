@@ -290,6 +290,6 @@ export const setPasswordlessLogin = (params) => (dispatch, getState) => {
     .then((res) => {      
       dispatch(getUserProfile());
     }, (err) => {
-      return new Promise((resolve) => resolve(err))
+      return Promise.resolve(err)
     })
 }
