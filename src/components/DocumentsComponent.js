@@ -14,7 +14,7 @@ const DocumentsComponent = ({ event }) => {
     if (event.slides?.length > 0) materials = [...materials, ...event.slides]
     if (mediaUploads?.length > 0) materials = [...materials, ...mediaUploads]
     return materials;
-  }
+  };
 
   let sortedMaterials = [...getMaterials(event)].sort((a, b) => {
     if (a.order > b.order) {
@@ -44,6 +44,8 @@ const DocumentsComponent = ({ event }) => {
                 case 'PresentationMediaUpload':
                   faIcon = 'fa-file-o';
                   break;
+                default:
+                  break;
               }
 
               const link = material.class_name === 'PresentationMediaUpload' ? material.public_url : material.link;
@@ -53,27 +55,27 @@ const DocumentsComponent = ({ event }) => {
                   {material.class_name === 'PresentationSlide' || material.class_name === 'PresentationMediaUpload' ?
                     <div className={`${styles.documentColumn} columns is-mobile is-vcentered`} key={index}>
                       <div className="column is-2 is-offset-1">
-                        <i className={`fa ${faIcon} icon is-large`}></i>
+                        <i className={`fa ${faIcon} icon is-large`} />
                       </div>
                       <div className={`column is-6 ${styles.documentName}`}>
                         <span>{material.name}</span>
                       </div>
                       <div className="column is-2 has-text-right">
-                        <Link to={link}><i className="fa fa-download icon is-large"></i></Link>
+                        <Link to={link}><i className="fa fa-download icon is-large" /></Link>
                       </div>
-                      <div className="column is-1"></div>
+                      <div className="column is-1" />
                     </div>
                     :
                     <div className={`${styles.documentColumn} columns is-mobile is-vcentered`} key={index}>
                       <div className="column is-2 is-offset-1">
-                        <i className={`fa ${faIcon} icon is-large`}></i>
+                        <i className={`fa ${faIcon} icon is-large`} />
                       </div>
                       <div className={`column is-8 ${styles.documentName}`}>
                         <Link to={link}>
                           <span>{material.name}</span>
                         </Link>
                       </div>
-                      <div className="column is-1"></div>
+                      <div className="column is-1" />
                     </div>}
                   <hr />
                 </React.Fragment>

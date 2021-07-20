@@ -1,22 +1,18 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { navigate } from 'gatsby'
-import styles from '../styles/navbar.module.scss';
-
 import LogoutButton from './LogoutButton';
 import Link from './Link'
 import ProfilePopupComponent from './ProfilePopupComponent';
-
 import { updateProfilePicture, updateProfile } from '../actions/user-actions'
-
-import Content from '../content/navbar.json'
-import SummitObject from '../content/summit.json'
-
 import { getEnvVariable, AUTHORIZED_DEFAULT_PATH } from '../utils/envVariables';
+import Content from '../content/navbar.json'
+
+import styles from '../styles/navbar.module.scss';
+
 
 const Navbar = class extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       active: false,
       showProfile: false,
@@ -42,15 +38,15 @@ const Navbar = class extends React.Component {
           })
       }
     )
-  }
+  };
 
   handlePictureUpdate = (picture) => {
     this.props.updateProfilePicture(picture);
-  }
+  };
 
   handleProfileUpdate = (profile) => {
     this.props.updateProfile(profile)
-  }
+  };
 
   handleTogglePopup = (profile) => {    
     if (profile) {
@@ -59,19 +55,12 @@ const Navbar = class extends React.Component {
       document.body.classList.remove('is-clipped');
     }
     this.setState({ showProfile: profile })
-  }
-
-  goToProfile = () => {
-    navigate('/a/profile');
-  }
+  };
 
   render() {
-
-    let { isLoggedUser, idpProfile, logo, idpLoading, location } = this.props;
-    let { showProfile } = this.state;
-
-    let { summit } = SummitObject
-    let defaultPath = getEnvVariable(AUTHORIZED_DEFAULT_PATH) ? getEnvVariable(AUTHORIZED_DEFAULT_PATH) : '/a/';
+    const { isLoggedUser, idpProfile, logo, idpLoading, summit } = this.props;
+    const { showProfile } = this.state;
+    const defaultPath = getEnvVariable(AUTHORIZED_DEFAULT_PATH) ? getEnvVariable(AUTHORIZED_DEFAULT_PATH) : '/a/';
 
     return (
       <React.Fragment>
@@ -83,39 +72,34 @@ const Navbar = class extends React.Component {
               }
             </Link>
 
-            <a role="button" className={`${styles.navbarBurger} ${styles.burger} ${this.state.navBarActiveClass}`}
+            <button className={`link ${styles.navbarBurger} ${styles.burger} ${this.state.navBarActiveClass}`}
               aria-label="menu" aria-expanded="false" data-target="navbarBasicExample"
               onClick={() => this.toggleHamburger()}>
-              <span aria-hidden="true"></span>
-              <span aria-hidden="true"></span>
-              <span aria-hidden="true"></span>
-            </a>
+              <span aria-hidden="true" />
+              <span aria-hidden="true" />
+              <span aria-hidden="true" />
+            </button>
           </div>
 
           <div id="navbarBasicExample" className={`${styles.navbarMenu} ${this.state.navBarActiveClass}`}>
-            <div className={styles.navbarStart}>
-              {/* <Link to="/a/" className={styles.navbarItem}>
-              Home
-            </Link> */}
-            </div>
+            <div className={styles.navbarStart} />
             <div className={styles.navbarEnd}>
-              {Content.items.map((item, index) => {                
-                if (!isLoggedUser && item.requiresAuth || isLoggedUser && item.link.startsWith('/a/') && !item.link.startsWith('/a/schedule') && !item.requiresAuth) {
-                  return null
-                } else {
-                  return (
-                    item.display &&
+              {Content.items.map((item, index) => {
+                const showItem = item.link.startsWith('/a/schedule') || !item.requiresAuth || !item.link.startsWith('/a/') || isLoggedUser;
+                return (
+                    item.display && showItem &&
                     <div className={styles.navbarItem} key={index}>
                       <Link to={item.link} className={styles.link}>
                         <span>{item.title}</span>
                       </Link>
                     </div>
-                  )
-                }
+                )
               })}
               {isLoggedUser &&
                 <div className={styles.navbarItem}>
-                  <img onClick={() => this.handleTogglePopup(!showProfile)} className={styles.profilePic} src={idpProfile?.picture} />
+                  <button className="link" onClick={() => this.handleTogglePopup(!showProfile)}>
+                    <img alt="profile pic" className={styles.profilePic} src={idpProfile?.picture} />
+                  </button>
                   {showProfile &&
                     <ProfilePopupComponent
                       userProfile={idpProfile}
@@ -135,6 +119,10 @@ const Navbar = class extends React.Component {
       </React.Fragment>
     )
   }
-}
+};
 
-export default connect(null, { updateProfilePicture, updateProfile })(Navbar)
+const mapStateToProps = ({ summitState }) => ({
+  summit: summitState.summit
+});
+
+export default connect(mapStateToProps, { updateProfilePicture, updateProfile })(Navbar)

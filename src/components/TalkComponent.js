@@ -1,8 +1,5 @@
 import React from "react"
-import HeroComponent from '../components/HeroComponent'
 import { epochToMomentTimeZone } from "openstack-uicore-foundation/lib/methods";
-
-import { PHASES } from '../utils/phasesUtils';
 
 const TalkComponent = class extends React.Component {
 
@@ -63,7 +60,7 @@ const TalkComponent = class extends React.Component {
                   {speakers.map((s, index) => {
                     return (
                       <div className="column is-one-third-desktop is-half-mobile talk__speaker-container" key={index}>
-                        <img src={s.pic} />
+                        <img alt="" src={s.pic} />
                         <div>
                           {`${s.first_name} ${s.last_name}`}
                           <br />

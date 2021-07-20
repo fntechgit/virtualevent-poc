@@ -6,29 +6,22 @@ import {
   startLoading,
 } from 'openstack-uicore-foundation/lib/methods';
 
-// import Swal from 'sweetalert2';
-
 import { customErrorHandler } from '../utils/customErrorHandler';
 
 import { LOGOUT_USER } from "openstack-uicore-foundation/lib/actions";
 
-export const CHECK_EVENTS           = 'CHECK_EVENTS';
 export const GET_EVENT_DATA         = 'GET_EVENT_DATA';
 export const GET_EVENT_DATA_ERROR   = 'GET_EVENT_DATA_ERROR';
 
 export const handleResetReducers = () => (dispatch) => {
   dispatch(createAction(LOGOUT_USER)({}));
-}
-
-export const checkEvents = () => (dispatch) => {
-  dispatch(createAction(CHECK_EVENTS)({}));
-}
+};
 
 export const getEventById = (eventId) => async (dispatch, getState) => {
 
   dispatch(startLoading());
 
-  let { eventState: { allEvents } } = getState();
+  let { scheduleState: { allEvents } } = getState();
   const event = allEvents.find(ev => ev.id === parseInt(eventId));
 
   if (event) {
@@ -54,8 +47,8 @@ export const getEventById = (eventId) => async (dispatch, getState) => {
       dispatch(stopLoading());
     }).catch(e => {
       dispatch(stopLoading());
-      dispatch(createAction(GET_EVENT_DATA_ERROR)(e))
+      dispatch(createAction(GET_EVENT_DATA_ERROR)(e));
       return (e);
     });
   }
-}
+};

@@ -1,17 +1,16 @@
 import React from 'react'
-
+import {connect} from "react-redux";
 import { DiscussionEmbed } from 'disqus-react';
 
-import DisqusSettings from '../content/disqus-settings.json';
 
 const DisqusComponent = class extends React.Component {
 
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       isMobile: false
-    }
+    };
 
     this.getIdentifier = this.getIdentifier.bind(this);
     this.getTitle = this.getTitle.bind(this);
@@ -37,18 +36,18 @@ const DisqusComponent = class extends React.Component {
     if (window.innerWidth > 768 && this.state.isMobile === true) {
       this.setState({ isMobile: false })
     }
-  }
+  };
 
   getIdentifier() {
-    const { summit, page, sponsor, event } = this.props;
+    const { summit, page, sponsor, event, disqusSettings } = this.props;
 
-    let threadsBy = DisqusSettings.disqus_threads_by ? DisqusSettings.disqus_threads_by : DisqusSettings.threads_by;
+    let threadsBy = disqusSettings.disqus_threads_by ? disqusSettings.disqus_threads_by : disqusSettings.threads_by;
 
     let identifier = null;
 
     if (event) {
-      let eventExcludes = DisqusSettings.disqus_exclude_events ? DisqusSettings.disqus_exclude_events : [];
-      let trackExcludes = DisqusSettings.disqus_exclude_tracks ? DisqusSettings.disqus_exclude_tracks : [];
+      let eventExcludes = disqusSettings.disqus_exclude_events ? disqusSettings.disqus_exclude_events : [];
+      let trackExcludes = disqusSettings.disqus_exclude_tracks ? disqusSettings.disqus_exclude_tracks : [];
 
       identifier = eventExcludes.includes(event.id) ? `summit/${summit.id}/event/${event.id}` : null;
 
@@ -84,13 +83,13 @@ const DisqusComponent = class extends React.Component {
   }
 
   getTitle() {
-    const { summit, page, sponsor, event } = this.props;
+    const { summit, page, sponsor, event, disqusSettings } = this.props;
     let suffix = '';
-    let threadsBy = DisqusSettings.disqus_threads_by ? DisqusSettings.disqus_threads_by : DisqusSettings.threads_by;
+    let threadsBy = disqusSettings.disqus_threads_by ? disqusSettings.disqus_threads_by : disqusSettings.threads_by;
     if (event) {
-      let trackExcludes = DisqusSettings.disqus_exclude_tracks ? DisqusSettings.disqus_exclude_tracks : [];
+      let trackExcludes = disqusSettings.disqus_exclude_tracks ? disqusSettings.disqus_exclude_tracks : [];
       if (event.track && event.track.id && (threadsBy === 'track' || trackExcludes.includes(event.track.id))) {
-        suffix += ' - '
+        suffix += ' - ';
         suffix += event.track.name;
       } else if (threadsBy === 'summit') {
       } else {
@@ -124,7 +123,7 @@ const DisqusComponent = class extends React.Component {
       title: this.getTitle(),
       remoteAuthS3: disqusSSO.auth,
       apiKey: disqusSSO.public_key
-    }
+    };
 
     if (hideMobile !== null && hideMobile === isMobile) {
       return null;
@@ -141,6 +140,11 @@ const DisqusComponent = class extends React.Component {
     )
   }
 
-}
+};
 
-export default DisqusComponent
+const mapStateToProps = ({settingState, summitState}) => ({
+  disqusSettings: settingState.disqusSettings,
+  summit: summitState.summit
+});
+
+export default connect(mapStateToProps, {})(DisqusComponent)

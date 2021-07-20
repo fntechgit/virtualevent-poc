@@ -13,17 +13,12 @@
 
 import React from 'react';
 import { connect } from "react-redux";
-
 import moment from "moment-timezone";
 import { epochToMomentTimeZone } from "openstack-uicore-foundation/lib/methods";
 
 import styles from '../styles/countdown.module.scss'
 
 class Countdown extends React.Component {
-
-  constructor(props) {
-    super(props);    
-  }  
 
   render() {
     const { summit, now } = this.props;

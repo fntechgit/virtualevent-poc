@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 
 import Link from './Link'
 
@@ -10,19 +10,19 @@ const SponsorHeader = ({ sponsor, tier, scanBadge }) => {
   const [isMobile, setIsMobile] = useState(null);
   const videoParentRef = useRef(null);
 
-  const setIsMuted = useCallback((isMuted) => {
+  const setIsMuted = (isMuted) => {
     const player = videoParentRef.current.children[0];
     player.muted = isMuted;
     _setIsMuted(isMuted)
-  })
+  };
 
-  const onResize = useCallback(() => {
+  const onResize = () => {
     if (window.innerWidth <= 768) {
       setIsMobile(true);
     } else {
       setIsMobile(false);
     }
-  });
+  };
 
   useEffect(() => {
     onResize();
@@ -62,28 +62,30 @@ const SponsorHeader = ({ sponsor, tier, scanBadge }) => {
               {sponsor.socialNetworks && sponsor.socialNetworks.map((net, index) => (
                 net.display && net.icon &&
                 <Link to={net.link} className={styles.link} key={index}>
-                  <i className={`fa icon is-large ${net.icon}`}></i>
+                  <i className={`fa icon is-large ${net.icon}`} />
                 </Link>
               ))}
             </div>
             <div className={styles.rightContainer}>
               <div className={styles.category}>
                 {sponsor.headerVideo &&
-                  <i onClick={() => setIsMuted(!isMuted)} className={`${styles.volumeButton} fa fa-2x ${isMuted ? 'fa-volume-off' : 'fa-volume-up'} icon is-large`}></i>
+                  <button className="link" onClick={() => setIsMuted(!isMuted)}>
+                    <i className={`${styles.volumeButton} fa fa-2x ${isMuted ? 'fa-volume-off' : 'fa-volume-up'} icon is-large`} />
+                  </button>
                 }
-                <img src={tier.badge} />
+                <img alt="badge" src={tier.badge} />
               </div>
               <div className={`${tier.sponsorPage.sponsorTemplate === 'big-header' ? styles.buttons : styles.buttonsSmall}`}>
                 <Link className={styles.link} onClick={scanBadge}>
                   <button className={`${styles.button} button is-large`} style={{ backgroundColor: `${sponsor.sponsorColor}` }}>
-                    <i className={`fa fa-2x fa-qrcode icon is-large`}></i>
+                    <i className={`fa fa-2x fa-qrcode icon is-large`} />
                     <b>Scan your badge</b>
                   </button>
                 </Link>
                 {sponsor.email &&
                   <Link className={styles.link} to={sponsor.email}>
                     <button className={`${styles.button} button is-large`} style={{ backgroundColor: `${sponsor.sponsorColor}` }}>
-                      <i className={`fa fa-2x fa-envelope icon is-large`}></i>
+                      <i className={`fa fa-2x fa-envelope icon is-large`} />
                       <b>Contact Us!</b>
                     </button>
                   </Link>

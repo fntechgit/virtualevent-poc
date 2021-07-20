@@ -6,22 +6,21 @@ import { connect } from 'react-redux'
 import Layout from '../components/Layout'
 import withOrchestra from "../utils/widgetOrchestra";
 
-import SummitObject from '../content/summit.json'
-import HomeSettings from '../content/home-settings.json'
-
 import LobbyHeroComponent from '../components/LobbyHeroComponent'
 import AdvertiseComponent from '../components/AdvertiseComponent'
-import ScheduleLiteComponent from '../components/ScheduleLiteComponent'
+import LiteScheduleComponent from '../components/LiteScheduleComponent'
+import UpcomingEventsComponent from '../components/UpcomingEventsComponent'
 import DisqusComponent from '../components/DisqusComponent'
 import LiveEventWidgetComponent from '../components/LiveEventWidgetComponent'
 import SpeakersWidgetComponent from '../components/SpeakersWidgetComponent'
 import SponsorComponent from '../components/SponsorComponent'
-import SimpleChatWidgetComponent from '../components/SimpleChatWidgetComponent'
+import AccessTracker, {
+  AttendeesWidget,
+} from "../components/AttendeeToAttendeeWidgetComponent"
 import AttendanceTrackerComponent from '../components/AttendanceTrackerComponent'
 
 import { getDisqusSSO, getUserProfile } from '../actions/user-actions'
 
-import { envVariables } from "../utils/envVariables";
 
 export const HomePageTemplate = class extends React.Component {
 
@@ -47,8 +46,7 @@ export const HomePageTemplate = class extends React.Component {
   }
 
   render() {
-    const { user, addWidgetRef, updateWidgets } = this.props;
-    let { summit } = SummitObject;
+    const { user, summit, homeSettings } = this.props;
 
     return (
       <React.Fragment>
@@ -63,7 +61,7 @@ export const HomePageTemplate = class extends React.Component {
             <div className="column is-half">
               <h2><b>Today</b></h2>
               <LiveEventWidgetComponent
-                featuredEventId={HomeSettings.live_now_featured_event_id}
+                featuredEventId={homeSettings.live_now_featured_event_id}
                 onEventClick={(ev) => this.onEventChange(ev)}
                 style={{marginBottom: '15px'}}
               />
@@ -74,25 +72,20 @@ export const HomePageTemplate = class extends React.Component {
                 className="disqus-container-home"
                 title="Public conversation"
               />
-              <ScheduleLiteComponent
+              <UpcomingEventsComponent
                 onEventClick={(ev) => this.onEventChange(ev)}
                 onViewAllEventsClick={() => this.onViewAllEventsClick()}
-                landscape={false}
-                yourSchedule={false}
-                showNav={false}
                 showAllEvents={true}
-                onRef={addWidgetRef}
-                updateCallback={updateWidgets}
                 title="Up Next"
                 eventCount={4}
                 />
-              {HomeSettings.centerColumn.speakers.showTodaySpeakers &&
+              {homeSettings.centerColumn.speakers.showTodaySpeakers &&
                 <SpeakersWidgetComponent
                   title="Today's Speakers"
                   bigPics={true}
                 />
               }
-              {HomeSettings.centerColumn.speakers.showFeatureSpeakers &&
+              {homeSettings.centerColumn.speakers.showFeatureSpeakers &&
                 <SpeakersWidgetComponent
                   title="Featured Speakers"
                   bigPics={false}
@@ -104,18 +97,15 @@ export const HomePageTemplate = class extends React.Component {
             </div>
             <div className="column is-one-quarter pb-6">
               <h2><b>My Info</b></h2>
-              <SimpleChatWidgetComponent title="Private Chat" />
-              <ScheduleLiteComponent
+              <AccessTracker />
+              <AttendeesWidget user={user} />
+              <LiteScheduleComponent
                 onEventClick={(ev) => this.onEventChange(ev)}
                 onViewAllEventsClick={() => this.onViewAllMyEventsClick()}
                 title='My Schedule'
-                landscape={true}
                 yourSchedule={true}
                 showNav={true}
                 eventCount={10}
-                slotCount={1}
-                onRef={addWidgetRef}
-                updateCallback={updateWidgets}
               />
               <AdvertiseComponent section='lobby' column="right" />
             </div>
@@ -133,7 +123,9 @@ const HomePage = (
     location,
     user,
     getUserProfile,
-    getDisqusSSO
+    getDisqusSSO,
+    homeSettings,
+    summit
   }
 ) => {  
   return (
@@ -143,25 +135,29 @@ const HomePage = (
         user={user}
         getUserProfile={getUserProfile}
         getDisqusSSO={getDisqusSSO}
+        homeSettings={homeSettings}
+        summit={summit}
       />
     </Layout>
   )
-}
+};
 
 HomePage.propTypes = {
   user: PropTypes.object,
   getUserProfile: PropTypes.func,
   getDisqusSSO: PropTypes.func,
-}
+};
 
 HomePageTemplate.propTypes = {
   user: PropTypes.object,
   getUserProfile: PropTypes.func,
   getDisqusSSO: PropTypes.func,
-}
+};
 
-const mapStateToProps = ({ userState }) => ({
+const mapStateToProps = ({ userState, summitState, settingState }) => ({
   user: userState,
-})
+  summit: summitState.summit,
+  homeSettings: settingState.homeSettings
+});
 
 export default connect(mapStateToProps, { getDisqusSSO, getUserProfile } )(HomePage);

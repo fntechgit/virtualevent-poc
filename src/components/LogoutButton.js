@@ -19,7 +19,8 @@ export default class
       return (
 
         <div className={styles.buttons}>
-          {/* <a className={`${styles.userIcon}`}>
+          {/*
+          <a className={`${styles.userIcon}`}>
             <i className="fa fa-exclamation-circle icon is-medium" style={{fontSize: '1.5rem'}} />
           </a>
           <a className={`${styles.userIcon}`}>
@@ -27,10 +28,11 @@ export default class
           </a>
           <a className={`${styles.userIcon}`}>
             <i className="fa fa-bell icon is-medium" style={{fontSize: '1.5rem'}} />
-          </a>           */}
-          <a className={`${styles.userIcon}`} title="Logout" onClick={() => this.onClickLogout()}>
-            <i className="fa fa-sign-out icon is-medium" style={{fontSize: '1.5rem'}} />
           </a>
+          */}
+          <button className={`link ${styles.userIcon}`} title="Logout" onClick={() => this.onClickLogout()}>
+            <i className="fa fa-sign-out icon is-medium" style={{fontSize: '1.5rem'}} />
+          </button>
         </div>
       );
     } else {

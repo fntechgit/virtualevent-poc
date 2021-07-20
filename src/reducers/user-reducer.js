@@ -12,8 +12,10 @@ import {
   START_LOADING_IDP_PROFILE,
   STOP_LOADING_IDP_PROFILE,
   ADD_TO_SCHEDULE,
-  REMOVE_FROM_SCHEDULE
+  REMOVE_FROM_SCHEDULE,
+  SCHEDULE_SYNC_LINK_RECEIVED
 } from '../actions/user-actions'
+import { RESET_STATE } from "../actions/base-actions";
 
 const DEFAULT_STATE = {
   loading: false,
@@ -30,6 +32,7 @@ const userReducer = (state = DEFAULT_STATE, action) => {
   const { type, payload } = action
 
   switch (type) {
+    case RESET_STATE:
     case LOGOUT_USER:
       return DEFAULT_STATE;
     case START_LOADING_PROFILE:
@@ -60,6 +63,9 @@ const userReducer = (state = DEFAULT_STATE, action) => {
     case GET_ROCKETCHAT_SSO:
       const rocket = payload.response;
       return { ...state, loading: false, rocketChatSSO: rocket };
+    case SCHEDULE_SYNC_LINK_RECEIVED:
+      const {link} = payload.response;
+      return { ...state, userProfile: {...state.userProfile, schedule_shareable_link: link} };
     default:
       return state;
   }

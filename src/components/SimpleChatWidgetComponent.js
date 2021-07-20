@@ -1,21 +1,20 @@
 import React from "react"
+import { connect } from "react-redux";
 import { Helmet } from 'react-helmet'
-
 import SimpleChatWidget from 'simple-chat-widget';
+import withAccessToken from "../utils/withAccessToken";
+import { getEnvVariable, STREAM_IO_API_KEY, IDP_BASE_URL, STREAM_IO_SSO_SLUG } from '../utils/envVariables';
+
 import 'simple-chat-widget/index.css';
 
-import withAccessToken from "../utils/withAccessToken";
-
-import { getEnvVariable, STREAM_IO_API_KEY, IDP_BASE_URL, STREAM_IO_SSO_SLUG } from '../utils/envVariables';
-import GeneralSettings from '../content/settings.json'
 
 const SimpleChatWidgetComponent = class extends React.Component {
 
   render() {
     
-    const { accessToken } = this.props;
+    const { accessToken, widgets } = this.props;
 
-    if (accessToken == null) return null
+    if (accessToken == null) return null;
 
     const widgetProps = {
       accessToken: accessToken,
@@ -25,8 +24,8 @@ const SimpleChatWidgetComponent = class extends React.Component {
       onAuthError: (err, res) => console.log(err),
       openDir: "left",
       title: "Private Chat",
-      showHelp: GeneralSettings.widgets.chat.showHelp,
-      showQA: GeneralSettings.widgets.chat.showQA,
+      showHelp: widgets.chat.showHelp,
+      showQA: widgets.chat.showQA,
       hideUsers: false,
     };
 
@@ -41,6 +40,10 @@ const SimpleChatWidgetComponent = class extends React.Component {
       </React.Fragment>
     )
   }
-}
+};
 
-export default withAccessToken(SimpleChatWidgetComponent)
+const mapStateToProps = ({ settingState }) => ({
+  widgets: settingState.widgets
+});
+
+export default connect(mapStateToProps, null)(withAccessToken(SimpleChatWidgetComponent));

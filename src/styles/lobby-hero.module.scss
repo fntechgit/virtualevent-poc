@@ -1,4 +1,4 @@
-@import './colors.scss';
+@import "./colors.scss";
 
 .hero-container {
   display: flex;
@@ -11,7 +11,6 @@ div.column:first-of-type {
 }
 
 .hero-columns {
-
   .left-column {
     width: 70%;
     background-color: $color_secondary_contrast;
@@ -97,48 +96,50 @@ div.column:first-of-type {
     flex-direction: row;
     height: calc(100% + 6rem);
 
-    .link {
-      padding-right: 10px;
+    .hero-buttons {
+      margin-top: 2.5rem;
+    }
 
-      .button {
-        background-color: transparent;
+    .button {
+      background-color: transparent;
+      color: #fff;
+      height: 5rem;
+      width: 20rem;
+      margin: 0 10px 10px 0;
+
+      i {
         color: #fff;
-        height: 5rem;
-        width: 20rem;
+        height: 1em;
+        width: 2.5em;
+        margin-right: auto;
+        font-size: 1.8em;
+      }
 
-        i {
-          color: #fff;
-          height: 1em;
-          width: 2.5em;
-          margin-right: auto;
-          font-size: 1.8em;
-        }
-
-        b {
-          display: inline-block;
-          width: 100%;
-          text-align: center;
-        }
-
-        &:hover,
-        &:active {
-          border-color: #fff;
-        }
-
-        &:focus {
-          border-color: #fff;
-          box-shadow: none;
-        }
+      b {
+        display: inline-block;
+        width: 100%;
+        text-align: center;
       }
 
       &:hover,
       &:active {
+        border-color: #fff;
         text-decoration: none;
       }
-    }
 
-    .hero-buttons {
-      margin-top: 2.5rem;
+      &:focus {
+        border-color: #fff;
+        box-shadow: none;
+      }
+
+      &.white {
+        background-color: #fff;
+        color: #6d6e71;
+
+        b, i {
+          color: inherit;
+        }
+      }
     }
   }
 
@@ -154,7 +155,6 @@ div.column:first-of-type {
   }
 
   .hero-marketing-columns {
-
     .left-column {
       background-color: $color_secondary_contrast;
       z-index: 3;
@@ -168,7 +168,7 @@ div.column:first-of-type {
       margin: 6px 0 6px;
     }
 
-    h2 {      
+    h2 {
       font-size: calc(40px + (40 - 36) * (100vw - 250px) / (1080 - 20));
       font-weight: normal;
       margin-bottom: 6px;
@@ -215,7 +215,7 @@ div.column:first-of-type {
       z-index: 1;
 
       .image-slider {
-        height: 424px;        
+        height: 424px;
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
@@ -315,7 +315,6 @@ div.column:first-of-type {
 
 @media (max-width: 978px) {
   .hero-marketing {
-
     .hero-marketing-columns {
       .left-column {
         .hero-marketing-container {
@@ -339,9 +338,7 @@ div.column:first-of-type {
 }
 
 @media (max-width: 768px) {
-
   .hero-marketing {
-
     .hero-marketing-columns {
       .left-column {
         transform: none;

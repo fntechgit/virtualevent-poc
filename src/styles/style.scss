@@ -1,4 +1,5 @@
-@import "./colors.scss";
+@import './colors.scss';
+@import './global-classes';
 
 html,
 body {
@@ -10,6 +11,33 @@ body {
 
 label {
   font-weight: 300;
+}
+
+button.link {
+  border: none;
+  background: transparent;
+}
+
+.swal-wrapper {
+  .swal-title {
+    @extend %title-med;
+  }
+
+  .swal-body {
+    @extend %text-med;
+  }
+
+  .swal-icon {
+
+  }
+
+  .swal-confirm {
+    @extend %button-small-primary;
+  }
+
+  .swal-cancel {
+    @extend %button-small-secondary;
+  }
 }
 
 #container {
@@ -27,6 +55,15 @@ header div.current-user {
   right: 10px;
   color: #fff;
 }
+
+
+button.link {
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+  background-color: transparent;
+}
+
 
 footer {
   color: #fff;

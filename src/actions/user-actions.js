@@ -2,41 +2,41 @@ import {
   getAccessToken,
   getRequest,
   postRequest,
-  deleteRequest,
   putRequest,
   putFile,
   createAction,
-  stopLoading,
   startLoading,
   passwordlessLogin
 } from 'openstack-uicore-foundation/lib/methods';
 
 import Swal from 'sweetalert2';
-
-import { customErrorHandler, customBadgeHandler } from '../utils/customErrorHandler';
-import { isAuthorizedUser } from '../utils/authorizedGroups';
+import axios from "axios";
 import { navigate } from 'gatsby-link';
 
-export const GET_DISQUS_SSO = 'GET_DISQUS_SSO';
-export const GET_ROCKETCHAT_SSO = 'GET_ROCKETCHAT_SSO';
-export const GET_USER_PROFILE = 'GET_USER_PROFILE';
-export const REQUEST_USER_PROFILE = 'REQUEST_USER_PROFILE';
-export const START_LOADING_PROFILE = 'START_LOADING_PROFILE';
-export const STOP_LOADING_PROFILE = 'STOP_LOADING_PROFILE';
-export const UPDATE_PASSWORD = 'UPDATE_PASSWORD';
-export const SET_AUTHORIZED_USER = 'SET_AUTHORIZED_USER';
-export const SET_USER_TICKET = 'SET_USER_TICKET';
-export const UPDATE_PROFILE_PIC = 'UPDATE_PROFILE_PIC';
-export const UPDATE_EXTRA_QUESTIONS = 'UPDATE_EXTRA_QUESTIONS';
-export const START_LOADING_IDP_PROFILE = 'START_LOADING_IDP_PROFILE';
-export const STOP_LOADING_IDP_PROFILE = 'STOP_LOADING_IDP_PROFILE';
-export const GET_IDP_PROFILE = 'GET_IDP_PROFILE';
-export const UPDATE_IDP_PROFILE = 'UPDATE_IDP_PROFILE';
-export const SCAN_BADGE = 'SCAN_BADGE';
-export const SCAN_BADGE_SUCCESS = 'SCAN_BADGE_SUCCESS';
-export const SCAN_BADGE_ERROR = 'SCAN_BADGE_ERROR';
-export const ADD_TO_SCHEDULE = 'ADD_TO_SCHEDULE';
-export const REMOVE_FROM_SCHEDULE = 'REMOVE_FROM_SCHEDULE';
+import { isAuthorizedUser } from '../utils/authorizedGroups';
+import { customErrorHandler, customBadgeHandler } from '../utils/customErrorHandler';
+import {getEnvVariable, SUMMIT_API_BASE_URL, SUMMIT_ID} from "../utils/envVariables";
+
+export const GET_DISQUS_SSO                   = 'GET_DISQUS_SSO';
+export const GET_ROCKETCHAT_SSO               = 'GET_ROCKETCHAT_SSO';
+export const GET_USER_PROFILE                 = 'GET_USER_PROFILE';
+export const START_LOADING_PROFILE            = 'START_LOADING_PROFILE';
+export const STOP_LOADING_PROFILE             = 'STOP_LOADING_PROFILE';
+export const UPDATE_PASSWORD                  = 'UPDATE_PASSWORD';
+export const SET_AUTHORIZED_USER              = 'SET_AUTHORIZED_USER';
+export const SET_USER_TICKET                  = 'SET_USER_TICKET';
+export const UPDATE_PROFILE_PIC               = 'UPDATE_PROFILE_PIC';
+export const UPDATE_EXTRA_QUESTIONS           = 'UPDATE_EXTRA_QUESTIONS';
+export const START_LOADING_IDP_PROFILE        = 'START_LOADING_IDP_PROFILE';
+export const STOP_LOADING_IDP_PROFILE         = 'STOP_LOADING_IDP_PROFILE';
+export const GET_IDP_PROFILE                  = 'GET_IDP_PROFILE';
+export const UPDATE_IDP_PROFILE               = 'UPDATE_IDP_PROFILE';
+export const SCAN_BADGE                       = 'SCAN_BADGE';
+export const SCAN_BADGE_SUCCESS               = 'SCAN_BADGE_SUCCESS';
+export const SCAN_BADGE_ERROR                 = 'SCAN_BADGE_ERROR';
+export const ADD_TO_SCHEDULE                  = 'ADD_TO_SCHEDULE';
+export const REMOVE_FROM_SCHEDULE             = 'REMOVE_FROM_SCHEDULE';
+export const SCHEDULE_SYNC_LINK_RECEIVED      = 'SCHEDULE_SYNC_LINK_RECEIVED';
 
 export const getDisqusSSO = () => async (dispatch) => {
 
@@ -90,6 +90,7 @@ export const getUserProfile = () => async (dispatch) => {
     dispatch(setAuthorization());
     dispatch(setUserTicket());
     dispatch(getIDPProfile());
+    dispatch(getScheduleSyncLink());
     return dispatch(createAction(STOP_LOADING_PROFILE)());
   });
 }
@@ -157,13 +158,41 @@ export const getIDPProfile = () => async (dispatch) => {
     .catch(() => dispatch(createAction(STOP_LOADING_IDP_PROFILE)()));
 }
 
-export const addToSchedule = (event) => (dispatch, getState) => {
-  dispatch(createAction(ADD_TO_SCHEDULE)(event));
-}
+export const addToSchedule = (event) => async (dispatch, getState) => {
+  const accessToken = await getAccessToken();
 
-export const removeFromSchedule = (event) => (dispatch, getState) => {
-  dispatch(createAction(REMOVE_FROM_SCHEDULE)(event));
-}
+  if (!accessToken) return Promise.reject();
+
+  const url = `${getEnvVariable(SUMMIT_API_BASE_URL)}/api/v1/summits/${getEnvVariable(SUMMIT_ID)}/members/me/schedule/${event.id}`;
+
+  return axios.post(
+      url, { access_token: accessToken }
+  ).then(() => {
+    dispatch(createAction(ADD_TO_SCHEDULE)(event));
+    return event;
+  }).catch(e => {
+    console.log('ERROR: ', e);
+    return e;
+  });
+};
+
+export const removeFromSchedule = (event) => async (dispatch, getState) => {
+  const accessToken = await getAccessToken();
+
+  if (!accessToken) return Promise.reject();
+
+  const url = `${getEnvVariable(SUMMIT_API_BASE_URL)}/api/v1/summits/${getEnvVariable(SUMMIT_ID)}/members/me/schedule/${event.id}`;
+
+  return axios.delete(
+      url, { data: { access_token: accessToken } }
+  ).then(() => {
+    dispatch(createAction(REMOVE_FROM_SCHEDULE)(event));
+    return event;
+  }).catch(e => {
+    console.log('ERROR: ', e);
+    return e;
+  });
+};
 
 export const updateProfilePicture = (pic) => async (dispatch) => {
 
@@ -293,3 +322,21 @@ export const setPasswordlessLogin = (params) => (dispatch, getState) => {
       return Promise.resolve(err)
     })
 }
+
+export const getScheduleSyncLink = () => async (dispatch) => {
+  const accessToken = await getAccessToken();
+
+  if (!accessToken) return Promise.resolve();
+
+  let params = {
+    access_token: accessToken,
+  };
+
+  return postRequest(
+      null,
+      createAction(SCHEDULE_SYNC_LINK_RECEIVED),
+      `${window.SUMMIT_API_BASE_URL}/api/v1/summits/${window.SUMMIT_ID}/members/me/schedule/shareable-link`,
+      null,
+      customErrorHandler,
+  )(params)(dispatch);
+};

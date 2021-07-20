@@ -1,7 +1,7 @@
 import ReduxWrapper from "./src/state/ReduxWrapper"
-import Colors from './src/content/colors.json'
+import colors from './src/content/colors.json'
 
-export const wrapRootElement = ReduxWrapper
+export const wrapRootElement = ReduxWrapper;
 
 window.IDP_BASE_URL = process.env.GATSBY_IDP_BASE_URL;
 window.SUMMIT_API_BASE_URL = process.env.GATSBY_SUMMIT_API_BASE_URL;
@@ -18,12 +18,15 @@ window.AUTHORIZED_DEFAULT_PATH = process.env.GATSBY_AUTHORIZED_DEFAULT_PATH;
 window.STREAM_IO_API_KEY = process.env.GATSBY_STREAM_IO_API_KEY;
 window.STREAM_IO_SSO_SLUG = process.env.GATSBY_STREAM_IO_SSO_SLUG;
 window.MUX_ENV_KEY = process.env.GATSBY_MUX_ENV_KEY;
+window.SUPABASE_URL = process.env.GATSBY_SUPABASE_URL;
+window.SUPABASE_KEY = process.env.GATSBY_SUPABASE_KEY;
+window.CHAT_API_BASE_URL = process.env.GATSBY_CHAT_API_BASE_URL;
 
 export const onClientEntry = () => {
   // var set at document level
   // preventa widget color flashing from defaults to fetched by widget from marketing api
-  Object.entries(Colors.colors).map(color => {
+  Object.entries(colors).forEach(color => {
     document.documentElement.style.setProperty(`--${color[0]}`, color[1]);
     document.documentElement.style.setProperty(`--${color[0]}50`, `${color[1]}50`);
   });
-}
+};

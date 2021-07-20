@@ -1,9 +1,1 @@
-{
-  "favicon": "/img/favicon.svg",
-  "widgets": {
-    "chat": {
-      "showQA": false,
-      "showHelp": false
-    }
-  }
-}
+{"lastBuild":1626803107918,"favicon":"/img/favicon.svg","widgets":{"chat":{"showQA":false,"showHelp":false}}}

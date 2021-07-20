@@ -1,10 +1,8 @@
 import React from 'react'
+import {connect} from "react-redux";
 import PropTypes from 'prop-types'
 import { navigate } from 'gatsby'
-
 import { getEnvVariable, REGISTRATION_BASE_URL } from '../utils/envVariables'
-
-import SummitObject from '../content/summit.json'
 import HeroComponent from '../components/HeroComponent'
 
 export const TicketErrorPageTemplate = class extends React.Component {
@@ -87,28 +85,33 @@ export const TicketErrorPageTemplate = class extends React.Component {
         />
       )
     } else {
-      navigate('/')
+      navigate('/');
       return null
     }
   }
-}
+};
 
 TicketErrorPageTemplate.propTypes = {
   location: PropTypes.object,
-}
+};
 
-const TicketErrorPage = ({ location }) => {
+const TicketErrorPage = ({ location, summit }) => {
 
   return (
     <TicketErrorPageTemplate
       location={location}
+      summit={summit}
     />
   )
 
-}
+};
 
 TicketErrorPage.propTypes = {
   location: PropTypes.object,
-}
+};
 
-export default TicketErrorPage;
+const mapStateToProps = ({ summitState }) => ({
+  summit: summitState.summit,
+});
+
+export default connect(mapStateToProps, {})(TicketErrorPage);

@@ -1,6 +1,5 @@
 import React from 'react'
 import videojs from 'video.js';
-import Youtube from 'videojs-youtube';
 import 'videojs-mux';
 
 import 'video.js/dist/video-js.css';
@@ -46,7 +45,7 @@ class VideoJSPlayer extends React.Component {
 
       this.player.on('error', () => {
         const videoError = this.player.error();        
-        if (firstHalf !== null && videoError.code === 2 || videoError.code === 4) {
+        if ((firstHalf !== null && videoError.code === 2) || videoError.code === 4) {
           if (reloadPlayer === null) {
             this.player.errorDisplay.close();
             modal = this.player.createModal();
@@ -127,6 +126,7 @@ class VideoJSPlayer extends React.Component {
     return (
       <div>
         <div data-vjs-player>
+          {/* eslint-disable jsx-a11y/media-has-caption */}
           <video
             ref={node => (this.videoNode = node)}
             className="video-js vjs-big-play-centered"

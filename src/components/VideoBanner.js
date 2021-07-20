@@ -7,12 +7,10 @@ const VideoBanner = ({ event }) => {
       <span>
         Click to Gain Speaker Access
       </span>
-      <a className="zoom-link" href={event.meeting_url} target="_blank">
+      <a className="zoom-link" href={event.meeting_url} target="_blank" rel="noreferrer">
         <button className="zoom-button button">
           <b>Join now</b>
         </button>
-      </a>
-      <a target="_blank" rel="noreferrer" style={{ textDecoration: 'none' }}>
       </a>
     </div>
   )

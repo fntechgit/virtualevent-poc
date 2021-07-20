@@ -1,23 +1,19 @@
 import React from 'react'
+import {connect} from "react-redux";
 import Slider from "react-slick";
-
 import Link from '../components/Link'
+import { getSponsorURL } from '../utils/urlFormating'
 
 import styles from '../styles/sponsor.module.scss'
 
-import Data from '../content/sponsors.json'
-import Tiers from '../content/sponsors-tiers.json'
 
-import { getSponsorURL } from '../utils/urlFormating'
-
-const SponsorComponent = ({ page }) => {
-  const button = Tiers.lobbyButton;
+const SponsorComponent = ({ page, sponsorsState, tiers, lobbyButton }) => {
   let renderButton = false;
   return (
     <React.Fragment>
-      {Data.tierSponsors.map((s, tierIndex) => {
+      {sponsorsState.map((s, tierIndex) => {
         const sponsors = s.sponsors;
-        const tier = Tiers.tiers.find(t => t.id === s.tier[0].value);
+        const tier = tiers.find(t => t.id === s.tier[0].value);
         const template = page === 'lobby' ? tier.lobby.lobbyTemplate : page === 'event' ? tier.eventTemplate : 'expo-hall';
 
         if (sponsors?.length > 0) {
@@ -188,20 +184,28 @@ const SponsorComponent = ({ page }) => {
                 )
               }
             }
+            default:
+              return null;
           }
         } else {
           return null;
         }
       })}
-      {page === 'lobby' && button.text && button.link && renderButton &&
-        <Link className={styles.link} to={button.link}>
+      {page === 'lobby' && lobbyButton.text && lobbyButton.link && renderButton &&
+        <Link className={styles.link} to={lobbyButton.link}>
           <button className={`${styles.button} button is-large`}>
-            {button.text}
+            {lobbyButton.text}
           </button>
         </Link>
       }
     </React.Fragment>
   )
-}
+};
 
-export default SponsorComponent;
+const mapStateToProps = ({ sponsorState }) => ({
+  sponsorsState: sponsorState.sponsors,
+  tiers: sponsorState.tiers,
+  lobbyButton: sponsorState.lobbyButton
+});
+
+export default connect(mapStateToProps, {})(SponsorComponent);

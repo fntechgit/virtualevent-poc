@@ -1,4 +1,5 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { connect } from 'react-redux'
 import { Helmet } from 'react-helmet'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
@@ -6,27 +7,19 @@ import ClockComponent from '../components/ClockComponent'
 import useSiteMetadata from './SiteMetadata'
 import { withPrefix } from 'gatsby'
 
-import GeneralSettings from '../content/settings.json'
-import SummitObject from '../content/summit.json'
-
-// import "../styles/all.scss"
-// import "../styles/palette.scss"
 import "../styles/bulma.scss"
 
-const TemplateWrapper = ({ children, location, marketing }) => {
-
+const TemplateWrapper = ({ children, location, marketing, summit, favicon }) => {
   const { title, description } = useSiteMetadata();
-  const { summit } = SummitObject;
-
   const [isFocus, setIsFocus] = useState(true);
 
-  const onFocus = useCallback(() => {
+  const onFocus = () => {
     setIsFocus(true);
-  });
+  };
 
-  const onBlur = useCallback(() => {
+  const onBlur = () => {
     setIsFocus(false);
-  });
+  };
 
   useEffect(() => {
     window.addEventListener("focus", onFocus);
@@ -48,7 +41,7 @@ const TemplateWrapper = ({ children, location, marketing }) => {
         <link
           rel="icon"
           type="image/png"
-          href={`${withPrefix('/')}${GeneralSettings.favicon.substring(1)}`}
+          href={`${withPrefix('/')}${favicon.substring(1)}`}
           sizes="32x32"
         />
 
@@ -70,6 +63,11 @@ const TemplateWrapper = ({ children, location, marketing }) => {
       <Footer marketing={marketing} />
     </div>
   )
-}
+};
 
-export default TemplateWrapper;
+const mapStateToProps = ({ summitState, settingState }) => ({
+  summit: summitState.summit,
+  favicon: settingState.favicon
+});
+
+export default connect(mapStateToProps, { } )(TemplateWrapper);

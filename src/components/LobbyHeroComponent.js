@@ -1,28 +1,32 @@
 import React from 'react'
+import {connect} from "react-redux";
 
-import HomeSettings from '../content/home-settings.json'
 import styles from '../styles/lobby-hero.module.scss'
 
-const LobbyHeroComponent = () => (
+const LobbyHeroComponent = ({homeSettings}) => (
   <section className="hero">
     <div className={`${styles.heroColumns} columns`}>
       <div className={`${styles.leftColumn} column is-6 is-black`}>
         <div className={`${styles.heroContainer} hero-body`}>
           <div className="container">
             <h1 className="title">
-              {HomeSettings.homeHero.title}
+              {homeSettings.homeHero.title}
             </h1>
             <h2 className="subtitle">
-              {HomeSettings.homeHero.subTitle}
+              {homeSettings.homeHero.subTitle}
             </h2>
           </div>
         </div>
       </div>
-      <div className={`${styles.midColumn} column is-1 is-info`}></div>
-      <div className={`${styles.rightColumn} column is-6 is-danger`} style={{ backgroundImage: `url(${HomeSettings.homeHero.image})` }}></div>
+      <div className={`${styles.midColumn} column is-1 is-info`} />
+      <div className={`${styles.rightColumn} column is-6 is-danger`} style={{ backgroundImage: `url(${homeSettings.homeHero.image})` }} />
     </div>
   </section>
+);
 
-)
 
-export default LobbyHeroComponent
+const mapStateToProps = ({ settingState }) => ({
+  homeSettings: settingState.homeSettings,
+});
+
+export default connect(mapStateToProps, { } )(LobbyHeroComponent);

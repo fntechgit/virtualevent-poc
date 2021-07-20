@@ -26,6 +26,7 @@
         display: flex;
         justify-content: center;
         margin-top: 28px;
+        position: relative;
 
         img {
             cursor: pointer;
@@ -37,16 +38,12 @@
 
     .image-upload {
         position: absolute;
-        top: 13.2%;
-        left: 13%;
-
-        >input {
-            display: none;
-        }
+        bottom: 10px;
+        right: 10px;
 
         .picture-icon {
             color: #ffffff;
-            z-index: 100;
+            z-index: 10;
             cursor: pointer;
         }
     }

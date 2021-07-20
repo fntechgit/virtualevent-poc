@@ -4,49 +4,47 @@ import { navigate } from 'gatsby'
 import { connect } from 'react-redux'
 
 import Layout from '../components/Layout'
-import ScheduleLiteComponent from '../components/ScheduleLiteComponent'
+import FullSchedule from '../components/FullSchedule'
+import ScheduleFilters from "../components/ScheduleFilters";
 import AttendanceTrackerComponent from '../components/AttendanceTrackerComponent'
+
 
 import { PHASES } from '../utils/phasesUtils'
 
-const SchedulePage = ({ summitPhase, isLoggedUser, loggedUser, mySchedule, location }) => {
+const SchedulePage = ({ summitPhase, isLoggedUser, location }) => {
 
-  let title = mySchedule ? 'My Schedule' : 'Schedule';
+  let scheduleProps = {};
 
-  let scheduleProps = {}
   if (isLoggedUser && summitPhase !== PHASES.BEFORE) {
     scheduleProps = {
       ...scheduleProps,
       onEventClick: (ev) => navigate(`/a/event/${ev.id}`),
+      onStartChat: console.log,
     }
   }
 
   return (
     <Layout location={location}>
-      <div className="container">
-        <h1>{title}</h1>
-        <hr />
-        <ScheduleLiteComponent
-          {...scheduleProps}
-          landscape={true}
-          showNav={true}
-          showFilters={true}
-          showAllEvents={true}
-          yourSchedule={mySchedule}
-          eventCount={100}
-          updateCallback={ev => console.log('event updated', ev)}
-          showDetails={true}
-        />
+      <div className="container" style={{position: "static"}}>
+        <div className="columns">
+          <div className="column is-three-quarters px-6 pt-6 pb-0">
+            <FullSchedule {...scheduleProps} />
+          </div>
+          <div className="column is-one-quarter px-6 pt-6 pb-0">
+            <ScheduleFilters />
+          </div>
+        </div>
+
       </div>
       <AttendanceTrackerComponent />
     </Layout>
   )
-}
+};
 
 SchedulePage.propTypes = {
   summitPhase: PropTypes.number,
   isLoggedUser: PropTypes.bool,
-}
+};
 
 const mapStateToProps = ({ clockState, loggedUserState }) => ({
   summitPhase: clockState.summit_phase,

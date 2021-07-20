@@ -28,6 +28,6 @@ const NoTalkComponent = ({ event, eventStarted, summit }) => {
       />
     </div>
   )
-}
+};
 
 export default NoTalkComponent;

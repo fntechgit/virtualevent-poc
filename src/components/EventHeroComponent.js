@@ -1,9 +1,9 @@
 import React from 'react'
+import { connect } from "react-redux";
 
-import Content from '../content/marketing-site.json'
 import styles from '../styles/lobby-hero.module.scss'
 
-const EventHeroComponent = () => (
+const EventHeroComponent = ({siteSettings}) => (
   <section className="hero">
     <div className={`${styles.heroEvents} columns`}>
       <div className={'column is-12'}>
@@ -11,21 +11,24 @@ const EventHeroComponent = () => (
           <div className={`${styles.heroEventContainer}`}>
             <div>
               <span className={styles.title}>
-                {Content.heroBanner.title}
+                {siteSettings.heroBanner.title}
               </span>
               <span className={styles.subtitle}>
-              {Content.heroBanner.subTitle}
+              {siteSettings.heroBanner.subTitle}
               </span>
             </div>
             <div className={styles.date}>
-              <span>{Content.heroBanner.date}</span>
+              <span>{siteSettings.heroBanner.date}</span>
             </div>
           </div>
         </div>
       </div>
     </div>
   </section>
+);
 
-)
+const mapStateToProps = ({settingState}) => ({
+  siteSettings: settingState.siteSettings
+});
 
-export default EventHeroComponent
+export default connect(mapStateToProps, {})(EventHeroComponent);
