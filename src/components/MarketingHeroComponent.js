@@ -7,9 +7,9 @@ import { PHASES } from "../utils/phasesUtils";
 import {
   getEnvVariable,
   AUTHORIZED_DEFAULT_PATH,
-  REGISTRATION_BASE_URL,
 } from "../utils/envVariables";
 import Link from "../components/Link";
+import RegistrationLiteComponent from "./RegistrationLiteComponent";
 
 import styles from "../styles/lobby-hero.module.scss";
 
@@ -33,7 +33,6 @@ class MarketingHeroComponent extends React.Component {
     const { summit, summit_phase, isLoggedUser, siteSettings, userProfile } = this.props;
     const path = getEnvVariable(AUTHORIZED_DEFAULT_PATH) || '/a/';
     const {registerButton, loginButton} = siteSettings.heroBanner.buttons;
-    const summitPath = `${getEnvVariable(REGISTRATION_BASE_URL)}/a/${summit.slug}/`;    
 
     if (summit_phase >= PHASES.DURING && isLoggedUser) {
       return (

@@ -25,7 +25,6 @@ export const TicketErrorPageTemplate = class extends React.Component {
       let targetUrl = null;
       switch (error) {
         case 'no-ticket':
-          const { summit: { slug } } = SummitObject
           targetUrl = `/#registration=1`;
           break;
         case 'incomplete':

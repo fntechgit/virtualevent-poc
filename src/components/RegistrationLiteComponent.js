@@ -21,7 +21,7 @@ import { getEnvVariable, SUMMIT_API_BASE_URL } from '../utils/envVariables'
 
 import styles from '../styles/lobby-hero.module.scss'
 import { getUserProfile, setPasswordlessLogin } from "../actions/user-actions";
-import { getThirdPartyProviders } from "../actions/summit-actions";
+import { getThirdPartyProviders } from "../actions/base-actions";
 
 const RegistrationLiteComponent = ({ registrationProfile, getThirdPartyProviders, thirdPartyProviders, getUserProfile, setPasswordlessLogin, location, loadingProfile, loadingIDP }) => {
 
@@ -106,7 +106,7 @@ const RegistrationLiteComponent = ({ registrationProfile, getThirdPartyProviders
         apiBaseUrl: getEnvVariable(SUMMIT_API_BASE_URL),
         summitData: SummitData.summit,
         profileData: registrationProfile,
-        marketingData: MarketingData.colors,
+        marketingData: MarketingData,
         loginOptions: formatThirdPartyProviders(thirdPartyProviders),
         loading: loadingProfile || loadingIDP,
         authUser: (provider) => onClickLogin(provider),

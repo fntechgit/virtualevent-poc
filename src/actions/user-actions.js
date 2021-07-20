@@ -6,6 +6,7 @@ import {
   putFile,
   createAction,
   startLoading,
+  stopLoading,
   passwordlessLogin
 } from 'openstack-uicore-foundation/lib/methods';
 

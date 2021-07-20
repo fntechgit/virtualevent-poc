@@ -10,7 +10,7 @@ const DEFAULT_STATE = {
 };
 
 const summitReducer = (state = DEFAULT_STATE, action) => {
-  const { type } = action;
+  const { type, payload } = action;
 
   switch (type) {
     case RESET_STATE:
