@@ -20,40 +20,22 @@ import AttendanceTrackerComponent from "../components/AttendanceTrackerComponent
 import { getEventById } from "../actions/event-actions";
 import { getDisqusSSO } from "../actions/user-actions";
 
-import { PHASES } from "../utils/phasesUtils";
-
 export const EventPageTemplate = class extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      firstRender: true,
-    };
-
-    this.onEventChange = this.onEventChange.bind(this);
-    this.onViewAllEventsClick = this.onViewAllEventsClick.bind(this);
-  }
-
-  componentWillMount() {
-    this.props.getDisqusSSO();
-    this.props.getEventById(this.props.eventId);
   }
 
   componentDidMount() {
-    const { eventId, event } = this.props;
-
-    this.setState({ firstRender: false });
-
-    if (!event || event.id !== eventId) {
-      this.props.getEventById(eventId);
-    }
+    const { eventId } = this.props;
+    this.props.getDisqusSSO();
+    this.props.getEventById(eventId);
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
     const { eventId, event } = this.props;
     const { eventId: prevEventId } = prevProps;
-
-    if (eventId !== prevEventId || !event || event.id !== eventId) {
+    // event id could came as param at uri
+    if (eventId !== prevEventId || (event?.id !== eventId)) {
       this.props.getEventById(eventId);
     }
   }
@@ -69,38 +51,31 @@ export const EventPageTemplate = class extends React.Component {
     navigate("/a/schedule");
   }
 
-
   shouldComponentUpdate(nextProps, nextState) {
-    const { loading, eventId, event, eventsPhases } = this.props;
+    const { loading, eventId, event } = this.props;
     if (loading !== nextProps.loading) return true;
     if (eventId !== nextProps.eventId) return true;
     if (event?.id !== nextProps.event?.id) return true;
-    const currentPhase = eventsPhases.find((e) => e.id === eventId)?.phase;
-    const nextCurrentPhase = nextProps.eventsPhases.find(
-      (e) => e.id === eventId
-    )?.phase;
-
-    return (currentPhase !== nextCurrentPhase && !(currentPhase === 0 && nextCurrentPhase === 1));
+    return false;
   }
 
+
   render() {
-    const { event, eventId, eventsPhases, user, loading, nowUtc, summit } = this.props;
-    const { firstRender } = this.state;
+    const { event, user, loading, nowUtc, summit } = this.props;
 
-    const currentEvent = eventsPhases.find((e) => `${e.id}` === eventId);
-    const eventStarted = currentEvent && currentEvent.phase !== null ? currentEvent.phase : null;
-    const firstHalf = currentEvent?.phase === 0 ? nowUtc < (event?.start_date + event?.end_date) / 2 : null;
+    const eventStarted = event && event.start_date > nowUtc;
+    const firstHalf =  nowUtc < (event?.start_date + event?.end_date) / 2;
+    const isOngoing = event && event.start_date > nowUtc && nowUtc > event.end_date;
 
-    if (!firstRender && !loading && !event) {
+    if (loading) {
+      return <HeroComponent title="Loading event" />;
+    }
+
+    if (!event) {
       return <HeroComponent title="Event not found" redirectTo="/a/schedule" />;
     }
 
-
-    if (loading || eventStarted === null) {
-      return <HeroComponent title="Loading event" />;
-    } else {
-      if (event) {
-        return (
+    return (
           <React.Fragment>
             {/* <EventHeroComponent /> */}
             <section
@@ -108,14 +83,14 @@ export const EventPageTemplate = class extends React.Component {
               style={{
                 marginBottom:
                   event.class_name !== "Presentation" ||
-                  eventStarted < PHASES.DURING ||
+                  !isOngoing ||
                   !event.streaming_url
                     ? "-3rem"
                     : "",
               }}
             >
               <div className="columns is-gapless">
-                {eventStarted >= PHASES.DURING && event.streaming_url ? (
+                {event.streaming_url ? (
                   <div className="column is-three-quarters px-0 py-0">
                     <VideoComponent
                       url={event.streaming_url}
@@ -151,7 +126,6 @@ export const EventPageTemplate = class extends React.Component {
                 </div>
               </div>
             </section>
-            {eventStarted >= PHASES.DURING && event.streaming_url && (
               <section className="section px-0 pt-5 pb-0">
                 <div className="columns mx-0 my-0">
                   <div className="column is-three-quarters is-full-mobile">
@@ -204,14 +178,9 @@ export const EventPageTemplate = class extends React.Component {
                   </div>
                 </div>
               </section>
-            )}
           </React.Fragment>
         );
-      } else {
-        return <HeroComponent title="Loading event" />;
-      }
     }
-  }
 };
 
 const EventPage = ({
@@ -238,8 +207,8 @@ const EventPage = ({
       <EventPageTemplate
         summit={summit}
         event={event}
-        loading={loading}
         eventId={eventId}
+        loading={loading}
         user={user}
         eventsPhases={eventsPhases}
         nowUtc={nowUtc}
@@ -273,7 +242,6 @@ EventPageTemplate.propTypes = {
 const mapStateToProps = ({eventState, summitState, userState, clockState}) => ({
   loading: eventState.loading,
   event: eventState.event,
-  eventsPhases: clockState.events_phases,
   nowUtc: clockState.nowUtc,
   user: userState,
   summit: summitState.summit
