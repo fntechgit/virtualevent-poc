@@ -1,29 +1,26 @@
 import React, { useState, useRef, useEffect } from 'react'
 import PropTypes from 'prop-types'
-import { navigate } from 'gatsby'
 import { connect } from 'react-redux'
-import { AjaxLoader, Input, Dropdown, RadioList, CheckboxList } from 'openstack-uicore-foundation/lib/components'
 
 import Layout from '../components/Layout'
+import ExtraQuestions from '../components/ExtraQuestions'
 import withOrchestra from "../utils/widgetOrchestra";
 
 import { saveExtraQuestions } from '../actions/user-actions'
 
-import SummitObject from '../content/summit.json';
-
 import styles from '../styles/extra-questions.module.scss'
 
-export const ExtraQuestionsPageTemplate = ({ user, loading, saveExtraQuestions }) => {
+export const ExtraQuestionsPageTemplate = ({ user, loading, summit, saveExtraQuestions }) => {
 
     const [answers, setAnswers] = useState([]);
     const [disclaimer, setDisclaimer] = useState();
 
-    const extraQuestions = SummitObject.summit.order_extra_questions.sort((a, b) => (a.order > b.order) ? 1 : -1);
+    const extraQuestions = summit.order_extra_questions.sort((a, b) => (a.order > b.order) ? 1 : -1);
 
-    useState(() => {
+    useEffect(() => {
         const userAnswers = user.summit_tickets[0].owner.extra_questions;
-        const userDisclaimer = user.summit_tickets[0].owner.disclaimer_accepted;        
-        setDisclaimer(userDisclaimer);        
+        const userDisclaimer = user.summit_tickets[0].owner.disclaimer_accepted;
+        setDisclaimer(userDisclaimer);
         extraQuestions.map(question => {
             const userAnswer = userAnswers.filter(a => a.question_id === question.id);
             let newAnswer = { name: question.name, id: question.id, value: '' };
@@ -35,20 +32,20 @@ export const ExtraQuestionsPageTemplate = ({ user, loading, saveExtraQuestions }
 
     }, [])
 
-    const mandatoryQuestions = () => {
-        const mandatoryQuestions = extraQuestions.filter(question => question.mandatory === true);        
+    const mandatoryQuestionsAnswered = () => {
+        const mandatoryQuestions = extraQuestions.filter(question => question.mandatory === true);
         const mandatoryAnswers = mandatoryQuestions.every(question => {
             const answer = answers.find(a => a.id === question.id);
             return answer && answer.value;
         });
-        if(SummitObject.summit.registration_disclaimer_mandatory){
+        if (summit.registration_disclaimer_mandatory) {
             return disclaimer && mandatoryAnswers;
         } else {
             return mandatoryAnswers;
         }
-    }    
+    }
 
-    const handleDisclaimer = () => setDisclaimer(!disclaimer);
+    const toggleDisclaimer = () => setDisclaimer(!disclaimer);
 
     const handleChange = (ev) => {
         let { value, id } = ev.target;
@@ -69,104 +66,8 @@ export const ExtraQuestionsPageTemplate = ({ user, loading, saveExtraQuestions }
 
     const getAnswer = (question) => answers.find(a => a.id === question.id).value;
 
-    const getInput = (question) => {
-        let questionValues = question.values;
-
-        switch (question.type) {
-            case 'Text':
-                return (
-                    <div key={question.id} className={`${styles.questionWrapper} columns`}>
-                        <div className="column is-one-third" style={{ paddingTop: '10px' }}>{question.label} <b>{question.mandatory ? '*' : ''}</b></div>
-                        <div className="column is-two-thirds">
-                            <Input
-                                id={question.id}
-                                value={getAnswer(question)}
-                                onChange={handleChange}
-                                placeholder={question.placeholder}
-                                className="form-control"
-                            />
-                        </div>
-                    </div>
-                );
-            case 'TextArea':
-                return (
-                    <div key={question.id} className={`${styles.questionWrapper} columns`}>
-                        <div className="column is-one-third" style={{ paddingTop: '10px' }}>{question.label} <b>{question.mandatory ? '*' : ''}</b></div>
-                        <div className="column is-two-thirds">
-                            <textarea
-                                id={question.id}
-                                value={getAnswer(question)}
-                                onChange={handleChange}
-                                placeholder={question.placeholder}
-                                className="form-control"
-                                rows="4"
-                            />
-                        </div>
-                    </div>
-                );
-            case 'CheckBox':
-                return (
-                    <div key={question.id} className={`${styles.questionWrapper} columns`}>
-                        <div className="column is-one-third">{question.label} <b>{question.mandatory ? '*' : ''}</b></div>
-                        <div className="column is-two-thirds">
-                            <input type="checkbox" id={`${question.id}`} checked={(getAnswer(question) === "true")}
-                                onChange={handleChange} />
-                        </div>
-                    </div>
-
-                );
-            case 'ComboBox':
-                questionValues = questionValues.map(val => ({ ...val, value: val.id }));
-                return (
-                    <div key={question.id} className={`${styles.questionWrapper} columns`}>
-                        <div className="column is-one-third">{question.label} <b>{question.mandatory ? '*' : ''}</b></div>
-                        <div className="column is-two-thirds">
-                            <Dropdown
-                                id={question.id}
-                                value={getAnswer(question)}
-                                options={questionValues}
-                                onChange={handleChange}
-                            />
-                        </div>
-                    </div>
-                );
-            case 'CheckBoxList':
-                questionValues = questionValues.map(val => ({ ...val, value: val.id }));
-                const answerValue = getAnswer(question) ? getAnswer(question).split(',').map(ansVal => parseInt(ansVal)) : [];
-                return (
-                    <div key={question.id} className={`${styles.questionWrapper} columns`}>
-                        <div className="column is-one-third">{question.label} <b>{question.mandatory ? '*' : ''}</b></div>
-                        <div className="column is-two-thirds">
-                            <CheckboxList
-                                id={`${question.id}`}
-                                value={answerValue}
-                                options={questionValues}
-                                onChange={handleChange}
-                            />
-                        </div>
-                    </div>
-                );
-            case 'RadioButtonList':
-                questionValues = questionValues.map(val => ({ ...val, value: val.id }));
-                return (
-                    <div key={question.id} className={`${styles.questionWrapper} columns`}>
-                        <div className="column is-one-third">{question.label} <b>{question.mandatory ? '*' : ''}</b></div>
-                        <div className="column is-two-thirds">
-                            <RadioList
-                                id={`${question.id}`}
-                                value={getAnswer(question)}
-                                options={questionValues}
-                                onChange={handleChange}
-                                inline
-                            />
-                        </div>
-                    </div>
-                );
-        }
-    }
-
     return (
-        <React.Fragment>
+        <>
             <div className="columns">
                 <div className="column px-6 py-6 mb-6 is-half is-offset-one-quarter">
                     <h2>Additional Information</h2>
@@ -175,40 +76,40 @@ export const ExtraQuestionsPageTemplate = ({ user, loading, saveExtraQuestions }
                     </span>
                     <div>
                         {answers.length === extraQuestions.length && extraQuestions.map(question => {
-                            return getInput(question)
+                            return <ExtraQuestions question={question} handleChange={handleChange} getAnswer={getAnswer} />
                         })}
                     </div>
                     <div className={`columns ${styles.disclaimer}`}>
                         <div className="column is-1">
-                            <input type="checkbox" checked={disclaimer} onChange={handleDisclaimer}/>
-                            <b>{SummitObject.summit.registration_disclaimer_mandatory ? '*' : ''}</b>
+                            <input type="checkbox" checked={disclaimer} onChange={toggleDisclaimer} />
+                            <b>{summit.registration_disclaimer_mandatory ? '*' : ''}</b>
                         </div>
                         <div className="column is-11">
-                            <span dangerouslySetInnerHTML={{ __html: SummitObject.summit.registration_disclaimer_content }} />
+                            <span dangerouslySetInnerHTML={{ __html: summit.registration_disclaimer_content }} />
                         </div>
                     </div>
-                    <button className={`${styles.buttonSave} button is-large`} disabled={!mandatoryQuestions()} onClick={() => saveExtraQuestions(answers, disclaimer)}>
+                    <button className={`${styles.buttonSave} button is-large`} disabled={!mandatoryQuestionsAnswered()} onClick={() => saveExtraQuestions(answers, disclaimer)}>
                         Save and Continue
                     </button>
                 </div>
             </div>
-        </React.Fragment>
+        </>
     )
 };
-
-const OrchestedTemplate = withOrchestra(ExtraQuestionsPageTemplate);
 
 const ExtraQuestionsPage = (
     {
         location,
         user,
+        summit,
         saveExtraQuestions,
     }
 ) => {
     return (
         <Layout location={location}>
-            <OrchestedTemplate
+            <ExtraQuestionsPageTemplate
                 user={user}
+                summit={summit}
                 saveExtraQuestions={saveExtraQuestions} />
         </Layout>
     )
@@ -224,9 +125,10 @@ ExtraQuestionsPageTemplate.propTypes = {
     saveExtraQuestions: PropTypes.func,
 }
 
-const mapStateToProps = ({ userState }) => ({
+const mapStateToProps = ({ userState, summitState }) => ({
     user: userState.userProfile,
     loading: userState.loading,
+    summit: summitState.summit
 })
 
 export default connect(mapStateToProps,

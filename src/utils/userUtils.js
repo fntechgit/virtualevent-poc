@@ -7,11 +7,7 @@ export const requireExtraQuestions = (profile) => {
         if (ticketExtraQuestions.length > 0) {
             return !requiredExtraQuestions.every(q => {
                 const answer = ticketExtraQuestions.find(answer => answer.question_id === q.id);
-                if (answer && answer.value) {
-                    return true;
-                } else {
-                    return false;
-                }
+                return answer && answer.value;
             });
         } else {
             return true;
