@@ -13,7 +13,8 @@ import {
   STOP_LOADING_IDP_PROFILE,
   ADD_TO_SCHEDULE,
   REMOVE_FROM_SCHEDULE,
-  SCHEDULE_SYNC_LINK_RECEIVED
+  SCHEDULE_SYNC_LINK_RECEIVED,
+  SET_USER_ORDER,
 } from '../actions/user-actions'
 import { RESET_STATE } from "../actions/base-actions";
 
@@ -24,13 +25,12 @@ const DEFAULT_STATE = {
   rocketChatSSO: {},
   userProfile: null,
   idpProfile: null,
-  isAuthorized: null,
-  hasTicket: null
+  isAuthorized: false,
+  hasTicket: false
 }
 
 const userReducer = (state = DEFAULT_STATE, action) => {
   const { type, payload } = action
-
   switch (type) {
     case RESET_STATE:
     case LOGOUT_USER:
@@ -49,6 +49,10 @@ const userReducer = (state = DEFAULT_STATE, action) => {
       return { ...state, isAuthorized: payload }
     case SET_USER_TICKET:
       return { ...state, hasTicket: payload }
+    case SET_USER_ORDER: {
+      const {tickets} = payload;
+      return {...state, hasTicket: true, userProfile: {...state.userProfile, summit_tickets: [...tickets] }};
+    }
     case GET_IDP_PROFILE:
       return { ...state, idpProfile: payload.response }
     case ADD_TO_SCHEDULE: {      

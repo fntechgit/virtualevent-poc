@@ -1,36 +1,36 @@
-import React, { useState, useEffect } from "react"
+import React, { useEffect } from "react"
 import { connect } from 'react-redux'
 import { navigate } from "gatsby"
 
 import { isAuthorizedBadge } from '../utils/authorizedGroups';
 import { PHASES } from '../utils/phasesUtils'
-import { getUserProfile } from "../actions/user-actions";
+import { getUserProfile, requireExtraQuestions } from "../actions/user-actions";
 import HeroComponent from '../components/HeroComponent'
-import { requireExtraQuestions } from '../utils/userUtils'
 
-const PrivateRoute = ({ component: Component, isLoggedIn, location, eventId, user: { loading, userProfile, hasTicket, isAuthorized }, summit_phase, getUserProfile, ...rest }) => {
 
-  const [userRevalidation, setUserRevalidation] = useState(null);
+const PrivateRoute = ({
+                        component: Component,
+                        isLoggedIn,
+                        location,
+                        eventId,
+                        user: { loading, userProfile, hasTicket, isAuthorized },
+                        summit_phase,
+                        getUserProfile,
+                        requireExtraQuestions,
+                        ...rest }) => {
+
 
   useEffect(() => {
 
     if (!isLoggedIn) return;
 
-    if (userProfile === null) {
+    if (!userProfile) {
+      // get user profile
       getUserProfile();
       return;
-    } else if (userRevalidation) {
-      setUserRevalidation(false);
     }
 
-    if (userRevalidation === null && (isAuthorized === false && hasTicket === false)) {
-      getUserProfile();
-      setUserRevalidation(true);
-      return;
-    } else {
-      setUserRevalidation(false);
-    }
-  }, [userProfile, hasTicket, isAuthorized, getUserProfile, isLoggedIn, userRevalidation]);
+  }, [userProfile, getUserProfile ]);
 
   if (!isLoggedIn) {
     navigate('/', {
@@ -41,8 +41,15 @@ const PrivateRoute = ({ component: Component, isLoggedIn, location, eventId, use
     return null
   }
 
-  if (loading || userProfile === null || hasTicket === null || isAuthorized === null || userRevalidation === null ||
-    (hasTicket === false && isAuthorized === false && userRevalidation === true)) {
+  const userIsAuthz = () => {
+    return (hasTicket || isAuthorized)
+  }
+
+  const userIsReady = () => {
+    return userProfile && userIsAuthz();
+  }
+
+  if (loading || !userIsReady()) {
     return (
       <HeroComponent
         title="Checking credentials..."
@@ -50,20 +57,21 @@ const PrivateRoute = ({ component: Component, isLoggedIn, location, eventId, use
     )
   }
 
-  if (isAuthorized === false && hasTicket === true && requireExtraQuestions(userProfile)) {
+  if (requireExtraQuestions()) {
+    // of we already on extra questions page just render the component
     if (location.pathname === "/a/extra-questions") {
       return (<Component location={location} eventId={eventId} {...rest} />);
-    } else {
-      return (
+    }
+
+    return (
         <HeroComponent
           title="You need to complete some extra questions before entering the event"
           redirectTo="/a/extra-questions"
         />
       );
-    }
   }
 
-  if (isAuthorized === false && hasTicket === false && location.pathname !== "/a/extra-questions") {
+  if (!userIsAuthz() &&  location.pathname !== "/a/extra-questions") {
     navigate('/authz/ticket', {
       state: {
         error: 'no-ticket'
@@ -72,7 +80,7 @@ const PrivateRoute = ({ component: Component, isLoggedIn, location, eventId, use
     return null
   }
 
-  if (isAuthorized === false && summit_phase === PHASES.BEFORE) {
+  if (!userIsAuthz() && summit_phase === PHASES.BEFORE) {
     return (
       <HeroComponent
         title="Its not yet show time!"
@@ -81,7 +89,8 @@ const PrivateRoute = ({ component: Component, isLoggedIn, location, eventId, use
     )
   }
 
-  if (eventId && userProfile && !isAuthorizedBadge(eventId, userProfile.summit_tickets)) {
+  // if we are at an activity page ...
+  if (eventId && userIsReady() && !isAuthorizedBadge(eventId, userProfile.summit_tickets)) {
     setTimeout(() => {
       navigate(location.state?.previousUrl ? location.state.previousUrl : '/')
     }, 3000);
@@ -95,4 +104,7 @@ const PrivateRoute = ({ component: Component, isLoggedIn, location, eventId, use
   return (<Component location={location} eventId={eventId} {...rest} />);
 }
 
-export default connect(null, { getUserProfile })(PrivateRoute)
+export default connect(null, {
+  getUserProfile,
+  requireExtraQuestions
+})(PrivateRoute)

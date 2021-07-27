@@ -38,6 +38,7 @@ export const SCAN_BADGE_ERROR                 = 'SCAN_BADGE_ERROR';
 export const ADD_TO_SCHEDULE                  = 'ADD_TO_SCHEDULE';
 export const REMOVE_FROM_SCHEDULE             = 'REMOVE_FROM_SCHEDULE';
 export const SCHEDULE_SYNC_LINK_RECEIVED      = 'SCHEDULE_SYNC_LINK_RECEIVED';
+export const SET_USER_ORDER                   = 'SET_USER_ORDER';
 
 export const getDisqusSSO = () => async (dispatch) => {
 
@@ -96,6 +97,48 @@ export const getUserProfile = () => async (dispatch) => {
   });
 }
 
+export const getIDPProfile = () => async (dispatch) => {
+
+  const accessToken = await getAccessToken();
+
+  if (!accessToken) return Promise.resolve();
+
+  let params = {
+    access_token: accessToken,
+  };
+
+  dispatch(createAction(START_LOADING_IDP_PROFILE)());
+
+  return getRequest(
+      null,
+      createAction(GET_IDP_PROFILE),
+      `${window.IDP_BASE_URL}/api/v1/users/me`,
+      customErrorHandler
+  )(params)(dispatch)
+      .then(() => dispatch(createAction(STOP_LOADING_IDP_PROFILE)()))
+      .catch(() => dispatch(createAction(STOP_LOADING_IDP_PROFILE)()));
+}
+
+export const requireExtraQuestions = () => (dispatch, getState) => {
+
+  const { summitState : { summit }} = getState();
+  const { userState: { userProfile } } = getState();
+
+  const requiredExtraQuestions = summit.order_extra_questions.filter(q => q.mandatory === true);
+
+  if (requiredExtraQuestions.length > 0 && userProfile) {
+    const ticketExtraQuestions = userProfile?.summit_tickets[0]?.owner?.extra_questions || [];
+    if (ticketExtraQuestions.length > 0) {
+      return !requiredExtraQuestions.every(q => {
+        const answer = ticketExtraQuestions.find(answer => answer.question_id === q.id);
+        return answer && answer.value;
+      });
+    }
+    return true;
+  }
+  return false;
+}
+
 const setAuthorization = () => (dispatch, getState) => {
   const { userState: { userProfile } } = getState();
   const isAuthorized = isAuthorizedUser(userProfile.groups)
@@ -135,28 +178,6 @@ export const scanBadge = (sponsorId) => async (dispatch) => {
       dispatch(createAction(SCAN_BADGE_ERROR)(e));
       return (e);
     });
-}
-
-export const getIDPProfile = () => async (dispatch) => {
-
-  const accessToken = await getAccessToken();
-
-  if (!accessToken) return Promise.resolve();
-
-  let params = {
-    access_token: accessToken,
-  };
-
-  dispatch(createAction(START_LOADING_IDP_PROFILE)());
-
-  getRequest(
-    null,
-    createAction(GET_IDP_PROFILE),
-    `${window.IDP_BASE_URL}/api/v1/users/me`,
-    customErrorHandler
-  )(params)(dispatch)
-    .then(() => dispatch(createAction(STOP_LOADING_IDP_PROFILE)()))
-    .catch(() => dispatch(createAction(STOP_LOADING_IDP_PROFILE)()));
 }
 
 export const addToSchedule = (event) => async (dispatch, getState) => {
@@ -341,3 +362,7 @@ export const getScheduleSyncLink = () => async (dispatch) => {
       customErrorHandler,
   )(params)(dispatch);
 };
+
+export const setUserOrder = (order) => (dispatch) => {
+  return dispatch(createAction(SET_USER_ORDER)(order));
+}

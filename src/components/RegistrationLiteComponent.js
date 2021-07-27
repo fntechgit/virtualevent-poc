@@ -15,7 +15,7 @@ import { FragmentParser } from "openstack-uicore-foundation/lib/components";
 import { doLogin, passwordlessStart } from 'openstack-uicore-foundation/lib/methods'
 import { getEnvVariable, SUMMIT_API_BASE_URL } from '../utils/envVariables'
 
-import { getUserProfile, setPasswordlessLogin } from "../actions/user-actions";
+import { getUserProfile, setPasswordlessLogin, setUserOrder } from "../actions/user-actions";
 import { getThirdPartyProviders } from "../actions/base-actions";
 
 import 'summit-registration-lite/dist/index.css';
@@ -27,7 +27,7 @@ const RegistrationLiteComponent = ({
     thirdPartyProviders,
     getUserProfile,
     setPasswordlessLogin,
-    location,
+    setUserOrder,
     loadingProfile,
     loadingIDP,
     summit,
@@ -103,12 +103,20 @@ const RegistrationLiteComponent = ({
         getPasswordlessCode: getPasswordlessCode,
         loginWithCode: async (code, email) => await loginPasswordless(code, email),
         getAccessToken: async () => await getAccessToken(),
-        closeWidget: () => setIsActive(false),
+        closeWidget: async () => {
+            // reload user profile
+            await getUserProfile();
+            setIsActive(false)
+        },
         goToExtraQuestions: async () => {
+            // reload user profile
             await getUserProfile();
             navigate('/a/extra-questions')
         },
         goToEvent: () => navigate('/a/'),
+        onPurchaseComplete: (order) => {
+            window.setTimeout(() => setUserOrder(order), 5000);
+        }
     };
 
     const { registerButton } = siteSettings.heroBanner.buttons;
@@ -138,4 +146,9 @@ const mapStateToProps = ({ userState, summitState, settingState }) => ({
     siteSettings: settingState.siteSettings,
 })
 
-export default connect(mapStateToProps, { getThirdPartyProviders, getUserProfile, setPasswordlessLogin })(RegistrationLiteComponent)
+export default connect(mapStateToProps, {
+    getThirdPartyProviders,
+    getUserProfile,
+    setPasswordlessLogin,
+    setUserOrder,
+})(RegistrationLiteComponent)
