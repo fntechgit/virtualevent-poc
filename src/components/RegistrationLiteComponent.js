@@ -13,7 +13,7 @@ import RegistrationLiteWidget from 'summit-registration-lite/dist';
 import { FragmentParser } from "openstack-uicore-foundation/lib/components";
 
 import { doLogin, passwordlessStart } from 'openstack-uicore-foundation/lib/methods'
-import { getEnvVariable, SUMMIT_API_BASE_URL, OAUTH2_CLIENT_ID} from '../utils/envVariables'
+import { getEnvVariable, SUMMIT_API_BASE_URL, OAUTH2_CLIENT_ID, REGISTRATION_BASE_URL} from '../utils/envVariables'
 
 import { getUserProfile, setPasswordlessLogin, setUserOrder } from "../actions/user-actions";
 import { getThirdPartyProviders } from "../actions/base-actions";
@@ -23,6 +23,7 @@ import styles from '../styles/lobby-hero.module.scss'
 
 const RegistrationLiteComponent = ({
     registrationProfile,
+    userProfile,
     getThirdPartyProviders,
     thirdPartyProviders,
     getUserProfile,
@@ -98,6 +99,7 @@ const RegistrationLiteComponent = ({
         marketingData: colorSettings,
         loginOptions: formatThirdPartyProviders(thirdPartyProviders),
         loading: loadingProfile || loadingIDP,
+        ticketOwned: userProfile?.summit_tickets?.length > 0 ,
         authUser: (provider) => onClickLogin(provider),
         getPasswordlessCode: getPasswordlessCode,
         loginWithCode: async (code, email) => await loginPasswordless(code, email),
@@ -113,6 +115,7 @@ const RegistrationLiteComponent = ({
             navigate('/a/extra-questions')
         },
         goToEvent: () => navigate('/a/'),
+        goToRegistration: () => navigate(`${getEnvVariable(REGISTRATION_BASE_URL)}/a/${summit.slug}`),
         onPurchaseComplete: (order) => {
             window.setTimeout(() => setUserOrder(order), 5000);
         },
