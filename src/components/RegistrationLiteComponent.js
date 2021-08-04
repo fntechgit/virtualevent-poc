@@ -13,7 +13,7 @@ import RegistrationLiteWidget from 'summit-registration-lite/dist';
 import { FragmentParser } from "openstack-uicore-foundation/lib/components";
 
 import { doLogin, passwordlessStart } from 'openstack-uicore-foundation/lib/methods'
-import { getEnvVariable, SUMMIT_API_BASE_URL, OAUTH2_CLIENT_ID, REGISTRATION_BASE_URL} from '../utils/envVariables'
+import { getEnvVariable, SUMMIT_API_BASE_URL, OAUTH2_CLIENT_ID, REGISTRATION_BASE_URL } from '../utils/envVariables'
 
 import { getUserProfile, setPasswordlessLogin, setUserOrder } from "../actions/user-actions";
 import { getThirdPartyProviders } from "../actions/base-actions";
@@ -65,7 +65,7 @@ const RegistrationLiteComponent = ({
             { button_color: '#3FA2F7', provider_label: 'LinkedIn', provider_param: 'linkedin' },
             { button_color: '#2272E7', provider_label: 'Microsoft', provider_param: 'microsoft' },
         ];
-        
+
         return [...providers, ...thirdPartyProviders.filter(p => providers_array?.includes(p.provider_param))];
     };
 
@@ -99,7 +99,7 @@ const RegistrationLiteComponent = ({
         marketingData: colorSettings,
         loginOptions: formatThirdPartyProviders(thirdPartyProviders),
         loading: loadingProfile || loadingIDP,
-        ticketOwned: userProfile?.summit_tickets?.length > 0 ,
+        ticketOwned: userProfile?.summit_tickets?.length > 0,
         authUser: (provider) => onClickLogin(provider),
         getPasswordlessCode: getPasswordlessCode,
         loginWithCode: async (code, email) => await loginPasswordless(code, email),
@@ -126,10 +126,12 @@ const RegistrationLiteComponent = ({
 
     return (
         <>
-            <button className={`${styles.button} button is-large`} onClick={() => setIsActive(true)}>
-                <i className={`fa fa-2x fa-edit icon is-large`} />
-                <b>{registerButton.text}</b>
-            </button>
+            {!userProfile?.summit_tickets?.length > 0 &&
+                <button className={`${styles.button} button is-large`} onClick={() => setIsActive(true)}>
+                    <i className={`fa fa-2x fa-edit icon is-large`} />
+                    <b>{registerButton.text}</b>
+                </button>
+            }
             <div>
                 {isActive && <RegistrationLiteWidget {...widgetProps} />}
             </div>
