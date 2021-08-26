@@ -107,14 +107,14 @@ const SponsorComponent = ({ page, sponsorsState, tiers, lobbyButton }) => {
               )
             }
             case 'expo-hall': {
-              return (
+              return tier.expoHallPage?.display === true && (
                 <div className={`${styles.expoContainer} px-6`} key={tierIndex}>
                   {sponsors.map((sponsor, index) => {
                     return (
                       sponsor.externalLink ?
                         <div className={`
                           ${styles.imageBox} 
-                          ${tier.expoHallSize === 'large' ? styles.large : tier.expoHallSize === 'medium' ? styles.medium : styles.small}`}
+                          ${tier.expoHallPage?.expoHallTemplate === 'big-images' ? styles.large : tier.expoHallPage?.expoHallTemplate === 'medium-images' ? styles.medium : styles.small}`}
                           key={`${s.tier.label}-${index}`}
                         >
                           <Link to={sponsor.externalLink}>
@@ -122,23 +122,23 @@ const SponsorComponent = ({ page, sponsorsState, tiers, lobbyButton }) => {
                           </Link>
                         </div>
                         : sponsor.usesSponsorPage ?
-                          <div className={`
-                            ${styles.imageBox} 
-                            ${tier.expoHallSize === 'large' ? styles.large : tier.expoHallSize === 'medium' ? styles.medium : styles.small}`}
-                            key={`${s.tier.label}-${index}`}
-                          >
-                            <Link to={`/a/sponsor/${getSponsorURL(sponsor.id, sponsor.name)}`}>
-                              <img src={sponsor.logo} alt={sponsor.name} />
-                            </Link>
-                          </div>
-                          :
-                          <div className={`
-                            ${styles.imageBox} 
-                            ${tier.expoHallSize === 'large' ? styles.large : tier.expoHallSize === 'medium' ? styles.medium : styles.small}`}
-                            key={`${s.tier.label}-${index}`}
-                          >
+                        <div className={`
+                          ${styles.imageBox} 
+                          ${tier.expoHallPage?.expoHallTemplate === 'big-images' ? styles.large : tier.expoHallPage?.expoHallTemplate === 'medium-images' ? styles.medium : styles.small}`}
+                          key={`${s.tier.label}-${index}`}
+                        >
+                          <Link to={`/a/sponsor/${getSponsorURL(sponsor.id, sponsor.name)}`}>
                             <img src={sponsor.logo} alt={sponsor.name} />
-                          </div>
+                          </Link>
+                        </div>
+                        :
+                        <div className={`
+                          ${styles.imageBox} 
+                          ${tier.expoHallPage?.expoHallTemplate === 'big-images' ? styles.large : tier.expoHallPage?.expoHallTemplate === 'medium-images' ? styles.medium : styles.small}`}
+                          key={`${s.tier.label}-${index}`}
+                        >
+                          <img src={sponsor.logo} alt={sponsor.name} />
+                        </div>
                     )
                   })}
                 </div>
