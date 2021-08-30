@@ -131,6 +131,19 @@ const getFilteredEvents = (events, filters, summitTimezone) => {
       if (!valid) return false;
     }
 
+    if (filters.company?.values.length > 0) {
+      valid = ev.speakers?.some(s => filters.company.values.includes(s.company)) ||
+          filters.company.values.includes(ev.moderator?.company) ||
+          ev.sponsors?.some(s => filters.company.values.includes(s.name));
+
+      if (!valid) return false;
+    }
+
+    if (filters.title?.values) {
+      valid = ev.title.toLowerCase().includes(filters.title.values.toLowerCase());
+      if (!valid) return false;
+    }
+
     return true;
   });
 };
