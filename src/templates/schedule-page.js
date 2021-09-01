@@ -1,47 +1,67 @@
-import React, { useState, useEffect } from 'react'
-import PropTypes from 'prop-types'
-import { navigate } from 'gatsby'
-import { connect } from 'react-redux'
-
-import Layout from '../components/Layout'
-import FullSchedule from '../components/FullSchedule'
+import React, { useEffect } from "react";
+import PropTypes from "prop-types";
+import { pickBy } from "lodash";
+import { navigate } from "gatsby";
+import { connect } from "react-redux";
+import { updateFiltersFromHash, updateFilter, getShareLink } from "../actions/schedule-actions";
+import Layout from "../components/Layout";
+import FullSchedule from "../components/FullSchedule";
 import ScheduleFilters from "../components/ScheduleFilters";
-import AttendanceTrackerComponent from '../components/AttendanceTrackerComponent'
+import AttendanceTrackerComponent from "../components/AttendanceTrackerComponent";
 
-import styles from '../styles/schedule.module.scss'
+import styles from "../styles/schedule.module.scss";
 
-import { PHASES } from '../utils/phasesUtils'
+import { PHASES } from "../utils/phasesUtils";
 
-const SchedulePage = ({ summitPhase, isLoggedUser, location }) => {
+const SchedulePage = ({
+  summit,
+  summitPhase,
+  isLoggedUser,
+  location,
+  events,
+  allEvents,
+  filters,
+  view,
+  colorSource,
+  colorSettings,
+  updateFilter,
+  updateFiltersFromHash,
+}) => {
 
-  let scheduleProps = {};
+  const filterProps = {
+    summit,
+    events,
+    allEvents,
+    filters: pickBy(filters, (value) => value.enabled),
+    triggerAction: (action, payload) => {
+      updateFilter(payload);
+    },
+    marketingSettings: colorSettings,
+    colorSource: colorSource,
+  };
+
+  let scheduleProps = {
+    summit,
+    events,
+    filters,
+    view,
+    colorSource,
+    getShareLink: () => getShareLink(filters, view),
+  };
 
   if (isLoggedUser && summitPhase !== PHASES.BEFORE) {
     scheduleProps = {
       ...scheduleProps,
       onEventClick: (ev) => navigate(`/a/event/${ev.id}`),
       onStartChat: console.log,
-    }
+    };
   }
 
-  const [scrollPosition, setScrollPosition] = useState(0);
-  const [headerHeight, setHeaderHeight] = useState(70);
-
-  const handleScroll = () => {
-    const position = window.pageYOffset;
-    const header = document.querySelector('header')
-    if(header){
-      setHeaderHeight(header.clientHeight);
-    }
-    if(position < headerHeight) setScrollPosition(position);
-  };
-
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+    updateFiltersFromHash(filters);
+  });
+
+  if (!summit) return null;
 
   return (
     <Layout location={location}>
@@ -50,15 +70,16 @@ const SchedulePage = ({ summitPhase, isLoggedUser, location }) => {
           <div className="column is-three-quarters px-6 pt-6 pb-0">
             <FullSchedule {...scheduleProps} />
           </div>
-          <div className={`column is-one-quarter px-6 pt-0 pb-6 ${styles.filterContainer}`} style={{ top: headerHeight - scrollPosition }}>
-            <ScheduleFilters />
+          <div
+            className={`column is-one-quarter px-6 pt-0 pb-6 ${styles.filterContainer}`}
+          >
+            <ScheduleFilters {...filterProps} />
           </div>
         </div>
-
       </div>
       <AttendanceTrackerComponent />
     </Layout>
-  )
+  );
 };
 
 SchedulePage.propTypes = {
@@ -66,11 +87,25 @@ SchedulePage.propTypes = {
   isLoggedUser: PropTypes.bool,
 };
 
-const mapStateToProps = ({ clockState, loggedUserState }) => ({
+const mapStateToProps = ({
+  summitState,
+  clockState,
+  loggedUserState,
+  scheduleState,
+  settingState,
+}) => ({
+  summit: summitState.summit,
   summitPhase: clockState.summit_phase,
-  isLoggedUser: loggedUserState.isLoggedUser
+  isLoggedUser: loggedUserState.isLoggedUser,
+  events: scheduleState.events,
+  allEvents: scheduleState.allEvents,
+  filters: scheduleState.filters,
+  view: scheduleState.view,
+  colorSource: scheduleState.colorSource,
+  colorSettings: settingState.colorSettings,
 });
 
-export default connect(
-  mapStateToProps, {}
-)(SchedulePage);
+export default connect(mapStateToProps, {
+  updateFiltersFromHash,
+  updateFilter,
+})(SchedulePage);
