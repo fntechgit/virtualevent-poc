@@ -1,5 +1,5 @@
 import {epochToMomentTimeZone} from 'openstack-uicore-foundation/lib/methods';
-
+import {isString} from 'lodash';
 import summitData from '../content/summit.json';
 import eventsData from '../content/events.json';
 import filtersData from '../content/filters.json';
@@ -139,7 +139,7 @@ const getFilteredEvents = (events, filters, summitTimezone) => {
       if (!valid) return false;
     }
 
-    if (filters.title?.values) {
+    if (filters.title?.values && isString(filters.title.values)) {
       valid = ev.title.toLowerCase().includes(filters.title.values.toLowerCase());
       if (!valid) return false;
     }
