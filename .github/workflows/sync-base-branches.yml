@@ -2,18 +2,18 @@ name: Sync Base Branches
 on:
   push:
     branches:
-      - 'master'
+      - 'main'
 jobs:
   sync-branch:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
 
-      - name: Merge master -> dev-yoco
+      - name: Merge main -> dev-yoco
         uses: devmasx/merge-branch@v1.3.1
         with:
           type: now
-          from_branch: master
+          from_branch: main
           target_branch: dev-yoco
           github_token: ${{ github.token }}
 
@@ -25,11 +25,11 @@ jobs:
 #          target_branch: prod-yoco
 #          github_token: ${{ github.token }}
 #
-#      - name: Merge master -> prod-tier1
+#      - name: Merge main -> prod-tier1
 #        uses: devmasx/merge-branch@v1.3.1
 #        with:
 #          type: now
-#          from_branch: master
+#          from_branch: main
 #          target_branch: prod-tier_1_default
 #          github_token: ${{ github.token }}
 

@@ -82,5 +82,4 @@ const scheduleReducer = (state = DEFAULT_STATE, action) => {
   }
 };
 
-
 export default scheduleReducer
