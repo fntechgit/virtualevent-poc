@@ -73,7 +73,7 @@ const MySchedulePage = ({
           </div>
           <div className="column is-one-quarter px-6 pt-6 pb-0">
             <ScheduleFilters {...filterProps} />
-          </>
+          </div>
         </div>
       </div>
       <AttendanceTrackerComponent />
