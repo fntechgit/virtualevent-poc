@@ -1,0 +1,53 @@
+@import './colors.scss';
+
+.wrapper {
+  display: flex;
+  position: relative;
+
+  .scheduleWrapper {
+    display: inline-block;
+    width: 70%;
+
+    // make up space for button
+    @media (max-width: 991px) {
+      width: 100%;
+
+      :global(.full-schedule-widget) > div:nth-child(2) {
+        margin-bottom: 100px;
+      }
+    }
+
+    .filterButton {
+      position: absolute;
+      top: 80px;
+      background-color: #f6f6f6;
+      color: #6c6c6c;
+      border: none;
+      height: 50px;
+      width: calc(100% + 30px);
+      margin: 0 -15px;
+      font-size: 18px;
+
+      i {
+        margin-right: 10px;
+      }
+
+      @media (min-width: 992px) {
+        display: none;
+      }
+    }
+  }
+
+  .filterWrapper {
+    width: 100%;
+    display: none;
+
+    @media (min-width: 992px) {
+      display: inline-block;
+      width: calc(30% - 30px);
+      margin-left: 30px;
+    }
+  }
+
+
+}

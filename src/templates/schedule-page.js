@@ -8,6 +8,7 @@ import FullSchedule from '../components/FullSchedule'
 import ScheduleFilters from "../components/ScheduleFilters";
 import AttendanceTrackerComponent from '../components/AttendanceTrackerComponent'
 
+import styles from "../styles/full-schedule.module.scss";
 
 import { PHASES } from '../utils/phasesUtils'
 
@@ -25,12 +26,15 @@ const SchedulePage = ({ summitPhase, isLoggedUser, location }) => {
 
   return (
     <Layout location={location}>
-      <div className="container" style={{position: "static"}}>
-        <div className="columns">
-          <div className="column is-three-quarters px-6 pt-6 pb-0">
+      <div className="container">
+        <div className={styles.wrapper}>
+          <div className={styles.scheduleWrapper}>
             <FullSchedule {...scheduleProps} />
+            <button className={styles.filterButton}>
+              <i className="fa fa-filter" />Filters
+            </button>
           </div>
-          <div className="column is-one-quarter px-6 pt-6 pb-0">
+          <div className={styles.filterWrapper}>
             <ScheduleFilters />
           </div>
         </div>
