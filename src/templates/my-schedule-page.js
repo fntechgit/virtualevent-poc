@@ -13,8 +13,6 @@ import FullSchedule from "../components/FullSchedule";
 import ScheduleFilters from "../components/ScheduleFilters";
 import AttendanceTrackerComponent from "../components/AttendanceTrackerComponent";
 
-import styles from "../styles/schedule.module.scss";
-
 import { PHASES } from "../utils/phasesUtils";
 
 const MySchedulePage = ({
@@ -73,11 +71,9 @@ const MySchedulePage = ({
           <div className="column is-three-quarters px-6 pt-6 pb-0">
             <FullSchedule {...scheduleProps} />
           </div>
-          <div
-            className={`column is-one-quarter px-6 pt-0 pb-6 ${styles.filterContainer}`}
-          >
+          <div className="column is-one-quarter px-6 pt-6 pb-0">
             <ScheduleFilters {...filterProps} />
-          </div>
+          </>
         </div>
       </div>
       <AttendanceTrackerComponent />
