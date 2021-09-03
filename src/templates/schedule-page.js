@@ -30,9 +30,6 @@ const SchedulePage = ({ summitPhase, isLoggedUser, location }) => {
         <div className={styles.wrapper}>
           <div className={styles.scheduleWrapper}>
             <FullSchedule {...scheduleProps} />
-            <button className={styles.filterButton}>
-              <i className="fa fa-filter" />Filters
-            </button>
           </div>
           <div className={styles.filterWrapper}>
             <ScheduleFilters />

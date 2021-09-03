@@ -1,13 +1,13 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import { connect } from "react-redux";
 import {pickBy} from 'lodash';
 import { Helmet } from "react-helmet";
 import { updateFilter, updateFiltersFromHash } from "../actions/schedule-actions";
 import Filters from "schedule-filter-widget/dist";
 import "schedule-filter-widget/dist/index.css";
+import styles from "../styles/full-schedule.module.scss";
 
 const ScheduleFilters = ({
-  className,
   summit,
   events,
   allEvents,
@@ -18,7 +18,11 @@ const ScheduleFilters = ({
   updateFiltersFromHash,
   ...rest
 }) => {
+  const [showFilters, setShowfilters] = useState(false);
   const enabledFilters = pickBy(filters, value => value.enabled);
+  const onFilterClick = () => {
+    setShowfilters(true);
+  };
 
   useEffect(() => {
     updateFiltersFromHash();
@@ -49,9 +53,12 @@ const ScheduleFilters = ({
           href="https://cdnjs.cloudflare.com/ajax/libs/awesome-bootstrap-checkbox/1.0.2/awesome-bootstrap-checkbox.min.css"
         />
       </Helmet>
-      <div className={className || "filter-container"}>
+      <div className={`${styles.filters} ${showFilters ? styles.show : ''}`}>
         <Filters {...componentProps} />
       </div>
+      <button className={styles.filterButton} onClick={onFilterClick}>
+        <i className="fa fa-filter" />Filters
+      </button>
     </>
   );
 };
