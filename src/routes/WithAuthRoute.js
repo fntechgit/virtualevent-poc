@@ -41,7 +41,7 @@ const WithAuthRoute = ({
       setFetchedUserProfile(true);
       getUserProfile();
     }
-  }, [fetchedUserProfile, isLoggedIn, hasTicket, isAuthorized, userProfile]);
+  }, [fetchedUserProfile, isLoggedIn, hasTicket, isAuthorized, userProfile, getUserProfile]);
 
   if (!isLoggedIn) {
     navigate("/", {state: { backUrl: `${location.pathname}`,},});
