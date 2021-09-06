@@ -15,7 +15,6 @@ import withSessionChecker from "../utils/withSessionChecker"
 import ExtraQuestionsPage from "../templates/extra-questions-page"
 import MySchedulePage from "../templates/my-schedule-page";
 import ShowOpenRoute from "../routes/ShowOpenRoute";
-import WithTicketRoute from "../routes/WithTicketRoute"
 import WithBadgeRoute from "../routes/WithBadgeRoute";
 
 const App = ({ isLoggedUser, user, summit_phase, lastBuild, syncData }) => {
@@ -34,9 +33,7 @@ const App = ({ isLoggedUser, user, summit_phase, lastBuild, syncData }) => {
           <WithAuthRoute path="/" summit_phase={summit_phase} component={HomePage} isLoggedIn={isLoggedUser} user={user} location={location}>
             <HomePage path="/" isLoggedIn={isLoggedUser} user={user} location={location} />
             <MySchedulePage path="/my-schedule" location={location} summit_phase={summit_phase} isLoggedIn={isLoggedUser} user={user}/>
-            <WithTicketRoute path="/extra-questions">
-              <ExtraQuestionsPage path="/" isLoggedIn={isLoggedUser} user={user} location={location} />
-            </WithTicketRoute>
+            <ExtraQuestionsPage path="/" isLoggedIn={isLoggedUser} user={user} location={location} />
             <ShowOpenRoute path="/">
               <WithBadgeRoute path="/event/:eventId">
                 <EventPage path="/" summit_phase={summit_phase} isLoggedIn={isLoggedUser} user={user} location={location} />

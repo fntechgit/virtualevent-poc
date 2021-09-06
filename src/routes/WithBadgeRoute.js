@@ -18,7 +18,7 @@ const WithBadgeRoute = ({ children, location, eventId, userProfile, hasTicket, i
       return "Sorry. You need a special badge to view this session.";
   };
 
-  if (!userProfile || !userIsAuthz || !hasBadgeForEvent) {
+  if (!userIsAuthz || !hasBadgeForEvent) {
     setTimeout(() => {navigate(location.state?.previousUrl || "/")}, 3000);
     return <HeroComponent title={getTitle()} />;
   }

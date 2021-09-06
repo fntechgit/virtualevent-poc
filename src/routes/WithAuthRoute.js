@@ -44,11 +44,7 @@ const WithAuthRoute = ({
   }, [fetchedUserProfile, isLoggedIn, hasTicket, isAuthorized, userProfile]);
 
   if (!isLoggedIn) {
-    navigate("/", {
-      state: {
-        backUrl: `${location.pathname}`,
-      },
-    });
+    navigate("/", {state: { backUrl: `${location.pathname}`,},});
     return null;
   }
 
@@ -58,10 +54,10 @@ const WithAuthRoute = ({
     return <HeroComponent title="Checking credentials..." />;
   }
 
-  // if we have the user profile but has no tickets for the show
-  if (!userIsAuthz() && userIsReady()) {
-    setTimeout(() => { navigate(location.state?.previousUrl || "/") }, 3000);
-    return (<HeroComponent title="You are not authorized to view this session!" />);
+  // has no ticket -> redirect
+  if (!userIsAuthz()) {
+    navigate('/authz/ticket', {state: {error: 'no-ticket'}});
+    return null
   }
 
   return children;
