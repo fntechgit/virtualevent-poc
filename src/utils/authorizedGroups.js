@@ -10,7 +10,7 @@ export const getUserBadges = (summit_tickets) => {
   let badges = [];
 
   if (summit_tickets) {
-      summit_tickets.filter(t => t.badge).map(t => {
+      summit_tickets.filter(t => t.badge).forEach(t => {
           t.badge.features.forEach(feature => {
               if (!badges.some(e => e === feature.id)) {
                   badges.push(feature.id);
@@ -25,10 +25,9 @@ export const getUserBadges = (summit_tickets) => {
 export const isAuthorizedBadge = (session, summit_tickets) => {
   let authorizedSessionPerBadge = getEnvVariable(AUTHZ_SESSION_BADGE);
     authorizedSessionPerBadge = authorizedSessionPerBadge && authorizedSessionPerBadge !== '' ? authorizedSessionPerBadge.split('|').map((session => {
-      let id = session.split(':')[0];
-      let values = session.split(':')[1].split(',');
-      let sessionObject = { sessionId: id, authorizedBadges: values };
-      return sessionObject
+      const id = session.split(':')[0];
+      const values = session.split(':')[1].split(',');
+      return { sessionId: id, authorizedBadges: values };
     })) : [];
 
   let badges = getUserBadges(summit_tickets);
