@@ -165,11 +165,11 @@ div.column:first-of-type {
     h1 {
       font-size: calc(46px + (50 - 42) * (100vw - 250px) / (1080 - 250));
       font-weight: bold;
-      margin: 6px 0 6px;
+      margin: 0px 0 12px;
     }
 
     h2 {
-      font-size: calc(34px + (40 - 36) * (100vw - 250px) / (1080 - 20));
+      font-size: calc(40px + (40 - 36) * (100vw - 250px) / (1080 - 20));
       font-weight: normal;
       margin-bottom: 6px;
     }
