@@ -38,8 +38,7 @@ const WithAuthRoute = ({
     // if the user is not authz and we accessing a private route , get fresh data to recheck
     // authz condition ( new tickets / new groups ) after every render of the route
     if (!fetchedUserProfile && !userIsAuthz()) {
-      setFetchedUserProfile(true);
-      getUserProfile();
+      getUserProfile().then( _ => setFetchedUserProfile(true))
     }
   }, [fetchedUserProfile, isLoggedIn, hasTicket, isAuthorized, userProfile, getUserProfile]);
 
@@ -56,8 +55,8 @@ const WithAuthRoute = ({
 
   // has no ticket -> redirect
   if (!userIsAuthz()) {
-    navigate('/authz/ticket', {state: {error: 'no-ticket'}});
-    return null
+    const options = { state: {error: 'no-ticket'}};
+    return <HeroComponent title="Checking credentials..." redirectTo="/authz/ticket" options={options} />;
   }
 
   return children;

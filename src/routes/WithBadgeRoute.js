@@ -19,8 +19,7 @@ const WithBadgeRoute = ({ children, location, eventId, userProfile, hasTicket, i
   };
 
   if (!userIsAuthz || !hasBadgeForEvent) {
-    setTimeout(() => {navigate(location.state?.previousUrl || "/")}, 3000);
-    return <HeroComponent title={getTitle()} />;
+    return <HeroComponent title={getTitle()} redirectTo={location.state?.previousUrl || "/"}/>;
   }
 
   return children;

@@ -15,8 +15,7 @@ const WithTicketRoute = ({ children, location, userProfile, hasTicket, isAuthori
   };
 
   if (!userIsAuthz || !userProfile) {
-    setTimeout(() => {navigate(location.state?.previousUrl || "/")}, 3000);
-    return <HeroComponent title={getTitle()} />;
+    return <HeroComponent title={getTitle()} redirectTo={location.state?.previousUrl || "/"} />;
   }
 
   return children;
