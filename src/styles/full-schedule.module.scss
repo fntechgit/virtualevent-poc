@@ -4,8 +4,19 @@
   display: flex;
   position: relative;
 
+  @media (max-width: 991px) {
+    &.showFilters {
+      .scheduleWrapper {
+        display: none;
+      }
+
+      .filterWrapper {
+        display: block;
+      }
+    }
+  }
+
   .scheduleWrapper {
-    display: inline-block;
     width: 70%;
 
     // make up space for button
@@ -16,53 +27,39 @@
   }
 
   .filterWrapper {
+    position: relative;
+    margin: 15px 0 0 30px;
 
-    .filters {
+    @media (max-width: 991px) {
+      flex: unset;
       display: none;
       width: 100%;
-
-      &.show {
-        display: block !important;
-      }
-
-      @media (min-width: 992px) {
-        display: inline-block !important;
-        width: calc(30% - 30px);
-        margin-left: 30px;
-      }
-
-      @media (max-width: 991px) {
-        position: absolute;
-        left: 0;
-        top: 50px;
-        width: 100%;
-        z-index: 11;
-        background-color: white;
-        padding-top: 20px;
-      }
-    }
-
-    .filterButton {
-      position: fixed;
-      top: 7.25rem;
-      left: -15px;
-      background-color: #f6f6f6;
-      color: #6c6c6c;
-      border: none;
-      height: 50px;
-      width: calc(100% + 30px);
-      font-size: 18px;
-      z-index: 12;
-
-      i {
-        margin-right: 10px;
-      }
-
-      @media (min-width: 992px) {
-        display: none;
-      }
+      z-index: 11;
+      background-color: white;
+      padding-top: 70px;
+      margin: 0;
     }
   }
 
+  .filterButton {
+    position: fixed;
+    top: 7.25rem;
+    left: -15px;
+    background-color: #f6f6f6;
+    color: #6c6c6c;
+    border: none;
+    height: 50px;
+    width: calc(100% + 30px);
+    font-size: 18px;
+    z-index: 12;
+
+    i {
+      margin-right: 10px;
+    }
+
+    @media (min-width: 992px) {
+      display: none;
+    }
+  }
 
 }

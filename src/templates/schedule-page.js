@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, {useEffect, useState} from "react";
 import PropTypes from "prop-types";
 import { pickBy } from "lodash";
 import { navigate } from "gatsby";
@@ -27,6 +27,7 @@ const SchedulePage = ({
   updateFilter,
   updateFiltersFromHash,
 }) => {
+  const [showFilters, setShowfilters] = useState(false);
 
   const filterProps = {
     summit,
@@ -66,13 +67,17 @@ const SchedulePage = ({
   return (
     <Layout location={location}>
       <div className="container">
-        <div className={styles.wrapper}>
+        <div className={`${styles.wrapper} ${showFilters ? styles.showFilters : ""}`}>
           <div className={styles.scheduleWrapper}>
             <FullSchedule {...scheduleProps} />
           </div>
           <div className={styles.filterWrapper}>
             <ScheduleFilters {...filterProps} />
           </div>
+          <button className={styles.filterButton} onClick={() => setShowfilters(!showFilters)}>
+            <i className="fa fa-filter" />
+            Filters
+          </button>
         </div>
       </div>
       <AttendanceTrackerComponent />

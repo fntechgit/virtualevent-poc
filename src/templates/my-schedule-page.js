@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, {useEffect, useState} from "react";
 import PropTypes from "prop-types";
 import { pickBy } from "lodash";
 import { navigate } from "gatsby";
@@ -14,6 +14,7 @@ import ScheduleFilters from "../components/ScheduleFilters";
 import AttendanceTrackerComponent from "../components/AttendanceTrackerComponent";
 
 import { PHASES } from "../utils/phasesUtils";
+import styles from "../styles/full-schedule.module.scss";
 
 const MySchedulePage = ({
   summit,
@@ -29,6 +30,8 @@ const MySchedulePage = ({
   updateFilter,
   updateFiltersFromHash,
 }) => {
+  const [showFilters, setShowfilters] = useState(false);
+
   const filterProps = {
     summit,
     events,
@@ -67,13 +70,17 @@ const MySchedulePage = ({
   return (
     <Layout location={location}>
       <div className="container">
-        <div className="columns">
-          <div className="column is-three-quarters px-6 pt-6 pb-0">
+        <div className={`${styles.wrapper} ${showFilters ? styles.showFilters : ""}`}>
+          <div className={styles.scheduleWrapper}>
             <FullSchedule {...scheduleProps} />
           </div>
-          <div className="column is-one-quarter px-6 pt-6 pb-0">
+          <div className={styles.filterWrapper}>
             <ScheduleFilters {...filterProps} />
           </div>
+          <button className={styles.filterButton} onClick={() => setShowfilters(!showFilters)}>
+            <i className="fa fa-filter" />
+            Filters
+          </button>
         </div>
       </div>
       <AttendanceTrackerComponent />
