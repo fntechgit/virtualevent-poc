@@ -12,6 +12,7 @@ import Layout from "../components/Layout";
 import FullSchedule from "../components/FullSchedule";
 import ScheduleFilters from "../components/ScheduleFilters";
 import AttendanceTrackerComponent from "../components/AttendanceTrackerComponent";
+import FilterButton from "../components/FilterButton";
 
 import { PHASES } from "../utils/phasesUtils";
 import styles from "../styles/full-schedule.module.scss";
@@ -77,10 +78,7 @@ const MySchedulePage = ({
           <div className={styles.filterWrapper}>
             <ScheduleFilters {...filterProps} />
           </div>
-          <button className={styles.filterButton} onClick={() => setShowfilters(!showFilters)}>
-            <i className="fa fa-filter" />
-            Filters
-          </button>
+          <FilterButton open={showFilters} onClick={() => setShowfilters(!showFilters)} />
         </div>
       </div>
       <AttendanceTrackerComponent />
