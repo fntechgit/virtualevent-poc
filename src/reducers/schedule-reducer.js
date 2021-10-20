@@ -2,7 +2,7 @@ import summitData from '../content/summit.json';
 import eventsData from '../content/events.json';
 import filtersData from '../content/filters.json';
 import {syncFilters} from "../utils/filterUtils";
-import {getFilteredEvents} from '../utils/schedule';
+import {getFilteredEvents, filterEventsByTags} from '../utils/schedule';
 import {LOGOUT_USER} from "openstack-uicore-foundation/lib/actions";
 import {UPDATE_FILTER, UPDATE_FILTERS, CHANGE_VIEW} from '../actions/schedule-actions'
 import {RESET_STATE, SYNC_DATA} from '../actions/base-actions';
@@ -15,7 +15,7 @@ const summitTimeZoneId = summitData.summit.time_zone_id;  // TODO use reducer da
 const DEFAULT_STATE = {
     filters: filters,
     colorSource: color_source,
-    events: eventsData,
+    events: filterEventsByTags(eventsData),
     allEvents: eventsData,
     view: 'calendar'
 };

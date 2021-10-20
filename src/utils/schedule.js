@@ -27,15 +27,19 @@ export const sortEvents = (events) => {
   return sortedEvents;
 };
 
-export const getFilteredEvents = (events, filters, summitTimezone) => {
+export const filterEventsByTags = (events) => {
   const excludingTagsVar = getEnvVariable(SCHEDULE_EXCLUDING_TAGS);
   const excludingTags = excludingTagsVar?.split("|") || null;
-  const allowedEvents = excludingTags
-    ? events.filter(
-        (ev) =>
-          !ev.tags.map((t) => t.tag).some((tag) => excludingTags.includes(tag))
+  return excludingTags
+      ? events.filter(
+          (ev) =>
+              !ev.tags.map((t) => t.tag).some((tag) => excludingTags.includes(tag))
       )
-    : events;
+      : events;
+};
+
+export const getFilteredEvents = (events, filters, summitTimezone) => {
+  const allowedEvents = filterEventsByTags(events);
 
   return allowedEvents.filter((ev) => {
     let valid = true;
