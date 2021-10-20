@@ -39,9 +39,7 @@ export const filterEventsByTags = (events) => {
 };
 
 export const getFilteredEvents = (events, filters, summitTimezone) => {
-  const allowedEvents = filterEventsByTags(events);
-
-  return allowedEvents.filter((ev) => {
+  return events.filter((ev) => {
     let valid = true;
 
     if (filters.date?.values.length > 0) {
