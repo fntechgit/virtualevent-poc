@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import PropTypes from 'prop-types';
 import VideoJSPlayer from './VideoJSPlayer';
 
 const VideoComponent = class extends React.Component {
@@ -16,28 +17,32 @@ const VideoComponent = class extends React.Component {
   }
 
   render() {
-    const { url, title, namespace, firstHalf } = this.props;
+    const { url, title, namespace, firstHalf, autoPlay } = this.props;
+
+    console.log(autoPlay, 'AUTO');
+
+    let videoJsOptions = {
+      autoplay: autoPlay,
+      controls: true,
+      fluid: true,
+      playsInline: true
+    }
 
     if (url) {
       if (this.checkLiveVideo(url)) {
-        const videoJsOptions = {
-          autoplay: true,
-          controls: true,
-          fluid: true,
+        videoJsOptions = {
+          ...videoJsOptions,
           sources: [{
             src: url,
             type: 'application/x-mpegURL'
-          }],
-          playsInline: true
+          }]
         }
         return (
           <VideoJSPlayer title={title} namespace={namespace} firstHalf={firstHalf} {...videoJsOptions} />
         )
       } else {
-        const videoJsOptions = {
-          autoplay: true,
-          controls: true,
-          fluid: true,
+        videoJsOptions = {
+          ...videoJsOptions,
           techOrder: ["youtube"],
           sources: [{
             type: "video/youtube",
@@ -46,9 +51,9 @@ const VideoComponent = class extends React.Component {
           youtube: {
             ytControls: 0,
             iv_load_policy: 1
-          },
-          playsInline: true
+          }
         }
+
         return (
           <VideoJSPlayer title={title} namespace={namespace} {...videoJsOptions} />
         )
@@ -57,7 +62,21 @@ const VideoComponent = class extends React.Component {
       return <span className="no-video">No video URL Provided</span>
     }
   }
+}
 
+VideoComponent.propTypes = {
+  url: PropTypes.string.isRequired,
+  title: PropTypes.string,
+  namespace: PropTypes.string,
+  firstHalf: PropTypes.bool,
+  autoPlay: PropTypes.bool
+};
+
+VideoComponent.defaultProps = {
+  title: '',
+  namespace: '',
+  firstHalf: true,
+  autoPlay: false
 }
 
 export default VideoComponent
