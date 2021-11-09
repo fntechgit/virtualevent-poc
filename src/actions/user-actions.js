@@ -94,9 +94,9 @@ export const getUserProfile = () => async (dispatch) => {
     `${window.SUMMIT_API_BASE_URL}/api/v1/summits/${window.SUMMIT_ID}/members/me`,
     customErrorHandler
   )(params)(dispatch).then(() => {
-    dispatch(getIDPProfile());
-    dispatch(getScheduleSyncLink());
-    return dispatch(createAction(STOP_LOADING_PROFILE)());
+    return dispatch(getIDPProfile()).then(() => {
+      return dispatch(getScheduleSyncLink()).then(() => dispatch(createAction(STOP_LOADING_PROFILE)()))
+    });
   }).catch(() => dispatch(createAction(STOP_LOADING_PROFILE)()));
 }
 
