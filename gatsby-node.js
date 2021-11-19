@@ -198,6 +198,17 @@ exports.createSchemaCustomization = ({actions}) => {
     type Summit implements Node {
       logo: String
     }
+    type MarkdownRemark implements Node {
+      frontmatter: Frontmatter
+    }
+    type Frontmatter {
+        templateKey: String
+        title: String
+        userRequirement: String
+        imagePage: File @fileByRelativePath
+        mobileImagePage: File @fileByRelativePath
+        body: String
+    }
   `;
     createTypes(typeDefs)
 };
