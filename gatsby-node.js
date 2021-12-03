@@ -192,8 +192,8 @@ exports.onPreBootstrap = async () => {
 };
 
 // makes Summit logo optional for graphql queries
-exports.createSchemaCustomization = ({actions}) => {
-    const {createTypes} = actions;
+exports.createSchemaCustomization = ({ actions }) => {
+    const { createTypes } = actions;
     const typeDefs = `
     type Summit implements Node {
       logo: String
@@ -201,17 +201,16 @@ exports.createSchemaCustomization = ({actions}) => {
     type MarkdownRemark implements Node {
       frontmatter: Frontmatter
     }
-    type Frontmatter {
-        templateKey: String
-        title: String
-        userRequirement: String
-        imagePage: File @fileByRelativePath
-        mobileImagePage: File @fileByRelativePath
-        body: String
+    type Frontmatter {            
+      title: String
+      userRequirement: String
+      desktopImagePage: File @fileByRelativePath
+      mobileImagePage: File @fileByRelativePath
     }
   `;
     createTypes(typeDefs)
 };
+
 
 exports.onCreateNode = ({node, actions, getNode}) => {
     const {createNodeField} = actions;
