@@ -52,7 +52,8 @@ PosterCard.propTypes = {
   track: PropTypes.object,
   imageURL: PropTypes.string,
   isVoted: PropTypes.bool.isRequired,
-  toggleVote: PropTypes.func,
+  canVote: PropTypes.bool.isRequired,
+  toggleVote: PropTypes.func.isRequired,
   showDetail: PropTypes.func,
 };
 
