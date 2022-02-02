@@ -6,7 +6,7 @@ import BlockImage from 'react-block-image';
 
 import styles from "./index.module.scss";
 
-const PosterCard = ({ title, order, track, imageURL, isVoted, addVote, removeVote, showDetail }) => {
+const PosterCard = ({ title, order, track, imageURL, isVoted, canVote, toggleVote, showDetail }) => {
   const [hover, setHover] = useState(false);
   const handleClick = ev => {
       ev.preventDefault();
@@ -39,8 +39,7 @@ const PosterCard = ({ title, order, track, imageURL, isVoted, addVote, removeVot
         }
         <VoteButton
           isVoted={isVoted}
-          addVote={addVote}
-          removeVote={removeVote}
+          {...((canVote || isVoted) && { toggleVote: toggleVote })}
         />
       </div>
     </section>
@@ -53,8 +52,7 @@ PosterCard.propTypes = {
   track: PropTypes.object,
   imageURL: PropTypes.string,
   isVoted: PropTypes.bool.isRequired,
-  addVote: PropTypes.func,
-  removeVote: PropTypes.func.isRequired,
+  toggleVote: PropTypes.func,
   showDetail: PropTypes.func,
 };
 
