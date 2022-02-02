@@ -8,35 +8,31 @@ const VoteButton = ({isVoted, addVote, removeVote}) => {
   let buttonClass = null;
   let iconClass = null;
   let onClick = null;
-  let title = ''
-
-  const handleClick = (ev, action) => {
-    ev.preventDefault();
-    ev.stopPropagation();
-    action();
-  };
+  let title = '';
 
   if (!isVoted && addVote) {
-    buttonClass = `${styles.add}`;
+    buttonClass = styles.add;
     iconClass = 'fa-heart-o';
     title = 'Vote for this poster!'
-    onClick = ev => handleClick(ev, addVote);
+    onClick = addVote;
   } else if (!isVoted && !addVote) {
-    buttonClass = `${styles.disabled}`;
+    buttonClass = styles.disabled;
     iconClass = 'fa-heart-o';
     title = 'Maximun votes registered'
-    onClick = ev => handleClick(ev, () => {});
   } else if (isVoted && removeVote) {
-    buttonClass = `${styles.added}`;
+    buttonClass = styles.added;
     iconClass = 'fa-heart';
     title = 'Remove vote'
-    onClick = ev => handleClick(ev, removeVote);
+    onClick = removeVote;
   }
 
-  if (!onClick) return null;
-
   return (
-    <button title={title} className={`${styles.voteButton} ${buttonClass}`} onClick={onClick}>
+    <button
+      title={title}
+      className={`${styles.voteButton} ${buttonClass}`}
+      {...(onClick && { onClick: onClick })}
+      {...(!onClick && { disabled: true })}
+    >
       <i className={`fa ${iconClass}`} aria-hidden="true" />
     </button>
   );
