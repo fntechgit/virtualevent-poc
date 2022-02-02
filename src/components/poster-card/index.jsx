@@ -34,7 +34,7 @@ const PosterCard = ({ title, order, track, imageURL, isVoted, addVote, removeVot
       <div className={styles.body}>
         <h2 title={title} className={styles.title}>{title}</h2>
         { order && <span className={styles.order}>{order}</span> }
-        { track && track.name && track.color &&
+        { track?.name && track?.color &&
         <span className={styles.track} style={{backgroundColor: track.color}}>{track.name}</span>
         }
         <VoteButton
