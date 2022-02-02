@@ -6,25 +6,25 @@ import BlockImage from 'react-block-image';
 
 import styles from "./index.module.scss";
 
-const PosterCard = ({ title, order, track, imageURL, isVoted, addVote, removeVote, onDetailClick }) => {
+const PosterCard = ({ title, order, track, imageURL, isVoted, addVote, removeVote, showDetail }) => {
   const [hover, setHover] = useState(false);
   const handleClick = ev => {
       ev.preventDefault();
       ev.stopPropagation();
-      if (onDetailClick) {
-        onDetailClick()
+      if (showDetail) {
+        showDetail()
       }
   };
   return (
     <section className={styles.card}>
       <BlockImage
         src={imageURL}
-        className={`${styles.header} ${onDetailClick && hover ? styles.header__hover : ""}`}
+        className={`${styles.header} ${showDetail && hover ? styles.header__hover : ""}`}
         onMouseEnter={() => { setHover(true) }} 
         onMouseLeave={() => { setHover(false) }}
         onClick={handleClick}
       >
-        { onDetailClick && hover &&
+        { showDetail && hover &&
         <button className={`${styles.button} button is-large`}>
           <i className={`fa fa-2x fa-eye icon is-large`} />
           <b>Detail</b>
@@ -55,7 +55,7 @@ PosterCard.propTypes = {
   isVoted: PropTypes.bool.isRequired,
   addVote: PropTypes.func,
   removeVote: PropTypes.func.isRequired,
-  onDetailClick: PropTypes.func,
+  showDetail: PropTypes.func,
 };
 
 export default PosterCard;
