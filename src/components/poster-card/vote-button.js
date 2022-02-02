@@ -5,25 +5,23 @@ import styles from './vote-button.module.scss';
 
 const VoteButton = ({isVoted, addVote, removeVote}) => {
 
+  if (!removeVote) return null;
+
   let buttonClass = null;
   let iconClass = null;
   let onClick = null;
   let title = '';
 
-  if (!isVoted && addVote) {
-    buttonClass = styles.add;
-    iconClass = 'fa-heart-o';
-    title = 'Vote for this poster!'
-    onClick = addVote;
-  } else if (!isVoted && !addVote) {
-    buttonClass = styles.disabled;
-    iconClass = 'fa-heart-o';
-    title = 'Maximun votes registered'
-  } else if (isVoted && removeVote) {
-    buttonClass = styles.added;
+  if (isVoted) {
     iconClass = 'fa-heart';
+    buttonClass = styles.added;
     title = 'Remove vote'
     onClick = removeVote;
+  } else {
+    iconClass = 'fa-heart-o';
+    buttonClass = addVote ? styles.add : styles.disabled;
+    title = addVote ? 'Vote for this poster!' : 'Maximun votes registered'
+    onClick = addVote;
   }
 
   return (
