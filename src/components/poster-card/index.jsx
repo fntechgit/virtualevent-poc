@@ -1,12 +1,12 @@
-import React, {useState} from "react";
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 
 import VoteButton from './vote-button';
 import BlockImage from 'react-block-image';
 
-import styles from "./index.module.scss";
+import styles from './index.module.scss';
 
-const PosterCard = ({ title, order, track, imageURL, showDetail, isVoted, canVote, toggleVote }) => {
+const PosterCard = ({ poster, showDetail, toggleVote }) => {
   const [hover, setHover] = useState(false);
   const handleClick = ev => {
       ev.preventDefault();
@@ -16,10 +16,10 @@ const PosterCard = ({ title, order, track, imageURL, showDetail, isVoted, canVot
       }
   };
   return (
-    <section className={styles.card}>
+    <article className={styles.card}>
       <BlockImage
-        src={imageURL}
-        className={`${styles.header} ${showDetail && hover ? styles.header__hover : ""}`}
+        src={poster.imageURL}
+        className={`${styles.header} ${showDetail && hover ? styles.header__hover : ''}`}
         onMouseEnter={() => { setHover(true) }} 
         onMouseLeave={() => { setHover(false) }}
         onClick={handleClick}
@@ -32,29 +32,23 @@ const PosterCard = ({ title, order, track, imageURL, showDetail, isVoted, canVot
         }
       </BlockImage>
       <div className={styles.body}>
-        <h2 className={styles.title}>{title}</h2>
-        { order && <span className={styles.order}>{order}</span> }
-        { track?.name && track?.color &&
-        <span className={styles.track} style={{backgroundColor: track.color}}>{track.name}</span>
+        <h2 className={styles.title}>{poster.title}</h2>
+        { poster.order && <span className={styles.order}>{poster.order}</span> }
+        { poster.track?.name && poster.track?.color &&
+        <span className={styles.track} style={{backgroundColor: poster.track.color}}>{poster.track.name}</span>
         }
         <VoteButton
-          isVoted={isVoted}
-          canVote={canVote}
+          poster={poster}
           toggleVote={toggleVote}
         />
       </div>
-    </section>
+    </article>
   );
 };
 
 PosterCard.propTypes = {
-  title: PropTypes.string.isRequired,
-  order: PropTypes.string,
-  track: PropTypes.object,
-  imageURL: PropTypes.string,
+  poster: PropTypes.object.isRequired,
   showDetail: PropTypes.func,
-  isVoted: PropTypes.bool.isRequired,
-  canVote: PropTypes.bool.isRequired,
   toggleVote: PropTypes.func.isRequired,
 };
 
