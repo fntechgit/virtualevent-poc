@@ -7,17 +7,17 @@ import styles from './index.module.scss';
 
 const Posters = ({posters, showDetail, canVote, toggleVote}) => {
 
+  const cards = posters.map(poster => 
+    <PosterCard key={`poster-${poster.order}`}
+      poster={poster}
+      showDetail={showDetail}
+      canVote={canVote}
+      toggleVote={toggleVote}
+    />
+  );
   return (
     <div className={styles.posters}>
-      { posters.map(poster =>
-          <PosterCard
-            poster={poster}
-            showDetail={showDetail}
-            canVote={canVote}
-            toggleVote={toggleVote}
-          />
-        )
-      }
+      { cards }
     </div>
   )
 };
