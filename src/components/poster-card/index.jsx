@@ -8,7 +8,7 @@ import styles from './index.module.scss';
 
 const PosterCard = ({ poster, showDetail, canVote, toggleVote }) => {
   const [hover, setHover] = useState(false);
-  if (poster == null) return null;
+  if (!poster) return null;
   const {title, order, track, imageURL, isVoted} = poster;
   const handleClick = ev => {
       ev.preventDefault();
