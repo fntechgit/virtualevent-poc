@@ -5,7 +5,7 @@ import PosterCard from '../poster-card';
 
 import styles from './index.module.scss';
 
-const Posters = ({posters, showDetail, toggleVote}) => {
+const Posters = ({posters, showDetail, canVote, toggleVote}) => {
 
   return (
     <div className={styles.posters}>
@@ -13,6 +13,7 @@ const Posters = ({posters, showDetail, toggleVote}) => {
           <PosterCard
             poster={poster}
             showDetail={showDetail}
+            canVote={canVote}
             toggleVote={toggleVote}
           />
         )
@@ -24,6 +25,7 @@ const Posters = ({posters, showDetail, toggleVote}) => {
 Posters.propTypes = {
   posters: PropTypes.array.isRequired,
   showDetail: PropTypes.func,
+  canVote: PropTypes.bool.isRequired,
   toggleVote: PropTypes.func.isRequired,
 };
 

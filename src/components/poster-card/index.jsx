@@ -6,13 +6,13 @@ import BlockImage from 'react-block-image';
 
 import styles from './index.module.scss';
 
-const PosterCard = ({ poster, showDetail, toggleVote }) => {
+const PosterCard = ({ poster, showDetail, canVote, toggleVote }) => {
   const [hover, setHover] = useState(false);
   const handleClick = ev => {
       ev.preventDefault();
       ev.stopPropagation();
       if (showDetail) {
-        showDetail()
+        showDetail();
       }
   };
   return (
@@ -39,6 +39,7 @@ const PosterCard = ({ poster, showDetail, toggleVote }) => {
         }
         <VoteButton
           poster={poster}
+          canVote={canVote}
           toggleVote={toggleVote}
         />
       </div>
@@ -49,6 +50,7 @@ const PosterCard = ({ poster, showDetail, toggleVote }) => {
 PosterCard.propTypes = {
   poster: PropTypes.object.isRequired,
   showDetail: PropTypes.func,
+  canVote: PropTypes.bool.isRequired,
   toggleVote: PropTypes.func.isRequired,
 };
 
