@@ -6,9 +6,9 @@ import PosterCard from '../poster-card';
 import styles from './index.module.scss';
 
 const Posters = ({posters, showDetail, canVote, toggleVote}) => {
-
   const cards = posters.map(poster => 
-    <PosterCard key={`poster-${poster.order}`}
+    <PosterCard
+      key={`poster-${poster.order}`}
       poster={poster}
       showDetail={showDetail}
       canVote={canVote}
@@ -21,7 +21,6 @@ const Posters = ({posters, showDetail, canVote, toggleVote}) => {
     </div>
   )
 };
-
 Posters.propTypes = {
   posters: PropTypes.array.isRequired,
   showDetail: PropTypes.func,

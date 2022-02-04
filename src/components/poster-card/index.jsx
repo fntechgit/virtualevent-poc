@@ -8,6 +8,8 @@ import styles from './index.module.scss';
 
 const PosterCard = ({ poster, showDetail, canVote, toggleVote }) => {
   const [hover, setHover] = useState(false);
+  if (poster == null) return null;
+  const {title, order, track, imageURL} = poster;
   const handleClick = ev => {
       ev.preventDefault();
       ev.stopPropagation();
@@ -18,10 +20,10 @@ const PosterCard = ({ poster, showDetail, canVote, toggleVote }) => {
   return (
     <article className={styles.card}>
       <BlockImage
-        src={poster.imageURL}
+        src={imageURL}
         className={`${styles.header} ${showDetail && hover ? styles.header__hover : ''}`}
-        onMouseEnter={() => { setHover(true) }} 
-        onMouseLeave={() => { setHover(false) }}
+        onMouseEnter={() => setHover(true)} 
+        onMouseLeave={() => setHover(false)}
         onClick={handleClick}
       >
         { showDetail && hover &&
@@ -32,10 +34,10 @@ const PosterCard = ({ poster, showDetail, canVote, toggleVote }) => {
         }
       </BlockImage>
       <div className={styles.body}>
-        <h2 className={styles.title}>{poster.title}</h2>
-        { poster.order && <span className={styles.order}>{poster.order}</span> }
-        { poster.track?.name && poster.track?.color &&
-        <span className={styles.track} style={{backgroundColor: poster.track.color}}>{poster.track.name}</span>
+        <h2 className={styles.title}>{title}</h2>
+        { order && <span className={styles.order}>{order}</span> }
+        { track?.name && track?.color &&
+        <span className={styles.track} style={{backgroundColor: track.color}}>{track.name}</span>
         }
         <VoteButton
           poster={poster}
