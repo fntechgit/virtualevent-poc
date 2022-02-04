@@ -9,7 +9,7 @@ import styles from './index.module.scss';
 const PosterCard = ({ poster, showDetail, canVote, toggleVote }) => {
   const [hover, setHover] = useState(false);
   if (poster == null) return null;
-  const {title, order, track, imageURL} = poster;
+  const {title, order, track, imageURL, isVoted} = poster;
   const handleClick = ev => {
       ev.preventDefault();
       ev.stopPropagation();
@@ -40,9 +40,9 @@ const PosterCard = ({ poster, showDetail, canVote, toggleVote }) => {
         <span className={styles.track} style={{backgroundColor: track.color}}>{track.name}</span>
         }
         <VoteButton
-          poster={poster}
+          isVoted={isVoted}
           canVote={canVote}
-          toggleVote={toggleVote}
+          toggleVote={() => toggleVote(poster)}
         />
       </div>
     </article>

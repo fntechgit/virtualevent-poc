@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 
 import styles from './vote-button.module.scss';
 
-const VoteButton = ({poster, canVote, toggleVote}) => {
+const VoteButton = ({isVoted, canVote, toggleVote}) => {
   let buttonClass = null;
   let iconClass = null;
   let title = '';
-  if (poster.isVoted) {
+  if (isVoted) {
     iconClass = 'fa-heart';
     buttonClass = styles.added;
     title = 'Remove vote'
@@ -20,8 +20,8 @@ const VoteButton = ({poster, canVote, toggleVote}) => {
     <button
       title={title}
       className={`${styles.voteButton} ${buttonClass}`}
-      onClick={() => toggleVote(poster)}
-      disabled={!(canVote || poster.isVoted)}
+      onClick={toggleVote}
+      disabled={!(canVote || isVoted)}
     >
       <i className={`fa ${iconClass}`} aria-hidden="true" />
     </button>
@@ -29,7 +29,7 @@ const VoteButton = ({poster, canVote, toggleVote}) => {
 }
 
 VoteButton.propTypes = {
-  poster: PropTypes.object.isRequired,
+  isVoted: PropTypes.object.isRequired,
   canVote: PropTypes.bool.isRequired,
   toggleVote: PropTypes.func.isRequired,
 };
