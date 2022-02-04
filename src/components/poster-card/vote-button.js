@@ -29,7 +29,7 @@ const VoteButton = ({isVoted, canVote, toggleVote}) => {
 }
 
 VoteButton.propTypes = {
-  isVoted: PropTypes.object.isRequired,
+  isVoted: PropTypes.bool.isRequired,
   canVote: PropTypes.bool.isRequired,
   toggleVote: PropTypes.func.isRequired,
 };
