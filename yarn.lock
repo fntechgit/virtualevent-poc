@@ -3398,10 +3398,10 @@ atob@^2.1.2:
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
   integrity sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==
 
-attendee-to-attendee-widget@^2.0.8:
-  version "2.0.8"
-  resolved "https://registry.yarnpkg.com/attendee-to-attendee-widget/-/attendee-to-attendee-widget-2.0.8.tgz#b0a8b8afb525a6e49624a5c8daab36221163a1ce"
-  integrity sha512-BC8HZVy03qBBo4XTl5gboW9+2UH6HJepnGK1nntIhPL9zGMIyLpnjKl4N+rTeeuPGQiToQpNAA2FJVLo6mCePQ==
+attendee-to-attendee-widget@^2.0.9:
+  version "2.0.9"
+  resolved "https://registry.yarnpkg.com/attendee-to-attendee-widget/-/attendee-to-attendee-widget-2.0.9.tgz#8c03a1b555e63e12a6fa946834642f72a0d8a332"
+  integrity sha512-MgTt+OjsErVL6SMOemyJrSgNu6y0B29L8UCHfdVBuRD4+rjKxNJ6OcsIatrdj06BEv3WeWXq+2DEpO10dybrlQ==
   dependencies:
     "@supabase/supabase-js" "^1.28.5"
     bulma "^0.9.2"
@@ -14716,6 +14716,11 @@ react-avatar-editor@11.0.9:
   integrity sha512-FGYdygcY1ca9PVScHCsm4H28ZLaBPxc/jz2cRhPFjmgMD7fwdYTE5AjBGDCr28jIlRNC1Vm4WERTKxSdDscFDA==
   dependencies:
     prop-types "^15.5.8"
+
+react-block-image@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/react-block-image/-/react-block-image-1.0.0.tgz#5c46d7a115fa7efa70d477a2580ec0c9b2106283"
+  integrity sha1-XEbXoRX6fvpw1HeiWA7AybIQYoM=
 
 react-bootstrap@^0.31.5:
   version "0.31.5"
