@@ -14,6 +14,7 @@ import {
   REMOVE_FROM_SCHEDULE,
   SCHEDULE_SYNC_LINK_RECEIVED,
   SET_USER_ORDER,
+  TOGGLE_PRESENTATION_VOTE,
 } from '../actions/user-actions'
 import { RESET_STATE } from "../actions/base-actions";
 
@@ -27,11 +28,12 @@ const DEFAULT_STATE = {
   userProfile: null,
   idpProfile: null,
   isAuthorized: false,
-  hasTicket: false
+  hasTicket: false,
+  attendee: null
 }
 
 const userReducer = (state = DEFAULT_STATE, action) => {
-  const { type, payload } = action
+  const { type, payload } = action;
   switch (type) {
     case RESET_STATE:
     case LOGOUT_USER:
@@ -50,10 +52,11 @@ const userReducer = (state = DEFAULT_STATE, action) => {
                 isAuthorized: isAuthorizedUser(payload.response.groups),
                 hasTicket: payload.response.summit_tickets?.length > 0
              }
+    // is this action type used?
     case SET_USER_TICKET:
       return { ...state, hasTicket: payload }
     case SET_USER_ORDER: {
-      const {tickets} = payload;
+      const { tickets } = payload;
       return {...state, hasTicket: true, userProfile: {...state.userProfile, summit_tickets: [...tickets] }};
     }
     case GET_IDP_PROFILE:
@@ -76,6 +79,35 @@ const userReducer = (state = DEFAULT_STATE, action) => {
     default:
       return state;
   }
-}
+};
 
-export default userReducer
+const attendeeReducer = (state, action) => {
+  const { type, payload } = action;
+  switch (type) {
+    case GET_USER_PROFILE:
+      const { summit_tickets: [ticket] } = payload.response;
+      return { ...state, attendee: ticket?.owner ?? null };
+    case SET_USER_ORDER: {
+      const { tickets: [ticket] } = payload;
+      return { ...state, attendee: ticket?.owner ?? null };
+    }
+    case TOGGLE_PRESENTATION_VOTE: {      
+      const { presentation, voted } = payload;
+      const { attendee: { presentation_votes }} = state;
+      let latest_votes;
+      if (voted) {
+        latest_votes = [...presentation_votes, presentation.id];
+      } else {
+        latest_votes = [...presentation_votes.filter(v => v !== presentation.id)];
+      }
+      return { ...state, attendee: { ...state.attendee, presentation_votes: latest_votes } };
+    }
+    default:
+      return state;
+  }
+};
+
+const reduceReducers = (...reducers) => (state, action) =>
+    reducers.reduce((acc, r) => r(acc, action), state);
+
+export default reduceReducers(attendeeReducer, userReducer);

@@ -6,6 +6,7 @@ import settings from '../content/settings';
 
 import HomePage from "../templates/home-page"
 import EventPage from "../templates/event-page"
+import PostersPage from "../templates/posters-page";
 import SchedulePage from "../templates/schedule-page";
 import SponsorPage from "../templates/sponsor-page"
 import ExpoHallPage from "../templates/expo-hall-page"
@@ -30,6 +31,7 @@ const App = ({ isLoggedUser, user, summit_phase, lastBuild, syncData }) => {
         <Router basepath="/a" >
           <SchedulePage path="/schedule" location={location} schedKey="sched1" />
           <WithAuthRoute path="/" summit_phase={summit_phase} isLoggedIn={isLoggedUser} user={user} location={location}>
+            <PostersPage path="/posters" location={location} />
             <SchedulePage path="/my-schedule" location={location} summit_phase={summit_phase} isLoggedIn={isLoggedUser} user={user} scheduleProps={{title: 'My Schedule'}} schedKey="mysched" />
             <ExtraQuestionsPage path="/extra-questions" isLoggedIn={isLoggedUser} user={user} location={location} />
             <FullProfilePage path="/profile" summit_phase={summit_phase} isLoggedIn={isLoggedUser} user={user} location={location} />

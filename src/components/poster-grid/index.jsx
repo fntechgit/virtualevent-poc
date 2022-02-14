@@ -1,17 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import PosterCard from '../poster-card';
-
 import styles from './index.module.scss';
 
-const Posters = ({posters, showDetail, canVote, toggleVote}) => {
+const PosterGrid = ({posters, showDetail, canVote, votes, toggleVote}) => {
+  if (!posters) return null;
   const cards = posters.map(poster => 
     <PosterCard
-      key={`poster-${poster.order}`}
+      key={`poster-${poster.id}`}
       poster={poster}
       showDetail={showDetail}
       canVote={canVote}
+      isVoted={!!votes.find(v => v === poster.id)}
       toggleVote={toggleVote}
     />
   );
@@ -21,11 +21,11 @@ const Posters = ({posters, showDetail, canVote, toggleVote}) => {
     </div>
   )
 };
-Posters.propTypes = {
+PosterGrid.propTypes = {
   posters: PropTypes.array.isRequired,
   showDetail: PropTypes.func,
   canVote: PropTypes.bool.isRequired,
+  votes: PropTypes.array.isRequired,
   toggleVote: PropTypes.func.isRequired,
 };
-
-export default Posters;
+export default PosterGrid;

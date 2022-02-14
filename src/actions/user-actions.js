@@ -3,6 +3,7 @@ import {
   getRequest,
   postRequest,
   putRequest,
+  deleteRequest,
   putFile,
   createAction,
   startLoading,
@@ -38,6 +39,7 @@ export const ADD_TO_SCHEDULE                  = 'ADD_TO_SCHEDULE';
 export const REMOVE_FROM_SCHEDULE             = 'REMOVE_FROM_SCHEDULE';
 export const SCHEDULE_SYNC_LINK_RECEIVED      = 'SCHEDULE_SYNC_LINK_RECEIVED';
 export const SET_USER_ORDER                   = 'SET_USER_ORDER';
+export const TOGGLE_PRESENTATION_VOTE         = 'TOGGLE_PRESENTATION_VOTE';
 
 export const getDisqusSSO = () => async (dispatch) => {
 
@@ -209,6 +211,33 @@ export const removeFromSchedule = (event) => async (dispatch, getState) => {
     console.log('ERROR: ', e);
     return e;
   });
+};
+
+export const togglePresentationVote = (presentation, voted) => async (dispatch, getState) => {
+
+  const accessToken = await getAccessToken();
+
+  if (!accessToken) return Promise.resolve();
+
+  const params = {
+    access_token: accessToken,
+  };
+
+  const requestMethod = voted ? postRequest : deleteRequest;
+  const action = createAction(TOGGLE_PRESENTATION_VOTE);
+
+  const errorHandler = (err, res) => (dispatch, state) => {
+    if (err.status !== 412) dispatch(action({ presentation, voted: !voted }));
+  };
+
+  return requestMethod(
+    action,
+    null,
+    `${getEnvVariable('SUMMIT_API_BASE_URL')}/api/v1/summits/${getEnvVariable(SUMMIT_ID)}/presentations/${presentation.id}/attendee-votes`,
+    {},
+    errorHandler,
+    { presentation, voted }
+  )(params)(dispatch).catch(errorHandler);
 };
 
 export const updateProfilePicture = (pic) => async (dispatch) => {
