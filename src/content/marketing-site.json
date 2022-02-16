@@ -15,10 +15,11 @@
         "display": true
       }
     },
-    "background": "",
+    "background": null,
     "images": [
       {
-        "image": "/img/flavor_wheel.jpg"
+        "file": "/img/flavor_wheel.jpg",
+        "alt": ""
       }
     ]
   },
@@ -34,7 +35,8 @@
     "image": {
       "display": false,
       "title": "Image",
-      "src": ""
+      "src": "",
+      "alt" : ""
     }
   },
   "sponsors": [
@@ -43,7 +45,8 @@
       "images": [
         {
           "image": "/img/yoco-sponsor-ads-large-wherehol-vert.png",
-          "link": ""
+          "link": "",
+          "alt": ""
         }
       ]
     },
@@ -52,7 +55,8 @@
       "images": [
         {
           "image": "/img/yoco-sponsor-ads-medium-tilted.png",
-          "link": ""
+          "link": "",
+          "alt": ""
         }
       ]
     },
@@ -61,7 +65,8 @@
       "images": [
         {
           "image": "/img/yoco-sponsor-ads-medium-treva.png",
-          "link": ""
+          "link": "",
+          "alt": ""
         }
       ]
     },
@@ -70,7 +75,8 @@
       "images": [
         {
           "image": "/img/yoco-sponsor-ads-large-mobility-vert-new.png",
-          "link": ""
+          "link": "",
+          "alt": ""
         }
       ]
     }
