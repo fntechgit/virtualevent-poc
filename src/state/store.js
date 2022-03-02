@@ -30,7 +30,6 @@ const config = {
         'presentationsState',
         'summitState',
         'allSchedulesState',
-        'settingState',
     ]
 };
 
