@@ -246,7 +246,7 @@ export const PosterDetailPage = ({
               </div>
             )}
           </div>
-          <div className="column px-0 py-0 is-one-quarter is-full-mobile">
+          <div className="column px-5 py-0 is-one-quarter is-full-mobile">
             {!poster.meeting_url && <PosterLiveSession poster={poster} />}
             <DocumentsComponent event={poster} />
             <AccessTracker />
