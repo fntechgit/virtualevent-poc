@@ -217,7 +217,7 @@ export const PosterDetailPage = ({
             </div>
             <div className="px-5 py-0">
               <PosterNavigation allPosters={allPosters} poster={poster} />
-              <div className="mt-5 mb-5 mx-0"><b>More like this</b></div>
+              <div className="mt-6 mb-5 mx-0"><h4>More like this</h4></div>
               <PosterGrid
                 posters={recommendedPosters}
                 votingAllowed={!!attendee}
