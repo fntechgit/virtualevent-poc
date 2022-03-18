@@ -13,7 +13,8 @@ import NotificationHub from '../components/notification-hub';
 import {
   setInitialDataSet,
   getAllVoteablePresentations,
-  updateFilter
+  updateFilter,
+  updateFiltersFromHash
 } from '../actions/presentation-actions';
 
 import {
@@ -48,6 +49,7 @@ const PostersPage = ({
   allBuildTimePosters,
   filters,
   updateFilter,
+  updateFiltersFromHash,
   colorSettings,
 }) => {
 
@@ -158,6 +160,10 @@ const PostersPage = ({
   }, [filteredPosters]);
 
   useEffect(() => {
+    updateFiltersFromHash(filters);
+  }, [filters, updateFiltersFromHash]);
+
+  useEffect(() => {
     if (!notifiedVotingPeriodsOnLoad &&
         pageTrackGroups.length &&
         pageTrackGroups.map(tg => votingPeriods[tg]).every(vp => vp !== undefined)) {
@@ -235,7 +241,7 @@ const PostersPage = ({
       }
       <div className={`${styles.wrapper} ${showFilters ? styles.showFilters : ''}`}>
         <div className={styles.postersWrapper}>
-          <PosterHeaderFilter changeHeaderFilter={(value) => setAppliedPageFilter(value)} />
+          <PosterHeaderFilter changeHeaderFilter={(value) => setAppliedPageFilter(value)} pageFilters={filters} />
           {filteredPosters &&
           <PosterGrid
             posters={filteredPosters}
@@ -275,5 +281,6 @@ export default connect(mapStateToProps, {
   getAllVoteablePresentations,
   castPresentationVote,
   uncastPresentationVote,
-  updateFilter
+  updateFilter,
+  updateFiltersFromHash
 })(PostersPage);

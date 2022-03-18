@@ -7,6 +7,10 @@ import {
   clearAccessToken,
 } from 'openstack-uicore-foundation/lib/methods';
 
+import { FragmentParser } from "openstack-uicore-foundation/lib/components";
+
+import { pickBy, isEqual, isEmpty } from "lodash";
+
 import { customErrorHandler } from '../utils/customErrorHandler';
 
 import { VotingPeriod } from '../model/VotingPeriod';
@@ -21,12 +25,15 @@ export const GET_VOTEABLE_PRESENTATIONS = 'GET_VOTEABLE_PRESENTATIONS';
 export const PRESENTATIONS_PAGE_REQUEST = 'PRESENTATIONS_PAGE_REQUEST';
 export const PRESENTATIONS_PAGE_RESPONSE = 'PRESENTATIONS_PAGE_RESPONSE';
 export const VOTEABLE_PRESENTATIONS_UPDATE_FILTER = 'VOTEABLE_PRESENTATIONS_UPDATE_FILTER';
+export const VOTEABLE_PRESENTATIONS_UPDATE_FILTERS = 'VOTEABLE_PRESENTATIONS_UPDATE_FILTERS';
 export const GET_PRESENTATION_DETAILS = 'GET_PRESENTATION_DETAILS';
 export const GET_PRESENTATION_DETAILS_ERROR = 'GET_PRESENTATION_DETAILS_ERROR';
 export const GET_RECOMMENDED_PRESENTATIONS = 'GET_RECOMMENDED_PRESENTATIONS';
 export const VOTING_PERIOD_ADD = 'VOTING_PERIOD_ADD';
 export const VOTING_PERIOD_PHASE_CHANGE = 'VOTING_PERIOD_PHASE_CHANGE';
 const PresentationsDefaultPageSize = 30;
+
+const fragmentParser = new FragmentParser();
 
 export const setInitialDataSet = () => (dispatch, getState) => Promise.resolve().then(() => {
   const { userState: { userProfile } } = getState();
@@ -36,6 +43,63 @@ export const setInitialDataSet = () => (dispatch, getState) => Promise.resolve()
 
 export const updateFilter = (filter) => (dispatch) => {
   dispatch(createAction(VOTEABLE_PRESENTATIONS_UPDATE_FILTER)({ ...filter }));
+};
+
+export const updateFiltersFromHash = (filters, actionCallback = VOTEABLE_PRESENTATIONS_UPDATE_FILTERS) => (dispatch) => {
+  const qsFilters = fragmentParser.getParams();
+
+  // clear hash
+  fragmentParser.clearParams();
+
+  if (typeof window !== 'undefined') {
+    window.history.replaceState(null, null, ' ');
+  }
+
+  // escape if no hash
+  if (isEmpty(qsFilters)) return null;
+
+  const newFilters = {};
+
+  const normalizedFilters = pickBy(qsFilters);
+
+  // populate state filters with hash values
+  Object.keys(filters).forEach(key => {
+    newFilters[key] = { ...filters[key] }; // copy label and rest of props
+
+    if (key === 'title') {
+      newFilters[key].values = normalizedFilters[key] ? decodeURIComponent(normalizedFilters[key]) : '';
+    } else {
+      const newValues = normalizedFilters[key] ? normalizedFilters[key].split(',') : [];
+      newFilters[key].values = newValues.map(val => {
+        if (isNaN(val)) return decodeURIComponent(val);
+        return parseInt(val);
+      })
+    }
+  });
+
+  // only update if filters have changed
+  if (!isEqual(newFilters, filters)) {
+    dispatch(createAction(actionCallback)({ filters: newFilters }));
+  }
+};
+
+export const getShareLink = (filters, view) => {
+  const hashVars = [];
+
+  if (filters) {
+    Object.entries(filters).forEach(([key, value]) => {
+      if (value.values.length > 0) {
+        const hashValue = Array.isArray(value.values) ? value.values.join(',') : value.values;
+        hashVars.push(`${key}=${hashValue}`)
+      }
+    });
+  }
+
+  if (typeof window !== 'undefined') {
+    return `${window.location}#${hashVars.join('&')}`;
+  }
+
+  return '';
 };
 
 export const getAllVoteablePresentations = (page = 1, perPage = PresentationsDefaultPageSize) => async (dispatch) => {
