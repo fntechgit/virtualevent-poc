@@ -1,20 +1,5 @@
 {
-  "columns": [
-    {
-      "title": "The Event",
-      "display": true,
-      "items": [
-        {
-          "title": "SCHEDULE",
-          "link": "/a/schedule"
-        },
-        {
-          "title": "My Schedule",
-          "link": "/a/my-schedule"
-        }
-      ]
-    }
-  ],
+  "columns": [],
   "logo": {
     "display": false
   },
