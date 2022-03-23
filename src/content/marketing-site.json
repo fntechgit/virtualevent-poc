@@ -34,9 +34,9 @@
       "title": "Join the conversation"
     },
     "image": {
-      "display": false,
-      "title": "Image",
-      "src": ""
+      "display": true,
+      "title": "",
+      "src": "/img/ow22-fnv-marketingpage-container-left.png"
     }
   },
   "sponsors": [
