@@ -31,13 +31,24 @@
       ]
     },
     {
+      "requiresAuth": false,
+      "showOnlyAtShowTime": true,
+      "pageRestriction": [
+        "ANY"
+      ],
+      "title": "TRANSPORTATION",
+      "link": "/onsite-transportation",
+      "display": true
+    },
+    {
       "title": "SUPPORT",
       "link": "/support",
       "display": true,
       "requiresAuth": false,
       "pageRestriction": [
         "ANY"
-      ]
+      ],
+      "showOnlyAtShowTime": false
     }
   ]
 }
