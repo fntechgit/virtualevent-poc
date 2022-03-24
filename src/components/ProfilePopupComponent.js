@@ -181,7 +181,7 @@ const ProfilePopupComponent = ({ userProfile, idpLoading, closePopup, showProfil
         <div className={`${styles.modalCard} ${styles.profilePopup}`}>
           <AjaxLoader relative={true} color={'#ffffff'} show={idpLoading} size={120} />
           <header className={`${styles.modalCardHead}`}>
-            <p className={`${styles.modalCardTitle}`} tabIndex='-1' ref={modalHeaderRef}>Edit profile</p>
+            <h2 className={`${styles.modalCardTitle}`} tabIndex='-1' ref={modalHeaderRef}>Edit profile</h2>
             <button className="link" onClick={() => closePopup()}>
               <i className={`${styles.closeIcon} fa fa-times icon`} />
             </button>
@@ -211,16 +211,17 @@ const ProfilePopupComponent = ({ userProfile, idpLoading, closePopup, showProfil
                 </div>
                 <div>
                   <div className={`columns ${styles.inputRow}`}>
-                    <div className='column is-one-quarter'>Zoom:</div>
-                    <div className='column is-two-thirds'>
-                      <input
-                          name="scale"
-                          type="range"
-                          max="2"
-                          onChange={(e) => handleScale(e)}
-                          step="0.01"
-                          defaultValue="1"
-                      />
+                  <span id="zoomLabel" className='column is-one-quarter'>Zoom:</span>
+                  <div className='column is-two-thirds'>
+                    <input
+                      name="scale"
+                      type="range"
+                      aria-labelledby='zoomLabel'
+                      max="2"
+                      onChange={(e) => handleScale(e)}
+                      step="0.01"
+                      defaultValue="1"
+                    />
                     </div>
                   </div>
                   <div className={`columns ${styles.inputRow}`}>
