@@ -21,7 +21,7 @@ Public rideshare app
 
 Public rideshare app
 
-##### <br><p style="color: #9e66ff">myStop Mobile</p>
+##### <br><a href="https://apps.apple.com/us/app/mystop-mobile/id591959423" p style="color: #9e66ff">myStop Mobile</a></p>
 
 Real-time bus information and trip planning 
 
