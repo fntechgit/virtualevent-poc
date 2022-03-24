@@ -15,7 +15,13 @@ const ExpoHallPage = ({ location, imageHeader }) => {
       <AccessTracker />
         <section className="hero is-large sponsors-header" style={{ backgroundImage: `url(${imageHeader.file})` }}>
           <div className="hero-body">
-            <div className="container">
+            <div className={styles.heroContainer}>
+              <h1 className={styles.title}>
+                Sponsors
+              </h1>
+              <span className={styles.subtitle}>
+                See the schedule to join live sessions and meet representatives from the sponsor companies.
+              </span>
             </div>
           </div>
         </section>      
