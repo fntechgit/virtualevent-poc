@@ -32,7 +32,7 @@
     },
     {
       "title": "SUPPORT",
-      "link": "/help",
+      "link": "/support",
       "display": true,
       "requiresAuth": false,
       "pageRestriction": [
