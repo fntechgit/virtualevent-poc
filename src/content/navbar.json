@@ -32,7 +32,7 @@
     },
     {
       "requiresAuth": false,
-      "showOnlyAtShowTime": true,
+      "showOnlyAtShowTime": false,
       "pageRestriction": [
         "ANY"
       ],
