@@ -28,7 +28,7 @@ import { isAuthorizedUser } from '../utils/authorizedGroups';
 const DEFAULT_STATE = {
   loading: false,
   loadingIDP: false,
-  disqusSSO: {},
+  disqusSSO: null,
   rocketChatSSO: {},
   userProfile: null,
   idpProfile: null,

@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { DiscussionEmbed } from 'disqus-react';
 import { getEnvVariable, DISQUS_SHORTNAME } from '../utils/envVariables';
+import { getDisqusSSO } from '../actions/user-actions';
 
 const DisqusComponent = class extends React.Component {
 
@@ -21,6 +22,7 @@ const DisqusComponent = class extends React.Component {
   }
 
   componentDidMount() {
+    this.props.getDisqusSSO(getEnvVariable(DISQUS_SHORTNAME));
     window.addEventListener('resize', this.onResize);
     if (window.innerWidth <= 768) {
       this.setState({ isMobile: true })
@@ -113,21 +115,23 @@ const DisqusComponent = class extends React.Component {
   }
 
   render() {
-
-    const { title, style, className, disqusSSO, page, hideMobile = null } = this.props;
     const { isMobile } = this.state || null;
+    const { disqusSSO, hideMobile = null } = this.props;
 
-    let disqusConfig = {
+    if (!disqusSSO || (hideMobile !== null && hideMobile === isMobile)) {
+      return null;
+    }
+
+    const { page, title, className, style } = this.props;
+    const { auth: remoteAuthS3, public_key: apiKey } = disqusSSO;
+
+    const disqusConfig = {
       url: window.location.href,
       identifier: this.getIdentifier(),
       title: this.getTitle(),
-      remoteAuthS3: disqusSSO.auth,
-      apiKey: disqusSSO.public_key
+      remoteAuthS3: remoteAuthS3,
+      apiKey: apiKey
     };
-
-    if (hideMobile !== null && hideMobile === isMobile) {
-      return null;
-    }
 
     return (
       <div className={className ? className : style ? '' : page === 'marketing-site' ? 'disqus-container-marketing' : 'disqus-container'} style={style}>
@@ -142,9 +146,10 @@ const DisqusComponent = class extends React.Component {
 
 };
 
-const mapStateToProps = ({settingState, summitState}) => ({
-  disqusSettings: settingState.disqusSettings,
-  summit: summitState.summit
+const mapStateToProps = ({ summitState, userState, settingState }) => ({
+  summit: summitState.summit,
+  disqusSSO: userState.disqusSSO,
+  disqusSettings: settingState.disqusSettings
 });
 
-export default connect(mapStateToProps, {})(DisqusComponent)
+export default connect(mapStateToProps, { getDisqusSSO })(DisqusComponent)

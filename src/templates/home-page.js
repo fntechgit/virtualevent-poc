@@ -19,7 +19,7 @@ import AccessTracker, {
 } from "../components/AttendeeToAttendeeWidgetComponent"
 import AttendanceTrackerComponent from '../components/AttendanceTrackerComponent'
 
-import { getDisqusSSO, getUserProfile } from '../actions/user-actions'
+import { getUserProfile } from '../actions/user-actions';
 
 
 export const HomePageTemplate = class extends React.Component {
@@ -27,10 +27,6 @@ export const HomePageTemplate = class extends React.Component {
   constructor(props) {
     super(props);
     this.onEventChange = this.onEventChange.bind(this);
-  }
-
-  componentDidMount() {
-    this.props.getDisqusSSO();
   }
 
   onEventChange(ev) {
@@ -68,7 +64,6 @@ export const HomePageTemplate = class extends React.Component {
               />
               <DisqusComponent
                 page="lobby"
-                disqusSSO={user.disqusSSO}
                 summit={summit}
                 className="disqus-container-home"
                 title="Public conversation"
@@ -123,7 +118,6 @@ const HomePage = (
     location,
     user,
     getUserProfile,
-    getDisqusSSO,
     homeSettings,
     summit
   }
@@ -134,7 +128,6 @@ const HomePage = (
       <OrchestedTemplate
         user={user}
         getUserProfile={getUserProfile}
-        getDisqusSSO={getDisqusSSO}
         homeSettings={homeSettings}
         summit={summit}
       />
@@ -144,14 +137,12 @@ const HomePage = (
 
 HomePage.propTypes = {
   user: PropTypes.object,
-  getUserProfile: PropTypes.func,
-  getDisqusSSO: PropTypes.func,
+  getUserProfile: PropTypes.func
 };
 
 HomePageTemplate.propTypes = {
   user: PropTypes.object,
-  getUserProfile: PropTypes.func,
-  getDisqusSSO: PropTypes.func,
+  getUserProfile: PropTypes.func
 };
 
 const mapStateToProps = ({ userState, summitState, settingState }) => ({
@@ -160,4 +151,4 @@ const mapStateToProps = ({ userState, summitState, settingState }) => ({
   homeSettings: settingState.homeSettings
 });
 
-export default connect(mapStateToProps, { getDisqusSSO, getUserProfile } )(HomePage);
+export default connect(mapStateToProps, { getUserProfile } )(HomePage);
