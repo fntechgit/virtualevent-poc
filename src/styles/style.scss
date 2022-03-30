@@ -425,55 +425,11 @@ h2 {
   background-size: cover;
 }
 
-.rocket-container {
-  margin-bottom: 35px;
-}
-
 .logout-button {
   color: #fff;
   font-weight: bold;
   cursor: pointer;
   padding-right: 15px;
-}
-
-.rocket-chat {
-  &--embedded {
-    position: fixed;
-    bottom: 100px;
-    right: 50px;
-    z-index: 30;
-    border: 2px solid #26b;
-  }
-
-  &--full {
-    margin-top: 33px;
-    padding: 0 15px;
-  }
-
-  &--button {
-    background-color: #26b;
-    color: white;
-    padding: 10px;
-    font-size: 16px;
-    line-height: 42px;
-    text-align: center;
-    text-transform: uppercase;
-    border-radius: 5px;
-    cursor: pointer;
-    height: 40px;
-    width: 40px;
-    position: fixed;
-    bottom: 50px;
-    right: 50px;
-    z-index: 20;
-    display: flex;
-    justify-content: center;
-
-    img {
-      filter: invert(1);
-      justify-content: center;
-    }
-  }
 }
 
 .custom-video-modal {
