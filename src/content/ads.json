@@ -2,7 +2,36 @@
   "ads": [
     {
       "section": "lobby",
-      "columnAds": []
+      "columnAds": [
+        {
+          "image": {
+            "file": "/img/owg-lobby-community-tuesdinner.png",
+            "alt": ""
+          },
+          "column": "left"
+        },
+        {
+          "image": {
+            "file": "/img/owg-lobby-community-weddinner.png",
+            "alt": ""
+          },
+          "column": "left"
+        },
+        {
+          "image": {
+            "file": "/img/owg-lobby-community-hunt.png",
+            "alt": ""
+          },
+          "column": "left"
+        },
+        {
+          "image": {
+            "file": "/img/owg-lobby-community-thursdinner.png",
+            "alt": ""
+          },
+          "column": "left"
+        }
+      ]
     }
   ]
 }
