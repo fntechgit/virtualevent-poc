@@ -6,6 +6,7 @@ import Layout from '../components/Layout'
 import SponsorComponent from '../components/SponsorComponent'
 import AttendanceTrackerComponent from '../components/AttendanceTrackerComponent'
 import AccessTracker from '../components/AttendeeToAttendeeWidgetComponent'
+import styles from '../styles/expo-hero.module.scss'
 
 import styles from '../styles/lobby-hero.module.scss'
 
