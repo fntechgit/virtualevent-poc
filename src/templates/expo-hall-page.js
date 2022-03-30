@@ -8,8 +8,6 @@ import AttendanceTrackerComponent from '../components/AttendanceTrackerComponent
 import AccessTracker from '../components/AttendeeToAttendeeWidgetComponent'
 import styles from '../styles/expo-hero.module.scss'
 
-import styles from '../styles/lobby-hero.module.scss'
-
 const ExpoHallPage = ({ location, imageHeader }) => {
 
   return (
