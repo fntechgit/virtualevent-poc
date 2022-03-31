@@ -36,7 +36,7 @@ const AdvertiseComponent = ({ section, column, id }) => {
             const wrapperClass =`${index === 0 ? styles.firstSponsorContainer : styles.sponsorContainer} sponsor-container`;
 
             return (
-                <Ad image={ad.image.file} alt={ad.image.alt} link={ad.button.link} text={ad.button.text} wrapperClass={wrapperClass} key={key} />
+                <Ad image={ad.image.file} alt={ad.image.alt} link={ad.button?.link} text={ad.button?.text} wrapperClass={wrapperClass} key={key} />
             );
         })
     );
