@@ -151,6 +151,18 @@ export const getFilteredEvents = (events, filters, summitTimezone) => {
       if (!valid) return false;
     }
 
+    if (filters.abstract?.values && isString(filters.abstract.values)) {
+      valid = ev.description
+          .toLowerCase()
+          .includes(filters.abstract.values.toLowerCase());
+      if (!valid) return false;
+    }
+
+    if (filters.custom_order?.values && parseInt(filters.custom_order.values) > 0) {
+      valid = parseInt( ev.custom_order)  === parseInt(filters.custom_order.values)
+      if (!valid) return false;
+    }
+
     return true;
   });
 };

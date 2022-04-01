@@ -47,7 +47,7 @@ const PostersPage = ({
   colorSettings,
 }) => {
 
-  const [pageSettings] = useState(pagesSettings.find(ps => ps.trackGroupId === parseInt(trackGroupId)));
+  const [pageSettings, setPageSettings] = useState(pagesSettings.find(ps => ps.trackGroupId === parseInt(trackGroupId)));
   const [allBuildTimePostersByTrackGroup, setAllBuildTimePostersByTrackGroup] = useState(allBuildTimePosters);
   const [showFilters, setShowFilters] = useState(false);
   const [appliedPageFilter, setAppliedPageFilter] = useState(null);
@@ -81,6 +81,7 @@ const PostersPage = ({
   }, [filtersWrapperRef]);
 
   useEffect(() => {
+    setPageSettings(pagesSettings.find(ps => ps.trackGroupId === parseInt(trackGroupId)));
     setInitialDataSet().then(() => getAllVoteablePresentations());
   }, [trackGroupId]);
 
