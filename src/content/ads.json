@@ -5,29 +5,8 @@
       "columnAds": [
         {
           "image": {
-            "file": "/img/owg-lobby-community-tuesdinner.png",
-            "alt": ""
-          },
-          "column": "left"
-        },
-        {
-          "image": {
-            "file": "/img/owg-lobby-community-weddinner.png",
-            "alt": ""
-          },
-          "column": "left"
-        },
-        {
-          "image": {
-            "file": "/img/owg-lobby-community-hunt.png",
-            "alt": ""
-          },
-          "column": "left"
-        },
-        {
-          "image": {
-            "file": "/img/owg-lobby-community-thursdinner.png",
-            "alt": ""
+            "file": "/img/owg22-fnv-lobby-schedules.png",
+            "alt": "/a/schedule"
           },
           "column": "left"
         }
