@@ -9,6 +9,13 @@
             "alt": "/a/schedule"
           },
           "column": "left"
+        },
+        {
+          "image": {
+            "file": "/img/owg22-lobby-space-gradient2.png",
+            "alt": ""
+          },
+          "column": "left"
         }
       ]
     }
