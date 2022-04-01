@@ -11,26 +11,6 @@
       "showOnlyAtShowTime": false
     },
     {
-      "title": "SCHEDULE",
-      "link": "/a/schedule",
-      "display": true,
-      "requiresAuth": true,
-      "pageRestriction": [
-        "ANY"
-      ],
-      "showOnlyAtShowTime": true
-    },
-    {
-      "title": "MY SCHEDULE",
-      "link": "/a/my-schedule",
-      "display": true,
-      "requiresAuth": true,
-      "showOnlyAtShowTime": true,
-      "pageRestriction": [
-        "ANY"
-      ]
-    },
-    {
       "requiresAuth": false,
       "showOnlyAtShowTime": false,
       "pageRestriction": [
@@ -39,6 +19,26 @@
       "title": "TRANSPORTATION",
       "link": "/onsite-transportation",
       "display": true
+    },
+    {
+      "title": "SCHEDULE",
+      "link": "/a/schedule",
+      "display": true,
+      "requiresAuth": false,
+      "pageRestriction": [
+        "ANY"
+      ],
+      "showOnlyAtShowTime": false
+    },
+    {
+      "title": "MY SCHEDULE",
+      "link": "/a/my-schedule",
+      "display": true,
+      "requiresAuth": true,
+      "showOnlyAtShowTime": false,
+      "pageRestriction": [
+        "ANY"
+      ]
     },
     {
       "title": "SUPPORT",
