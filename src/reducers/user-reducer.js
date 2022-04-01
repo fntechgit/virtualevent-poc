@@ -4,7 +4,6 @@ import { LOGOUT_USER } from 'openstack-uicore-foundation/lib/actions';
 
 import {
   GET_DISQUS_SSO,
-  GET_ROCKETCHAT_SSO,
   GET_USER_PROFILE,
   START_LOADING_PROFILE,
   STOP_LOADING_PROFILE,
@@ -29,7 +28,6 @@ const DEFAULT_STATE = {
   loading: false,
   loadingIDP: false,
   disqusSSO: {},
-  rocketChatSSO: {},
   userProfile: null,
   idpProfile: null,
   isAuthorized: false,
@@ -76,9 +74,6 @@ const userReducer = (state = DEFAULT_STATE, action) => {
     case GET_DISQUS_SSO:
       const disqus = payload.response;
       return { ...state, loading: false, disqusSSO: disqus };
-    case GET_ROCKETCHAT_SSO:
-      const rocket = payload.response;
-      return { ...state, loading: false, rocketChatSSO: rocket };
     case SCHEDULE_SYNC_LINK_RECEIVED:
       const {link} = payload.response;
       return { ...state, userProfile: {...state.userProfile, schedule_shareable_link: link} };
