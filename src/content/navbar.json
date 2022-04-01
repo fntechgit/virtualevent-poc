@@ -24,7 +24,7 @@
       "title": "SCHEDULE",
       "link": "/a/schedule",
       "display": true,
-      "requiresAuth": false,
+      "requiresAuth": true,
       "pageRestriction": [
         "ANY"
       ],
