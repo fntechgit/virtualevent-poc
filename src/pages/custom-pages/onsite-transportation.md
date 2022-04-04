@@ -3,11 +3,13 @@ templateKey: custom-page
 title: Onsite Transportation
 userRequirement: NONE
 ---
+**<br>Complimentary shuttle service will be provided for those arriving via Salt Lake City International Airport on Monday, April 11:** Please look for team members holding signs with the Osso VR logo in the baggage claim area.
+
+#### <br> <br>
+
 #### Park City Ground Transportation
 
-There are many ways to get around in beautiful Park City. <br>
-
-<br>If you'd like to explore on your own, consider any of the following ground transportation options.
+There are many ways to get around in beautiful Park City. <br> If you'd like to explore on your own, consider any of the following ground transportation options.
 
 ##### <br><a href="https://apps.apple.com/ee/app/st-regis-deer-valley-chauffeur/id1592569976" target="_blank" style="color: #9e66ff">St. Regis Deer Valley Chauffeur</p></a>
 
@@ -27,7 +29,7 @@ Real-time bus information and trip planning 
 
 *<br>Please note: Due to the mountainous terrain and ever-changing weather conditions, your wait time may be longer than in other cities. Please note the estimated arrival time while using the apps and plan accordingly.* 
 
-*<br><br>*
+*<br>*
 
 **<br>There are also plenty of free and low-cost public transportation options.** 
 
