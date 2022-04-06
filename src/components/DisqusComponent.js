@@ -124,6 +124,15 @@ const DisqusComponent = class extends React.Component {
 
     const { page, title, className, style } = this.props;
     const { auth: remoteAuthS3, public_key: apiKey } = disqusSSO;
+    const shortname = getEnvVariable(DISQUS_SHORTNAME);
+
+    if (!remoteAuthS3 || !apiKey || !shortname) {
+      let error = 'Disqus misconfiguration: ';
+      if (!remoteAuthS3) error = ` ${error} ${!remoteAuthS3 ? 'SSO remoteAuthS3 missing' : ''}`;
+      if (!apiKey) error = ` ${error} ${!apiKey ? 'SSO apiKey missing' : ''}`;
+      if (!shortname) error = ` ${error} ${!shortname ? 'DISQUS_SHORTNAME env var missing' : ''}`;
+      return error;
+    }
 
     const disqusConfig = {
       url: window.location.href,
@@ -137,11 +146,11 @@ const DisqusComponent = class extends React.Component {
       <div className={className ? className : style ? '' : page === 'marketing-site' ? 'disqus-container-marketing' : 'disqus-container'} style={style}>
         {title && <span className="navbar-brand title" style={{ paddingLeft: className !== 'disqus-container-home' ? '0px' : ''}}>{title}</span>}
         <DiscussionEmbed
-          shortname={getEnvVariable(DISQUS_SHORTNAME)}
+          shortname={shortname}
           config={disqusConfig}
         />
       </div>
-    )
+    );
   }
 
 };
