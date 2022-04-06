@@ -3,9 +3,37 @@ templateKey: custom-page
 title: Onsite Transportation
 userRequirement: NONE
 ---
-**<br>Complimentary shuttle service will be provided for those arriving via Salt Lake City International Airport on Monday, April 11:** Please look for team members holding signs with the Osso VR logo in the baggage claim area.
+**<br>Complimentary shuttle service will be provided for those arriving via Salt Lake City International Airport on Monday, April 11 and departing Friday, April 15:** Please look for team members holding signs with the Osso VR logo in the baggage claim area.
 
-#### <br> <br>
+#### **<br>Arrival/Departure Airport Transfer Support**
+
+**SLC ARRIVALS—Monday, April 11**
+
+Should need airport transfer assistance on arrival day, please contact any of the transportation team members below: 
+
+Trine Aanensen (801) 560-8714
+
+Holly Molling  (801) 916-6947
+
+Kristin Vance  (801) 631-0354
+
+
+
+**<br>St. Regis DEPARTURES—Friday, April 15**
+
+Should need airport transfer assistance on departure day, please contact any of the transportation team members below: 
+
+John Oestreich (801) 870-7715 
+
+Christina Trapletti (801) 513-7461 
+
+
+
+<br>Should you have any additional questions about this process, feel free to contact Andrea Kontos at (401) 787-1594, Program Manager at Summit Events.
+
+
+
+#### <br><br> <br>
 
 #### Park City Ground Transportation
 
