@@ -1,5 +1,29 @@
 {
-  "columns": [],
+  "columns": [
+    {
+      "title": "EVENT",
+      "display": false,
+      "items": [
+        {
+          "title": "SCHEDULE",
+          "link": "/a/schedule"
+        },
+        {
+          "title": "MY SCHEDULE",
+          "link": "/a/my-schedule"
+        }
+      ]
+    },
+    {
+      "title": "ONSITE INFO",
+      "items": [
+        {
+          "title": "TRANSPORTATION",
+          "link": "/onsite-transportation"
+        }
+      ]
+    }
+  ],
   "logo": {
     "display": false
   },
