@@ -26,18 +26,22 @@
       "display": true,
       "requiresAuth": true,
       "pageRestriction": [
-        "ANY"
+        "LOBBY",
+        "CUSTOM_PAGE",
+        "ACTIVITY"
       ],
-      "showOnlyAtShowTime": true
+      "showOnlyAtShowTime": false
     },
     {
       "title": "MY SCHEDULE",
       "link": "/a/my-schedule",
       "display": true,
       "requiresAuth": true,
-      "showOnlyAtShowTime": true,
+      "showOnlyAtShowTime": false,
       "pageRestriction": [
-        "ANY"
+        "LOBBY",
+        "CUSTOM_PAGE",
+        "ACTIVITY"
       ]
     },
     {
