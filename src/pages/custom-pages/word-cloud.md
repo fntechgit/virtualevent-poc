@@ -1,9 +1,9 @@
 ---
 templateKey: custom-page
-title: Word Cloud
+title: Company Values Exercise
 userRequirement: NONE
 ---
-Company Values Exercise: Word Cloud Submission 
+#### Word Cloud Submission Instructions: 
 
 To help us generate our company values, please enter any words you can think of that describe our company, our culture, our values. The prompt is **Osso VR is \_\_\_\_.** 
 
