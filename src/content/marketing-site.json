@@ -36,7 +36,7 @@
     "image": {
       "display": true,
       "title": "",
-      "src": "/img/ow22-fnv-marketingpage-container-left.png"
+      "src": "/img/ow22-fnv-marketingpage-container-left_040622.png"
     }
   },
   "sponsors": [
@@ -44,7 +44,7 @@
       "title": "Top Left",
       "images": [
         {
-          "image": "/img/owg22-fnv-marketing-space3.png",
+          "image": "/img/owg22-fnv-marketing-space3_040622.png",
           "link": "",
           "alt": ""
         }
@@ -54,7 +54,7 @@
       "title": "Top Right",
       "images": [
         {
-          "image": "/img/owg22-fnv-marketing-space1_040422.png",
+          "image": "/img/owg22-fnv-marketing-space1_040622.png",
           "link": "https://weather.com/weather/today/l/12a075f55e277a2bd31e21e9af1c0ce14c3cb3fc5fa8e08d225dddc6e8cf256f",
           "alt": ""
         }
@@ -64,7 +64,7 @@
       "title": "Mid Left",
       "images": [
         {
-          "image": "/img/owg22-fnv-marketing-space2.png",
+          "image": "/img/owg22-fnv-marketing-space2_040622.png",
           "alt": ""
         }
       ]
@@ -72,7 +72,7 @@
     {
       "images": [
         {
-          "image": "/img/owg22-fnv-marketing-space4.png",
+          "image": "/img/owg22-fnv-marketing-space4_040622.png",
           "alt": ""
         }
       ]
