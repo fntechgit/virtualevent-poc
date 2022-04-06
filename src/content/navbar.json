@@ -28,14 +28,14 @@
       "pageRestriction": [
         "ANY"
       ],
-      "showOnlyAtShowTime": false
+      "showOnlyAtShowTime": true
     },
     {
       "title": "MY SCHEDULE",
       "link": "/a/my-schedule",
       "display": true,
       "requiresAuth": true,
-      "showOnlyAtShowTime": false,
+      "showOnlyAtShowTime": true,
       "pageRestriction": [
         "ANY"
       ]
