@@ -18,12 +18,22 @@
             "file": "/img/owg22-lobby-space-gradient2.png",
             "alt": ""
           },
-          "column": "left"
+          "column": "left",
+          "button": {
+            "link": "/scavenger-hunt"
+          }
         },
         {
           "image": {
             "file": "/img/owg22-lobby-space-headshot.png",
             "alt": "/a/schedule"
+          },
+          "column": "left"
+        },
+        {
+          "image": {
+            "file": "/img/owg22-lobby-space-compvalues.png",
+            "alt": ""
           },
           "column": "left"
         }
