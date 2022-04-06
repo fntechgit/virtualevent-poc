@@ -35,7 +35,10 @@
             "file": "/img/owg22-lobby-space-compvalues.png",
             "alt": ""
           },
-          "column": "left"
+          "column": "left",
+          "button": {
+            "link": "/word-cloud"
+          }
         }
       ]
     }
