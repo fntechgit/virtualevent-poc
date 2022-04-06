@@ -67,6 +67,7 @@ export const HomePageTemplate = class extends React.Component {
                 summit={summit}
                 className="disqus-container-home"
                 title="Public conversation"
+                skipTo="#upcoming-events"
               />
               <UpcomingEventsComponent
                 onEventClick={(ev) => this.onEventChange(ev)}

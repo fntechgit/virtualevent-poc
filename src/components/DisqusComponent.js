@@ -122,7 +122,6 @@ const DisqusComponent = class extends React.Component {
       return null;
     }
 
-    const { page, title, className, style } = this.props;
     const { auth: remoteAuthS3, public_key: apiKey } = disqusSSO;
     const shortname = getEnvVariable(DISQUS_SHORTNAME);
 
@@ -142,17 +141,22 @@ const DisqusComponent = class extends React.Component {
       apiKey: apiKey
     };
 
+    const { title, style, className, page, skipTo } = this.props;
+    const sectionClass = className ? className : style ? '' : page === 'marketing-site' ? 'disqus-container-marketing' : 'disqus-container';
+
     return (
-      <div className={className ? className : style ? '' : page === 'marketing-site' ? 'disqus-container-marketing' : 'disqus-container'} style={style}>
-        {title && <span className="navbar-brand title" style={{ paddingLeft: className !== 'disqus-container-home' ? '0px' : ''}}>{title}</span>}
+      <section aria-labelledby={title ? 'disqus-title' : ''} className={sectionClass} style={style}>
+        <div className="disqus-header">
+          {skipTo && <a className="sr-only skip-to-next" href={skipTo}>Skip to next section</a>}
+          {title && <h2 id="disqus-title" className="title">{title}</h2>}
+        </div>
         <DiscussionEmbed
           shortname={shortname}
           config={disqusConfig}
         />
-      </div>
+      </section>
     );
   }
-
 };
 
 const mapStateToProps = ({ summitState, userState, settingState }) => ({
