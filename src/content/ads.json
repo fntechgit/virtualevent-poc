@@ -26,9 +26,12 @@
         {
           "image": {
             "file": "/img/owg22-lobby-space-headshot.png",
-            "alt": "/a/schedule"
+            "alt": ""
           },
-          "column": "left"
+          "column": "left",
+          "button": {
+            "link": "/a/schedule"
+          }
         },
         {
           "image": {
