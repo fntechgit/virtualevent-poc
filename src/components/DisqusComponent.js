@@ -22,7 +22,8 @@ const DisqusComponent = class extends React.Component {
   }
 
   componentDidMount() {
-    this.props.getDisqusSSO(getEnvVariable(DISQUS_SHORTNAME));
+    const shortname = getEnvVariable(DISQUS_SHORTNAME);
+    if (shortname) this.props.getDisqusSSO(shortname);
     window.addEventListener('resize', this.onResize);
     if (window.innerWidth <= 768) {
       this.setState({ isMobile: true })
