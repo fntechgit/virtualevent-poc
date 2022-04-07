@@ -121,7 +121,7 @@ export const getPresentationById = (presentationId) => async (dispatch) => {
   } catch (e) {
     console.log('getAccessToken error: ', e);
     dispatch(stopLoading());
-    return Promise.reject(e);    
+    return Promise.reject(e);
   }
 
   const params = {
