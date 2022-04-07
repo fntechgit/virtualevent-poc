@@ -18,6 +18,7 @@ import AccessTracker, {
   AttendeesWidget,
 } from "../components/AttendeeToAttendeeWidgetComponent"
 import AttendanceTrackerComponent from '../components/AttendanceTrackerComponent'
+import PageHeader from '../components/page-header'
 
 import { getDisqusSSO, getUserProfile } from '../actions/user-actions'
 
@@ -49,8 +50,12 @@ export const HomePageTemplate = class extends React.Component {
     const { user, summit, homeSettings } = this.props;
 
     return (
-      <React.Fragment>
-        <LobbyHeroComponent />
+      <React.Fragment>        
+        <PageHeader 
+          title={homeSettings.homeHero.title}
+          subtitle={homeSettings.homeHero.subTitle}
+          backgroundImage={homeSettings.homeHero.image.file}
+        />
         <div className="px-5 py-5 mb-6">
           <div className="columns">
             <div className="column is-one-quarter">
