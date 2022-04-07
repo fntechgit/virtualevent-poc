@@ -54,7 +54,7 @@ export const HomePageTemplate = class extends React.Component {
         <div className="px-5 py-5 mb-6">
           <div className="columns">
             <div className="column is-one-quarter">
-              <h2><b>Community</b></h2>
+              <h2><b>Highlights</b></h2>
               <SponsorComponent page='lobby'/>
               <AdvertiseComponent section='lobby' column="left" />
             </div>
