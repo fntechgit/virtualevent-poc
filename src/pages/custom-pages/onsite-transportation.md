@@ -23,7 +23,7 @@ John Oestreich (801) 870-7715<br>Christina Trapletti (801) 513-7461 
 
 *<br>*
 
-***Please note if you are arriving at Salt Lake International Airport before (SLC) Monday, April 11, or departing after Friday, April 15, you are responsible for arranging your own transfer between the airport and the St. Regis Deer Valley.***
+***Please note if you are arriving at Salt Lake International Airport (SLC) before Monday, April 11, or departing after Friday, April 15, you are responsible for arranging your own transfer between the airport and the St. Regis Deer Valley.***
 
 #### <br><br> <br>
 
