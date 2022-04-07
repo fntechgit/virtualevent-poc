@@ -17,8 +17,6 @@ Holly Molling  (801) 916-6947
 
 Kristin Vance  (801) 631-0354
 
-
-
 **<br>St. Regis DEPARTURES—Friday, April 15**
 
 Should need airport transfer assistance on departure day, please contact any of the transportation team members below: 
@@ -27,11 +25,11 @@ John Oestreich (801) 870-7715 
 
 Christina Trapletti (801) 513-7461 
 
-
-
 <br>Should you have any additional questions about this process, feel free to contact Andrea Kontos at (401) 787-1594, Program Manager at Summit Events.
 
 
+
+*<br>Please note if you are arriving at Salt Lake International Airport before (SLC) Monday, April 11, or departing after Friday, April 15, you will be responsible for arranging your own transfer between the airport and the St. Regis.*
 
 #### <br><br> <br>
 
