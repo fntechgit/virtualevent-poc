@@ -12,7 +12,7 @@ import { PageScrollInspector, SCROLL_DIRECTION } from  '../components/PageScroll
 import NotificationHub from '../components/notification-hub';
 
 import {
-  setInitialDataSet,
+  setInitialDataset,
   getAllVoteablePresentations,
   updateFilter
 } from '../actions/presentation-actions';
@@ -31,7 +31,7 @@ const PostersPage = ({
   location,
   trackGroupId,
   pagesSettings,
-  setInitialDataSet,
+  setInitialDataset,
   getAllVoteablePresentations,
   posters,
   allPosters,
@@ -82,7 +82,7 @@ const PostersPage = ({
 
   useEffect(() => {
     setPageSettings(pagesSettings.find(ps => ps.trackGroupId === parseInt(trackGroupId)));
-    setInitialDataSet().then(() => getAllVoteablePresentations());
+    setInitialDataset().then(() => getAllVoteablePresentations());
   }, [trackGroupId]);
 
   useEffect(() => {
@@ -238,7 +238,7 @@ const mapStateToProps = ({ settingState, presentationsState, userState, summitSt
 });
 
 export default connect(mapStateToProps, {
-  setInitialDataSet,
+  setInitialDataset,
   getAllVoteablePresentations,
   castPresentationVote,
   uncastPresentationVote,
