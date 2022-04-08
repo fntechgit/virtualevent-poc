@@ -5,7 +5,7 @@ const VideoBanner = ({ event }) => {
   return (
     <div className="join-zoom-container">
       <span>
-        Click to Gain Speaker Access
+        DiSC Zoom Link
       </span>
       <a className="zoom-link" href={event.meeting_url} target="_blank" rel="noreferrer">
         <button className="zoom-button button">
