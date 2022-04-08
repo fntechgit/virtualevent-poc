@@ -19,7 +19,7 @@ import { getUserProfile, setPasswordlessLogin, setUserOrder, checkOrderData } fr
 import { getThirdPartyProviders } from "../actions/base-actions";
 
 import 'summit-registration-lite/dist/index.css';
-import styles from '../styles/lobby-hero.module.scss'
+import styles from '../styles/marketing-hero.module.scss'
 
 const RegistrationLiteComponent = ({
     registrationProfile,

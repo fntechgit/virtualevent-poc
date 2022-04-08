@@ -25,9 +25,27 @@
       margin-top: 0px;
     }
   }
+  .image {
+    flex-basis: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
   img {
     object-position: right center;
     object-fit: cover;
     max-height: 265px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .page-header {
+    flex-direction: column;
+    min-height: 465px;
+    max-height: 465px;
+    .image {
+      min-height: 220px;
+    }
   }
 }

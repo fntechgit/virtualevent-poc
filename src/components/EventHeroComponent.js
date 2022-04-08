@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from "react-redux";
 
-import styles from '../styles/lobby-hero.module.scss'
+import styles from '../styles/event-hero.module.scss'
 
 const EventHeroComponent = ({siteSettings}) => (
   <section className="hero">
