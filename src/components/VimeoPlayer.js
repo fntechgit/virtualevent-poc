@@ -137,7 +137,6 @@ class VimeoPlayer extends React.Component {
         const { onError, onReady } = this.props;
         this.player.ready().then(() => {
             this.player.getDuration().then(function(duration) {
-                console.log(`vimeo ${duration}`);
                 this.setState({...this.state, type: duration == 0 ? 'LIVE':'VOD'});
             }).catch(function(error) {
                 // an error occurred
