@@ -28,9 +28,9 @@ export const VOTING_PERIODS_CREATE = 'VOTING_PERIODS_CREATE';
 export const VOTING_PERIODS_PHASE_CHANGE = 'VOTING_PERIODS_PHASE_CHANGE';
 const PresentationsDefaultPageSize = 30;
 
-export const setInitialDataSet = () => (dispatch, getState) => Promise.resolve().then(() => {
-  const { userState: { userProfile } } = getState();
-  dispatch(createAction(SET_INITIAL_DATASET)({ userProfile }));
+export const setInitialDataset = () => (dispatch) => Promise.resolve().then(() => {
+  return dispatch(createAction(SET_INITIAL_DATASET)());
+}).then(() => {
   return dispatch(createVotingPeriods());
 });
 
