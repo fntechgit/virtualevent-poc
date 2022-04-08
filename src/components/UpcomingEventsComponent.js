@@ -52,19 +52,19 @@ const UpcomingEventsComponent = ({
                     href="https://cdnjs.cloudflare.com/ajax/libs/awesome-bootstrap-checkbox/1.0.2/awesome-bootstrap-checkbox.min.css"
                 />
             </Helmet>
-            <div className={className || wrapperClass} style={{ height: 500 }}>
+            <div id="upcoming-events" className={className || wrapperClass} style={{ height: 500 }}>
                 <UpcomingEvents {...componentProps} {...rest} />
             </div>
         </>
     );
 };
 
-const mapStateToProps = ({ userState, summitState, scheduleState, settingState }) => ({
+const mapStateToProps = ({ userState, summitState, allSchedulesState, settingState }) => ({
     userProfile: userState.userProfile,
     colorSettings: settingState.colorSettings,
     homeSettings: settingState.homeSettings,
     summit: summitState.summit,
-    allEvents: scheduleState.allEvents,
+    allEvents: allSchedulesState.allEvents,
 });
 
 export default connect(mapStateToProps, {

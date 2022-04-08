@@ -85,11 +85,15 @@ const Footer = ({ summit, marketing }) => {
                             <h4>
                               {col.title}
                             </h4>
-                            {col.items.map((item, index) => (
-                              <Link to={item.link} className={styles.link} key={index}>
-                                <h5>{item.title}</h5>
-                              </Link>
-                            ))}
+                            <ul>
+                              {col.items.map((item, index) => (
+                                <li>
+                                  <Link to={item.link} className={styles.link} key={index}>
+                                    <h5>{item.title}</h5>
+                                  </Link>
+                                </li>
+                              ))}
+                            </ul>
                           </div>
                         )
                       })}
@@ -104,7 +108,7 @@ const Footer = ({ summit, marketing }) => {
                           net.display &&
                           <Link to={net.link} className={styles.link} key={index}>
                             {net.icon === 'fa-facebook' ?
-                              <img style={{ width: 25, marginTop: '-1px' }} src="/img/f_logo_RGB-White_58.png" />
+                              <img alt="logo" style={{ width: 25, marginTop: '-1px' }} src="/img/f_logo_RGB-White_58.png" />
                               :
                               <i className={`fa icon is-large ${net.icon}`} />
                             }

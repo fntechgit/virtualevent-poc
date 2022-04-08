@@ -19,8 +19,8 @@ import {
   VOTEABLE_PRESENTATIONS_UPDATE_FILTER,
   GET_PRESENTATION_DETAILS,
   GET_RECOMMENDED_PRESENTATIONS,
-  VOTING_PERIOD_ADD,
-  VOTING_PERIOD_PHASE_CHANGE,
+  VOTING_PERIODS_CREATE,
+  VOTING_PERIODS_PHASE_CHANGE,
 } from '../actions/presentation-actions';
 
 import { filterEventsByAccessLevels } from '../utils/authorizedGroups';
@@ -45,6 +45,8 @@ const DEFAULT_VOTEABLE_PRESENTATIONS_STATE = {
 const voteablePresentations = (state = DEFAULT_VOTEABLE_PRESENTATIONS_STATE, action) => {
   const { type, payload } = action;
   switch (type) {
+    case SYNC_DATA:
+      return DEFAULT_VOTEABLE_PRESENTATIONS_STATE;
     case SET_INITIAL_DATASET: {
       const { userProfile: currentUserProfile } = action;
       // pre filter by user access levels
@@ -80,13 +82,22 @@ const voteablePresentations = (state = DEFAULT_VOTEABLE_PRESENTATIONS_STATE, act
       };
     }
     case VOTEABLE_PRESENTATIONS_UPDATE_FILTER: {
-      const { type, values } = payload;
+      const { type: filterType, values } = payload;
       const { filters, allPresentations } = state;
-      // TODO: review, can we change state directly?
-      filters[type].values = values;
-      return { ...state,
-        filters,
-        filteredPresentations: getFilteredVoteablePresentations(allPresentations, filters)
+      // update filters with new values
+      const newFilters =  {
+        ...filters,
+        [filterType]: {
+          ...filters[filterType],
+          values
+        }
+      };
+      
+      return {
+        ...state ,
+        filters : newFilters ,
+        // refilter events
+        filteredPresentations : getFilteredVoteablePresentations(allPresentations, newFilters)
       };
     }
     case GET_PRESENTATION_DETAILS: {
@@ -114,24 +125,28 @@ const votingPeriods = (state = {}, action) => {
     case LOGOUT_USER:
     case SYNC_DATA:
       return {};
-    case VOTING_PERIOD_ADD: {
-      const { trackGroupId, votingPeriod } = payload;
-      return {
-        ...state,
-        [trackGroupId]: {
-          ...votingPeriod
-        }
-      };
+    case VOTING_PERIODS_CREATE: {
+      var newState = { ...state };
+      for (const { trackGroupId, votingPeriod } of payload) {
+        newState = {
+          ...newState,
+          [trackGroupId]: votingPeriod
+        };
+      }
+      return newState;
     }
-    case VOTING_PERIOD_PHASE_CHANGE: {
-      const { trackGroupId, phase } = payload;
-      return {
-        ...state,
-        [trackGroupId]: {
-          ...state[trackGroupId], 
-          phase
-        }
-      };
+    case VOTING_PERIODS_PHASE_CHANGE: {
+      var newState = { ...state };
+      for (const { trackGroupId, phase } of payload) {
+        newState = {
+          ...newState,
+          [trackGroupId]: {
+            ...newState[trackGroupId], 
+            phase
+          }
+        };
+      }
+      return newState;
     }
     case CAST_PRESENTATION_VOTE_REQUEST:
     case UNCAST_PRESENTATION_VOTE_REQUEST:
@@ -165,6 +180,8 @@ const votingPeriods = (state = {}, action) => {
 const pages = (pages = {}, action) => {
   const { type, payload } = action;
   switch (type) {
+    case SYNC_DATA:
+      return {};
     case PRESENTATIONS_PAGE_REQUEST:
       const { page } = payload;
       return {

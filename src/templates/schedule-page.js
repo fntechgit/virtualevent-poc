@@ -1,80 +1,89 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState, useCallback, useRef } from "react";
 import PropTypes from "prop-types";
 import { pickBy } from "lodash";
 import { navigate } from "gatsby";
-import { connect } from "react-redux";
-import { updateFiltersFromHash, updateFilter } from "../actions/schedule-actions";
+import { deepLinkToEvent } from "../actions/schedule-actions";
 import Layout from "../components/Layout";
 import FullSchedule from "../components/FullSchedule";
 import ScheduleFilters from "../components/ScheduleFilters";
 import AttendanceTrackerComponent from "../components/AttendanceTrackerComponent";
 import AccessTracker from "../components/AttendeeToAttendeeWidgetComponent";
+import { PageScrollInspector, SCROLL_DIRECTION } from  '../components/PageScrollInspector';
 import { PHASES } from "../utils/phasesUtils";
 import FilterButton from "../components/FilterButton";
-
 import styles from "../styles/full-schedule.module.scss";
+import NotFoundPage from "../pages/404";
+import withScheduleData from '../utils/withScheduleData'
 
+const SchedulePage = ({summit, scheduleState, summitPhase, isLoggedUser, location, colorSettings, updateFilter, scheduleProps, schedKey }) => {
 
-const SchedulePage = ({
-  summit,
-  summitPhase,
-  isLoggedUser,
-  location,
-  events,
-  allScheduleEvents,
-  filters,
-  view,
-  timezone,
-  colorSource,
-  colorSettings,
-  updateFilter,
-  updateFiltersFromHash,
-}) => {
   const [showFilters, setShowfilters] = useState(false);
+
+  const filtersWrapperRef = useRef(null);
+  const { key, events, allEvents, filters, view, timezone, colorSource } = scheduleState || {};
+
+  useEffect(() => {
+    if (scheduleState && !!events?.length) {
+      deepLinkToEvent();
+    }
+  }, [key, events]);
+
+  const onScrollDirectionChange = useCallback(direction => {
+    if (direction === SCROLL_DIRECTION.UP)
+      filtersWrapperRef.current.scroll({ top: 0, behavior: 'smooth' });
+  }, [filtersWrapperRef]);
+
+  const onPageBottomReached = useCallback(pageBottomReached => {
+    if (pageBottomReached)
+      filtersWrapperRef.current.scroll({ top: filtersWrapperRef.current.scrollHeight, behavior: 'smooth' });
+  }, [filtersWrapperRef]);
+
+  if (!summit ) return null;
+
+  // if we don't have a state, it probably means the schedule was disabled from admin.
+  if (!scheduleState) {
+    return <NotFoundPage />;
+  }
 
   const filterProps = {
     summit,
     events,
-    allEvents: allScheduleEvents,
+    allEvents,
     filters: pickBy(filters, (value) => value.enabled),
     triggerAction: (action, payload) => {
-      updateFilter(payload);
+      updateFilter(schedKey, payload);
     },
     marketingSettings: colorSettings,
-    colorSource: colorSource,
+    colorSource,
   };
 
-  let scheduleProps = {
+  let schedProps = {
     summit,
     events,
     filters,
     view,
     timezone,
     colorSource,
+    schedKey,
+    ...scheduleProps
   };
 
   if (isLoggedUser && summitPhase !== PHASES.BEFORE) {
-    scheduleProps = {
-      ...scheduleProps,
+    schedProps = {
+      ...schedProps,
       onEventClick: (ev) => navigate(`/a/event/${ev.id}`, { state: { previousUrl: location.pathname }}),
       onStartChat: null,
     };
   }
-
-  useEffect(() => {
-    updateFiltersFromHash(filters, view);
-  });
-
-  if (!summit) return null;
 
   return (
     <Layout location={location}>
       <div className="container">
         <div className={`${styles.wrapper} ${showFilters ? styles.showFilters : ""}`}>
           <div className={styles.scheduleWrapper}>
-            <FullSchedule {...scheduleProps} />
+            <FullSchedule {...schedProps} />
           </div>
-          <div className={styles.filterWrapper}>
+          <div ref={filtersWrapperRef} className={styles.filterWrapper}>
             <ScheduleFilters {...filterProps} />
           </div>
           <FilterButton open={showFilters} onClick={() => setShowfilters(!showFilters)} />
@@ -82,35 +91,15 @@ const SchedulePage = ({
       </div>
       <AttendanceTrackerComponent />
       <AccessTracker />
+      <PageScrollInspector scrollDirectionChanged={onScrollDirectionChange} bottomReached={onPageBottomReached} />
     </Layout>
   );
 };
 
 SchedulePage.propTypes = {
+  schedKey: PropTypes.string.isRequired,
   summitPhase: PropTypes.number,
   isLoggedUser: PropTypes.bool,
 };
 
-const mapStateToProps = ({
-  summitState,
-  clockState,
-  loggedUserState,
-  scheduleState,
-  settingState,
-}) => ({
-  summit: summitState.summit,
-  summitPhase: clockState.summit_phase,
-  isLoggedUser: loggedUserState.isLoggedUser,
-  events: scheduleState.events,
-  allScheduleEvents: scheduleState.allScheduleEvents,
-  filters: scheduleState.filters,
-  view: scheduleState.view,
-  timezone: scheduleState.timezone,
-  colorSource: scheduleState.colorSource,
-  colorSettings: settingState.colorSettings,
-});
-
-export default connect(mapStateToProps, {
-  updateFiltersFromHash,
-  updateFilter,
-})(SchedulePage);
+export default withScheduleData(SchedulePage);

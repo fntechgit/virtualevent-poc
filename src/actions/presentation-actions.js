@@ -4,13 +4,14 @@ import {
   createAction,
   stopLoading,
   startLoading,
+  clearAccessToken,
 } from 'openstack-uicore-foundation/lib/methods';
 
 import { customErrorHandler } from '../utils/customErrorHandler';
 
 import { VotingPeriod } from '../model/VotingPeriod';
 
-import { PHASES, getSummitPhase, getEventPhase, getVotingPeriodPhase } from '../utils/phasesUtils';
+import { getVotingPeriodPhase } from '../utils/phasesUtils';
 import { mapVotesPerTrackGroup } from '../utils/voting-utils';
 
 import { getEnvVariable, SUMMIT_API_BASE_URL, SUMMIT_ID } from '../utils/envVariables';
@@ -23,8 +24,9 @@ export const VOTEABLE_PRESENTATIONS_UPDATE_FILTER = 'VOTEABLE_PRESENTATIONS_UPDA
 export const GET_PRESENTATION_DETAILS = 'GET_PRESENTATION_DETAILS';
 export const GET_PRESENTATION_DETAILS_ERROR = 'GET_PRESENTATION_DETAILS_ERROR';
 export const GET_RECOMMENDED_PRESENTATIONS = 'GET_RECOMMENDED_PRESENTATIONS';
-export const VOTING_PERIOD_ADD = 'VOTING_PERIOD_ADD';
-export const VOTING_PERIOD_PHASE_CHANGE = 'VOTING_PERIOD_PHASE_CHANGE';
+export const VOTING_PERIODS_CREATE = 'VOTING_PERIODS_CREATE';
+export const VOTING_PERIODS_PHASE_CHANGE = 'VOTING_PERIODS_PHASE_CHANGE';
+const PresentationsDefaultPageSize = 30;
 
 export const setInitialDataset = () => (dispatch) => Promise.resolve().then(() => {
   return dispatch(createAction(SET_INITIAL_DATASET)());
@@ -36,7 +38,7 @@ export const updateFilter = (filter) => (dispatch) => {
   dispatch(createAction(VOTEABLE_PRESENTATIONS_UPDATE_FILTER)({ ...filter }));
 };
 
-export const getAllVoteablePresentations = (page = 1, perPage = 10) => async (dispatch) => {
+export const getAllVoteablePresentations = (page = 1, perPage = PresentationsDefaultPageSize) => async (dispatch) => {
 
   dispatch(startLoading());
 
@@ -71,12 +73,14 @@ export const getAllVoteablePresentations = (page = 1, perPage = 10) => async (di
       dispatch(stopLoading());
     });
   }).catch(e => {
+     console.log('ERROR: ', e);
     dispatch(stopLoading());
+    clearAccessToken();
     return (e);
   });
 }
 
-export const getVoteablePresentations = (page = 1, perPage = 10) => async (dispatch, getState) => {
+export const getVoteablePresentations = (page = 1, perPage = PresentationsDefaultPageSize) => async (dispatch, getState) => {
 
   let accessToken;
   try {
@@ -101,53 +105,59 @@ export const getVoteablePresentations = (page = 1, perPage = 10) => async (dispa
     customErrorHandler,
     { page }
   )(params)(dispatch).catch(e => {
+    console.log('ERROR: ', e);
+    clearAccessToken();
     return (e);
   });
 };
 
-export const getPresentationById = (presentationId) => async (dispatch, getState) => {
+export const getPresentationById = (presentationId) => async (dispatch) => {
 
   dispatch(startLoading());
 
   let accessToken;
   try {
-      accessToken = await getAccessToken();
+    accessToken = await getAccessToken();
   } catch (e) {
-      console.log('getAccessToken error: ', e);
-      dispatch(stopLoading());
-      return Promise.reject();    
+    console.log('getAccessToken error: ', e);
+    dispatch(stopLoading());
+    return Promise.reject(e);
   }
 
   const params = {
-      access_token: accessToken,
-      expand: 'speakers,media_uploads,media_uploads.media_upload_type,track,slides,videos,links,track.allowed_access_levels'
+    access_token: accessToken,
+    expand: 'speakers,media_uploads,media_uploads.media_upload_type,track,slides,videos,links,track.allowed_access_levels'
   };
 
   return getRequest(
-      null,
-      createAction(GET_PRESENTATION_DETAILS),
-      `${window.SUMMIT_API_BASE_URL}/api/v1/summits/${window.SUMMIT_ID}/presentations/voteable/${presentationId}`,
-      customErrorHandler
-  )(params)(dispatch).then((presentation) => {
-      dispatch(getRecommendedPresentations(presentation.response.track.track_groups));
+    null,
+    createAction(GET_PRESENTATION_DETAILS),
+    `${window.SUMMIT_API_BASE_URL}/api/v1/summits/${window.SUMMIT_ID}/presentations/voteable/${presentationId}`,
+    customErrorHandler
+  )(params)(dispatch).then((payload) => {
+    const { response: presentation } = payload;
+    dispatch(getRecommendedPresentations(presentation.track?.track_groups ?? []));
+    return presentation;
   }).catch(e => {
-      dispatch(stopLoading());
-      dispatch(createAction(GET_PRESENTATION_DETAILS_ERROR)(e));
-      return (e);
+    console.log('ERROR: ', e);
+    dispatch(stopLoading());
+    dispatch(createAction(GET_PRESENTATION_DETAILS_ERROR)(e));
+    clearAccessToken();
+    return Promise.reject(e);
   });
 };
 
-export const getRecommendedPresentations = (trackGroups) => async (dispatch, getState) => {
+export const getRecommendedPresentations = (trackGroups) => async (dispatch) => {
 
   dispatch(startLoading());
 
   let accessToken;
   try {
-      accessToken = await getAccessToken();
+    accessToken = await getAccessToken();
   } catch (e) {
-      console.log('getAccessToken error: ', e);
-      dispatch(stopLoading());
-      return Promise.reject();    
+    console.log('getAccessToken error: ', e);
+    dispatch(stopLoading());
+    return Promise.reject();    
   }
 
 // order by random
@@ -155,55 +165,60 @@ export const getRecommendedPresentations = (trackGroups) => async (dispatch, get
   const filter = [`track_group_id==${trackGroups.map((e, index) => `${e}${index+1===trackGroups.length?'':','}`)}`, 'published==1'];
 
   const params = {
-      access_token: accessToken,
-      expand: 'speakers, media_uploads, track',
-      'filter[]': filter,
-      order: 'random',
+    access_token: accessToken,
+    expand: 'speakers, media_uploads, track',
+    'filter[]': filter,
+    order: 'random',
   };
 
   return getRequest(
-      null,
-      createAction(GET_RECOMMENDED_PRESENTATIONS),
-      `${window.SUMMIT_API_BASE_URL}/api/v1/summits/${window.SUMMIT_ID}/presentations/voteable`,
-      customErrorHandler
+    null,
+    createAction(GET_RECOMMENDED_PRESENTATIONS),
+    `${window.SUMMIT_API_BASE_URL}/api/v1/summits/${window.SUMMIT_ID}/presentations/voteable`,
+    customErrorHandler
   )(params)(dispatch).then(() => {
-      dispatch(stopLoading());
+    dispatch(stopLoading());
   }).catch(e => {
-      dispatch(stopLoading());
-      return (e);
+    console.log('ERROR: ', e);
+    dispatch(stopLoading());
+    clearAccessToken();
+    return (e);
   });
 };
 
 export const updateVotingPeriodsPhase = () => (dispatch, getState) => {
-  const { clockState: { nowUtc },
-          userState: { attendee },
-          presentationsState: { voteablePresentations: { allPresentations }, votingPeriods } } = getState();
-
+  const { clockState: { nowUtc }, presentationsState: { votingPeriods } } = getState();
   if (Object.keys(votingPeriods).length) {
+    const phaseChanges = [];
     Object.entries(votingPeriods).forEach(entry => {
       const [trackGroupId, votingPeriod] = entry;
       const newPhase = getVotingPeriodPhase(votingPeriod, nowUtc);
       if (newPhase !== votingPeriod.phase) {
-        dispatch(createAction(VOTING_PERIOD_PHASE_CHANGE)({ trackGroupId, phase: newPhase }));
+        phaseChanges.push({ trackGroupId, phase: newPhase });
       }
     });
+    if (phaseChanges.length)
+      dispatch(createAction(VOTING_PERIODS_PHASE_CHANGE)(phaseChanges));
   }
 };
 
 export const createVotingPeriods = () => (dispatch, getState) => {
-
-   const { clockState: { nowUtc },
-          summitState: { summit: { track_groups: trackGroups } },
+  const { clockState: { nowUtc },
           userState: { attendee },
+          summitState: { summit: { track_groups: trackGroups } },
           presentationsState: { voteablePresentations: { ssrPresentations: allBuildTimePresentations } } } = getState();
 
   const votesPerTrackGroup = mapVotesPerTrackGroup(attendee?.presentation_votes ?? [], allBuildTimePresentations);
 
+  var votingPeriods = [];
   trackGroups.forEach(trackGroup => {
-    const { max_attendee_votes: maxAttendeeVotes } = trackGroup;
-    const { begin_attendee_voting_period_date: startDate, end_attendee_voting_period_date: endDate } = trackGroup;
-    const votingPeriod = VotingPeriod({ startDate, endDate, maxAttendeeVotes }, nowUtc);
+    const { name, begin_attendee_voting_period_date: startDate,
+            end_attendee_voting_period_date: endDate,
+            max_attendee_votes: maxAttendeeVotes } = trackGroup;
+    const votingPeriod = VotingPeriod({ name, startDate, endDate, maxAttendeeVotes }, nowUtc);
     if (votesPerTrackGroup[trackGroup.id]) votingPeriod.addVotes = votesPerTrackGroup[trackGroup.id];
-    dispatch(createAction(VOTING_PERIOD_ADD)({ trackGroupId: trackGroup.id, votingPeriod }));
+    votingPeriods.push({ trackGroupId: trackGroup.id, votingPeriod });
   });
+  if (votingPeriods.length)
+    dispatch(createAction(VOTING_PERIODS_CREATE)(votingPeriods));
 };

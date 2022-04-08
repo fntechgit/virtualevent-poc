@@ -23,16 +23,16 @@ export const userHasAccessLevel = (summitTickets, accessLevel) => {
     return false;
 };
 
-const getUserAccessLevelIds = (summit_tickets) => {
-    return summit_tickets?.reduce((result, item) => {
+export const getUserAccessLevelIds = (summitTickets) => {
+    return summitTickets?.reduce((result, item) => {
         const newAccessLevels = item?.badge?.type?.access_levels?.map(al => al.id).filter(aln => !result.includes(aln)) || [];
         return [...result, ...newAccessLevels];
     }, []) || [];
 };
 
-export const isAuthorizedBadge = (event, summit_tickets) => {
+export const isAuthorizedBadge = (event, summitTickets) => {
     let allowed = true;
-    const userAccessLevels = getUserAccessLevelIds(summit_tickets);
+    const userAccessLevels = getUserAccessLevelIds(summitTickets);
     const trackAccessLevelIds = event?.track?.allowed_access_levels.map(aal => aal.id) || [];
 
     if (trackAccessLevelIds.length > 0) {
@@ -43,16 +43,11 @@ export const isAuthorizedBadge = (event, summit_tickets) => {
 };
 
 export const filterEventsByAccessLevels = (originalEvents , user) => {
-    console.log(`filterEventsByAccessLevels originalEvents ${originalEvents.length} user ${user.email}`);
     if (isAuthorizedUser(user.groups)) {
-        console.log(`filterEventsByAccessLevels originalEvents ${originalEvents.length} user ${user.email} is Auth`);
         return originalEvents;
     }
     let summitTickets = user.summit_tickets;
-    let res =  originalEvents.filter((ev) => {
+    return originalEvents.filter((ev) => {
         return isAuthorizedBadge(ev, summitTickets);
     });
-
-    console.log(`filterEventsByAccessLevels originalEvents ${originalEvents.length} user ${user.email} filtered ${res.length}`);
-    return res;
 }

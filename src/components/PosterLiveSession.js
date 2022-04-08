@@ -6,17 +6,20 @@ import styles from '../styles/poster-components.module.scss'
 const PosterLiveSession = ({ poster }) => {
 
     const goToLiveSession = (url) => {
-        navigate(url);
+        const internal = /^\/(?!\/)/.test(url);
+        if (!internal) {
+            const newWindow = window.open(url, '_blank', 'noopener,noreferrer');
+            if (newWindow) newWindow.opener = null;
+        } else navigate(url);
     }
 
     return (
         <div className={styles.posterJoinContainer}>
             <span>
-                Join the live session
+                Live session with authors
             </span>
             <button onClick={() => goToLiveSession(poster.meeting_url)} className="poster-button button">
-                <i className={`fa fa-sign-in icon is-large`} />
-                <b>Participate</b>
+                <b>Join now</b>
             </button>
         </div>
     )

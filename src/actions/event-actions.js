@@ -4,6 +4,7 @@ import {
     createAction,
     stopLoading,
     startLoading,
+    clearAccessToken,
 } from 'openstack-uicore-foundation/lib/methods';
 
 import {customErrorHandler} from '../utils/customErrorHandler';
@@ -21,25 +22,28 @@ export const getEventById = (eventId) => async (dispatch, getState) => {
 
     dispatch(startLoading());
 
-    // check first the reducer
-    let {scheduleState: {allEvents}} = getState();
+    // if we have it on the reducer , provide that first
+    let {allSchedulesState: {allEvents}} = getState();
     const event = allEvents.find(ev => ev.id === parseInt(eventId));
 
     if (event) {
         dispatch(createAction(GET_EVENT_DATA)({event}));
-        dispatch(stopLoading());
-        return Promise.resolve();
     }
 
-    // if does not exists get it from api
-    const accessToken = await getAccessToken();
-    if (!accessToken) {
+    // then refresh from api
+
+    let accessToken;
+    try {
+        accessToken = await getAccessToken();
+    } catch (e) {
+        console.log('getAccessToken error: ', e);
         dispatch(stopLoading());
-        return Promise.resolve();
+        return Promise.reject();
     }
+
     let params = {
         access_token: accessToken,
-        expand: 'track,location,location.venue,location.floor,speakers,slides,links,videos,media_uploads'
+        expand: 'slides, links, videos, media_uploads, type, track, track.allowed_access_levels, location, location.venue, location.floor, speakers, moderator, sponsors, current_attendance, groups, rsvp_template, tags'
     };
 
     return getRequest(
@@ -52,6 +56,8 @@ export const getEventById = (eventId) => async (dispatch, getState) => {
     }).catch(e => {
         dispatch(stopLoading());
         dispatch(createAction(GET_EVENT_DATA_ERROR)(e));
+        console.log('ERROR: ', e);
+        clearAccessToken();
         return (e);
     });
 

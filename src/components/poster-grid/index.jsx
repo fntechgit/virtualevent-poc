@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 
 import PosterCard from '../poster-card';
@@ -37,7 +37,7 @@ const PosterGrid = ({ posters, showDetailPage = null, votingAllowed, votingPerio
     />
   );
   return (
-    <div className={styles.posters} style={{gridTemplateColumns: posters.length === 3 ? '1fr 1fr 1fr' : ''}}>
+    <div className={styles.posters}>
       { cards }
     </div>
   )

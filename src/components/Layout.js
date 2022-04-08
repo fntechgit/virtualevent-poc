@@ -1,13 +1,17 @@
-import React, { useEffect, useState } from 'react'
-import { connect } from 'react-redux'
-import { Helmet } from 'react-helmet'
-import Footer from '../components/Footer'
-import Header from '../components/Header'
-import ClockComponent from '../components/ClockComponent'
-import useSiteMetadata from './SiteMetadata'
-import { withPrefix } from 'gatsby'
+import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
+import { Helmet } from 'react-helmet';
+import { withPrefix } from 'gatsby';
+import useSiteMetadata from './SiteMetadata';
+import Header from '../components/Header';
+import ClockComponent from '../components/ClockComponent';
+import Footer from '../components/Footer';
 
-import "../styles/bulma.scss"
+import '../styles/bulma.scss';
+
+import smoothscroll from 'smoothscroll-polyfill';
+// smooth scroll polyfill needed for Safari
+smoothscroll.polyfill();
 
 const TemplateWrapper = ({ children, location, marketing, summit, favicons }) => {
   const { title, description } = useSiteMetadata();
@@ -30,7 +34,7 @@ const TemplateWrapper = ({ children, location, marketing, summit, favicons }) =>
       window.removeEventListener("blur", onBlur);
     };
   });
-  
+
   return (
     <div id="container">
       <Helmet>
@@ -73,9 +77,10 @@ const TemplateWrapper = ({ children, location, marketing, summit, favicons }) =>
         <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
         <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
       </Helmet>
+      <a className="sr-only skip-to-content" href="#content-wrapper">Skip to content</a>
       <Header location={location} />
-      <ClockComponent summit={summit} display={isFocus} />
-      <div id="content-wrapper">{children}</div>
+      <ClockComponent active={isFocus} summit={summit} />
+      <main id="content-wrapper">{children}</main>
       <Footer marketing={marketing} />
     </div>
   )

@@ -18,22 +18,21 @@ import AccessTracker, { AttendeesWidget } from "../components/AttendeeToAttendee
 import AttendanceTrackerComponent from "../components/AttendanceTrackerComponent";
 import { PHASES } from '../utils/phasesUtils';
 import { getEventById } from "../actions/event-actions";
-import { getDisqusSSO } from "../actions/user-actions";
 import URI from "urijs"
 
 export const EventPageTemplate = class extends React.Component {
 
   componentDidMount() {
-    const { eventId } = this.props;
-    this.props.getDisqusSSO();
-    this.props.getEventById(eventId);
+    const { eventId,event } = this.props;
+    if(parseInt(event?.id) !== parseInt(eventId))
+      this.props.getEventById(eventId);
   }
-
+  
   componentDidUpdate(prevProps, prevState, snapshot) {
     const { eventId, event } = this.props;
     const { eventId: prevEventId } = prevProps;
     // event id could came as param at uri
-    if (eventId !== prevEventId || (event?.id !== eventId)) {
+    if (parseInt(eventId) !== parseInt(prevEventId) || parseInt(event?.id) !== parseInt(eventId) ) {
       this.props.getEventById(eventId);
     }
   }
@@ -203,8 +202,7 @@ const EventPage = ({
   user,
   eventsPhases,
   nowUtc,
-  getEventById,
-  getDisqusSSO,
+  getEventById
 }) => {
   return (
     <Layout location={location}>
@@ -225,7 +223,6 @@ const EventPage = ({
         nowUtc={nowUtc}
         location={location}
         getEventById={getEventById}
-        getDisqusSSO={getDisqusSSO}
       />
     </Layout>
   );
@@ -238,7 +235,6 @@ EventPage.propTypes = {
   user: PropTypes.object,
   eventsPhases: PropTypes.array,
   getEventById: PropTypes.func,
-  getDisqusSSO: PropTypes.func,
 };
 
 EventPageTemplate.propTypes = {
@@ -248,7 +244,6 @@ EventPageTemplate.propTypes = {
   user: PropTypes.object,
   eventsPhases: PropTypes.array,
   getEventById: PropTypes.func,
-  getDisqusSSO: PropTypes.func,
 };
 
 const mapStateToProps = ({eventState, summitState, userState, clockState}) => ({
@@ -261,6 +256,5 @@ const mapStateToProps = ({eventState, summitState, userState, clockState}) => ({
 });
 
 export default connect(mapStateToProps, {
-  getEventById,
-  getDisqusSSO,
+  getEventById
 })(EventPage);
