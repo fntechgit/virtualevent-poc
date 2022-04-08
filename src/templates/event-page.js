@@ -73,7 +73,8 @@ export const EventPageTemplate = class extends React.Component {
     // get current event phase
     const currentPhase = eventsPhases.find((e) => parseInt(e.id) === parseInt(eventId))?.phase;
     const firstHalf = currentPhase === PHASES.DURING ? nowUtc < ((event?.start_date + event?.end_date) / 2) : false;
-    const query = URI.parseQuery(location.search);
+    const eventQuery = URI(event.streaming_url).search(true);
+    const autoPlay = eventQuery.autoplay !== '0';
 
     // if event is loading or we are still calculating the current phase ...
     if (loading || currentPhase === undefined) {
@@ -106,7 +107,7 @@ export const EventPageTemplate = class extends React.Component {
                       title={event.title}
                       namespace={summit.name}
                       firstHalf={firstHalf}
-                      autoPlay={query.autostart === 'true'}
+                      autoPlay={autoPlay}
                     />
                     {event.meeting_url && <VideoBanner event={event} />}
                   </div>
