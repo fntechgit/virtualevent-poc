@@ -11,7 +11,7 @@ import {
 import Link from "../components/Link";
 import RegistrationLiteComponent from "./RegistrationLiteComponent";
 
-import styles from "../styles/lobby-hero.module.scss";
+import styles from "../styles/marketing-hero.module.scss";
 
 const MarketingHeroComponent = ({ siteSettings, summit_phase, isLoggedUser, summit, location }) => {
 

@@ -6,7 +6,6 @@ import { connect } from 'react-redux'
 import Layout from '../components/Layout'
 import withOrchestra from "../utils/widgetOrchestra";
 
-import LobbyHeroComponent from '../components/LobbyHeroComponent'
 import AdvertiseComponent from '../components/AdvertiseComponent'
 import LiteScheduleComponent from '../components/LiteScheduleComponent'
 import UpcomingEventsComponent from '../components/UpcomingEventsComponent'
