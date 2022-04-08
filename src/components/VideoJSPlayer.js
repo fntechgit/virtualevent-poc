@@ -9,7 +9,7 @@ import { getEnvVariable, MUX_ENV_KEY } from '../utils/envVariables'
 
 class VideoJSPlayer extends React.Component {
   componentDidMount() {
-    const { title, namespace, firstHalf } = this.props;
+    const { title, namespace, firstHalf, start } = this.props;
 
     let plugins = {}
 
@@ -40,6 +40,7 @@ class VideoJSPlayer extends React.Component {
 
     const onPlayerReady = () => {          
       const src = this.player.src();
+      if (start) this.player.currentTime(start);
       let reloadPlayer = null;
       let modal = null;
       let isLive = null;
