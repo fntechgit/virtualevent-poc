@@ -27,7 +27,6 @@
       "requiresAuth": true,
       "pageRestriction": [
         "LOBBY",
-        "CUSTOM_PAGE",
         "ACTIVITY"
       ],
       "showOnlyAtShowTime": false
@@ -50,7 +49,7 @@
       "display": true,
       "requiresAuth": false,
       "pageRestriction": [
-        "ANY"
+        "MARKETING"
       ],
       "showOnlyAtShowTime": false
     }
