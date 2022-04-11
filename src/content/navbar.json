@@ -26,8 +26,7 @@
       "display": true,
       "requiresAuth": true,
       "pageRestriction": [
-        "LOBBY",
-        "ACTIVITY"
+        "ANY"
       ],
       "showOnlyAtShowTime": false
     },
@@ -38,9 +37,7 @@
       "requiresAuth": true,
       "showOnlyAtShowTime": false,
       "pageRestriction": [
-        "LOBBY",
-        "CUSTOM_PAGE",
-        "ACTIVITY"
+        "ANY"
       ]
     },
     {
@@ -49,7 +46,7 @@
       "display": true,
       "requiresAuth": false,
       "pageRestriction": [
-        "MARKETING"
+        "ANY"
       ],
       "showOnlyAtShowTime": false
     }
