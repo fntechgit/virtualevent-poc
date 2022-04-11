@@ -25,7 +25,7 @@ const VideoComponent = class extends React.Component {
     }
 
     render() {
-        const {url, title, namespace, firstHalf, autoPlay} = this.props;
+        const {url, title, namespace, firstHalf, autoPlay, start} = this.props;
 
         if (url) {
             // vimeo player
@@ -34,6 +34,7 @@ const VideoComponent = class extends React.Component {
                     <VimeoPlayer
                         video={url}
                         autoplay={autoPlay}
+                        start={start}
                         className={styles.vimeoPlayer}
                     />
                 )
@@ -52,6 +53,7 @@ const VideoComponent = class extends React.Component {
                     controls: true,
                     fluid: true,
                     playsInline: true,
+                    start: start,
                     sources: [{
                         src: url,
                         type: 'application/x-mpegURL'

@@ -72,9 +72,11 @@ export const EventPageTemplate = class extends React.Component {
     const { event, user, loading, nowUtc, summit, eventsPhases, eventId, location } = this.props;
     // get current event phase
     const currentPhase = eventsPhases.find((e) => parseInt(e.id) === parseInt(eventId))?.phase;
-    const firstHalf = currentPhase === PHASES.DURING ? nowUtc < ((event?.start_date + event?.end_date) / 2) : false;
-    const eventQuery = URI(event.streaming_url).search(true);
-    const autoPlay = eventQuery.autoplay !== '0';
+    const firstHalf = currentPhase === PHASES.DURING ? nowUtc < ((event?.start_date + event?.end_date) / 2) : false;    
+    const eventQuery = event.streaming_url ? URI(event.streaming_url).search(true) : null;
+    const autoPlay = eventQuery?.autoplay !== '0';
+    // Start time set into seconds, first number is minutes so it multiply per 60
+    const startTime = eventQuery?.start?.split(',').reduce((a, b, index) => (index === 0 ? parseInt(b) * 60 : parseInt(b)) + a, 0);
 
     // if event is loading or we are still calculating the current phase ...
     if (loading || currentPhase === undefined) {
@@ -108,6 +110,7 @@ export const EventPageTemplate = class extends React.Component {
                       namespace={summit.name}
                       firstHalf={firstHalf}
                       autoPlay={autoPlay}
+                      start={startTime}
                     />
                     {event.meeting_url && <VideoBanner event={event} />}
                   </div>
