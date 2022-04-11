@@ -2,7 +2,7 @@
   "columns": [
     {
       "title": "EVENT",
-      "display": false,
+      "display": true,
       "items": [
         {
           "title": "SCHEDULE",
@@ -21,7 +21,8 @@
           "title": "TRANSPORTATION",
           "link": "/onsite-transportation"
         }
-      ]
+      ],
+      "display": true
     }
   ],
   "logo": {
