@@ -7,7 +7,7 @@ export const HTMLContent = ({ content, className }) => {
   
   useEffect(() => {
     const options = {
-      'remove-empty-tags': ['a', 'p'],
+      'remove-empty-tags': ['a'],
       'indent': '',
       'break-around-tags': []
     }
