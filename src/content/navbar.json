@@ -16,6 +16,16 @@
       "pageRestriction": [
         "ANY"
       ],
+      "title": "MAP",
+      "link": "/map",
+      "display": true
+    },
+    {
+      "requiresAuth": false,
+      "showOnlyAtShowTime": false,
+      "pageRestriction": [
+        "ANY"
+      ],
       "title": "TRANSPORTATION",
       "link": "/onsite-transportation",
       "display": true
