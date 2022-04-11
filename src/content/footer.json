@@ -20,6 +20,10 @@
         {
           "title": "TRANSPORTATION",
           "link": "/onsite-transportation"
+        },
+        {
+          "title": "MAP",
+          "link": "/map"
         }
       ],
       "display": true
