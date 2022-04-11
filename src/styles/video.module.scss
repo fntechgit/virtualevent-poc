@@ -1,9 +1,10 @@
-.vimeoPlayer{
-  --video--width: 1296;
+.vimeoPlayer {
+  /* 16:9 */
+  --video--width: 960;
   --video--height: 540;
 
   position: relative;
-  padding-bottom: calc(var(--video--height) / var(--video--width) * 100%); /* 41.66666667% */
+  padding-bottom: calc(var(--video--height) / var(--video--width) * 100%); /* 56.25% */
   overflow: hidden;
   max-width: 100%;
   background: black;
