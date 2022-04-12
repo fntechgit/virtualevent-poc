@@ -18930,10 +18930,10 @@ upath@^1.1.1:
   resolved "https://registry.yarnpkg.com/upath/-/upath-1.2.0.tgz#8f66dbcd55a883acdae4408af8b035a5044c1894"
   integrity sha512-aZwGpamFO61g3OlfT7OQCHqhGnW43ieH9WZeP7QxN/G/jS4jfqUkZxoryvJgVPEcrl5NL/ggHsSmLMHuH64Lhg==
 
-upcoming-events-widget@^1.0.11:
-  version "1.0.11"
-  resolved "https://registry.yarnpkg.com/upcoming-events-widget/-/upcoming-events-widget-1.0.11.tgz#51778647fba0a02f1c995034f4e623c9ccc72c28"
-  integrity sha512-lZoTB84x8a2MeFs799erjArpMnVKCQTigU9/zqEzl3wrb2BxapmBhNxLXqhRoXMqvFDNSKA5eCnXr5bimqbc3A==
+upcoming-events-widget@^1.0.15:
+  version "1.0.15"
+  resolved "https://registry.yarnpkg.com/upcoming-events-widget/-/upcoming-events-widget-1.0.15.tgz#d6074f6c6492b74104b985ea60e06e93d6b4220e"
+  integrity sha512-Np2q9g+qyr8e9NyMPAnbwz/D4vfsUQGAX9rvhDF86tF8M+Y5zCn7CfPe93CmnReKrb7yJ/4fdv/M+/OiFJYgmA==
   dependencies:
     pure-react-carousel "^1.27.4"
 
