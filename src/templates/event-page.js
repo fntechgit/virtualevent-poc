@@ -18,14 +18,12 @@ import AccessTracker, { AttendeesWidget } from "../components/AttendeeToAttendee
 import AttendanceTrackerComponent from "../components/AttendanceTrackerComponent";
 import { PHASES } from '../utils/phasesUtils';
 import { getEventById } from "../actions/event-actions";
-import { getDisqusSSO } from "../actions/user-actions";
 import URI from "urijs"
 
 export const EventPageTemplate = class extends React.Component {
 
   componentDidMount() {
     const { eventId,event } = this.props;
-    this.props.getDisqusSSO();
     if(parseInt(event?.id) !== parseInt(eventId))
       this.props.getEventById(eventId);
   }
@@ -74,8 +72,11 @@ export const EventPageTemplate = class extends React.Component {
     const { event, user, loading, nowUtc, summit, eventsPhases, eventId, location } = this.props;
     // get current event phase
     const currentPhase = eventsPhases.find((e) => parseInt(e.id) === parseInt(eventId))?.phase;
-    const firstHalf = currentPhase === PHASES.DURING ? nowUtc < ((event?.start_date + event?.end_date) / 2) : false;
-    const query = URI.parseQuery(location.search);
+    const firstHalf = currentPhase === PHASES.DURING ? nowUtc < ((event?.start_date + event?.end_date) / 2) : false;    
+    const eventQuery = event.streaming_url ? URI(event.streaming_url).search(true) : null;
+    const autoPlay = eventQuery?.autoplay !== '0';
+    // Start time set into seconds, first number is minutes so it multiply per 60
+    const startTime = eventQuery?.start?.split(',').reduce((a, b, index) => (index === 0 ? parseInt(b) * 60 : parseInt(b)) + a, 0);
 
     // if event is loading or we are still calculating the current phase ...
     if (loading || currentPhase === undefined) {
@@ -108,7 +109,8 @@ export const EventPageTemplate = class extends React.Component {
                       title={event.title}
                       namespace={summit.name}
                       firstHalf={firstHalf}
-                      autoPlay={query.autostart === 'true'}
+                      autoPlay={autoPlay}
+                      start={startTime}
                     />
                     {event.meeting_url && <VideoBanner event={event} />}
                   </div>
@@ -204,8 +206,7 @@ const EventPage = ({
   user,
   eventsPhases,
   nowUtc,
-  getEventById,
-  getDisqusSSO,
+  getEventById
 }) => {
   return (
     <Layout location={location}>
@@ -226,7 +227,6 @@ const EventPage = ({
         nowUtc={nowUtc}
         location={location}
         getEventById={getEventById}
-        getDisqusSSO={getDisqusSSO}
       />
     </Layout>
   );
@@ -239,7 +239,6 @@ EventPage.propTypes = {
   user: PropTypes.object,
   eventsPhases: PropTypes.array,
   getEventById: PropTypes.func,
-  getDisqusSSO: PropTypes.func,
 };
 
 EventPageTemplate.propTypes = {
@@ -249,7 +248,6 @@ EventPageTemplate.propTypes = {
   user: PropTypes.object,
   eventsPhases: PropTypes.array,
   getEventById: PropTypes.func,
-  getDisqusSSO: PropTypes.func,
 };
 
 const mapStateToProps = ({eventState, summitState, userState, clockState}) => ({
@@ -262,6 +260,5 @@ const mapStateToProps = ({eventState, summitState, userState, clockState}) => ({
 });
 
 export default connect(mapStateToProps, {
-  getEventById,
-  getDisqusSSO,
+  getEventById
 })(EventPage);

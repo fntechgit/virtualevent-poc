@@ -1,9 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Helmet } from 'react-helmet';
-import SpeakersWidget from 'speakers-widget';
+import SpeakersWidget from 'speakers-widget/dist';
 
-import 'speakers-widget/index.css';
+import 'speakers-widget/dist/index.css';
 
 
 const SpeakersWidgetComponent = ({now, colorSettings, allEvents, speakers, ...props}) => {

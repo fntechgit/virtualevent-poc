@@ -1,7 +1,8 @@
-import React from 'react'
-import {connect} from "react-redux";
+import React from 'react';
+import { connect } from 'react-redux';
 import { DiscussionEmbed } from 'disqus-react';
-
+import { getEnvVariable, DISQUS_SHORTNAME } from '../utils/envVariables';
+import { getDisqusSSO } from '../actions/user-actions';
 
 const DisqusComponent = class extends React.Component {
 
@@ -17,11 +18,13 @@ const DisqusComponent = class extends React.Component {
   }
 
   componentWillUnmount() {
-    window.removeEventListener("resize", this.onResize);
+    window.removeEventListener('resize', this.onResize);
   }
 
   componentDidMount() {
-    window.addEventListener("resize", this.onResize);
+    const shortname = getEnvVariable(DISQUS_SHORTNAME);
+    if (shortname) this.props.getDisqusSSO(shortname);
+    window.addEventListener('resize', this.onResize);
     if (window.innerWidth <= 768) {
       this.setState({ isMobile: true })
     } else {
@@ -85,9 +88,9 @@ const DisqusComponent = class extends React.Component {
   getTitle() {
     const { summit, page, sponsor, event, disqusSettings } = this.props;
     let suffix = '';
-    let threadsBy = disqusSettings.disqus_threads_by ? disqusSettings.disqus_threads_by : disqusSettings.threads_by;
+    const threadsBy = disqusSettings.disqus_threads_by ? disqusSettings.disqus_threads_by : disqusSettings.threads_by;
     if (event) {
-      let trackExcludes = disqusSettings.disqus_exclude_tracks ? disqusSettings.disqus_exclude_tracks : [];
+      const trackExcludes = disqusSettings.disqus_exclude_tracks ? disqusSettings.disqus_exclude_tracks : [];
       if (event.track && event.track.id && (threadsBy === 'track' || trackExcludes.includes(event.track.id))) {
         suffix += ' - ';
         suffix += event.track.name;
@@ -113,21 +116,34 @@ const DisqusComponent = class extends React.Component {
   }
 
   render() {
-    const { title, style, className, disqusSSO, page, hideMobile = null, skipTo } = this.props;
     const { isMobile } = this.state || null;
-    const sectionClass = className ? className : style ? '' : page === 'marketing-site' ? 'disqus-container-marketing' : 'disqus-container';
+    const { disqusSSO, hideMobile = null } = this.props;
 
-    let disqusConfig = {
+    if (!disqusSSO || (hideMobile !== null && hideMobile === isMobile)) {
+      return null;
+    }
+
+    const { auth: remoteAuthS3, public_key: apiKey } = disqusSSO;
+    const shortname = getEnvVariable(DISQUS_SHORTNAME);
+
+    if (!remoteAuthS3 || !apiKey || !shortname) {
+      let error = 'Disqus misconfiguration: ';
+      if (!remoteAuthS3) error = ` ${error} ${!remoteAuthS3 ? 'SSO remoteAuthS3 missing' : ''}`;
+      if (!apiKey) error = ` ${error} ${!apiKey ? 'SSO apiKey missing' : ''}`;
+      if (!shortname) error = ` ${error} ${!shortname ? 'DISQUS_SHORTNAME env var missing' : ''}`;
+      return error;
+    }
+
+    const disqusConfig = {
       url: window.location.href,
       identifier: this.getIdentifier(),
       title: this.getTitle(),
-      remoteAuthS3: disqusSSO.auth,
-      apiKey: disqusSSO.public_key
+      remoteAuthS3: remoteAuthS3,
+      apiKey: apiKey
     };
 
-    if (hideMobile !== null && hideMobile === isMobile) {
-      return null;
-    }
+    const { title, style, className, page, skipTo } = this.props;
+    const sectionClass = className ? className : style ? '' : page === 'marketing-site' ? 'disqus-container-marketing' : 'disqus-container';
 
     return (
       <section aria-labelledby={title ? 'disqus-title' : ''} className={sectionClass} style={style}>
@@ -136,18 +152,18 @@ const DisqusComponent = class extends React.Component {
           {title && <h2 id="disqus-title" className="title">{title}</h2>}
         </div>
         <DiscussionEmbed
-          shortname='fnvirtual-poc'
+          shortname={shortname}
           config={disqusConfig}
         />
       </section>
-    )
+    );
   }
-
 };
 
-const mapStateToProps = ({settingState, summitState}) => ({
-  disqusSettings: settingState.disqusSettings,
-  summit: summitState.summit
+const mapStateToProps = ({ summitState, userState, settingState }) => ({
+  summit: summitState.summit,
+  disqusSSO: userState.disqusSSO,
+  disqusSettings: settingState.disqusSettings
 });
 
-export default connect(mapStateToProps, {})(DisqusComponent)
+export default connect(mapStateToProps, { getDisqusSSO })(DisqusComponent)

@@ -19,7 +19,6 @@ import { customErrorHandler, customBadgeHandler } from '../utils/customErrorHand
 import {getEnvVariable, SUMMIT_API_BASE_URL, SUMMIT_ID} from "../utils/envVariables";
 
 export const GET_DISQUS_SSO                    = 'GET_DISQUS_SSO';
-export const GET_ROCKETCHAT_SSO                = 'GET_ROCKETCHAT_SSO';
 export const GET_USER_PROFILE                  = 'GET_USER_PROFILE';
 export const START_LOADING_PROFILE             = 'START_LOADING_PROFILE';
 export const STOP_LOADING_PROFILE              = 'STOP_LOADING_PROFILE';
@@ -39,57 +38,36 @@ export const ADD_TO_SCHEDULE                   = 'ADD_TO_SCHEDULE';
 export const REMOVE_FROM_SCHEDULE              = 'REMOVE_FROM_SCHEDULE';
 export const SCHEDULE_SYNC_LINK_RECEIVED       = 'SCHEDULE_SYNC_LINK_RECEIVED';
 export const SET_USER_ORDER                    = 'SET_USER_ORDER';
-export const CAST_PRESENTATION_VOTE_REQUEST   = 'CAST_PRESENTATION_VOTE_REQUEST';
+export const CAST_PRESENTATION_VOTE_REQUEST    = 'CAST_PRESENTATION_VOTE_REQUEST';
 export const CAST_PRESENTATION_VOTE_RESPONSE   = 'CAST_PRESENTATION_VOTE_RESPONSE';
-export const UNCAST_PRESENTATION_VOTE_REQUEST = 'UNCAST_PRESENTATION_VOTE_REQUEST';
+export const UNCAST_PRESENTATION_VOTE_REQUEST  = 'UNCAST_PRESENTATION_VOTE_REQUEST';
 export const UNCAST_PRESENTATION_VOTE_RESPONSE = 'UNCAST_PRESENTATION_VOTE_RESPONSE';
 export const TOGGLE_PRESENTATION_VOTE          = 'TOGGLE_PRESENTATION_VOTE';
 
-export const getDisqusSSO = () => async (dispatch) => {
+// shortName is the unique identifier assigned to a Disqus site.
+export const getDisqusSSO = (shortName) => async (dispatch, getState) => {
+
+  const { userState: { disqusSSO } } = getState();
+
+  if (disqusSSO !== null) return;
 
   let accessToken;
   try {
     accessToken = await getAccessToken();
   } catch (e) {
     console.log('getAccessToken error: ', e);
-    dispatch(stopLoading());
-    return Promise.reject();
+    return Promise.reject(e);
   }
 
   return getRequest(
     null,
     createAction(GET_DISQUS_SSO),
-    `${window.IDP_BASE_URL}/api/v1/sso/disqus/fnvirtual-poc/profile?access_token=${accessToken}`,
+    `${window.IDP_BASE_URL}/api/v1/sso/disqus/${shortName}/profile?access_token=${accessToken}`,
     customErrorHandler
-  )({})(dispatch).then(() => {
-  }).catch(e => {
+  )({})(dispatch).catch(e => {
     console.log('ERROR: ', e);
     clearAccessToken();
-    return (e);
-  });
-}
-
-export const getRocketChatSSO = () => async (dispatch) => {
-
-  let accessToken;
-  try {
-    accessToken = await getAccessToken();
-  } catch (e) {
-    console.log('getAccessToken error: ', e);
-    dispatch(stopLoading());
-    return Promise.reject();
-  }
-
-  return getRequest(
-    null,
-    createAction(GET_ROCKETCHAT_SSO),
-    `${window.IDP_BASE_URL}/api/v1/sso/rocket-chat/fnvirtual-poc/profile?access_token=${accessToken}`,
-    customErrorHandler
-  )({})(dispatch).then(() => {
-  }).catch(e => {
-    console.log('ERROR: ', e);
-    clearAccessToken();
-    return (e);
+    return Promise.reject(e);
   });
 }
 

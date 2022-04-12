@@ -6,7 +6,6 @@ import { connect } from 'react-redux'
 import Layout from '../components/Layout'
 import withOrchestra from "../utils/widgetOrchestra";
 
-import LobbyHeroComponent from '../components/LobbyHeroComponent'
 import AdvertiseComponent from '../components/AdvertiseComponent'
 import LiteScheduleComponent from '../components/LiteScheduleComponent'
 import UpcomingEventsComponent from '../components/UpcomingEventsComponent'
@@ -19,8 +18,9 @@ import AccessTracker, {
   AttendeesWidget,
 } from "../components/AttendeeToAttendeeWidgetComponent"
 import AttendanceTrackerComponent from '../components/AttendanceTrackerComponent'
+import PageHeader from '../components/page-header'
 
-import { getDisqusSSO, getUserProfile } from '../actions/user-actions'
+import { getUserProfile } from '../actions/user-actions';
 
 
 export const HomePageTemplate = class extends React.Component {
@@ -30,16 +30,8 @@ export const HomePageTemplate = class extends React.Component {
     this.onEventChange = this.onEventChange.bind(this);
   }
 
-  componentDidMount() {
-    this.props.getDisqusSSO();
-  }
-
   onEventChange(ev) {
     navigate(`/a/event/${ev.id}`);
-  }
-
-  onViewAllEventsClick() {
-    navigate('/a/schedule')
   }
 
   onViewAllMyEventsClick() {
@@ -50,8 +42,12 @@ export const HomePageTemplate = class extends React.Component {
     const { user, summit, homeSettings } = this.props;
 
     return (
-      <React.Fragment>
-        <LobbyHeroComponent />
+      <React.Fragment>        
+        <PageHeader 
+          title={homeSettings.homeHero.title}
+          subtitle={homeSettings.homeHero.subTitle}
+          backgroundImage={homeSettings.homeHero.image.file}
+        />
         <div className="px-5 py-5 mb-6">
           <div className="columns">
             <div className="column is-one-quarter">
@@ -69,7 +65,6 @@ export const HomePageTemplate = class extends React.Component {
               />
               <DisqusComponent
                 page="lobby"
-                disqusSSO={user.disqusSSO}
                 summit={summit}
                 className="disqus-container-home"
                 title="Public conversation"
@@ -77,7 +72,7 @@ export const HomePageTemplate = class extends React.Component {
               />
               <UpcomingEventsComponent
                 renderEventLink={(event) => <Link to={`/a/event/${event.id}`}>{event.title}</Link>}
-                onViewAllEventsClick={() => this.onViewAllEventsClick()}
+                allEventsLink={<Link to="/a/schedule">View all <span className="sr-only">events</span></Link>}
                 title="Up Next"
                 eventCount={4}
                 />
@@ -125,7 +120,6 @@ const HomePage = (
     location,
     user,
     getUserProfile,
-    getDisqusSSO,
     homeSettings,
     summit
   }
@@ -136,7 +130,6 @@ const HomePage = (
       <OrchestedTemplate
         user={user}
         getUserProfile={getUserProfile}
-        getDisqusSSO={getDisqusSSO}
         homeSettings={homeSettings}
         summit={summit}
       />
@@ -146,14 +139,12 @@ const HomePage = (
 
 HomePage.propTypes = {
   user: PropTypes.object,
-  getUserProfile: PropTypes.func,
-  getDisqusSSO: PropTypes.func,
+  getUserProfile: PropTypes.func
 };
 
 HomePageTemplate.propTypes = {
   user: PropTypes.object,
-  getUserProfile: PropTypes.func,
-  getDisqusSSO: PropTypes.func,
+  getUserProfile: PropTypes.func
 };
 
 const mapStateToProps = ({ userState, summitState, settingState }) => ({
@@ -162,4 +153,4 @@ const mapStateToProps = ({ userState, summitState, settingState }) => ({
   homeSettings: settingState.homeSettings
 });
 
-export default connect(mapStateToProps, { getDisqusSSO, getUserProfile } )(HomePage);
+export default connect(mapStateToProps, { getUserProfile } )(HomePage);

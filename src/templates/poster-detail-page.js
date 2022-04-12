@@ -22,7 +22,7 @@ import AttendanceTrackerComponent from '../components/AttendanceTrackerComponent
 import AccessTracker, { AttendeesWidget } from '../components/AttendeeToAttendeeWidgetComponent';
 
 import { getDisqusSSO } from '../actions/user-actions';
-import { getAllVoteablePresentations, getPresentationById, setInitialDataSet } from '../actions/presentation-actions';
+import { getAllVoteablePresentations, getPresentationById, setInitialDataset } from '../actions/presentation-actions';
 import { castPresentationVote, uncastPresentationVote } from '../actions/user-actions';
 
 import { PHASES } from '../utils/phasesUtils';
@@ -32,7 +32,7 @@ export const PosterDetailPage = ({
   location,
   presentationId,
   getDisqusSSO,
-  setInitialDataSet,
+  setInitialDataset,
   getAllVoteablePresentations,
   getPresentationById,
   loading,
@@ -72,7 +72,7 @@ export const PosterDetailPage = ({
 
   useEffect(() => {
     getDisqusSSO();
-    if (!allPosters.length) setInitialDataSet().then(() => getAllVoteablePresentations());
+    if (!allPosters.length) setInitialDataset().then(() => getAllVoteablePresentations());
   }, []);
 
   useEffect(() => {
@@ -259,7 +259,7 @@ const PosterDetailPageTemplate = ({
   location,
   presentationId,
   getDisqusSSO,
-  setInitialDataSet,
+  setInitialDataset,
   getAllVoteablePresentations,
   getPresentationById,
   loading,
@@ -280,7 +280,7 @@ const PosterDetailPageTemplate = ({
         location={location}
         presentationId={presentationId}
         getDisqusSSO={getDisqusSSO}
-        setInitialDataSet={setInitialDataSet}
+        setInitialDataset={setInitialDataset}
         getAllVoteablePresentations={getAllVoteablePresentations}
         getPresentationById={getPresentationById}
         loading={loading}
@@ -303,7 +303,7 @@ const posterDetailPageTemplatePropTypes = {
   location: PropTypes.object,
   presentationId: PropTypes.string,
   getDisqusSSO: PropTypes.func,
-  setInitialDataSet: PropTypes.func,
+  setInitialDataset: PropTypes.func,
   getAllVoteablePresentations: PropTypes.func,
   getPresentationById: PropTypes.func,
   loading: PropTypes.bool,
@@ -337,7 +337,7 @@ const mapStateToProps = ({ userState, summitState, presentationsState }) => ({
 export default connect(mapStateToProps, {
   getPresentationById,
   getDisqusSSO,
-  setInitialDataSet,
+  setInitialDataset,
   getAllVoteablePresentations,
   castPresentationVote,
   uncastPresentationVote
