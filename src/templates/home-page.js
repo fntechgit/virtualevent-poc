@@ -71,7 +71,7 @@ export const HomePageTemplate = class extends React.Component {
                 skipTo="#upcoming-events"
               />
               <UpcomingEventsComponent
-                onEventClick={(ev) => this.onEventChange(ev)}
+                renderEventLink={(event) => <Link to={`/a/event/${event.id}`}>{event.title}</Link>}
                 allEventsLink={<Link to="/a/schedule">View all <span className="sr-only">events</span></Link>}
                 title="Up Next"
                 eventCount={4}
