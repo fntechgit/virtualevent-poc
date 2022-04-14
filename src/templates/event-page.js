@@ -14,6 +14,7 @@ import SponsorComponent from "../components/SponsorComponent";
 import NoTalkComponent from "../components/NoTalkComponent";
 import HeroComponent from "../components/HeroComponent";
 import UpcomingEventsComponent from "../components/UpcomingEventsComponent";
+import Link from "../components/Link";
 import AccessTracker, { AttendeesWidget } from "../components/AttendeeToAttendeeWidgetComponent"
 import AttendanceTrackerComponent from "../components/AttendanceTrackerComponent";
 import { PHASES } from '../utils/phasesUtils';
@@ -42,10 +43,6 @@ export const EventPageTemplate = class extends React.Component {
     if (parseInt(eventId) !== parseInt(ev.id)) {
       navigate(`/a/event/${ev.id}`);
     }
-  }
-
-  onViewAllEventsClick() {
-    navigate("/a/schedule");
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -173,14 +170,18 @@ export const EventPageTemplate = class extends React.Component {
                       </div>
                     )}
                     <UpcomingEventsComponent
-                      onEventClick={(ev) => this.onEventChange(ev)}
-                      onViewAllEventsClick={() => this.onViewAllEventsClick()}
                       trackId={event.track ? event.track.id : null}
                       eventCount={3}
                       title={
                         event.track
                           ? `Up Next on ${event.track.name}`
                           : "Up Next"
+                      }
+                      renderEventLink={(event) => <Link to={`/a/event/${event.id}`}>{event.title}</Link>}
+                      allEventsLink={
+                        <Link to={event.track ? `/a/schedule#track=${event.track.id}` : "/a/schedule"}>
+                          View all <span className="sr-only">events</span>
+                        </Link>
                       }
                     />
                   </div>
