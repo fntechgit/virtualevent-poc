@@ -62,10 +62,6 @@ export const SponsorPageTemplate = class extends React.Component {
     this.props.scanBadge(sponsorId);
   };
 
-  onViewAllEventsClick() {
-    navigate('/a/schedule')
-  }
-
   setSponsor = () => {
     const { sponsorId, sponsors, tiers } = this.props;
     const sponsor = sponsors.map(t => t.sponsors?.find(s => s.id === parseInt(sponsorId)))
@@ -136,10 +132,10 @@ export const SponsorPageTemplate = class extends React.Component {
                   }
                   {schedule &&
                   <UpcomingEventsComponent
-                      onEventClick={(ev) => this.onEventChange(ev)}
-                      onViewAllEventsClick={() => this.onViewAllEventsClick()}
                       eventCount={3}
                       sponsorId={sponsor.companyId}
+                      renderEventLink={(event) => <Link to={`/a/event/${event.id}`}>{event.title}</Link>}
+                      allEventsLink={<Link to={`/a/schedule#company=${encodeURIComponent(sponsor.name)}`}>View all <span className="sr-only">events</span></Link>}
                   />
                   }
                   {banner && <SponsorBanner sponsor={sponsor} bgColor={sponsor.sponsorColor} scanBadge={() => this.onBadgeScan()} />}

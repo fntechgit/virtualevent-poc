@@ -71,11 +71,11 @@ export const HomePageTemplate = class extends React.Component {
                 skipTo="#upcoming-events"
               />
               <UpcomingEventsComponent
-                renderEventLink={(event) => <Link to={`/a/event/${event.id}`}>{event.title}</Link>}
-                allEventsLink={<Link to="/a/schedule">View all <span className="sr-only">events</span></Link>}
                 title="Up Next"
                 eventCount={4}
-                />
+                renderEventLink={(event) => <Link to={`/a/event/${event.id}`}>{event.title}</Link>}
+                allEventsLink={<Link to="/a/schedule">View all <span className="sr-only">events</span></Link>}
+              />
               {homeSettings.centerColumn.speakers.showTodaySpeakers &&
                 <SpeakersWidgetComponent
                   title="Today's Speakers"
