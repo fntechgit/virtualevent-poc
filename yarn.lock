@@ -17283,10 +17283,10 @@ spdy@^4.0.2:
     select-hose "^2.0.0"
     spdy-transport "^3.0.0"
 
-speakers-widget@^2.0.4:
-  version "2.0.4"
-  resolved "https://registry.yarnpkg.com/speakers-widget/-/speakers-widget-2.0.4.tgz#f18658ae369e65a89509160a5462bd423758c78f"
-  integrity sha512-jD+jjjND/EHrIQA3QNo3qlfuwdQdQQyRHUl/wnjsKoEvDw609Rnf6ulvIF/x6Kz4leiXH4WJmdCErrPFf5dVFQ==
+speakers-widget@^2.0.6:
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/speakers-widget/-/speakers-widget-2.0.6.tgz#2d30dcae6efce5a25ed051ada6109c8d78cb4407"
+  integrity sha512-lpF+pPGD0WGVrYEIhNAwoBo6tx3XmIkqVsEFYuyFjmIg5p2V85asoKgO58AZOIQg5G4Foykt0XNis5KgARbscw==
 
 speed-measure-webpack-plugin@1.3.1:
   version "1.3.1"
