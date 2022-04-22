@@ -79,7 +79,7 @@ export const getUserProfile = () => async (dispatch) => {
   } catch (e) {
     console.log('getAccessToken error: ', e);
     dispatch(stopLoading());
-    return Promise.reject();
+    return Promise.reject(e);
   }
 
   let params = {
