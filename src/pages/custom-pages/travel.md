@@ -26,4 +26,4 @@ Looking for things to do in San Jose? Visit their <a href="https://www.sanjose.
 
 **<br>**
 
-![](/img/5be413b49634c8549c9c814ccf230b985c20a6eb-2.jpg)
+![](../../../img/5be413b49634c8549c9c814ccf230b985c20a6eb-2.jpg)

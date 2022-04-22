@@ -22,6 +22,6 @@ Visit the [registration page](https://2021ocpglobal.fnvirtual.app/reg) to see t
 \
 **The OCP Summit features:**
 
-![Summit Features](/img/ocp21glo_ocpwebsite_summitfeatures_062421.png)
+![Summit Features](../../../img/ocp21glo_ocpwebsite_summitfeatures_062421.png)
 
 **\#OCPSummit21**
