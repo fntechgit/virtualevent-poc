@@ -1,52 +1,68 @@
 {
   "columns": [
     {
-      "title": "The Event",
-      "display": true,
-      "items": [
-        {
-          "title": "All Projects",
-          "link": "/footer-content/"
-        },
-        {
-          "title": "Host a project",
-          "link": "/footer-content/"
-        },
-        {
-          "title": "Services",
-          "link": "/footer-content/"
-        }
-      ]
-    },
-    {
-      "title": "The Vision",
+      "title": "OCP",
       "display": true,
       "items": [
         {
           "title": "About",
-          "link": "/footer-content/"
+          "link": "https://www.opencompute.org/about"
         },
         {
-          "title": "Supporters",
-          "link": "/footer-content/"
+          "title": "Foundation Staff",
+          "link": "https://www.opencompute.org/about/foundation-staff"
+        },
+        {
+          "title": "Membership",
+          "link": "https://www.opencompute.org/membership"
+        },
+        {
+          "title": "Blog",
+          "link": "https://www.opencompute.org/blog"
         }
       ]
     },
     {
-      "title": "Membership",
-      "display": false,
+      "title": "EVENTS",
+      "display": true,
       "items": [
         {
-          "title": "Corporate members",
-          "link": "/footer-content/"
+          "title": "Global Summit",
+          "link": "https://www.opencompute.org/summit/global-summit"
         },
         {
-          "title": "Join us",
-          "link": "/footer-content/"
+          "title": "Regional Summit",
+          "link": "https://www.opencompute.org/summit/regional-summit"
         },
         {
-          "title": "Services",
-          "link": "/footer-content/"
+          "title": "Future Technologies Symposium",
+          "link": "https://www.opencompute.org/summit/ocp-future-technologies-symposium"
+        },
+        {
+          "title": "Event Archives",
+          "link": "https://www.opencompute.org/events/past-events"
+        }
+      ]
+    },
+    {
+      "title": "COMMUNITY",
+      "display": true,
+      "items": [
+        {
+          "title": "Marketplace",
+          "link": "https://www.opencompute.org/products"
+        },
+        {
+          "title": "Projects",
+          "link": "https://www.opencompute.org/projects"
+        },
+        {
+          "title": "Solution Providers",
+          "link": "https://www.opencompute.org/sp"
+        },
+        {
+          "title": "Contributions",
+          "link": "https://www.opencompute.org/contributions"
         }
       ]
     }
@@ -55,27 +71,27 @@
     "display": false
   },
   "social": {
-    "title": "Follow Us",
+    "title": "FOLLOW US",
     "display": true,
     "networks": [
       {
         "icon": "fa-facebook",
-        "link": "/footer-content/",
+        "link": "https://www.facebook.com/groups/opencompute/",
+        "display": true
+      },
+      {
+        "icon": "fa-linkedin-square",
+        "link": "https://www.linkedin.com/groups/4152886/",
         "display": true
       },
       {
         "icon": "fa-twitter",
-        "link": "/footer-content/",
+        "link": "https://twitter.com/Opencomputeprj/",
         "display": true
       },
       {
-        "icon": "fa-linkedin",
-        "link": "/footer-content/",
-        "display": true
-      },
-      {
-        "link": "/footer-content/",
-        "icon": "TEST",
+        "link": "https://www.youtube.com/user/OpenComputeProject",
+        "icon": "fa-youtube",
         "display": true
       }
     ]
@@ -83,15 +99,15 @@
   "legal": [
     {
       "title": "Privacy Policy",
-      "link": "/footer-content/"
+      "link": "/privacy-policy/"
     },
     {
-      "title": "Legals",
-      "link": "/footer-content/"
+      "title": "Cookie Policy",
+      "link": "/cookie-policy/"
     },
     {
-      "title": "Disclaimer",
-      "link": "/footer-content/"
+      "title": "California Privacy Rights Statement",
+      "link": "/california-privacy-rights-statement/"
     }
   ]
 }

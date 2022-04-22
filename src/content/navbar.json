@@ -1,73 +1,138 @@
 {
   "items": [
     {
-      "title": "Lobby",
+      "title": "LOBBY",
       "link": "/a/",
       "display": true,
       "requiresAuth": true,
-      "pageRestriction": ["ANY"]
+      "pageRestriction": [
+        "ANY"
+      ]
     },
     {
-      "title": "Schedule",
-      "link": "/a/schedule",
-      "display": true,
-      "requiresAuth": false,
-      "pageRestriction": ["ANY"]
-    },
-    {
-      "title": "My Schedule",
-      "link": "/a/my-schedule",
-      "display": true,
-      "requiresAuth": false
-    },
-    {
-      "title": "Sponsors ",
-      "link": "/a/sponsors/",
-      "display": true,
-      "requiresAuth": true,
-      "pageRestriction": ["ANY"]
-    },
-    {
-      "title": "About the event",
+      "title": "ABOUT THE EVENT",
       "link": "/about-event",
       "display": true,
       "requiresAuth": false,
-      "pageRestriction": ["ANY"]
+      "pageRestriction": [
+        "MARKETING"
+      ]
     },
     {
-      "title": "Who we are",
-      "link": "/who-we-are",
+      "title": "REGISTRATION",
+      "link": "/reg",
       "display": true,
       "requiresAuth": false,
-      "pageRestriction": ["ANY"]
+      "pageRestriction": [
+        "MARKETING"
+      ]
     },
     {
-      "title": "Past events",
-      "link": "/past-events",
+      "requiresAuth": false,
+      "title": "HEALTH & SAFETY",
+      "link": "/health-and-safety",
+      "display": true,
+      "pageRestriction": [
+        "MARKETING"
+      ]
+    },
+    {
+      "title": "TRAVEL",
+      "link": "/travel",
       "display": true,
       "requiresAuth": false,
-      "pageRestriction": ["ANY"]
+      "pageRestriction": [
+        "MARKETING",
+        "CUSTOM_PAGE"
+      ]
     },
     {
-      "title": "Contact",
-      "link": "/contact",
+      "title": "SCHEDULE",
+      "link": "/a/schedule",
       "display": true,
       "requiresAuth": false,
-      "pageRestriction": ["ANY"]
+      "pageRestriction": [
+        "ANY"
+      ]
     },
     {
-      "title": "Help",
+      "requiresAuth": true,
+      "title": "MY SCHEDULE",
+      "link": "/a/my-schedule",
+      "display": true,
+      "pageRestriction": [
+        "ANY"
+      ]
+    },
+    {
+      "requiresAuth": true,
+      "showOnlyAtShowTime": true,
+      "pageRestriction": [
+        "SHOW",
+        "CUSTOM_PAGE"
+      ],
+      "title": "SPONSORS",
+      "link": "/a/sponsors",
+      "display": true
+    },
+    {
+      "requiresAuth": true,
+      "pageRestriction": [
+        "ANY"
+      ],
+      "title": "MAPS",
+      "link": "/maps",
+      "display": true
+    },
+    {
+      "requiresAuth": true,
+      "showOnlyAtShowTime": true,
+      "pageRestriction": [
+        "SHOW",
+        "CUSTOM_PAGE"
+      ],
+      "title": "EXPERIENCE CENTER",
+      "link": "/a/sponsor/134-experience-center-(main)-",
+      "display": true
+    },
+    {
+      "requiresAuth": true,
+      "showOnlyAtShowTime": true,
+      "pageRestriction": [
+        "SHOW",
+        "CUSTOM_PAGE"
+      ],
+      "title": "SYMPOSIUM",
+      "link": "/a/sponsor/96-ocp-future-technologies-symposium",
+      "display": true
+    },
+    {
+      "title": "HELP",
       "link": "/help",
       "display": true,
       "requiresAuth": false,
-      "pageRestriction": ["ANY"]
+      "pageRestriction": [
+        "ANY"
+      ]
     },
     {
-      "title": "My Profile",
-      "link": "/a/profile",
+      "requiresAuth": false,
+      "title": "FAQ",
+      "link": "/faq",
       "display": true,
+      "pageRestriction": [
+        "ANY"
+      ]
+    },
+    {
       "requiresAuth": true,
-      "pageRestriction": ["ANY"]
+      "title": "MY ORDERS / TICKETS",
+      "link": "https://registration.fnvirtual.app/a/member/orders",
+      "display": true,
+      "pageRestriction": [
+        "ANY"
+      ],
+      "showOnlyAtShowTime": false
     }
   ]
 }

@@ -1,16 +1,27 @@
 ---
 templateKey: custom-page
+title: ABOUT THE EVENT
 userRequirement: NONE
-title: About the event
 ---
-YOU DECIDE!
+## 2021 OCP Global Summit Overview 
 
-In the FNvirtual platform, the top navigation is up to you! The “About this event” section could be a great way to share the story behind your meeting. How did it come to be? What were the driving forces or key turning points? Maybe include a timeline, or some big highlights that happened throughout the years. Would you rather use this real estate for something else? No problem! Just name the tab something else and point it in a totally different direction!
+The <a href="https://www.opencompute.org/summit/global-summit" target="_blank">2021 OCP Global Summit</a>[](https://www.opencompute.org/summit/global-summit) will be held November 9-10, 2021 at the San Jose Convention Center. The annual Summit brings together thousands of key decision makers, executives, engineers, developers and suppliers. OCP’s collaboration model is being applied beyond the data center, helping to advance the telecom industry & EDGE infrastructure. 
 
----
+The 2021 Summit Theme is **Open Possibilities.**
 
-The YOCO Summit was created to showcase our new FNvirtual event platform. YOCO—short for “Your Company”—was dreamed up by our creative team, allowing us to play with a faux brand in the full environment. YOCO has its own guidelines, voice, and visual identity. Pretty spiffy for a company that doesn’t exist, eh?
+The worldwide COVID-19 outbreak has impacted all of us in many ways. Our industry stepped up and met the new and increasingly demanding needs placed on technology infrastructures to create a “new normal” that makes connecting to people worldwide simple and creates opportunities to collaborate across channels seemingly effortlessly.
 
-[Check out our branding guidelines!](https://www.dropbox.com/s/w7qiav79lnnl93r/__FNvirtual-YOCO-site-guidelines.pdf?dl=0)
+However, nothing can replace the face-to-face interaction of a conference that brings together people from all over the world, from all walks of life, with a common goal. The healthy collaboration of an engineering workshop. The unexpected hallway conversations with a former colleague. And new relationships being forged.
 
-By the way, did you notice the “sponsor” and brand partner ads peppered throughout the site? Some are real companies that we know and love; others are faux brands we created so as to not step on another company’s branded toes. We think it works pretty well. How about you? Email us at [info@fntech.com](mailto:info@fntech.com)!
+As OCP celebrates its 10th anniversary, this year will be different. We will be implementing new procedures in order to keep attendees safe during the event. We will need to keep our physical distance, and continue to maintain healthy habits. But we are creating new ways to collaborate with fellow attendees, including those that cannot yet attend in person, who can now participate virtually. 
+
+The OCP Global Summit will be a hybrid event, meaning all in-person content will be live-streamed to our online platform, <a href="https://www.fntech.com/fnvirtual-event-platform/" target="_blank">FNvirtual</a>.
+
+Visit the [registration page](https://2021ocpglobal.fnvirtual.app/reg) to see the various options for participating in this year’s Summit.
+
+\
+**The OCP Summit features:**
+
+![Summit Features](/img/ocp21glo_ocpwebsite_summitfeatures_062421.png)
+
+**\#OCPSummit21**

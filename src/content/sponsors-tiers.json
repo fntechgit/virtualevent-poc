@@ -1,11 +1,147 @@
 {
   "tiers": [
     {
-      "id": "tier-cYGYq5-ae",
-      "name": "Top-Tier",
-      "badge": "/img/tier1-default-sessionbar-logo.png",
+      "badge": "",
+      "sponsorPage": {
+        "sponsorTemplate": "big-header",
+        "widgets": {
+          "disqus": true,
+          "liveEvent": true,
+          "schedule": true,
+          "banner": true
+        },
+        "disqus": false
+      },
+      "name": "Diamond",
+      "expoHallSize": "large",
+      "eventTemplate": null,
+      "widgetTitle": "",
+      "lobby": {
+        "lobbyTemplate": "carousel",
+        "display": true
+      },
+      "expoHallPage": {
+        "expoHallTemplate": "big-images",
+        "display": true
+      },
+      "id": "tier-cYGYq5-ae"
+    },
+    {
+      "badge": "",
+      "sponsorPage": {
+        "sponsorTemplate": "big-header",
+        "widgets": {
+          "disqus": true,
+          "liveEvent": true,
+          "schedule": true,
+          "banner": true
+        }
+      },
+      "name": "Emerald",
+      "expoHallSize": "large",
+      "eventTemplate": "",
+      "widgetTitle": "",
+      "lobby": {
+        "lobbyTemplate": "carousel",
+        "display": true
+      },
+      "expoHallPage": {
+        "expoHallTemplate": "big-images",
+        "display": true
+      },
+      "id": "tier-DHcI3dWGk"
+    },
+    {
+      "badge": "",
+      "sponsorPage": {
+        "sponsorTemplate": "big-header",
+        "widgets": {
+          "disqus": true,
+          "liveEvent": true,
+          "schedule": true,
+          "banner": true
+        }
+      },
+      "name": "Ruby",
+      "expoHallSize": "medium",
+      "eventTemplate": "",
+      "widgetTitle": "",
+      "lobby": {
+        "lobbyTemplate": "carousel",
+        "display": true
+      },
+      "expoHallPage": {
+        "expoHallTemplate": "big-images",
+        "display": true
+      },
+      "id": "tier-U_wEwGX8a"
+    },
+    {
+      "badge": "",
+      "sponsorPage": {
+        "sponsorTemplate": "big-header",
+        "disqus": false,
+        "liveEvent": false,
+        "schedule": false,
+        "banner": false,
+        "widgets": {
+          "disqus": true,
+          "liveEvent": true,
+          "schedule": true,
+          "banner": true
+        }
+      },
+      "name": "Sapphire",
+      "expoHallSize": "medium",
+      "eventTemplate": null,
+      "widgetTitle": "Sapphire Sponsors",
       "lobby": {
         "lobbyTemplate": "big-images",
+        "display": false
+      },
+      "expoHallPage": {
+        "expoHallTemplate": "medium-images",
+        "display": true
+      },
+      "id": "tier-Wqd0Qqef7"
+    },
+    {
+      "badge": "",
+      "sponsorPage": {
+        "sponsorTemplate": "big-header",
+        "disqus": false,
+        "liveEvent": false,
+        "schedule": false,
+        "banner": false,
+        "widgets": {
+          "disqus": true,
+          "liveEvent": true,
+          "schedule": true,
+          "banner": true
+        }
+      },
+      "name": "Topaz",
+      "expoHallSize": "medium",
+      "eventTemplate": null,
+      "widgetTitle": "Topaz ",
+      "lobby": {
+        "lobbyTemplate": "big-images",
+        "display": false
+      },
+      "expoHallPage": {
+        "display": true,
+        "expoHallTemplate": "medium-images"
+      },
+      "id": "tier-x0OjdDZTs"
+    },
+    {
+      "badge": "",
+      "lobby": {
+        "lobbyTemplate": "small-images",
+        "display": false
+      },
+      "expoHallPage": {
+        "expoHallTemplate": "medium-images",
         "display": true
       },
       "sponsorPage": {
@@ -17,15 +153,18 @@
           "banner": true
         }
       },
-      "eventTemplate": "",
-      "expoHallSize": "large"
+      "eventTemplate": "small-images",
+      "id": "tier-yeJ3xH65E",
+      "name": "Start-up"
     },
     {
-      "id": "tier-DHcI3dWGk",
-      "name": "Mid-Tier",
-      "badge": "/img/tier1-default-sessionbar-logo.png",
+      "badge": "",
       "lobby": {
         "lobbyTemplate": "small-images",
+        "display": false
+      },
+      "expoHallPage": {
+        "expoHallTemplate": "medium-images",
         "display": true
       },
       "sponsorPage": {
@@ -37,19 +176,22 @@
           "banner": true
         }
       },
-      "eventTemplate": "",
-      "expoHallSize": "medium"
+      "eventTemplate": "small-images",
+      "id": "tier-QZN1QfFuo",
+      "name": "Virtual Only"
     },
     {
-      "id": "tier-U_wEwGX8a",
-      "name": "Lower-Tier",
-      "badge": "/img/tier1-default-sessionbar-logo.png",
+      "badge": "",
       "lobby": {
         "lobbyTemplate": "small-images",
+        "display": false
+      },
+      "expoHallPage": {
+        "expoHallTemplate": "medium-images",
         "display": true
       },
       "sponsorPage": {
-        "sponsorTemplate": "small-header",
+        "sponsorTemplate": "big-header",
         "widgets": {
           "disqus": true,
           "liveEvent": true,
@@ -57,16 +199,115 @@
           "banner": true
         }
       },
-      "eventTemplate": "",
-      "expoHallSize": "small"
+      "eventTemplate": "small-images",
+      "id": "tier-hY171qXmS",
+      "name": "OpenSource Partners "
+    },
+    {
+      "badge": "",
+      "lobby": {
+        "lobbyTemplate": "small-images",
+        "display": false
+      },
+      "expoHallPage": {
+        "expoHallTemplate": "medium-images",
+        "display": true
+      },
+      "sponsorPage": {
+        "sponsorTemplate": "big-header",
+        "widgets": {
+          "disqus": true,
+          "liveEvent": true,
+          "schedule": true,
+          "banner": true
+        }
+      },
+      "eventTemplate": "small-images",
+      "id": "tier-XGUrqHNzZ",
+      "name": "Media Partners "
+    },
+    {
+      "badge": "",
+      "lobby": {
+        "lobbyTemplate": "small-images",
+        "display": false
+      },
+      "sponsorPage": {
+        "sponsorTemplate": "big-header",
+        "disqus": false,
+        "liveEvent": false,
+        "schedule": false,
+        "banner": false,
+        "widgets": {
+          "disqus": true,
+          "banner": true,
+          "schedule": true,
+          "liveEvent": true
+        }
+      },
+      "expoHallSize": null,
+      "eventTemplate": null,
+      "id": "tier-1BXGYJADL",
+      "name": "Experience Center",
+      "expoHallPage": {
+        "display": false
+      }
+    },
+    {
+      "badge": "",
+      "lobby": {
+        "lobbyTemplate": "small-images",
+        "display": false
+      },
+      "sponsorPage": {
+        "sponsorTemplate": "big-header",
+        "disqus": false,
+        "liveEvent": false,
+        "schedule": false,
+        "banner": false,
+        "widgets": {
+          "disqus": true,
+          "liveEvent": true,
+          "schedule": true,
+          "banner": true
+        }
+      },
+      "expoHallSize": null,
+      "eventTemplate": null,
+      "id": "tier-09OJgMcMH",
+      "name": "Symposium"
+    },
+    {
+      "badge": "",
+      "lobby": {
+        "lobbyTemplate": "small-images",
+        "display": false
+      },
+      "sponsorPage": {
+        "sponsorTemplate": "big-header",
+        "disqus": false,
+        "liveEvent": false,
+        "schedule": false,
+        "banner": false,
+        "widgets": {
+          "disqus": true,
+          "liveEvent": true,
+          "schedule": true,
+          "banner": true
+        }
+      },
+      "expoHallSize": null,
+      "eventTemplate": null,
+      "id": "tier-2HSCp6Cce",
+      "name": "Basecamp",
+      "expoHallPage": {
+        "display": false
+      }
     }
   ],
-  "imageHeader": {
-    "file": "/img/tier1-default-sponsor-headerimage-expopage.png",
-    "alt": "header"
-  },
+  "imageHeader": "/img/ocp21glo_expolandingpage_header_062421.png",
   "lobbyButton": {
-    "text": "Visit the Expo Hall",
+    "text": "Visit the Expo Hall Now",
     "link": "/a/sponsors/"
   }
 }
