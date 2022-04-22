@@ -9,21 +9,39 @@
       ],
       "sponsors": [
         {
-          "advertiseImage": "/img/ocp21glo_fnv_sponsorlogo-diamond-lobby.png",
+          "advertiseImage": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-diamond-lobby.png",
+            "alt": ""
+          },
           "showLogoInEventPage": false,
           "name": "Diamond Level",
-          "logo": "/img/ocp21glo_fnv_sponsorlogo-diamond.png",
+          "logo": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-diamond.png",
+            "alt": ""
+          },
           "id": 119
         },
         {
           "marquee": "The World's First Cloud Native Processor - Now with 128 Cores!",
           "sponsorColor": "#FE391D",
-          "logo": "/img/ocp21glo_fnv_sponsorlogo-ampere.png",
+          "logo": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-ampere.png",
+            "alt": ""
+          },
           "name": "Ampere Computing",
           "intro": "![](/img/ocp21glo_fnv_sponsorpagelogo-ampere.png)\n\n### Ampere Computing is designing the future of hyperscale cloud and edge computing with the world's first cloud native processor. Built for the cloud with a modern 64-bit Arm server-based architecture, Ampere gives customers the freedom to accelerate the delivery of all cloud computing applications. With industry-leading performance, power efficiency and scalability, Ampere’s Altra® family of processors are designed to deliver on predictable performance, high scalability and power efficiency.",
-          "headerImage": "/img/ampere_computing_virtualbooth_header-1-.png",
-          "headerImageMobile": "/img/ocp21glo_fnv_sponsorlogo-ampere.jpg",
-          "advertiseImage": "/img/ampere_computing_homepagead_light_v3.png",
+          "headerImage": {
+            "file": "/img/ampere_computing_virtualbooth_header-1-.png",
+            "alt": ""
+          },
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-ampere.jpg",
+            "alt": ""
+          },
+          "advertiseImage": {
+            "file": "/img/ampere_computing_homepagead_light_v3.png",
+            "alt": ""
+          },
           "sponsorId": 58,
           "title": "",
           "companyId": 41,
@@ -78,12 +96,21 @@
           "externalLink": "",
           "featuredEventId": 2275,
           "sponsorColor": "#0271E4",
-          "logo": "/img/ocp21glo_fnv_sponsorlogo-inspur.png",
+          "logo": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-inspur.png",
+            "alt": ""
+          },
           "name": "Inspur",
           "intro": "![](/img/ocp21glo_fnv_sponsorpagelogo-inspur.png)\n\n### Inspur is a leading provider of data center infrastructure, cloud computing, and AI solutions, ranking among the world’s top 3 server manufacturers. As a platinum member of OCP and legacy member of other open data center communities, Inspur is a longtime contributor of open reference architectures and is committed to the development and advocacy of open standards. Through engineering and innovation, Inspur delivers cutting-edge hardware designs and solutions to address challenges across many different technology sectors.",
           "headerVideo": "https://fntech.sfo2.cdn.digitaloceanspaces.com/OCPGlobalSummitandSymposium2021/Videos/inspur_OCP%20Global_Welcome%20Promo%20Video.mov",
-          "headerImageMobile": "/img/inspur_mobilebanner_768x250.jpg",
-          "advertiseImage": "/img/inspur_diamondvirtuallobbyad_484x484.jpg",
+          "headerImageMobile": {
+            "file": "/img/inspur_mobilebanner_768x250.jpg",
+            "alt": ""
+          },
+          "advertiseImage": {
+            "file": "/img/inspur_diamondvirtuallobbyad_484x484.jpg",
+            "alt": ""
+          },
           "sponsorId": 53,
           "title": "",
           "companyId": 38,
@@ -199,12 +226,24 @@
           "marquee": "",
           "featuredEventId": 2339,
           "sponsorColor": "#0068B5",
-          "logo": "/img/ocp21glo_fnv_sponsorlogo-intel.png",
+          "logo": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-intel.png",
+            "alt": ""
+          },
           "name": "Intel Corporation",
           "intro": "![](/img/ocp21glo_fnv_sponsorpagelogo-intel.png)\n\n### Intel creates world-changing technology that enriches the lives of every person on earth. We are inspired to drive innovation that makes the world safer, builds healthy and vibrant communities, and increases productivity. We harnesses our reach around the globe to better society, business and the planet by pushing ourselves and our industry peers to be more responsible, inclusive and sustainable.",
-          "headerImage": "/img/intel_intel_shapingfuturetech_1440x400.jpg",
-          "headerImageMobile": "/img/ocp21glo_fnv_sponsorlogo-intel.jpg",
-          "advertiseImage": "/img/intel_intel-ocp-booth-ad.jpg",
+          "headerImage": {
+            "file": "/img/intel_intel_shapingfuturetech_1440x400.jpg",
+            "alt": ""
+          },
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-intel.jpg",
+            "alt": ""
+          },
+          "advertiseImage": {
+            "file": "/img/intel_intel-ocp-booth-ad.jpg",
+            "alt": ""
+          },
           "sponsorId": 59,
           "title": "",
           "companyId": 1,
@@ -327,13 +366,22 @@
           "sideImage": "",
           "featuredEventId": 2337,
           "sponsorColor": "#343548",
-          "logo": "/img/ocp21glo_fnv_sponsorlogo-itrenew.png",
+          "logo": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-itrenew.png",
+            "alt": ""
+          },
           "name": "ITRenew",
           "intro": "![](/img/ocp21glo_fnv_sponsorpagelogo-itrenew.png)\n\n### ITRenew, the Circular Cloud leader, is a multinational corporation creating circularity models and second lives for some of the most advanced data centre technology on the planet. With sustainably sourced products and services that power cloud and enterprise data centres, edge infrastructure, AI/ML, embedded and industrial systems worldwide, ITRenew is opening up billions in new financial opportunity across the ecosystem, slashing e-waste and CO2 impact, and making hyperscale hardware accessible to and affordable for all.",
           "headerVideo": "https://fntech.sfo2.cdn.digitaloceanspaces.com/OCPGlobalSummitandSymposium2021/Videos/itrenew_ITRenew_video%20OCP%20version%2012%20%281%29.mp4",
-          "headerImageMobile": "/img/itrenew_ocpmobilestatic-2-.png",
+          "headerImageMobile": {
+            "file": "/img/itrenew_ocpmobilestatic-2-.png",
+            "alt": ""
+          },
           "chatLink": "https://bit.ly/itrenew-open",
-          "advertiseImage": "/img/itrenew_itrenew_ocp_virtualboothad_v4.1.png",
+          "advertiseImage": {
+            "file": "/img/itrenew_itrenew_ocp_virtualboothad_v4.1.png",
+            "alt": ""
+          },
           "sponsorId": 57,
           "title": "",
           "companyId": 39,
@@ -425,13 +473,22 @@
           "marquee": " Connection is evolving and so are we. Click the link below to see our latest hardware designs in VR or visit MetaInfraHardware.com.",
           "featuredEventId": 1775,
           "sponsorColor": "#67788A",
-          "logo": "/img/ocp21glo_fnv_sponsorlogo-meta.png",
+          "logo": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-meta.png",
+            "alt": ""
+          },
           "name": "Meta ",
           "intro": "![](/img/ocp21glo_fnv_sponsorpagelogo-meta.png)\n\n### Meta builds technologies that help people connect, find communities, and grow businesses. When Facebook launched in 2004, it changed the way people connect. Apps like Messenger, Instagram and WhatsApp further empowered billions around the world. Now, Meta is moving beyond 2D screens toward immersive experiences like augmented and virtual reality to help build the next evolution in social technology.",
           "headerVideo": "https://fntech.sfo2.cdn.digitaloceanspaces.com/OCPGlobalSummitandSymposium2021/Videos/Welcome%20Promo%20Video.mp4",
           "headerImage": "",
-          "headerImageMobile": "/img/ocp21glo_fnv_sponsorlogo-meta.jpg",
-          "advertiseImage": "/img/virtual-lobby-ad.png",
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-meta.jpg",
+            "alt": ""
+          },
+          "advertiseImage": {
+            "file": "/img/virtual-lobby-ad.png",
+            "alt": ""
+          },
           "sponsorId": 55,
           "title": "",
           "companyId": 5,
@@ -522,12 +579,24 @@
           "marquee": "Welcome to the Microsoft booth. Open hardware for a sustainable future. Learn more at aka.ms/OCP2021.",
           "featuredEventId": 2344,
           "sponsorColor": "#50E6FF",
-          "logo": "/img/microsoft_microsoft-logo-484x484.png",
+          "logo": {
+            "file": "/img/microsoft_microsoft-logo-484x484.png",
+            "alt": ""
+          },
           "name": "Microsoft",
           "intro": "![](/img/ocp21glo_fnv_sponsorpagelogo-microsoft.png)\n\n### Microsoft enables digital transformation for the era of an intelligent cloud and an intelligent edge. Its mission is to empower every person and every organization on the planet to achieve more.",
-          "headerImage": "/img/microsoft_microsoft-ocp-virtual-booth-1440x400.png",
-          "headerImageMobile": "/img/ocp21glo_fnv_sponsorlogo-microsoft.jpg",
-          "advertiseImage": "/img/microsoft_ocp-ad-484x484.png",
+          "headerImage": {
+            "file": "/img/microsoft_microsoft-ocp-virtual-booth-1440x400.png",
+            "alt": ""
+          },
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-microsoft.jpg",
+            "alt": ""
+          },
+          "advertiseImage": {
+            "file": "/img/microsoft_ocp-ad-484x484.png",
+            "alt": ""
+          },
           "sponsorId": 56,
           "title": "",
           "companyId": 10,
@@ -648,12 +717,24 @@
         {
           "marquee": "",
           "sponsorColor": "#1428A0",
-          "logo": "/img/ocp21glo_fnv_sponsorlogo-samsung.png",
+          "logo": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-samsung.png",
+            "alt": ""
+          },
           "name": "Samsung ",
           "intro": "![](/img/ocp21glo_fnv_sponsorpagelogo-samsung.png)\n\n### Samsung Semiconductor, Inc is a multi-billion dollar subsidiary of Samsung Electronics Corp. The organization provides the world’s most advanced technology for use in smartphones, consumer electronics, computing platforms and other devices that people use every day. As a major vendor of state-of-the-art memory, logic, and SSD components to the hi-tech industry overall, it is also proud to offer its products to customers seeking OCP-compliant solutions.",
-          "headerImage": "/img/ocp21glo-fnv-sponsorbooth-samsung-header_v3.png",
-          "headerImageMobile": "/img/ocp21glo_fnv_sponsorlogo-samsung.jpg",
-          "advertiseImage": "/img/ocp_lobbyad_2.jpg",
+          "headerImage": {
+            "file": "/img/ocp21glo-fnv-sponsorbooth-samsung-header_v3.png",
+            "alt": ""
+          },
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-samsung.jpg",
+            "alt": ""
+          },
+          "advertiseImage": {
+            "file": "/img/ocp_lobbyad_2.jpg",
+            "alt": ""
+          },
           "sponsorId": 60,
           "title": "",
           "companyId": 40,
@@ -783,11 +864,17 @@
       ],
       "sponsors": [
         {
-          "advertiseImage": "/img/ocp21glo_fnv_sponsorlogo-emerald-lobby.png",
+          "advertiseImage": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-emerald-lobby.png",
+            "alt": ""
+          },
           "showLogoInEventPage": true,
           "name": "Emerald Level ",
           "id": 130,
-          "logo": "/img/ocp21glo_fnv_sponsorlogo-emerald.png",
+          "logo": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-emerald.png",
+            "alt": ""
+          },
           "sponsorId": 130,
           "companyId": 118
         },
@@ -795,12 +882,21 @@
           "marquee": "Infrastructure for Your Digital Transformation : Smart, Speedy, Scaling and Ready.",
           "featuredEventId": 2315,
           "sponsorColor": "#005097",
-          "logo": "/img/ocp21glo_fnv_sponsorlogo-qct.png",
+          "logo": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-qct.png",
+            "alt": ""
+          },
           "name": "QCT",
           "intro": "### Quanta Cloud Technology (QCT) is a global datacenter solution provider. We combine the efficiency of hyperscale hardware with infrastructure software from a diversity of industry leaders to solve next-generation datacenter design and operation challenges. QCT serves cloud service providers, telecoms and enterprises running public, hybrid and private clouds. Product lines include hyper-converged and software-defined datacenter solutions as well as servers, storage, switches, integrated racks with a diverse ecosystem of hardware component and software partners. QCT designs, manufactures, integrates and services cutting edge offerings via its own global network. The parent of QCT is Quanta Computer, Inc., a Fortune Global 500 corporation.",
           "headerVideo": "https://fntech.sfo2.cdn.digitaloceanspaces.com/OCPGlobalSummitandSymposium2021/Videos/qct_20211021%20OCP%20GLO21%20Welcome%20video_final.mp4",
-          "headerImageMobile": "/img/ocp21glo_fnv_sponsorlogo-qct.jpg",
-          "advertiseImage": "/img/qct_virtual-booth-ads_484x484.jpg",
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-qct.jpg",
+            "alt": ""
+          },
+          "advertiseImage": {
+            "file": "/img/qct_virtual-booth-ads_484x484.jpg",
+            "alt": ""
+          },
           "sponsorId": 48,
           "title": "QCT",
           "companyId": 42,
@@ -886,12 +982,21 @@
         {
           "marquee": "Visit Wiwynn at C2! Check out Wiwynn next generation OCP 21”/19” and Open Edge solutions. Executive Track starts at 2:00pm and Expo Hall Talk at 3:10pm 9th Nov, be there!",
           "sponsorColor": "#adcf2a",
-          "logo": "/img/ocp21glo_fnv_sponsorlogo-wiwynn.png",
+          "logo": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-wiwynn.png",
+            "alt": ""
+          },
           "name": "Wiwynn Corporation",
           "intro": "### Wiwynn is an innovative cloud IT infrastructure provider of computing, storage products, and rack solutions. We are committed to the best TCO and workload optimization for data centers and telecoms, and actively participate in OCP, ORAN Alliance, ONF, and TIP for 5G/Edge solutions.",
           "headerVideo": "https://fntech.sfo2.cdn.digitaloceanspaces.com/OCPGlobalSummitandSymposium2021/Videos/Wiwynn_NEW_welcome.mp4",
-          "headerImageMobile": "/img/ocp21glo_fnv_sponsorlogo-wiwynn.jpg",
-          "advertiseImage": "/img/wiwynn_corporation_main_page_ad_20211007.jpg",
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-wiwynn.jpg",
+            "alt": ""
+          },
+          "advertiseImage": {
+            "file": "/img/wiwynn_corporation_main_page_ad_20211007.jpg",
+            "alt": ""
+          },
           "sponsorId": 49,
           "title": "Wiwynn Corporation",
           "companyId": 43,
@@ -1001,13 +1106,22 @@
         {
           "marquee": "Welcome to Xilinx. Don’t miss our talk on hardware adaptable, software programmable SmartNICs, Tuesday, Nov. 9 at 2:50 pm. ",
           "sponsorColor": "#e00000",
-          "logo": "/img/xilinx-logo.png",
+          "logo": {
+            "file": "/img/xilinx-logo.png",
+            "alt": ""
+          },
           "name": "Xilinx",
           "intro": "### Xilinx delivers the Adaptive Platform for accelerated computing. Our Adaptive SoCs, accelerator cards, and FPGAs give leading-edge companies the freedom to innovate and deploy, rapidly. We partner with our customers to create scalable, differentiated and intelligent solutions from the cloud to the edge. In a world where the pace of change is accelerating, more and more innovators trust Xilinx to help them get to market faster, and with optimal efficiency and performance. For more information, visit www.xilinx.com.",
           "headerVideo": "https://fntech.sfo2.cdn.digitaloceanspaces.com/OCPGlobalSummitandSymposium2021/Videos/xilinx_inc_Xilinx_Logo_Fly_In.mp4",
-          "headerImageMobile": "/img/ocp21glo_fnv_sponsorlogo-xilinx.jpg",
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-xilinx.jpg",
+            "alt": ""
+          },
           "chatLink": "https://xilinx.zoom.us/u/acDz19hXxS ",
-          "advertiseImage": "/img/brand-2153-ocp-sponsorad-v3.jpg",
+          "advertiseImage": {
+            "file": "/img/brand-2153-ocp-sponsorad-v3.jpg",
+            "alt": ""
+          },
           "sponsorId": 61,
           "title": "Xilinx",
           "companyId": 44,
@@ -1099,11 +1213,20 @@
         {
           "marquee": "ZT Systems: We Speak Hyperscale™ - the industry leading provider of purpose-built server hardware solutions from the cloud to the 5G network edge.",
           "sponsorColor": "#E24307",
-          "logo": "/img/ocp21glo_fnv_sponsorlogo-ztsystems.png",
+          "logo": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-ztsystems.png",
+            "alt": ""
+          },
           "name": "ZT Systems",
           "intro": "### ZT Systems is a leading supplier of compute, storage, and accelerator solutions for hyperscale, 5G, and edge computing applications. A trusted design, manufacturing, and logistics partner with over 25 years of experience, ZT serves data center operators from enterprise organizations to the largest cloud and telecommunications providers. Headquartered in Secaucus, NJ with global manufacturing spanning the US, EMEA and APAC, ZT deploys and supports integrated rack-level solutions worldwide. Through close, confidential customer engagement, ZT leverages deep experience with hyperscale and edge computing workloads and supply chain considerations to develop application-tailored solutions. Flexible, purpose-built manufacturing capabilities enable ZT to sustain high quality while accommodating the dynamic nature of hyperscale. ZT’s commitment to operational excellence is demonstrated by a strong track record of on-time delivery.",
-          "headerImage": "/img/zt_systems_zt-systems-static-image.jpg",
-          "headerImageMobile": "/img/ocp21glo_fnv_sponsorlogo-ztsystems.jpg",
+          "headerImage": {
+            "file": "/img/zt_systems_zt-systems-static-image.jpg",
+            "alt": ""
+          },
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-ztsystems.jpg",
+            "alt": ""
+          },
           "advertiseImage": "",
           "sponsorId": 62,
           "title": "ZT Systems",
@@ -1146,24 +1269,42 @@
       ],
       "sponsors": [
         {
-          "advertiseImage": "/img/ocp21glo_fnv_sponsorlogo-ruby-lobby.png",
+          "advertiseImage": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-ruby-lobby.png",
+            "alt": ""
+          },
           "showLogoInEventPage": true,
           "name": "Ruby Level",
           "id": 131,
-          "logo": "/img/ocp21glo_fnv_sponsorlogo-ruby.png",
+          "logo": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-ruby.png",
+            "alt": ""
+          },
           "sponsorId": 131
         },
         {
           "marquee": "THE OPEN WORLD STARTS ON AMI. Our foundational technologies are how the world's machines Power Up, Stay On, and Run Secure.",
           "featuredEventId": 2334,
           "sponsorColor": "#cc2027",
-          "logo": "/img/ami_ami-logo_484x484.png",
+          "logo": {
+            "file": "/img/ami_ami-logo_484x484.png",
+            "alt": ""
+          },
           "name": "AMI",
           "intro": "#### THE OPEN WORLD STARTS ON AMI. With AMI's opensource foundational technology, we are committed to building a community that unleashes innovation and creativity. Our solutions are how the world's machines Power Up, Stay On, and Run Secure - from on-premises to the cloud to the edge. Only AMI delivers this holistic approach to foundational technology. That's why nearly every meaningful technology company in the world relies on us. We work with multiple CPU architectures - and have been partners with silicon vendors like Intel for more than 25 years. As a result, nearly all compute platforms worldwide use firmware and software solutions from us. AMI is a key contributor to the Open Compute ecosystem and many industry associations and standards groups, such as the UEFI Forum, National Institute of Standards and Technology (NIST), National Cybersecurity Excellence Partnership (NCEP) and the Trusted Computing Group (TCG). For more information, visit ami.com and on Twitter @AMI_PR.",
-          "headerImage": "/img/ami_ocp-virtual-banner_2021_1440x400_rev3.png",
-          "headerImageMobile": "/img/ocp21glo_fnv_sponsorlogo-ami.jpg",
+          "headerImage": {
+            "file": "/img/ami_ocp-virtual-banner_2021_1440x400_rev3.png",
+            "alt": ""
+          },
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-ami.jpg",
+            "alt": ""
+          },
           "chatLink": "",
-          "advertiseImage": "/img/ami_ami-ruby-lobby-ad_484x484.png",
+          "advertiseImage": {
+            "file": "/img/ami_ami-ruby-lobby-ad_484x484.png",
+            "alt": ""
+          },
           "sponsorId": 69,
           "title": "AMI",
           "companyId": 56,
@@ -1255,13 +1396,25 @@
           "marquee": "Discover the Power of One with Arrcus Connected Edge (ACE) - One Simple Network, One Scalable Architecture, One Seamless Experience.",
           "featuredEventId": 2331,
           "sponsorColor": "#034882",
-          "logo": "/img/arrcus_inc_arrcus-logo-tagline-484x484.png",
+          "logo": {
+            "file": "/img/arrcus_inc_arrcus-logo-tagline-484x484.png",
+            "alt": ""
+          },
           "name": "Arrcus",
           "intro": "### Arrcus was founded to enhance business efficiency through superior network connectivity. The Arrcus Connected Edge (ACE) platform offers best-in-class networking with the most flexible consumption model at the lowest total cost of ownership. The Arrcus team consists of world-class technologists who have an unparalleled record in shipping industry-leading networking products, complemented by industry thought leaders, operating executives, strategic partners, and top-tier VCs. For more information, go to www.arrcus.com or follow @arrcusinc.",
-          "headerImage": "/img/arrcus_inc_arrcus-ocp-welcome-static-image-high-.jpg",
-          "headerImageMobile": "/img/ocp21glo_fnv_sponsorlogo-arrcus.jpg",
+          "headerImage": {
+            "file": "/img/arrcus_inc_arrcus-ocp-welcome-static-image-high-.jpg",
+            "alt": ""
+          },
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-arrcus.jpg",
+            "alt": ""
+          },
           "chatLink": "https://arrcus.zoom.us/j/98109522847?pwd=bC9vRjA4NmI2UUVmRmJiQ0h5YkEzZz09",
-          "advertiseImage": "/img/arrcus_inc_arrcus-ocp-virtual-lobby-ad.png",
+          "advertiseImage": {
+            "file": "/img/arrcus_inc_arrcus-ocp-virtual-lobby-ad.png",
+            "alt": ""
+          },
           "sponsorId": 70,
           "title": "Arrcus",
           "companyId": 57,
@@ -1375,11 +1528,17 @@
         },
         {
           "marquee": "Energy with Purpose.",
-          "logo": "/img/ocp21glo_fnv_sponsorlogo-bp.png",
+          "logo": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-bp.png",
+            "alt": ""
+          },
           "name": "bp",
           "intro": "### Our purpose is reimagining energy for people and our planet. We want to help the world reach net zero and improve people’s lives. We will aim to dramatically reduce carbon in our operations and in our production, and grow new low carbon businesses, products and services. We will advocate for fundamental and rapid progress towards Paris and strive to be a leader in transparency. We know we don’t have all the answers and will listen and work with others. We want to be an energy company with purpose; one that is trusted by society, valued by shareholders and motivating for everyone who works at bp. We believe we have the experience and expertise, the relationships and the reach, the skill and the will, to do this.",
           "headerVideo": "https://fntech.sfo2.cdn.digitaloceanspaces.com/OCPGlobalSummitandSymposium2021/Videos/bp_Reimagining%20energy_%20our%20new%20strategy%20explained.mp4",
-          "headerImageMobile": "/img/ocp21glo_fnv_sponsorlogo-bp.jpg",
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-bp.jpg",
+            "alt": ""
+          },
           "advertiseImage": "",
           "sponsorId": 72,
           "title": "bp",
@@ -1419,13 +1578,25 @@
           "marquee": "Credo Active Electrical Cables provide 28G, 56G, and 112G per lane PAM4 connectivity for distributed disaggregated chassis and NIC-to-Dual TOR racks.",
           "featuredEventId": 2340,
           "sponsorColor": "#000000",
-          "logo": "/img/ocp21glo_fnv_sponsorlogo-credo.png",
+          "logo": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-credo.png",
+            "alt": ""
+          },
           "name": "Credo",
           "intro": "#### Credo is a leading provider of high-performance serial connectivity solutions for the hyperscale datacenter, 5G carrier, enterprise networking, artificial intelligence, and high-performance computing markets. Credo's solutions deliver the bandwidth, scalability, and end-to-end signal integrity for next-generation platforms requiring 25G, 50G, and 100G signal lane-rate connectivity for 100G, 200G, 400G, and 800G port enabled networks. Credo pioneered Active Electrical Cables (AECs) to solve to connectivity challenges of reach and volume facing DACs and the reliability and power hurdles of AOCs as speeds reached 400G and beyond. The cables, which integrate retimers and gearboxes in the connectors, have enabled new generations of data center architectures including distributed disaggregated chassis and NIC-to-Dual TOR implementations. Credo has 4 families of AECs in production including: SPAN AECs, CLOS AECs, SHIFT AECs, and SWITCH AECs. Learn more at https://www.credodemi.com/hiwire.",
           "headerVideo": "",
-          "headerImage": "/img/credo_credo-1440x400-banner.png",
-          "headerImageMobile": "/img/ocp21glo_fnv_sponsorlogo-credo.jpg",
-          "advertiseImage": "/img/credo_credo-square-ad-150150.png",
+          "headerImage": {
+            "file": "/img/credo_credo-1440x400-banner.png",
+            "alt": ""
+          },
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-credo.jpg",
+            "alt": ""
+          },
+          "advertiseImage": {
+            "file": "/img/credo_credo-square-ad-150150.png",
+            "alt": ""
+          },
           "sponsorId": 64,
           "title": "Credo",
           "companyId": 51,
@@ -1516,11 +1687,17 @@
         {
           "marquee": "The most innovative companies choose Flex as the manufacturing partner of choice that helps them create extraordinary products that improve people’s lives.",
           "sponsorColor": "#005486",
-          "logo": "/img/ocp21glo_fnv_sponsorlogo-flex.png",
+          "logo": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-flex.png",
+            "alt": ""
+          },
           "name": "Flex",
           "intro": "### Flex is the manufacturing partner of choice that helps a diverse customer base design and build products that improve the world. Through the collective strength of a global workforce across 30 countries and responsible, sustainable operations, Flex delivers technology innovation, supply chain, and manufacturing solutions to various industries and end markets. For more information, visit flex.com.",
           "headerVideo": "https://fntech.sfo2.cdn.digitaloceanspaces.com/OCPGlobalSummitandSymposium2021/Videos/flex_Flex%20Logo%20and%20Tagline_Pattern_BlueGradientBG.mp4",
-          "headerImageMobile": "/img/ocp21glo_fnv_sponsorlogo-flex.jpg",
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-flex.jpg",
+            "alt": ""
+          },
           "advertiseImage": "",
           "sponsorId": 67,
           "title": "Flex",
@@ -1607,12 +1784,21 @@
           "marquee": "Visit the New KIOXIA Virtual Experience Center! ",
           "featuredEventId": 2277,
           "sponsorColor": "#1ABCEF",
-          "logo": "/img/kioxia_america_inc_kioxia_logo_silver.png",
+          "logo": {
+            "file": "/img/kioxia_america_inc_kioxia_logo_silver.png",
+            "alt": ""
+          },
           "name": "KIOXIA",
           "intro": "#### KIOXIA America, Inc. is the U.S.-based subsidiary of KIOXIA Corporation, a leading worldwide supplier of flash memory and solid state drives (SSDs). From the invention of flash memory to today’s breakthrough BiCS FLASH™ 3D technology, KIOXIA continues to pioneer cutting-edge memory technology and shape the future of storage in high-density applications, including advanced smartphones, PCs, SSDs, automotive, and data centers.",
           "headerVideo": "https://fntech.sfo2.cdn.digitaloceanspaces.com/OCPGlobalSummitandSymposium2021/Videos/kioxia_america_inc_OCP%20GLO21_Welcome%20video_1.mp4",
-          "headerImageMobile": "/img/ocp21glo_fnv_sponsorlogo-kioxia.jpg",
-          "advertiseImage": "/img/kioxia_america_inc_ocp_2021_challenge_impossible_together_484x484px.jpg",
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-kioxia.jpg",
+            "alt": ""
+          },
+          "advertiseImage": {
+            "file": "/img/kioxia_america_inc_ocp_2021_challenge_impossible_together_484x484px.jpg",
+            "alt": ""
+          },
           "sponsorId": 71,
           "title": "KIOXIA",
           "companyId": 58,
@@ -1704,13 +1890,22 @@
           "marquee": "Best Partner in Opto-Electronic, Eco-Friendly and Intelligent Technologies.",
           "featuredEventId": 2278,
           "sponsorColor": "#0071be",
-          "logo": "/img/ocp21glo_fnv_sponsorlogo-liteon.png",
+          "logo": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-liteon.png",
+            "alt": ""
+          },
           "name": "LITEON",
           "intro": "#### Founded in 1975, and being the first listed electronics company in Taiwan, LITEON is a world-leading provider in optoelectronic components and key electronic modules. In recent years, with its actively deployment in the fields of cloud computing, automotive electronics, 5G, AIoT, optoelectronics, etc., cultivation of smart industries, coupled with development of new business opportunities and products required for smart life and smart cities, LITEON continues to use its professionalism, rich industrial experience, high-quality products and services, and global operations bases, and become the preferred best partner of global customers for developing innovation and application of smart technology. For over four decades, LITEON produces products that are used in a broad range of applications, such as cloud computing, automotive electronics, optoelectronics, LED/lighting, smart healthcare, computers, communications, industry and consumer electronics while concentrating on establishing a competitive advantage in mass production to maximize the returns from a diverse product portfolio to realize profitable growths through resource integration and management; LITEON’s main business strategy focuses on increasing resource utilization, automation, production optimization, and streamlined processes for better productivity and efficiency; in the long-term, the focus is on realizing profitability, maintaining stable operations as well as enhancing the return of shareholders’ equity to take root in the sustainable operation of a century-old enterprise.",
           "headerVideo": "https://fntech.sfo2.cdn.digitaloceanspaces.com/OCPGlobalSummitandSymposium2021/Videos/liteon_2021_1%E5%88%86%E9%90%98%E7%84%A1%E8%81%B2%E7%89%88%28final%29.mp4",
-          "headerImageMobile": "/img/ocp21glo_fnv_sponsorlogo-liteon.jpg",
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-liteon.jpg",
+            "alt": ""
+          },
           "chatLink": "https://teams.microsoft.com/l/meetup-join/19%3ameeting_MzM2YTYzN2MtMWVlNS00NTcyLTkzYmUtMWFiNDE3MWQ3OGY1%40thread.v2/0?context=%7b%22Tid%22%3a%225a7a259b-6730-404b-bc25-5c6c773229ca%22%2c%22Oid%22%3a%22ac94ec4e-84dd-4015-bb14-48b7bfb7ac3e%22%7d",
-          "advertiseImage": "/img/liteon_484x484-ad.png",
+          "advertiseImage": {
+            "file": "/img/liteon_484x484-ad.png",
+            "alt": ""
+          },
           "sponsorId": 120,
           "title": "LITEON",
           "companyId": 108,
@@ -1808,13 +2003,25 @@
         {
           "marquee": "With the Pliops Extreme Data Processor you can achieve: • Up to 10x Higher Performance • Up to 6x More Capacity • Up to 5x Lower Cost.",
           "sponsorColor": "#A748E5",
-          "logo": "/img/ocp21glo_fnv_sponsorlogo-pliops.png",
+          "logo": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-pliops.png",
+            "alt": ""
+          },
           "name": "Pliops",
           "intro": "#### Today’s explosive data growth and rapidly expanding application workloads threaten to overwhelm datacenters, preventing organizations from harnessing the AI/ML, 5G, big data analytics, IoT, and other modern applications they need to achieve their business goals. The breakthrough Pliops Extreme Data Processor (XDP), delivered on an easy-to-deploy, low-profile PCIe card, overcomes storage inefficiencies to massively accelerate performance and dramatically reduce overall infrastructure costs for these data-hungry, storage-intensive applications. By radically simplifying the way data is processed and flash storage is managed, Pliops multiplies the effectiveness of organizations’ infrastructure investments by exponentially increasing datacenter performance, reliability, capacity, and efficiency.",
-          "headerImage": "/img/pliops_multiply-the-effectivness-1440x400-.png",
-          "headerImageMobile": "/img/ocp21glo_fnv_sponsorlogo-pliops.jpg",
+          "headerImage": {
+            "file": "/img/pliops_multiply-the-effectivness-1440x400-.png",
+            "alt": ""
+          },
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-pliops.jpg",
+            "alt": ""
+          },
           "chatLink": "https://us02web.zoom.us/j/84553093001?pwd=eXQ3OWdpeUVIQ1dZTC83OWE2bjdJZz09",
-          "advertiseImage": "/img/pliops-1.png",
+          "advertiseImage": {
+            "file": "/img/pliops-1.png",
+            "alt": ""
+          },
           "sponsorId": 97,
           "title": "Pliops",
           "companyId": 83,
@@ -1911,12 +2118,24 @@
         {
           "marquee": "Open Hardware. Open Solution. Open Future.",
           "sponsorColor": "#e3006a",
-          "logo": "/img/ocp21glo_fnv_sponsorlogo-rittal.png",
+          "logo": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-rittal.png",
+            "alt": ""
+          },
           "name": "Rittal North America",
           "intro": "#### Rittal North America is the U.S. subsidiary of Rittal GmbH & Co. KG, the world’s largest manufacturer of industrial and IT enclosures, racks and accessories, including climate control and power management systems for industrial, data center, outdoor and hybrid applications. Rittal's off-the-shelf standard, modified standard and custom-engineered products are recognized throughout the world as innovative, high quality solutions for practically any industrial or IT infrastructure application — from single enclosures to comprehensive, mission critical systems.",
-          "headerImage": "/img/rittal_gmbh_co_kg_10.18.21_welcomestatic_1440x400_us633-bn3_v4.png",
-          "headerImageMobile": "/img/ocp21glo_fnv_sponsorlogo-rittal.jpg",
-          "advertiseImage": "/img/rittal_gmbh_co_kg_10.7.21_sponsorad_968x968_us633-bn_v2.png",
+          "headerImage": {
+            "file": "/img/rittal_gmbh_co_kg_10.18.21_welcomestatic_1440x400_us633-bn3_v4.png",
+            "alt": ""
+          },
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-rittal.jpg",
+            "alt": ""
+          },
+          "advertiseImage": {
+            "file": "/img/rittal_gmbh_co_kg_10.7.21_sponsorad_968x968_us633-bn_v2.png",
+            "alt": ""
+          },
           "sponsorId": 63,
           "title": "Rittal North America",
           "companyId": 50,
@@ -1983,12 +2202,24 @@
         {
           "marquee": "SLS is a global leader in data center hardware circularity, IT asset disposition and electronics recycling.",
           "sponsorColor": "#4F758B",
-          "logo": "/img/ocp21glo_fnv_sponsorlogo-simslifecycle.png",
+          "logo": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-simslifecycle.png",
+            "alt": ""
+          },
           "name": "Sims Lifecycle Services",
           "intro": "### Sims Lifecycle Services (SLS) provides solutions to major cloud providers and enterprises to extend the life of IT and electronic devices. By decommissioning IT and data center equipment, components and materials, SLS provides value in end-of-life assets, navigates ongoing technology shifts and securely and responsibly manages IT asset disposition. Whether reuse, reengineering, redeployment or recycling, the global services offered at SLS support the evolution of the electronics industry movement toward circularity. Clients benefit from data security, maximum IT value recovery, global compliance and sustainable IT use. As a responsible corporate citizen, and in alignment with the United Nations Sustainable Development Goals, we continuously seek new ways to contribute to the circular economy. For more information, visit www.simslifecycle.com.",
-          "headerImage": "/img/sims_lifecycle_services_microsoftteams-image-19-.png",
-          "headerImageMobile": "/img/ocp21glo_fnv_sponsorlogo-simslifecycle.jpg",
-          "advertiseImage": "/img/sims_lifecycle_services_microsoftteams-image-18-.png",
+          "headerImage": {
+            "file": "/img/sims_lifecycle_services_microsoftteams-image-19-.png",
+            "alt": ""
+          },
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-simslifecycle.jpg",
+            "alt": ""
+          },
+          "advertiseImage": {
+            "file": "/img/sims_lifecycle_services_microsoftteams-image-18-.png",
+            "alt": ""
+          },
           "sponsorId": 117,
           "title": "Sims Lifecycle Services",
           "companyId": 104,
@@ -2073,12 +2304,21 @@
           "marquee": "SK hynix is aimed at leading future industries of the Data Era and ultimately creating greener, healthier, and more prosperous societies.",
           "featuredEventId": 2282,
           "sponsorColor": "#EA002C",
-          "logo": "/img/sk_hynix_virtual-booth-logo.png",
+          "logo": {
+            "file": "/img/sk_hynix_virtual-booth-logo.png",
+            "alt": ""
+          },
           "name": "SK hynix",
           "intro": "#### SK hynix seeks to propel the semiconductor industry forward with global tech leadership, and provide a future of greater value to stakeholders to create a better world with information and communication technology. As the world’s third largest chipmaker with know-how and customer trust built over more than 38 years, SK hynix continues delivering on a comprehensive range of memory semiconductor solutions from DRAM and NAND Flash to CMOS image sensors. The company’s advanced memory technologies are driving critical innovations of the Fourth Industrial Revolution such as Big data, AI, Machine Learning, IoT, and Robotics. Moreover, SK hynix is aiming higher with the new “Mem4EST (Memory Forest)” initiative to quickly respond to future changes in the ICT ecosystem. With robust ESG management that accounts for value to the environment, societies, and future generations, SK hynix will continue to build competence and success around the globe.",
           "headerVideo": "https://fntech.sfo2.cdn.digitaloceanspaces.com/OCPGlobalSummitandSymposium2021/Videos/sk_hynix_Welcome%20Promo%20Video_SK%20hynix.mp4",
-          "headerImageMobile": "/img/sk_hynix_mobile-static-image_sk-hynix.jpg",
-          "advertiseImage": "/img/sk_hynix_virtual-lobby-ad_sk-hynix.jpg",
+          "headerImageMobile": {
+            "file": "/img/sk_hynix_mobile-static-image_sk-hynix.jpg",
+            "alt": ""
+          },
+          "advertiseImage": {
+            "file": "/img/sk_hynix_virtual-lobby-ad_sk-hynix.jpg",
+            "alt": ""
+          },
           "sponsorId": 65,
           "title": "SK hynix",
           "companyId": 52,
@@ -2200,13 +2440,22 @@
           "marquee": "Ensuring the continuity of today’s and tomorrow’s vital applications.",
           "featuredEventId": 2284,
           "sponsorColor": "#fe5b1b",
-          "logo": "/img/ocp21glo_fnv_sponsorlogo-vertiv.png",
+          "logo": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-vertiv.png",
+            "alt": ""
+          },
           "name": "Vertiv",
           "intro": "#### Nearly all aspects of our lives involve the use of technology. It is how we work and play and do anything in between. This connectivity or use of data is built into the very fabric of our society. It is vital to human progress. Vertiv believes there is a better way to meet this accelerating demand for data — one driven by passion and innovation. As industry experts, we collaborate with our customers to envision and build future-ready infrastructures. We leverage our portfolio of hardware, software, analytics, and services, to ensure our customers’ vital applications run continuously, perform optimally, and scale with business needs.",
           "headerVideo": "https://fntech.sfo2.cdn.digitaloceanspaces.com/OCPGlobalSummitandSymposium2021/Videos/vertiv_Brand-Video-for-Events.mp4",
           "headerImage": "",
-          "headerImageMobile": "/img/ocp21glo_fnv_sponsorlogo-vertiv.jpg",
-          "advertiseImage": "/img/vertiv_ocp_virtual_ad_468x468.png",
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-vertiv.jpg",
+            "alt": ""
+          },
+          "advertiseImage": {
+            "file": "/img/vertiv_ocp_virtual_ad_468x468.png",
+            "alt": ""
+          },
           "sponsorId": 68,
           "title": "Vertiv",
           "companyId": 55,
@@ -2316,17 +2565,29 @@
           "name": "Sapphire",
           "id": 121,
           "sponsorId": 121,
-          "logo": "/img/ocp21glo_fnv_sponsorlogo-sapphire.png"
+          "logo": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-sapphire.png",
+            "alt": ""
+          }
         },
         {
           "marquee": "Welcome to 3M. Learn about our immersion cooling, copper interconnect and optical interconnect.",
           "featuredEventId": 2314,
-          "logo": "/img/ocp21glo_fnv_sponsorlogo-3m_v2.png",
+          "logo": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-3m_v2.png",
+            "alt": ""
+          },
           "name": "3M",
           "intro": "### Meeting the demands of today’s data hungry world while keeping your data center connected and performing efficiently and reliably is no small feat. 3M has solutions in liquid immersion cooling, advanced fiber optic and copper twin axial technology that are designed to bring flexibility, performance and cost and energy efficiency to the data centers of today and tomorrow while reducing footprint. Chat with us to learn more.",
           "headerVideo": "",
-          "headerImage": "/img/3m_3m-image_1440x400.jpg",
-          "headerImageMobile": "/img/ocp21glo_fnv_sponsorlogo-3m.jpg",
+          "headerImage": {
+            "file": "/img/3m_3m-image_1440x400.jpg",
+            "alt": ""
+          },
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-3m.jpg",
+            "alt": ""
+          },
           "advertiseImage": "",
           "sponsorId": 80,
           "title": "3M",
@@ -2395,11 +2656,20 @@
           "marquee": "Advanced Energy powers cloud servers’ toughest challenges with highly efficient, high performing power supply solutions.",
           "featuredEventId": 2272,
           "sponsorColor": "#2d6aa8",
-          "logo": "/img/ocp21glo_fnv_sponsorlogo-advancedenergy.png",
+          "logo": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-advancedenergy.png",
+            "alt": ""
+          },
           "name": "Advanced Energy",
           "intro": "### As one of the largest power supply companies in the world, Advanced Energy has many years of experience in designing and manufacturing advanced power solutions for data center, enterprise, telecom, industrial, and medical applications. We have an unmatched ability to design power conversion solutions for your specific needs. Advanced Energy's innovations for hyperscale and cloud computing data centers focus on optimizing efficiency and power density to reduce the total cost of ownership. Contact your Advanced Energy sales representative to learn how you can reduce operating costs for your data center. Our dedicated research and development and operations teams ensure swift deployment and stable operations for your program needs.",
-          "headerImage": "/img/advanced_energy_2021_ocp_banner_1440x400_v3_1008.png",
-          "headerImageMobile": "/img/ocp21glo_fnv_sponsorlogo-advancedenergy.jpg",
+          "headerImage": {
+            "file": "/img/advanced_energy_2021_ocp_banner_1440x400_v3_1008.png",
+            "alt": ""
+          },
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-advancedenergy.jpg",
+            "alt": ""
+          },
           "chatLink": "https://direct.lc.chat/5963291/",
           "advertiseImage": "",
           "sponsorId": 74,
@@ -2493,11 +2763,20 @@
           "marquee": "Amphenol provides a wide range of the most advanced interconnect solutions for modern Data Centers and all their components.",
           "featuredEventId": 2317,
           "sponsorColor": "#0072C6",
-          "logo": "/img/amphenol_amphenol_blue-002-.png",
+          "logo": {
+            "file": "/img/amphenol_amphenol_blue-002-.png",
+            "alt": ""
+          },
           "name": "Amphenol",
           "intro": "#### Amphenol ICC, a division of Amphenol Corporation, is a world leader in interconnect solutions for the Information, Communications and Commercial electronics markets. Amphenol Corporation is one of the world’s largest designers and manufacturers of electrical, electronic and fiber optic connectors and interconnect systems, antennas, sensors and sensor-based products and coaxial and high-speed specialty cable. Amphenol ICC has an expansive global presence in research and development, manufacturing, and sales. We design and manufacture a wide range of innovative connectors as well as cable assemblies and optical transceivers for diverse applications including server, storage, data center, networking, industrial, business equipment and automotive.",
-          "headerImage": "/img/amphenol_ocp-welcome-image.jpg",
-          "headerImageMobile": "/img/ocp21glo_fnv_sponsorlogo-amphenol.jpg",
+          "headerImage": {
+            "file": "/img/amphenol_ocp-welcome-image.jpg",
+            "alt": ""
+          },
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-amphenol.jpg",
+            "alt": ""
+          },
           "advertiseImage": "",
           "sponsorId": 75,
           "title": "Amphenol",
@@ -2551,12 +2830,21 @@
         {
           "marquee": "Arm Neoverse Powers Cloud to Edge Infrastructure Solutions for a World of a 1T Devices. Learn more @https://www.arm.com/solutions/infrastructure.",
           "featuredEventId": 2327,
-          "logo": "/img/ocp21glo_fnv_sponsorlogo-arm.png",
+          "logo": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-arm.png",
+            "alt": ""
+          },
           "name": "Arm",
           "intro": "#### Arm technology is at the heart of a computing and data revolution that is transforming the way people live and businesses operate. Our energy-efficient processor designs and software platforms have enabled advanced computing in more than 190 billion chips and our technologies securely power products from sensors to supercomputers. Arm Neoverse IP is powering cloud to edge infrastructure solutions. These include silicon from Ampere Computing (Altra/Altra Max), Amazon (AWS Graviton2), Marvell (ThunderX2, OCTEON 10), NVIDIA (BlueField), Intel (Mt. Evans), NXP (Layerscape) and others. These products power cloud & edge services from AWS, Microsoft, Oracle, FaceBook Connectivity, Cloudflare, Alibaba, Tencent, ByteDance, Equinix and others. Within the OCP community Arm is a contributor to open-source firmware projects including Tianocore/EDK2, LinuxBoot, OpenBMC, and OpenOCD. Arm’s contributions can be seen in Ampere Computing’s “Mt. Jade” reference platform, available from Wiwynn.",
           "headerVideo": "",
-          "headerImage": "/img/arm_arm_ocp_2021_1440x440.jpg",
-          "headerImageMobile": "/img/ocp21glo_fnv_sponsorlogo-arm.jpg",
+          "headerImage": {
+            "file": "/img/arm_arm_ocp_2021_1440x440.jpg",
+            "alt": ""
+          },
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-arm.jpg",
+            "alt": ""
+          },
           "advertiseImage": "",
           "sponsorId": 77,
           "title": "Arm",
@@ -2636,11 +2924,20 @@
         {
           "marquee": "As a global leader in interconnect solutions, BizLink is committed to enabling reliable interconnection in a digital world.",
           "featuredEventId": 2328,
-          "logo": "/img/ocp21glo_fnv_sponsorlogo-bizlink.png",
+          "logo": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-bizlink.png",
+            "alt": ""
+          },
           "name": "BizLink Technology, Inc.",
           "intro": "#### BizLink, founded in 1996, is headquartered in Silicon Valley, USA. Our mission is to make interconnection easier and to become the leading global interconnect solution supplier. We support industries that are environmentally conscious and improve quality of life through providing essential components, wire harnesses, and cables to a wide variety of industries such as IT Infrastructure, Client Peripherals, Motor Vehicle, Electrical Appliances, Medical Equipment, Industrial, Optical Fiber Communications, and Solar. Our vertically integrated business model includes manufacturing sites in the United States, Mexico, Slovakia, Serbia, China, Malaysia, and Singapore. BizLink incorporates state-of-the-art facilities, advanced manufacturing processes, and professional research and development capabilities. Our global R&D and service teams in America, Europe, and Asia strive to keep collaborating closely with customers to turn their innovative ideas into reality.",
-          "headerImage": "/img/bizlink_technology_inc_static-image-banner_1440x400.jpg",
-          "headerImageMobile": "/img/ocp21glo_fnv_sponsorlogo-bizlink.jpg",
+          "headerImage": {
+            "file": "/img/bizlink_technology_inc_static-image-banner_1440x400.jpg",
+            "alt": ""
+          },
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-bizlink.jpg",
+            "alt": ""
+          },
           "advertiseImage": "",
           "sponsorId": 51,
           "title": "BizLink Technology, Inc.",
@@ -2698,11 +2995,17 @@
           "usesSponsorPage": true
         },
         {
-          "logo": "/img/ocp21glo_fnv_sponsorlogo-cisco.png",
+          "logo": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-cisco.png",
+            "alt": ""
+          },
           "name": "Cisco",
           "intro": "### Cisco is exhibiting in-person at the Global Summit in San Jose, CA. You can find us at booth A3 or reach us through the \"contact us\" button above.",
           "headerVideo": "https://fntech.sfo2.cdn.digitaloceanspaces.com/OCPGlobalSummitandSymposium2021/Videos/cisco_ocp-intro-60%20sec.mp4",
-          "headerImageMobile": "/img/ocp21glo_fnv_sponsorlogo-cisco.jpg",
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-cisco.jpg",
+            "alt": ""
+          },
           "chatLink": "https://cisco.webex.com/cisco/j.php?MTID=mef3dd4fbab34b3a00235a742f7a10fed",
           "advertiseImage": "",
           "sponsorId": 98,
@@ -2734,11 +3037,20 @@
           "marquee": "12.8Tb User Programmable Switches, 5G Ready Cell Site Gateways, Scalable Fixed Broadband Aggregation.",
           "featuredEventId": 2320,
           "sponsorColor": "#284974",
-          "logo": "/img/ocp21glo_fnv_sponsorlogo-edgecore.png",
+          "logo": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-edgecore.png",
+            "alt": ""
+          },
           "name": "Edgecore Networks",
           "intro": "#### Edgecore Networks Corporation is a wholly owned subsidiary of Accton Technology Corporation, the leading network ODM. Edgecore Networks delivers wired and wireless networking products and solutions through channel partners and system integrators worldwide for Data Center, Service Provider, Enterprise and SMB customers. Edgecore Networks is the leader in open networking, providing a full line of open 1G-400G Ethernet OCP Accepted™ switches, core routers, cell site gateways, virtual PON OLTs, packet transponders, and Wi-Fi access points that offer choice of commercial and open source NOS and SDN software.",
-          "headerImage": "/img/edgecore_networks_welcome_1_1440x400.jpg",
-          "headerImageMobile": "/img/ocp21glo_fnv_sponsorlogo-edgecore.jpg",
+          "headerImage": {
+            "file": "/img/edgecore_networks_welcome_1_1440x400.jpg",
+            "alt": ""
+          },
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-edgecore.jpg",
+            "alt": ""
+          },
           "advertiseImage": "",
           "sponsorId": 50,
           "title": "Edgecore Networks",
@@ -2818,11 +3130,20 @@
         {
           "marquee": "Open collaboration is in HPE’s DNA. We believe open source technologies can help deliver innovative solutions efficiently, securely, and at scale.",
           "sponsorColor": "#01A982",
-          "logo": "/img/hpe_hpe_rgb_pos_logo_484x484.png",
+          "logo": {
+            "file": "/img/hpe_hpe_rgb_pos_logo_484x484.png",
+            "alt": ""
+          },
           "name": "Hewlett Packard Enterprise",
           "intro": "#### Hewlett Packard Enterprise is the global edge-to-cloud company that helps organizations accelerate outcomes by unlocking value from all of their data, everywhere. Built on decades of reimagining the future and innovating to advance the way people live and work, HPE delivers unique, open and intelligent technology solutions delivered as a service – spanning Compute, Storage, Software, Intelligent Edge, High Performance Computing and Mission Critical Solutions – with a consistent experience across all clouds and edges, designed to help customers develop new business models, engage in new ways, and increase operational performance. For more information, visit: www.hpe.com.",
-          "headerImage": "/img/hpe_hpe_pri_grn_pos_rgb_1400x400.jpg",
-          "headerImageMobile": "/img/ocp21glo_fnv_sponsorlogo-hpe.jpg",
+          "headerImage": {
+            "file": "/img/hpe_hpe_pri_grn_pos_rgb_1400x400.jpg",
+            "alt": ""
+          },
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-hpe.jpg",
+            "alt": ""
+          },
           "advertiseImage": "",
           "sponsorId": 76,
           "title": "Hewlett Packard Enterprise",
@@ -2897,11 +3218,17 @@
           "marquee": "Modernize your testing with a shift-left approach. Ixia test solutions help you validate early in every phase.",
           "featuredEventId": 2324,
           "sponsorColor": "#871518",
-          "logo": "/img/ocp21glo_fnv_sponsorlogo-keysighttechnologies.png",
+          "logo": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-keysighttechnologies.png",
+            "alt": ""
+          },
           "name": "Keysight Technologies",
           "intro": "#### Keysight delivers advanced design and validation solutions to help accelerate innovation to connect and secure the world. Our Ixia network and security test solutions bring tomorrow’s technology products to market faster across the development lifecycle, in design simulation, prototype validation, automated software testing, and network performance optimization, and visibility in chipset and chipset and device manufacturing, enterprise, service provider, and cloud environments. We offer a powerful combination of innovative solutions and trusted insight to move testing ‘further to the left’. Testing earlier and more often ensures faster time to market with high-quality end products. Join the world’s leading innovators that already rely on Keysight to validate their network and security products, from concept to operation.",
           "headerVideo": "https://fntech.sfo2.cdn.digitaloceanspaces.com/OCPGlobalSummitandSymposium2021/Videos/KEYSIGHT%20NEW_welcome%20video3.mp4",
-          "headerImageMobile": "/img/ocp21glo_fnv_sponsorlogo-keysighttechnologies.jpg",
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-keysighttechnologies.jpg",
+            "alt": ""
+          },
           "chatLink": "https://teams.microsoft.com/l/meetup-join/19%3ameeting_OGYxZGQ1NjktNTYxMy00YmU2LWFiMzQtMDE0ZmQ5M2ZmMDAx%40thread.v2/0?context=%7b%22Tid%22%3a%2263545f27-3232-4d74-a44d-cdd457063402%22%2c%22Oid%22%3a%22790a8c90-2135-40cc-a315-5ffe9de3ff7e%22%7d",
           "advertiseImage": "",
           "sponsorId": 79,
@@ -2993,11 +3320,17 @@
         },
         {
           "marquee": "Low Power Leader and Secure Solution Provider.",
-          "logo": "/img/346be1c870abff03f27309b2e27b9fbe1cd54dec.png",
+          "logo": {
+            "file": "/img/346be1c870abff03f27309b2e27b9fbe1cd54dec.png",
+            "alt": ""
+          },
           "name": "Lattice Semiconductor",
           "intro": "### Lattice Semiconductor (NASDAQ: LSCC) is the low power programmable leader. We solve customer problems across the network, from the Edge to the Cloud, in the growing communications, computing, industrial, automotive and consumer markets. Our technology, long-standing relationships, and commitment to world-class support lets our customers quickly and easily unleash their innovation to create a smart, secure and connected world.",
           "headerVideo": "https://fntech.sfo2.cdn.digitaloceanspaces.com/OCPGlobalSummitandSymposium2021/Videos/lattice_semiconductor_US2635_Lattice_Semiconductors_CertusPro-NX_04_20210616_KT.mp4.mp4",
-          "headerImageMobile": "/img/ocp21glo_fnv_sponsorlogo-latticesemiconductor.jpg",
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-latticesemiconductor.jpg",
+            "alt": ""
+          },
           "advertiseImage": "",
           "sponsorId": 83,
           "title": "Lattice Semiconductor",
@@ -3064,11 +3397,20 @@
           "marquee": "Powering Tomorrow: Murata's Data Center and Open Compute Solutions.",
           "featuredEventId": 2322,
           "sponsorColor": "#525B5C",
-          "logo": "/img/ocp21glo_fnv_sponsorlogo-murata.png",
+          "logo": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-murata.png",
+            "alt": ""
+          },
           "name": "Murata",
           "intro": "### Murata Manufacturing Co., Ltd. is a worldwide leader in the design, manufacture and sale of ceramic-based passive electronic components and solutions, communication modules and power supply modules. Murata is committed to the development of advanced electronic materials and leading edge, multi-functional, high-density modules. The company has employees and manufacturing facilities throughout the world. For more information, visit Murata’s website at www.murata.com.",
-          "headerImage": "/img/murata_murata-opc-welcome-1440x400px-slide.jpg",
-          "headerImageMobile": "/img/ocp21glo_fnv_sponsorlogo-murata.jpg",
+          "headerImage": {
+            "file": "/img/murata_murata-opc-welcome-1440x400px-slide.jpg",
+            "alt": ""
+          },
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-murata.jpg",
+            "alt": ""
+          },
           "advertiseImage": "",
           "sponsorId": 118,
           "title": "Murata",
@@ -3117,12 +3459,21 @@
         },
         {
           "marquee": "Expanding the world's vision of what is possible!",
-          "logo": "/img/ocp21glo_fnv_sponsorlogo-penguin.png",
+          "logo": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-penguin.png",
+            "alt": ""
+          },
           "name": "Penguin Computing",
           "intro": "### Penguin Computing specializes in custom, innovative, open solutions for AI, HPC, Data Center, and the Cloud. Penguin Computing provides hardware and software solutions built on both 19” and 21” OCP infrastructures. Founded twenty years ago by the team that created the original beowulf cluster, Penguin Computing has been integral to the development of modern HPC and data center technologies. Today, Penguin Computing focuses on four key areas, High-performance Computing, Artificial Intelligence, Software-defined Storage, and Cloud Computing solutions.",
           "headerVideo": "",
-          "headerImage": "/img/penguin_computing_expanding-word-vision-of-what-s-possible-banner-2-.jpg",
-          "headerImageMobile": "/img/ocp21glo_fnv_sponsorlogo-penguin.jpg",
+          "headerImage": {
+            "file": "/img/penguin_computing_expanding-word-vision-of-what-s-possible-banner-2-.jpg",
+            "alt": ""
+          },
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-penguin.jpg",
+            "alt": ""
+          },
           "advertiseImage": "",
           "sponsorId": 54,
           "title": "Penguin Computing",
@@ -3209,11 +3560,17 @@
           "marquee": "Building Real Open Networks With White Box and SONiC Integrated Solutions. Open Networking With Vision and Precision.",
           "featuredEventId": 2281,
           "sponsorColor": "#28283c",
-          "logo": "/img/ocp21glo_fnv_sponsorlogo-ragilenetworks.png",
+          "logo": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-ragilenetworks.png",
+            "alt": ""
+          },
           "name": "Ragile Networks, Inc.",
           "intro": "#### Ragile Networks Inc. specializes in providing products and solutions for data center networks. Its name “Ragile” consists of two parts: the letter “R” refers to the first letter of “rapid”, while the second part is the word “agile”. This represents the company's commitment to providing customers with “fast, agile and open” products and services. With a number of R&D and manufacturing centers around the world, and industry-leading professional R&D and testing teams, Ragile has a deep understanding and rich experience in the R&D of technologies such as NOS, ASIC and SDK. With a precise understanding of customer needs in the data center scenario and a strong technological innovation capability, Ragile aims to provide the industry's most complete portfolio of data center network products and solutions for its global customers, including a full series of 25/50/100/200/400GbE-based bare metal data center switches. On top of that, Ragile dedicates itself to ensuring delivery and providing professional services for Hyperscale data center networks. Looking to the future, Ragile will bring more open, agile network experiences to each organization and individual, helping users achieve digital transformation and giving them an edge in the market.",
           "headerVideo": "https://fntech.sfo2.cdn.digitaloceanspaces.com/OCPGlobalSummitandSymposium2021/Videos/ragile_networks_Welcome%20Video.mp4",
-          "headerImageMobile": "/img/ocp21glo_fnv_sponsorlogo-ragilenetworks.jpg",
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-ragilenetworks.jpg",
+            "alt": ""
+          },
           "advertiseImage": "",
           "sponsorId": 84,
           "title": "Ragile Networks, Inc.",
@@ -3275,11 +3632,20 @@
         {
           "marquee": "Visit us at booth A22!",
           "sponsorColor": "#f56600",
-          "logo": "/img/ocp21glo_fnv_sponsorlogo-samtec-.png",
+          "logo": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-samtec-.png",
+            "alt": ""
+          },
           "name": "Samtec",
           "intro": "### Samtec is exhibiting in-person at the Global Summit in San Jose, CA. You can find us at booth A22 or reach us through the \"contact us\" button above.",
-          "headerImage": "/img/ocp21glo_fnv_nocontent-samtec-header.jpg",
-          "headerImageMobile": "/img/ocp21glo_fnv_nocontent-samtec-header-mobile.jpg",
+          "headerImage": {
+            "file": "/img/ocp21glo_fnv_nocontent-samtec-header.jpg",
+            "alt": ""
+          },
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_nocontent-samtec-header-mobile.jpg",
+            "alt": ""
+          },
           "advertiseImage": "",
           "sponsorId": 73,
           "title": "Samtec",
@@ -3292,11 +3658,17 @@
           "marquee": "Multiply your Compute, Storage, and Network Efficiency with ScaleFlux Storage Products.",
           "featuredEventId": 2330,
           "sponsorColor": "#054567",
-          "logo": "/img/ocp21glo_fnv_sponsorlogo-scaleflux.png",
+          "logo": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-scaleflux.png",
+            "alt": ""
+          },
           "name": "ScaleFlux",
           "intro": "##### ScaleFlux storage products are designed to help our customers overcome the challenges of the data-centric economy to multiply the value of their compute, storage, and networking infrastructure. ScaleFlux customers have reported up to 3x performance per node, 4x storage per dollar, 9x endurance per TB, and 15x lower latency per query in comparison to using ordinary SSDs – all with zero code changes to their applications. The overarching result – improved efficiency. With the recently announced 3000 family, ScaleFlux will enable users to further expand these efficiency benefits for even more use cases across enterprise, data center, and edge deployments. The 3000 family, based on ScaleFlux’s SFX 3000 storage processor, includes NVMe Solid State Drives (SSDs), NVMe Computational Storage Drives (CSDs), NVMe Computational Storage Processors (CSPs), and software tuned to fully utilize the capabilities of computational storage (CSware).",
           "headerVideo": "https://fntech.sfo2.cdn.digitaloceanspaces.com/OCPGlobalSummitandSymposium2021/Videos/scaleflux_combined-_1.mp4",
-          "headerImageMobile": "/img/ocp21glo_fnv_sponsorlogo-scaleflux.jpg",
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-scaleflux.jpg",
+            "alt": ""
+          },
           "advertiseImage": "",
           "sponsorId": 81,
           "title": "ScaleFlux",
@@ -3337,11 +3709,17 @@
           "marquee": "Innovation in Enterprise Flash Storage.",
           "featuredEventId": 2333,
           "sponsorColor": "#0077C8",
-          "logo": "/img/silicon_motion_smi-logo-484.png",
+          "logo": {
+            "file": "/img/silicon_motion_smi-logo-484.png",
+            "alt": ""
+          },
           "name": "Silicon Motion",
           "intro": "#### Silicon Motion Technology Corporation (NasdaqGS: SIMO) is the global leader in developing NAND ﬂash controllers for SSDs and other solid state storage devices. We have over 20 years of experience developing specialized processor ICs that manage NAND components and deliver market leading, high-performance storage solutions widely used in smartphones, PCs, data centers and commercial and industrial applications. We have one of the broadest portfolios of controller intellectual properties developed from our deep understanding of NAND characteristics, which enables us to design both unique, highly optimized configurable ICs plus related firmware controller platforms and complete turnkey controller solutions. With comprehensive knowledge of NAND characteristics, flexible ASIC/Firmware design capabilities and proprietary NANDXtend™ ECC technology which integrates error recovery functionality with a machine learning algorithms, SMI’s enterprise storage solutions deliver high performance, extended data retention and improved QoS. Additional information on Silicon Motion’s innovative and comprehensive Enterprise / Data Center product portfolio is available by clicking the link in the sidebar.",
           "headerVideo": "https://fntech.sfo2.cdn.digitaloceanspaces.com/OCPGlobalSummitandSymposium2021/Videos/silicon_motion_welcome%20video_ok.mov.mp4",
-          "headerImageMobile": "/img/ocp21glo_fnv_sponsorlogo-siliconmotion.jpg",
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-siliconmotion.jpg",
+            "alt": ""
+          },
           "advertiseImage": "",
           "sponsorId": 78,
           "title": "Silicon Motion",
@@ -3440,11 +3818,20 @@
           "marquee": "AI from Datacenter to Edge.",
           "featuredEventId": 2319,
           "sponsorColor": "#003A70",
-          "logo": "/img/super_micro_computer_inc_supermicro_greenc_newlogo_whitebackground.png",
+          "logo": {
+            "file": "/img/super_micro_computer_inc_supermicro_greenc_newlogo_whitebackground.png",
+            "alt": ""
+          },
           "name": "Super Micro Computer, Inc.",
           "intro": "#### Supermicro® (NASDAQ: SMCI), the leading innovator in high-performance, high-efficiency server technology is a premier provider of advanced Server Building Block Solutions® for Data Center, Cloud Computing, Enterprise IT, Hadoop/Big Data, HPC and Embedded Systems worldwide. Supermicro is committed to protecting the environment through its “We Keep IT Green®” initiative and provides customers with the most energy-efficient, environmentally-friendly solutions available on the market. Visit www.supermicro.com for details and follow Supermicro on Facebook and Twitter.",
-          "headerImage": "/img/35_2021-ocpglobalsummit_virtualbooth_r02_1440x400px.jpg",
-          "headerImageMobile": "/img/ocp21glo_fnv_sponsorlogo-supermicrocomputer.jpg",
+          "headerImage": {
+            "file": "/img/35_2021-ocpglobalsummit_virtualbooth_r02_1440x400px.jpg",
+            "alt": ""
+          },
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-supermicrocomputer.jpg",
+            "alt": ""
+          },
           "advertiseImage": "",
           "sponsorId": 82,
           "title": "Super Micro Computer, Inc.",
@@ -3554,7 +3941,10 @@
           "advertiseImage": "",
           "showLogoInEventPage": false,
           "name": "Topaz",
-          "logo": "/img/ocp21glo_fnv_sponsorlogo-topaz.png",
+          "logo": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-topaz.png",
+            "alt": ""
+          },
           "id": 128,
           "sponsorId": 128
         },
@@ -3562,11 +3952,20 @@
           "marquee": "DriveNets builds networks like cloud, over a fully virtualized cloud-native architecture - scalable, demand-responsive and innovations-ready. ",
           "featuredEventId": 2273,
           "sponsorColor": "#0556FF",
-          "logo": "/img/ocp21glo_fnv_sponsorlogo-drivenets.png",
+          "logo": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-drivenets.png",
+            "alt": ""
+          },
           "name": "DriveNets",
           "intro": "#### DriveNets is a leader in cloud-native networking software and network disaggregation solutions. Founded in 2015 and based in Israel, DriveNets offers communications service providers (CSPs) and cloud providers a radical new way to build networks, substantially growing their profitability by changing their technological and economic models. DriveNets’ solution – Network Cloud – adapts the architectural model of cloud to telco-grade networking. Network Cloud is a cloud-native software that runs over a shared physical infrastructure of standard white-boxes, radically simplifying the network’s operations, offering telco-scale performance and elasticity at a much lower cost.",
-          "headerImage": "/img/drivenets_drivenets-ocp-1440x400.png",
-          "headerImageMobile": "/img/ocp21glo_fnv_sponsorlogo-drivenets.jpg",
+          "headerImage": {
+            "file": "/img/drivenets_drivenets-ocp-1440x400.png",
+            "alt": ""
+          },
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-drivenets.jpg",
+            "alt": ""
+          },
           "chatLink": "https://drivenets.zoom.us/j/95353949825?pwd=S0JBRW1IV0JqL3dKb0JGb0lxajF3dz09",
           "advertiseImage": "",
           "sponsorId": 102,
@@ -3636,11 +4035,20 @@
           "marquee": "Single Phase Immersion Cooling Fluids: Designed with the Data Center Industry in mind.",
           "featuredEventId": 2365,
           "sponsorColor": "#004e9e",
-          "logo": "/img/ocp21glo_fnv_sponsorlogo-fuchslubricants.png",
+          "logo": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-fuchslubricants.png",
+            "alt": ""
+          },
           "name": "FUCHS LUBRICANTS CO.",
           "intro": "#### FUCHS is a global leader in the development and production of comprehensive lubricant solutions, products, and services. Our RENOLIN Fluids for Electronic Component Cooling (FECC) were designed with the needs of the data center in mind. Switching to our single-phase immersion cooling can help your plant increase power rack density, reduce energy usage, reduce CO2 emissions and cut operational costs.\n\n#### The RENOLIN FECC product line includes both mineral oils and synthetic fluids. Our products are safe, reliable and offer:\n\n* #### Excellent dielectric properties\n* #### Great heat conductivity\n* #### Protection against corrosion\n* #### Compatibility with common IT materials \n\n#### FUCHS provides customers with efficient, sustainable, and innovative solutions driven by our global distribution network, CO2-neutral production, and cutting-edge technology. Our commitment to research and development enables us to provide solutions for the ever-changing needs of the data center industry.",
-          "headerImage": "/img/fuchs_lubricants_co_immersion-cooling_web-banner-01.png",
-          "headerImageMobile": "/img/ocp21glo_fnv_sponsorlogo-fuchslubricants.jpg",
+          "headerImage": {
+            "file": "/img/fuchs_lubricants_co_immersion-cooling_web-banner-01.png",
+            "alt": ""
+          },
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-fuchslubricants.jpg",
+            "alt": ""
+          },
           "advertiseImage": "",
           "sponsorId": 122,
           "title": "FUCHS LUBRICANTS CO.",
@@ -3688,11 +4096,17 @@
           "usesSponsorPage": true
         },
         {
-          "logo": "/img/mitac_horizontal_mitac_logo_color.png",
+          "logo": {
+            "file": "/img/mitac_horizontal_mitac_logo_color.png",
+            "alt": ""
+          },
           "name": "MiTAC Computing Technology Corporation",
           "intro": "### Focused on cloud computing solutions and services, MiTAC Computing Technology boasts more than 20 years of design and manufacturing experience in hyperscale datacenters, enterprise servers, storage systems, embedded products and industrial computers. Combined with TYAN's 30 year history of server customization capacity and comprehensive relationships in the channel with system integration partners, it is now providing customers with products which feature flexibility and customization across many different system and application types. MiTAC’s cloud computing solutions cover the entire spectrum, from rack and tower systems, high-performance and GPU-accelerated computing, cloud computing servers, storage systems, blade servers, workstations, through to complete systems and cabinets. These products are aimed at offering customers the best TCO (Total Cost of Ownership) for the next generation of public, private and hybrid cloud equipment; MiTAC smart client solutions may contain panel PC, BOX PC, mobile POS, and industrial mainboards to offer brand owners and system integrators with specialty solutions featuring better integration and competitive design.",
           "headerVideo": "https://fntech.sfo2.cdn.digitaloceanspaces.com/OCPGlobalSummitandSymposium2021/Videos/mitac_computing_technology_corporation_MiTAC%205G_finial.mp4",
-          "headerImageMobile": "/img/ocp21glo_fnv_sponsorlogo-mitac.jpg",
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-mitac.jpg",
+            "alt": ""
+          },
           "advertiseImage": "",
           "sponsorId": 100,
           "title": "MiTAC Computing Technology Corporation.",
@@ -3741,12 +4155,18 @@
           "marquee": "Pluribus Adaptive Cloud Fabric delivers powerful networking solutions that are extremely simple to deploy and operate. It’s Cloud Networking–simplified.",
           "featuredEventId": 2338,
           "sponsorColor": "#8ec341",
-          "logo": "/img/8147da3fe0210702f64d70873a767ae696582820.png",
+          "logo": {
+            "file": "/img/8147da3fe0210702f64d70873a767ae696582820.png",
+            "alt": ""
+          },
           "name": "Pluribus Networks",
           "intro": "#### Pluribus delivers data center network switching and monitoring fabrics that radically simplify operations and lower costs. Built on a foundation of open networking, our unique controllerless software-defined networking (SDN) architecture incorporates network automation, virtualization, segmentation, visibility and analytics in a comprehensive, cost-effective and easy-to-use solution that works right out of the box. Whether modernizing a leaf-spine network in a single software-defined data center, deploying data center interconnect to create a unified network fabric across a multi-site data center, building a distributed cloud in edge computing environments, automating your lab environment or intelligently steering traffic to monitoring tools, Pluribus Adaptive Cloud Fabric™ delivers powerful solutions that are extremely simple to deploy and operate. Pluribus is deployed by more than 350 customers, including more than 100 tier one mobile network operators around the globe.",
           "headerVideo": "https://fntech.sfo2.cdn.digitaloceanspaces.com/OCPGlobalSummitandSymposium2021/Videos/pluribus_networks_Pluribus%20Booth%20Video%20%28final%29.mp4",
           "headerImage": "",
-          "headerImageMobile": "/img/ocp21glo_fnv_sponsorlogo-pluribusnetworks.jpg",
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-pluribusnetworks.jpg",
+            "alt": ""
+          },
           "advertiseImage": "",
           "sponsorId": 103,
           "title": "Pluribus Networks",
@@ -3820,11 +4240,17 @@
         {
           "marquee": "Enabling cooling and automation for data & energy-intense environments through highly-efficient & sustainable technologies:Datacenters that make sense.",
           "sponsorColor": "#08101c",
-          "logo": "/img/904078ed88a252dd352f74e386e57792d81563de.png",
+          "logo": {
+            "file": "/img/904078ed88a252dd352f74e386e57792d81563de.png",
+            "alt": ""
+          },
           "name": "Submer",
           "intro": "#### Submer began in 2015, with the idea of challenging what it means to be a ‘traditional’ datacenter means. Today, Submer’s state-of-the-art solutions designed for Datacenters, Cloud and Edge computing are purpose built to future-proof their infrastructure, addressing challenges of heat-reuse, net-zero water and site selection. Submer is the perfect partner for enterprises and datacenters wishing to implement solutions that help their datacenters make sense. We enable next generation cooling and automation for data & energy-intense environments by integrating our pristine, highly-efficient & sustainable technologies. Solving the challenges of today and powering the use cases of the future.",
           "headerVideo": "https://fntech.sfo2.cdn.digitaloceanspaces.com/OCPGlobalSummitandSymposium2021/Videos/submer_nextgen_datacenters_v3_Welcome_Promo%20Video%20%281920x1080%29.mp4",
-          "headerImageMobile": "/img/ocp21glo_fnv_sponsorlogo-submernextgen.jpg",
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-submernextgen.jpg",
+            "alt": ""
+          },
           "advertiseImage": "",
           "sponsorId": 99,
           "title": "Submer",
@@ -3899,11 +4325,17 @@
           "marquee": "ENABLING NEXT GENERATION ARCHITECTURE.",
           "featuredEventId": 2313,
           "sponsorColor": "#E98300",
-          "logo": "/img/ocp21glo_fnv_sponsorlogo-teconnectivity.png",
+          "logo": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-teconnectivity.png",
+            "alt": ""
+          },
           "name": "TE Connectivity",
           "intro": "#### TE Connectivity is a global industrial technology leader creating a safer, sustainable, productive and connected future. Their broad range of connectivity and sensor solutions, proven in the harshest environments, enable advancements in transportation, industrial applications, medical technology, energy, data communications and the home. With approximately 80,000 employees, including more than 7,500 engineers, working alongside customers in approximately 140 countries, TE ensures that EVERY CONNECTION COUNTS.",
           "headerVideo": "https://fntech.sfo2.cdn.digitaloceanspaces.com/OCPGlobalSummitandSymposium2021/Videos/te_connectivity_TE-2018_Start-Frame-MP4.mp4",
-          "headerImageMobile": "/img/ocp21glo_fnv_sponsorlogo-teconnectivity.jpg",
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-teconnectivity.jpg",
+            "alt": ""
+          },
           "advertiseImage": "",
           "sponsorId": 52,
           "title": "TE Connectivity",
@@ -3979,15 +4411,27 @@
           "name": "Start-up",
           "id": 123,
           "sponsorId": 123,
-          "logo": "/img/ocp21glo_fnv_sponsorlogo-startup.png"
+          "logo": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-startup.png",
+            "alt": ""
+          }
         },
         {
           "marquee": "Visit us at booth C26.",
-          "logo": "/img/ocp21glo_fnv_sponsorlogo-kameleonsecurity.png",
+          "logo": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-kameleonsecurity.png",
+            "alt": ""
+          },
           "name": "Kameleon Security",
           "intro": "### Kameleon Security is exhibiting in-person at the Global Summit in San Jose, CA. You can find us at booth C26 or reach us through the \"contact us\" button above.",
-          "headerImage": "/img/ocp21glo_fnv_nocontent-kameleon-header.jpg",
-          "headerImageMobile": "/img/ocp21glo_fnv_nocontent-kameleon-header-mobile.jpg",
+          "headerImage": {
+            "file": "/img/ocp21glo_fnv_nocontent-kameleon-header.jpg",
+            "alt": ""
+          },
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_nocontent-kameleon-header-mobile.jpg",
+            "alt": ""
+          },
           "advertiseImage": "",
           "sponsorId": 104,
           "title": "Kameleon Security",
@@ -4001,12 +4445,21 @@
           "marquee": "FADU is leading the industry with the lowest power, highest sustainable QoS Enterprise Storage Solutions for Gen 4 and beyond. Visit www.fadutec.com.",
           "featuredEventId": 2335,
           "sponsorColor": "#000000",
-          "logo": "/img/ocp21glo_fnv_sponsorlogo-fadu.png",
+          "logo": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-fadu.png",
+            "alt": ""
+          },
           "name": "FADU Technology",
           "intro": "#### FADU is a fabless start up focusing on advancing Flash storage technology. We are dedicated to developing and deploying a new architecture for SSD controllers and storage products that meets the explosively increasing diverse data demands placed on enterprise datacenters. We believe that existing solutions, with their legacy ties to the past, are unable to meet both performance and power requirements to support real-time, cloud based, connected applications. FADU’s global team, comprised of seasoned storage architects, ASIC experts and SSD engineers, is charting the course for the industry. We are addressing all aspects of the Flash-based enterprise storage solution – very lower power, ultra-high performance, rich feature set, solid reliability and a superior QOS. FADU is shipping PCIe Gen 3 and PCIe Gen 4 SSDs with PCIe Gen 5 being readied for market adoption in 2022. FADU is a member of the Open Compute Project.",
           "headerVideo": "",
-          "headerImage": "/img/fadu_technology_inc_fadu-virtual-booth-banner1440x400.png",
-          "headerImageMobile": "/img/ocp21glo_fnv_sponsorlogo-fadu.jpg",
+          "headerImage": {
+            "file": "/img/fadu_technology_inc_fadu-virtual-booth-banner1440x400.png",
+            "alt": ""
+          },
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-fadu.jpg",
+            "alt": ""
+          },
           "advertiseImage": "",
           "sponsorId": 105,
           "title": "FADU Technology",
@@ -4064,12 +4517,21 @@
           "marquee": "Welcome to our Booth! Want to make your company a revenue source? Scan your badge!",
           "featuredEventId": 2368,
           "sponsorColor": "#B21921",
-          "logo": "/img/msp-disposal.png",
+          "logo": {
+            "file": "/img/msp-disposal.png",
+            "alt": ""
+          },
           "name": "MSP Disposal ",
           "intro": "### How do we do it? MSP Disposal is a global e-waste company that assists in server decommissioning to include data removal. Once interested in our services, we grant you access into our portal which tracks all revenue & data deletion certificates. Once a month, checks are sent to your attention for a percentage so you can hand off to your accounting department.",
           "headerVideo": "",
-          "headerImage": "/img/minos_technology_static-image-1440-x-400.png",
-          "headerImageMobile": "/img/ocp21glo_fnv_sponsorlogo-mspdisposal.jpg",
+          "headerImage": {
+            "file": "/img/minos_technology_static-image-1440-x-400.png",
+            "alt": ""
+          },
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-mspdisposal.jpg",
+            "alt": ""
+          },
           "chatLink": "https://zoom.us/j/8527499865",
           "advertiseImage": "",
           "sponsorId": 106,
@@ -4131,7 +4593,10 @@
           "showLogoInEventPage": false,
           "name": "Virtual Only",
           "companyId": 113,
-          "logo": "/img/ocp21glo_fnv_sponsorlogo-virtual.png",
+          "logo": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-virtual.png",
+            "alt": ""
+          },
           "id": 125,
           "sponsorId": 125
         },
@@ -4139,11 +4604,17 @@
           "marquee": "Immersion cooling redefined for future ready datacentres | Immersed Computing®.",
           "featuredEventId": 2318,
           "sponsorColor": "#ff4444",
-          "logo": "/img/asperitas_and_shell_joint-logo_transparent.png",
+          "logo": {
+            "file": "/img/asperitas_and_shell_joint-logo_transparent.png",
+            "alt": ""
+          },
           "name": "Asperitas and Shell",
           "intro": "### Asperitas provides cutting edge immersion cooling solutions for datacentres globally. Since the research and development phase, there have been collaborations with an extensive ecosystem of partners, like Shell. Shell is an international energy company with expertise in the exploration, production and refining of oil and natural gas, and the manufacturing and marketing of chemicals. Their immersion cooling fluid has been used to accelerate Asperitas’ mission for sustainable datacentres. Schedule your demo here: http://www.calendly.com/asperitas/demo.",
           "headerVideo": "https://fntech.sfo2.cdn.digitaloceanspaces.com/OCPGlobalSummitandSymposium2021/Videos/asperitas_and_shell_ocp%20animation-02.mp4",
-          "headerImageMobile": "/img/ocp21glo_fnv_sponsorlogo-asperitas-shell.jpg",
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-asperitas-shell.jpg",
+            "alt": ""
+          },
           "chatLink": "http://www.calendly.com/asperitas/demo",
           "advertiseImage": "",
           "sponsorId": 124,
@@ -4226,12 +4697,21 @@
           "marquee": "Building Revolutionary IT Infrastructures.",
           "featuredEventId": 2321,
           "sponsorColor": "#FF5A2D",
-          "logo": "/img/ocp21glo_fnv_sponsorlogo-circleb.png",
+          "logo": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-circleb.png",
+            "alt": ""
+          },
           "name": "Circle B",
           "intro": "### Since 2012, Circle B has brought Open Compute Project (OCP) hardware to the European market. Committed to making hyperscale-quality infrastructure available to any organization, we take pride in helping our customers reduce their carbon footprint while saving on energy and maintenance costs. In 2019, Circle B joined Taurus Group, a leading IT hardware distribution company based in The Netherlands. With established distribution channels across Europe, Taurus was the ideal partner to help Circle B fulfill its vision of making OCP hardware widely available to the European market. Today, Circle B has customers across the continent, including Eastern Europe and Russia. We provide a full design-to-implementation product customized with OS and software—plus a comprehensive suite of managed services to ensure every customer gets the maximum possible business value from their investment.",
           "headerVideo": "",
-          "headerImage": "/img/circle_b_welcome-image-circle-b-2800-x-800.jpg",
-          "headerImageMobile": "/img/ocp21glo_fnv_sponsorlogo-circleb.jpg",
+          "headerImage": {
+            "file": "/img/circle_b_welcome-image-circle-b-2800-x-800.jpg",
+            "alt": ""
+          },
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-circleb.jpg",
+            "alt": ""
+          },
           "chatLink": "https://zoom.us/j/96113099383?pwd=RlhJbDRVSmNhZ2VaV3dMWjRFaStFUT09",
           "advertiseImage": "",
           "sponsorId": 109,
@@ -4301,11 +4781,17 @@
           "marquee": "Hyve Solutions Unveils Building Blocks for Hyperscale Infrastructure - Original Design Manufacturer among first to deliver ORv3-based server line.",
           "featuredEventId": 2274,
           "sponsorColor": "#72BF44",
-          "logo": "/img/ocp21glo_fnv_sponsorlogo-hyve.png",
+          "logo": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-hyve.png",
+            "alt": ""
+          },
           "name": "Hyve Solutions",
           "intro": "### Hyve Solutions is a leader in the design to worldwide deployment of hyperscale digital infrastructures. In partnership with customers, Hyve leverages deep-seated industry experience and strong vendor partnerships to design and deliver purpose-built server, storage, and networking solutions to meet datacenter demands for today and beyond. Hyve Solutions is a wholly owned subsidiary of SYNNEX Corporation (NYSE: SNX). For more information about Hyve Solutions, visit hyvesolutions.com, email sales@hyvesolutions.com or call (855) 869-6973.",
           "headerVideo": "https://fntech.sfo2.cdn.digitaloceanspaces.com/OCPGlobalSummitandSymposium2021/Videos/Hyve_OCP2021_AnimatedWelcomeBanner%20%281%29.mp4",
-          "headerImageMobile": "/img/ocp21glo_fnv_sponsorlogo-hyve.jpg",
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-hyve.jpg",
+            "alt": ""
+          },
           "chatLink": "https://teams.microsoft.com/dl/launcher/launcher.html?url=%2F_%23%2Fl%2Fmeetup-join%2F19%3Ameeting_NDdkYzBlMmQtYmQ4ZC00OTkyLWJjZTEtMmJlZjY4Y2RhNTBl%40thread.v2%2F0%3Fcontext%3D%257b%2522Tid%2522%253a%2522972a0e27-c355-4fd7-9225-9266c8f332ac%2522%252c%2522Oid%2522%253a%252225aca743-3bcb-4ab4-a07f-80261f58db23%2522%257d%26anon%3Dtrue&type=meetup-join&deeplinkId=5305cabd-548b-4e48-bc85-f4e915126254&directDl=true&msLaunch=true&enableMobilePage=true&suppressPrompt=true",
           "advertiseImage": "",
           "sponsorId": 107,
@@ -4375,12 +4861,21 @@
           "marquee": "Advancing Interoperability. Visit Juniper’s virtual booth to see how we are advancing SONiC and addressing its management challenges.",
           "externalLink": "",
           "featuredEventId": 2312,
-          "logo": "/img/267617bb4186f0ed242ad7a4fd3413c96a560b29.png",
+          "logo": {
+            "file": "/img/267617bb4186f0ed242ad7a4fd3413c96a560b29.png",
+            "alt": ""
+          },
           "name": "Juniper Networks",
           "intro": "#### At Juniper, we strive to deliver network experiences that transform how people connect, work and live. By challenging the inherent complexity in the Cloud + 5G + AI era, our solutions power the connections that matter most - from education to healthcare to secure banking. Our commitment is to advance real outcomes for network teams and every individual they serve. It’s that simple.",
           "headerVideo": "",
-          "headerImage": "/img/juniper_networks_210517-1_event_ocp-event-support_topb_1440x400.png",
-          "headerImageMobile": "/img/ocp21glo_fnv_sponsorlogo-junipernetworks.jpg",
+          "headerImage": {
+            "file": "/img/juniper_networks_210517-1_event_ocp-event-support_topb_1440x400.png",
+            "alt": ""
+          },
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-junipernetworks.jpg",
+            "alt": ""
+          },
           "advertiseImage": "",
           "sponsorId": 66,
           "title": "Juniper Networks",
@@ -4461,11 +4956,20 @@
           "marquee": "The data center is the new unit of computing. Explore NVIDIA’s software-defined, hardware-accelerated networking solutions that are making it happen.",
           "featuredEventId": 2279,
           "sponsorColor": "#76B900",
-          "logo": "/img/ocp21glo_fnv_sponsorlogo-nvidia.png",
+          "logo": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-nvidia.png",
+            "alt": ""
+          },
           "name": "NVIDIA",
           "intro": "### NVIDIA’s invention of the GPU sparked the PC gaming market. The company’s pioneering work in accelerated computing—a supercharged form of computing at the intersection of computer graphics, high performance computing and AI—is reshaping trillion-dollar industries, such as transportation, healthcare and manufacturing, and fueling the growth of many others.",
-          "headerImage": "/img/nvidia_project-monterey-ocp-2021-virtual-booth-sponsorship-1950471-booth-images-banner-1440x400-2-.jpg",
-          "headerImageMobile": "/img/ocp21glo_fnv_sponsorlogo-nvidia.jpg",
+          "headerImage": {
+            "file": "/img/nvidia_project-monterey-ocp-2021-virtual-booth-sponsorship-1950471-booth-images-banner-1440x400-2-.jpg",
+            "alt": ""
+          },
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-nvidia.jpg",
+            "alt": ""
+          },
           "advertiseImage": "",
           "sponsorId": 108,
           "title": "NVIDIA",
@@ -4539,11 +5043,17 @@
           "marquee": "The Micron 7400 SSD is Micron’s first SSD designed for select OCP deployments and is available in EDSFF SSD form factors.",
           "featuredEventId": 2323,
           "sponsorColor": "#0090DA",
-          "logo": "/img/ocp21glo_fnv_sponsorlogo-micron.png",
+          "logo": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-micron.png",
+            "alt": ""
+          },
           "name": "Micron",
           "intro": "### As a leading storage provider, we are an industry leader in innovative memory and storage solutions transforming how the world uses information to enrich life *for all.* With a relentless focus on our customers, technology leadership, and manufacturing and operational excellence, Micron delivers a rich portfolio of high-performance DRAM, NAND and NOR memory and storage products through our Micron® and Crucial® brands. We have recently announced availability of the Micron 7400 SSD with NVMe™, delivering industry-leading form factor flexibility, PCIe Gen4 performance, and leading-edge security to meet the storage needs of demanding data center workloads. It also supports Open Compute Project (OCP) deployments for qualified environments. OCP developed and published specifications that have built a thriving ecosystem, creating a standardized approach that helps reduce integration complexity and speeds time to market.",
           "headerVideo": "https://fntech.sfo2.cdn.digitaloceanspaces.com/OCPGlobalSummitandSymposium2021/Videos/micron_MICRON%20DATA%20LIVES_30%20Feel%20Alive2%2050mb%20%281%29.mp4",
-          "headerImageMobile": "/img/ocp21glo_fnv_sponsorlogo-micron.jpg",
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-micron.jpg",
+            "alt": ""
+          },
           "chatLink": "https://micron.zoom.us/j/96661062106?pwd=d0RmbUVzNEhNMkxzaTh0UGVLNGJ5dz09",
           "advertiseImage": "",
           "sponsorId": 116,
@@ -4619,11 +5129,20 @@
           "marquee": "Solve the growing digital energy demand with Energy Borrowing - Watch the RISE Case Study: Performance Evaluation of the Nexalus Liquid Cooled OCP. ",
           "featuredEventId": 2364,
           "sponsorColor": "#0E4D64",
-          "logo": "/img/ri.se.png",
+          "logo": {
+            "file": "/img/ri.se.png",
+            "alt": ""
+          },
           "name": "RISE ",
           "intro": "### The leading data center research facility in Europe. The RISE ICE (Infrastructure and Cloud research & test Environment) data center is a testbed focusing on digitalization and IT infrastructure. The research center coordinates national research projects as well as the testing and development of all features in the technology stack; the infrastructure and building of data centers, edge and cloud applications, IT architecture and machine learning. The ICE mission is to put Sweden at the forefront in the fields of effective data center solutions, edge computing, cloud applications and data analysis in a bid to help produce global solutions to global problems.",
-          "headerImage": "/img/new_rise-banner-1440x400.png",
-          "headerImageMobile": "/img/ocp21glo_fnv_sponsorlogo-rise.jpg",
+          "headerImage": {
+            "file": "/img/new_rise-banner-1440x400.png",
+            "alt": ""
+          },
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-rise.jpg",
+            "alt": ""
+          },
           "advertiseImage": "",
           "sponsorId": 132,
           "title": "RISE ICE",
@@ -4698,15 +5217,27 @@
           "companyId": 114,
           "id": 126,
           "sponsorId": 126,
-          "logo": "/img/ocp21glo_fnv_sponsorlogo-opensource.png"
+          "logo": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-opensource.png",
+            "alt": ""
+          }
         },
         {
           "marquee": "ONF is exhibiting in-person at the Global Summit in San Jose, CA - You can find us at booth C17.",
-          "logo": "/img/ocp21glo_fnv_sponsorlogo-onf.png",
+          "logo": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-onf.png",
+            "alt": ""
+          },
           "name": "ONF ",
           "intro": "## ONF is exhibiting in-person at the Global Summit in San Jose, CA. You can find us at booth C17 or reach us through the “scan my badge” button above.",
-          "headerImage": "/img/ocp21glo_fnv_nocontent-onf-header.png",
-          "headerImageMobile": "/img/ocp21glo_fnv_sponsorlogo-onf.jpg",
+          "headerImage": {
+            "file": "/img/ocp21glo_fnv_nocontent-onf-header.png",
+            "alt": ""
+          },
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-onf.jpg",
+            "alt": ""
+          },
           "advertiseImage": "",
           "sponsorId": 111,
           "companyId": 97,
@@ -4719,12 +5250,21 @@
           "sideImage": "",
           "featuredEventId": 2356,
           "sponsorColor": "#009183",
-          "logo": "/img/ocp21glo_fnv_sponsorlogo-opencapi.png",
+          "logo": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-opencapi.png",
+            "alt": ""
+          },
           "name": "OpenCAPI Consortium",
           "intro": "#### OpenCAPI Consortium The purpose of the OpenCAPI Consortium is to create an open coherent high performance bus interface based on a new bus standard called Open Coherent Accelerator Processor Interface (OpenCAPI) and develop the ecosystem that utilizes this interface. This initiative is being driven by the emerging accelerated computing and advanced memory/storage solutions that have introduced significant system bottlenecks in today’s current open bus protocols and requires a technical solution that is openly available. The member collaboration define an open bus protocol standard that starts from the microprocessor interface on up to any accelerators, memory/storage solutions, bridge chips that enable further interaction with additional protocols, and potentially others. These open bus protocol standards have been made available publicly at the consortium website.",
           "headerVideo": "",
-          "headerImage": "/img/ocp21glo_fnv_nocontent-opencapi-omi-header.png",
-          "headerImageMobile": "/img/ocp21glo_fnv_sponsorlogo-opencapi.jpg",
+          "headerImage": {
+            "file": "/img/ocp21glo_fnv_nocontent-opencapi-omi-header.png",
+            "alt": ""
+          },
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-opencapi.jpg",
+            "alt": ""
+          },
           "advertiseImage": "",
           "sponsorId": 115,
           "title": "OpenCAPI Consortium",
@@ -4782,11 +5322,20 @@
           "marquee": "OpenPOWER Foundation - Supporting the Open, Free, Proven, Performant POWER Instruction Set Architecture",
           "featuredEventId": 2280,
           "sponsorColor": "#2685AE",
-          "logo": "/img/ocp21glo_fnv_sponsorlogo-openpowerfoundation.png",
+          "logo": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-openpowerfoundation.png",
+            "alt": ""
+          },
           "name": "OpenPOWER Foundation",
           "intro": "#### The OpenPOWER Foundation is a non-profit organization supporting the free and open RISC based instruction set architecture. We enable open community collaboration, technology advancements in the OpenPOWER ecosystem, and visibility of OpenPOWER member successes.",
-          "headerImage": "/img/openpower_openpower_welcome.png",
-          "headerImageMobile": "/img/ocp21glo_fnv_sponsorlogo-openpowerfoundation.jpg",
+          "headerImage": {
+            "file": "/img/openpower_openpower_welcome.png",
+            "alt": ""
+          },
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-openpowerfoundation.jpg",
+            "alt": ""
+          },
           "chatLink": "https://zoom.us/j/3019473720",
           "advertiseImage": "",
           "sponsorId": 114,
@@ -4862,11 +5411,20 @@
         {
           "marquee": "The SDIA is the leading platform for driving sustainability in the digital sector.",
           "sponsorColor": "#2D3748",
-          "logo": "/img/ocp21glo_fnv_sponsorlogo-sdia.png",
+          "logo": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-sdia.png",
+            "alt": ""
+          },
           "name": "Sustainable Digital Infrastructure Alliance (SDIA)",
           "intro": "### Established in 2019 and co-based in Germany and the Netherlands, the Sustainable Digital Infrastructure Alliance e.V. (SDIA) is a nonprofit network that aims to drive collaboration across industries to enable a thriving digital ecosystem without negative impacts on the environment through competitive and sustainable digital infrastructure. With its network of more than 65 members and partners, SDIA works to make the infrastructure powering the digital economy sustainable, while ensuring it remains open and accessible to everyone. Its Roadmap to Sustainable Digital Infrastructure by 2030 is the primary mechanism that enables all stakeholders from across the value chain to connect, benchmark, and deliver sustainability. It is meant to offer a holistic, systems-thinking approach to solving the challenges facing ICT sustainability, ranging from energy supply and data centers to fiber-optic networks and software.",
-          "headerImage": "/img/sdia_banner-sdia-ocp.png",
-          "headerImageMobile": "/img/ocp21glo_fnv_sponsorlogo-sdia.jpg",
+          "headerImage": {
+            "file": "/img/sdia_banner-sdia-ocp.png",
+            "alt": ""
+          },
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-sdia.jpg",
+            "alt": ""
+          },
           "advertiseImage": "",
           "sponsorId": 113,
           "title": "Sustainable Digital Infrastructure Alliance (SDIA)",
@@ -4918,11 +5476,20 @@
           "marquee": "Open source and standards for Cloud, Computational Storage, Data Management, Next Generation Storage Management, NVMe-oF, Persistent Memory, SSDs, Connectors, Transceivers, and Form Factors.",
           "featuredEventId": 2283,
           "sponsorColor": "#54237f",
-          "logo": "/img/ocp21glo_fnv_sponsorlogo-snia.png",
+          "logo": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-snia.png",
+            "alt": ""
+          },
           "name": "SNIA",
           "intro": "### The Storage Networking Industry Association (SNIA) is a non-profit global organization dedicated to developing standards and education programs to advance storage and information technology. Over 185 companies and 2,500 member volunteers collaborate on open source and standards in the technology areas of next generation storage management, computational storage, persistent memory, solid state drives, connectors, transceivers, form factors, and more. Visit us at <http://www.snia.org/ocp>.​",
-          "headerImage": "/img/snia_ocp21virtualboothtop.jpg",
-          "headerImageMobile": "/img/ocp21glo_fnv_sponsorlogo-snia.jpg",
+          "headerImage": {
+            "file": "/img/snia_ocp21virtualboothtop.jpg",
+            "alt": ""
+          },
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-snia.jpg",
+            "alt": ""
+          },
           "chatLink": "https://zoom.us/j/6927138946?pwd=eXlvQy9Jdzd6ZmFUU1Qra2ROanhRdz09",
           "advertiseImage": "",
           "sponsorId": 127,
@@ -5012,18 +5579,30 @@
           "companyId": 117,
           "id": 128,
           "sponsorId": 129,
-          "logo": "/img/ocp21glo_fnv_sponsorlogo-media.png"
+          "logo": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-media.png",
+            "alt": ""
+          }
         },
         {
           "marquee": "Advancing Data Centers & IT Professionals.",
           "featuredEventId": 2316,
           "sponsorColor": "#045986",
-          "logo": "/img/ocp21glo_fnv_sponsorlogo-omdia_afcom.png",
+          "logo": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-omdia_afcom.png",
+            "alt": ""
+          },
           "name": "AFCOM",
           "intro": "### Joining AFCOM is a commitment to your professional development as a data center and IT infrastructure professional. Not only will AFCOM membership benefit you but it will also benefit your company and the greater data center industry worldwide. AFCOM is the leading and longest-standing association in the data center industry. For over 40 years, AFCOM has been advancing the careers of data center and IT professionals, working diligently to help its members meet the growing demands facing our industry. Regardless if you are in sales, marketing, IT, operations, facilities, risk or design, a membership helps you stay current on industry information and trends to deliver ROI to your company while also improving your job performance, training and leadership development.",
           "headerVideo": "",
-          "headerImage": "/img/omdia_afcom_111670_dcw21_graphics_afcom_logosize_opencompute_1440x400.jpg",
-          "headerImageMobile": "/img/ocp21glo_fnv_sponsorlogo-omdia_afcom.jpg",
+          "headerImage": {
+            "file": "/img/omdia_afcom_111670_dcw21_graphics_afcom_logosize_opencompute_1440x400.jpg",
+            "alt": ""
+          },
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-omdia_afcom.jpg",
+            "alt": ""
+          },
           "advertiseImage": "",
           "sponsorId": 112,
           "title": "AFCOM",
@@ -5077,11 +5656,20 @@
         },
         {
           "marquee": "Join our Digital Community.",
-          "logo": "/img/x_data_centre_magazine_datacentre_logo.png",
+          "logo": {
+            "file": "/img/x_data_centre_magazine_datacentre_logo.png",
+            "alt": ""
+          },
           "name": "Data Centre Magazine",
           "intro": "### Data Centre Magazine is the ‘Digital Community’ for the global big data and cloud industry. Data Centre Magazine covers smart Information Technology, Automation, Critical Environments, AI, Networking and Data Centres - connecting the world’s largest community of data executives. Data Centre Magazine focuses on data centre news, key data centre interviews, data centre videos, along with an ever-expanding range of focused data centre white papers and webinars.",
-          "headerImage": "/img/x_data_centre_magazine_webp.net-resizeimage-2-.jpg",
-          "headerImageMobile": "/img/ocp21glo_fnv_sponsorlogo-datacentre.jpg",
+          "headerImage": {
+            "file": "/img/x_data_centre_magazine_webp.net-resizeimage-2-.jpg",
+            "alt": ""
+          },
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-datacentre.jpg",
+            "alt": ""
+          },
           "advertiseImage": "",
           "sponsorId": 153,
           "title": "Data Centre Magazine",
@@ -5131,11 +5719,17 @@
           "marquee": "Strategic Storytelling - Distill Ideas. Create Impact. Inspire Action.",
           "featuredEventId": 2336,
           "sponsorColor": "#f79e12",
-          "logo": "/img/ocp21glo_fnv_sponsorlogo-davesimsmedia.png",
+          "logo": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-davesimsmedia.png",
+            "alt": ""
+          },
           "name": "Dave Sims Media",
           "intro": "#### Dave Sims Media is a team of socially-conscious and driven artists, designers, and creative thinkers specializing in high-quality video production, graphic design, and branding. We work with businesses across the world to elevate their companies, products, employees, and services by crafting strategic branding campaigns, mission-driven video content, and visionary design to build authentic and meaningful connections with your audiences.",
           "headerVideo": "https://fntech.sfo2.cdn.digitaloceanspaces.com/OCPGlobalSummitandSymposium2021/Videos/dave_sims_media_Dave%20Sims%20Media%20Banner.mp4",
-          "headerImageMobile": "/img/ocp21glo_fnv_sponsorlogo-davesimsmedia.jpg",
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-davesimsmedia.jpg",
+            "alt": ""
+          },
           "chatLink": "https://calendly.com/christian-dave_sims_media/15min?month=2021-11",
           "advertiseImage": "",
           "sponsorId": 133,
@@ -5218,11 +5812,17 @@
           "marquee": "Production + Event Management + Creative. ",
           "featuredEventId": 2332,
           "sponsorColor": "#0C64C8",
-          "logo": "/img/fntech_wht_logo_rgb_1-color-black_1920px.png",
+          "logo": {
+            "file": "/img/fntech_wht_logo_rgb_1-color-black_1920px.png",
+            "alt": ""
+          },
           "name": "FNTECH ",
           "intro": "**WE SPEAK EVENTS: In-person, virtual, and everything in-between.**\\\nOver the past 20+ years, we’ve successfully partnered with top-tier companies like Apple, Facebook, Open Compute Project, Wells Fargo, Vans, and Volcom on events of all sizes, types and budgets. Domestic and abroad. Intimate and straightforward to extremely complex and expansive. We have two large headquarters—one in the Northern California Bay Area and another in Southern California, which includes a virtual reality lab, 3D printing hub, and robust wood/metal fabrication shop. We’re a people-first company, which to us means treating every employee, client, vendor, partner, and community member with honesty, integrity, and respect. It’s part of our corporate ethos. People power our mission and we are eternally grateful to know and work with some of the best in the business. And as always, we make sure to have a lot of fun along the way. For more FNinfo, visit us at [fntech.com](http://fntech.com/).",
           "headerVideo": "https://fntech.sfo2.cdn.digitaloceanspaces.com/Yoco/FNTECH%20animated%20logo_Black_012021.mp4",
-          "headerImageMobile": "/img/fnvirtual-yoco-fntech-headerimage-mobile.png",
+          "headerImageMobile": {
+            "file": "/img/fnvirtual-yoco-fntech-headerimage-mobile.png",
+            "alt": ""
+          },
           "advertiseImage": "",
           "sponsorId": 47,
           "title": "FNTECH",
@@ -5302,11 +5902,17 @@
         },
         {
           "marquee": "Premier global digital infrastructure industry publication. Your official guide to the latest trends in Data Centers, Connectivity, Luxury & Lifestyle.",
-          "logo": "/img/ocp21glo_fnv_sponsorlogo-interglobix.png",
+          "logo": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-interglobix.png",
+            "alt": ""
+          },
           "name": "InterGlobix Magazine",
           "intro": "#### InterGlobix Magazine is the first magazine of its kind in the industry focused on Data Centers, Connectivity, Luxury and Lifestyle with a global presence.\n\n#### An ode to the data center industry, InterGlobix Magazine recognizes the key shapers behind this relatively young industry. It is a forerunner in featuring information about the leading companies, experts, and technologies of the industry. Every issue highlights the latest on data centers and connectivity, along with the best in luxury and lifestyle.\n\n#### InterGlobix Magazine is owned by InterGlobix LLC, a global consulting company focused on the convergence of datacenters, terrestrial fiber and subsea fiber.",
           "headerVideo": "https://fntech.sfo2.cdn.digitaloceanspaces.com/OCPGlobalSummitandSymposium2021/Videos/InterGlobix%20Intro.mp4",
-          "headerImageMobile": "/img/ocp21glo_fnv_sponsorlogo-interglobix.jpg",
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-interglobix.jpg",
+            "alt": ""
+          },
           "advertiseImage": "",
           "sponsorId": 151,
           "title": "InterGlobix Magazine",
@@ -5378,11 +5984,20 @@
         },
         {
           "marquee": "San Jose Inspires (sanjose.org and @visitsanjose).",
-          "logo": "/img/ocp21glo_fnv_sponsorlogo-visitsanjose.png",
+          "logo": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-visitsanjose.png",
+            "alt": ""
+          },
           "name": "Visit San Jose",
           "intro": "### San Jose is the heart of Silicon Valley and the gateway to the greater Bay Area. Located an hour in between San Francisco and Monterey, you will find inspiration at famous Silicon Valley landmarks, tech campuses and renowned universities. You can shop luxury trends at Santana Row, called, “The Rodeo Drive of Silicon Valley” and at Designer Row in Westfield Valley Fair, just steps away from each other. Indulge in a Michelin-starred Portuguese meal at ADEGA or savor the coveted La Victoria Taqueria orange sauce with your burrito. Don’t miss play at The Tech Interactive and then, unplug in the Big Basin Redwoods. Visit craft breweries, unique cocktail lounges or nearby Santa Cruz Mountains wineries to round off your iconic San Jose experience.",
-          "headerImage": "/img/tsj-sponsor-page-header_v2.jpeg",
-          "headerImageMobile": "/img/ocp21glo_fnv_sponsorlogo-visitsanjose.jpg",
+          "headerImage": {
+            "file": "/img/tsj-sponsor-page-header_v2.jpeg",
+            "alt": ""
+          },
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_sponsorlogo-visitsanjose.jpg",
+            "alt": ""
+          },
           "advertiseImage": "",
           "sponsorId": 152,
           "title": "Visit San Jose",
@@ -5457,11 +6072,20 @@
         {
           "marquee": "To explore all each Experience Center's content, click the center you want to learn more about in the right column!",
           "sponsorColor": "#343895",
-          "logo": "/img/ocp21glo_fnv_expc-header.png",
+          "logo": {
+            "file": "/img/ocp21glo_fnv_expc-header.png",
+            "alt": ""
+          },
           "name": "Experience Center (MAIN) ",
           "intro": "#### The Experience Center at the OCP Global Summit is a dedicated space for the Community to showcase their hardware designs, architecture and software solutions on OCP-recognized hardware platforms. The OCP Experience Center was established in 2019 to provide new ways for OCP members to showcase best-in-class product demos, both live and static. The initiative was launched at the OCP Global and Regional (European) Summits last year, and they were among the most popular attractions. Not only do the partners get a chance to showcase their OCP Accepted™ and OCP Inspired™ product offerings, they also get a chance to receive feedback from Summit attendees. The OCP Experience Center offers Summit attendees a chance to explore products and their piece-parts, and see through the software solutions that have been built primarily for the platforms being demonstrated.\n\n#### **To explore all each Experience Center's content, in the right column, click the center you want to learn more about!**\n\n#### **[Open System Firmware](/a/sponsor/86-open-system-firmware)**\n\n#### **[Hardware Management Center](/a/sponsor/85-hardware-management)**\n\n#### **[Tap Center ](/a/sponsor/87-tap)**\n\n#### **[Networking Center ](/a/sponsor/89-networking)** \n\n#### **[Telco Center](/a/sponsor/90-telco)**\n\n#### **[Server Center ](/a/sponsor/91-server)**\n\n#### **[OAI Center](/a/sponsor/92-oai)**\n\n#### **[Test and Validation Center ](/a/sponsor/93-test-and-validation)**\n\n#### **[Storage Experience Center](/a/sponsor/94-storage)**",
-          "headerImage": "/img/ocp21glo_fnv_expc-header.png",
-          "headerImageMobile": "/img/ocp21glo_fnv_expc-mobileheader-main.png",
+          "headerImage": {
+            "file": "/img/ocp21glo_fnv_expc-header.png",
+            "alt": ""
+          },
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_expc-mobileheader-main.png",
+            "alt": ""
+          },
           "advertiseImage": "",
           "sponsorId": 134,
           "title": "Experience Center ",
@@ -5522,11 +6146,20 @@
         {
           "marquee": "Total solution packaged with Linuxboot, Coreboot, OpenBMC along with BIOS on OCP hardware.",
           "sponsorColor": "#343895",
-          "logo": "/img/ocp21glo_fnv_expc-lobbybutton-osf.png",
+          "logo": {
+            "file": "/img/ocp21glo_fnv_expc-lobbybutton-osf.png",
+            "alt": ""
+          },
           "name": "OPEN SYSTEM FIRMWARE (OSF)",
           "intro": "### **Open Systems Firmware (OSF) - They will demonstrate a total solution packaged with Linuxboot, Coreboot, OpenBMC along with BIOS on OCP hardware.** \n\n### **OSF will showcase the following demos:**\n\n* ### Wiwynn DeltaLake with coreboot + LinuxBoot +OpenBMC\n* ### Monolake (Existing older platform) with coreboot + LinuxBoot +OpenBMC\n* ### MinPlatform (one of the OSF stacks) Demo\n* ### TiogaPass with Aptio Open Edition.\n* ### ARM and Ampere LBBR (LinuxBoot) + SBBR (UEFI) + OpenBMC demo\n* ### Supermicro Ice Lake with MinPlatform",
-          "headerImage": "/img/ocp21glo_fnv_expc-header-osf.png",
-          "headerImageMobile": "/img/ocp21glo_fnv_expc-mobileheader-osf.png",
+          "headerImage": {
+            "file": "/img/ocp21glo_fnv_expc-header-osf.png",
+            "alt": ""
+          },
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_expc-mobileheader-osf.png",
+            "alt": ""
+          },
           "advertiseImage": "",
           "sponsorId": 86,
           "title": "Explore more about Open System Firmware (OSF) Station ",
@@ -5572,11 +6205,20 @@
           "marquee": "Showcase management hardware and software, including Device Manager, MegaRAC OpenEdition contributions, DC-SCM 2.0/RunBMC hardware, and testing conformance with OCP Profiles.",
           "featuredEventId": 2261,
           "sponsorColor": "#343895",
-          "logo": "/img/ocp21glo_fnv_expc-lobbybutton-mgmthard.png",
+          "logo": {
+            "file": "/img/ocp21glo_fnv_expc-lobbybutton-mgmthard.png",
+            "alt": ""
+          },
           "name": "HARDWARE MANAGEMENT ",
           "intro": "### **Hardware Management: The team will showcase total management capabilities including firmware updates, profile capabilities, building MegaRAC and test.** \n\n#### **Device Manager** managing multiple OCP platforms and real-time switch trouble-shooting.\n\n#### Build and installation of **MegaRAC OpenEdition.**\n\n#### Hardware management modules based on **RunBMC** and **DC-SCM 2.0** specifications.\n\n#### Running the **OCP Conformance Test Suite** with OCP profiles and understanding the results file.",
-          "headerImage": "/img/ocp21glo_fnv_expc-header-hardwaremgmt.png",
-          "headerImageMobile": "/img/ocp21glo_fnv_expc-mobileheader-networking.png",
+          "headerImage": {
+            "file": "/img/ocp21glo_fnv_expc-header-hardwaremgmt.png",
+            "alt": ""
+          },
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_expc-mobileheader-networking.png",
+            "alt": ""
+          },
           "advertiseImage": "",
           "sponsorId": 85,
           "title": "Explore more about Hardware Management Station ",
@@ -5633,11 +6275,20 @@
         {
           "marquee": "Showcase data center precision time synchronization using OCP Time Server and Time Cards.",
           "sponsorColor": "#343895",
-          "logo": "/img/ocp21glo_fnv_expc-lobbybutton-tap.png",
+          "logo": {
+            "file": "/img/ocp21glo_fnv_expc-lobbybutton-tap.png",
+            "alt": ""
+          },
           "name": "Time Appliance Project (TAP)",
           "intro": "## Showcase data center precision time synchronization using OCP Time Server and Time Cards.\n\n* ### Live Demo: \"Synchronizing machines by data packets” \n* ### Performance of NTP vs PTP w or w/o time card.\n* ### Time Synchronized Database throughput.\n* ### Using Time Card, Atomic Clock, GPS\n* ### Static Demo: Announcing the Open Time Server Ref-Arch\n* ### Time Card, NIC\n* ### How to get started",
-          "headerImage": "/img/ocp21glo_fnv_expc-header-tap.png",
-          "headerImageMobile": "/img/ocp21glo_fnv_expc-mobileheader-tap.png",
+          "headerImage": {
+            "file": "/img/ocp21glo_fnv_expc-header-tap.png",
+            "alt": ""
+          },
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_expc-mobileheader-tap.png",
+            "alt": ""
+          },
           "advertiseImage": "",
           "sponsorId": 87,
           "title": "Explore more about Time Appliance Project (TAP) Station",
@@ -5708,11 +6359,20 @@
           "marquee": "Credo, DriveNets & UfiSpace are demonstrating the world’s largest distributed disaggregated chassis implementation – a 350Tb Jericho2c+ 3-rack cluster.",
           "featuredEventId": 2263,
           "sponsorColor": "#343895",
-          "logo": "/img/ocp21glo_fnv_expc-lobbybutton-networking.png",
+          "logo": {
+            "file": "/img/ocp21glo_fnv_expc-lobbybutton-networking.png",
+            "alt": ""
+          },
           "name": "Networking",
           "intro": "### DDCs have become core to Hyperscale Data Center and Telco design, enabling commodity white box hardware to be mated with open source or 3rd party software to build a flexible, scalable solution without the high cost and proprietary lockin of a chassis. Credo, DreiveNets, and UfiSpace came together at OCP 2020 to demonstrate the world’s first working DDC implementation – a 96Tb Jericho design. For OCP 2021, the trio of DDC-enablers has implemented the world’s largest DDC implementation, a 3-rack 350Tb Jercicho2c+ cluster, again using software from DriveNets, hardware from UfiSpace, and AEC cables from Credo. The new implementation shows the scalability and low power management of the architecture. Information on the 350Tb implementation can be found at https://www.credosemi.com/hiwire-350tb-ddc.",
-          "headerImage": "/img/ocp21glo_fnv_expc-header-networking.png",
-          "headerImageMobile": "/img/ocp21glo_fnv_expc-mobileheader-networking.png",
+          "headerImage": {
+            "file": "/img/ocp21glo_fnv_expc-header-networking.png",
+            "alt": ""
+          },
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_expc-mobileheader-networking.png",
+            "alt": ""
+          },
           "advertiseImage": "",
           "sponsorId": 89,
           "title": "Explore more about Networking Station",
@@ -5766,11 +6426,20 @@
           "marquee": "Discover the Power of One with Arrcus Connected Edge (ACE) - One Simple Network, One Scalable Architecture, One Seamless Experience.",
           "featuredEventId": 2264,
           "sponsorColor": "#343895",
-          "logo": "/img/ocp21glo_fnv_expc-lobbybutton-telco.png",
+          "logo": {
+            "file": "/img/ocp21glo_fnv_expc-lobbybutton-telco.png",
+            "alt": ""
+          },
           "name": "TELCO",
           "intro": "### As businesses rapidly move towards a flexible, intelligently orchestrated future enabled by technologies as 5G, multi-cloud, and edge computing, they require solutions that advance their infrastructure in a scalable, reliable, and flexible manner. The Arrcus virtualized distributed router (VDR) solution addresses the challenging needs of these organizations by providing seamless connectivity for workloads across on-premise, multi-cloud, and edge environments and enabing simplified manageability and operations compared to monolithic chassis-based solutions while also offering disruptive economic benefits.\n\n### VDR is powered by ArcOS, the resilient microservices-based network operating system and leverages its industry-leading route scale and convergence times.\n\n###  Check out our peering edge fabric demonstration with a small VDR cluster built on Jericho2- and Ramon-based platforms.",
-          "headerImage": "/img/ocp21glo_fnv_expc-header-telco.png",
-          "headerImageMobile": "/img/ocp21glo_fnv_expc-mobileheader-telco.png",
+          "headerImage": {
+            "file": "/img/ocp21glo_fnv_expc-header-telco.png",
+            "alt": ""
+          },
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_expc-mobileheader-telco.png",
+            "alt": ""
+          },
           "chatLink": "https://arrcus.zoom.us/j/98109522847?pwd=bC9vRjA4NmI2UUVmRmJiQ0h5YkEzZz09",
           "advertiseImage": "",
           "sponsorId": 90,
@@ -5848,11 +6517,20 @@
           "marquee": "OCP NIC Showcase (Systems, NICs, Add-in cards, Ecosystem).",
           "featuredEventId": 2265,
           "sponsorColor": "#343895",
-          "logo": "/img/ocp21glo_fnv_expc-lobbybutton-server.png",
+          "logo": {
+            "file": "/img/ocp21glo_fnv_expc-lobbybutton-server.png",
+            "alt": ""
+          },
           "name": "Server - NIC",
           "intro": "#### Demos include: \n\n* #### OCP NIC 3.0 Multi-Host Connectivity and Manageability (Broadcom)\n* #### OCP NIC 3.0 Device Attestation Using SPDM (Broadcom & Meta)\n* #### ZionEX: Host with up to 12 OCP NIC 3.0 slots (Meta)\n* #### Mechanical Fit-test fixture (OCP NIC sub-group)\n* #### OCP NIC 3.0 Fiberchannel HBA (OCP NIC sub-group)\n* #### OCP NIC 3.0 in Tall Small Form Factor (TSFF) (Nvidia)\n* #### Interface Sandbox with SFF Slots (TE Connectivity)\n* #### ODSA ODA board with OCP NIC (ODSA & OCP NIC sub-group)",
-          "headerImage": "/img/ocp21glo_fnv_expc-header-server_102121.png",
-          "headerImageMobile": "/img/ocp21glo_fnv_expc-mobileheader-server.png",
+          "headerImage": {
+            "file": "/img/ocp21glo_fnv_expc-header-server_102121.png",
+            "alt": ""
+          },
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_expc-mobileheader-server.png",
+            "alt": ""
+          },
           "advertiseImage": "",
           "sponsorId": 91,
           "title": "Explore more about Server -  NIC Station",
@@ -5908,11 +6586,20 @@
           "marquee": "Showcase OAI capabilities on different hardware platforms.",
           "featuredEventId": 1839,
           "sponsorColor": "#343895",
-          "logo": "/img/ocp21glo_fnv_expc-lobbybutton-oai.png",
+          "logo": {
+            "file": "/img/ocp21glo_fnv_expc-lobbybutton-oai.png",
+            "alt": ""
+          },
           "name": "SERVER - Open Accelerator Infrastructure (OAI)",
           "intro": "# Showcase OAI capabilities on different hardware platforms.\n\n### There sequence of the demos is as follows:\n\n* ### Showcase Wiwynn OAI server (based on already available OAI OAM/UBB spec) with immersion cooling solution live demonstration\n* ### Showcase Inspur OAI server (based on OAI OAM/UBB spec, work in progress)\n* ### Liquid cooling (based on OAI OAM, Zion platform, work in progress)\n* ### Molex High speed connector (based on OAI UBB spec, work in progress)",
-          "headerImage": "/img/ocp21glo_fnv_expc-header-oai_102121.png",
-          "headerImageMobile": "/img/ocp21glo_fnv_expc-mobileheader-oai.png",
+          "headerImage": {
+            "file": "/img/ocp21glo_fnv_expc-header-oai_102121.png",
+            "alt": ""
+          },
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_expc-mobileheader-oai.png",
+            "alt": ""
+          },
           "chatLink": "https://teams.microsoft.com/l/meetup-join/19%3ameeting_MmViMGYxNGYtYTgwYi00NTFiLThjNDktNDA3OTNlOWVjNzQz%40thread.v2/0?context=%7b%22Tid%22%3a%22da6e0628-fc83-4caf-9dd2-73061cbab167%22%2c%22Oid%22%3a%222bee0da6-f1d1-4006-8960-edaad6a10af5%22%7d",
           "advertiseImage": "",
           "sponsorId": 92,
@@ -5983,11 +6670,20 @@
           "marquee": "Test Executive Agnostic I/O Specification to Enable Portable Diagnostics on OCP Hardware.",
           "featuredEventId": 2267,
           "sponsorColor": "#343895",
-          "logo": "/img/ocp21glo_fnv_expc-lobbybutton-test.png",
+          "logo": {
+            "file": "/img/ocp21glo_fnv_expc-lobbybutton-test.png",
+            "alt": ""
+          },
           "name": "Test and Validation",
           "intro": "## Meta, Google and Keysight's test frameworks executing diagnostics using the consolidated diagnostic I/O model on a Yosemite v3.",
-          "headerImage": "/img/ocp21glo_fnv_expc-header-test.png",
-          "headerImageMobile": "/img/ocp21glo_fnv_expc-mobileheader-test.png",
+          "headerImage": {
+            "file": "/img/ocp21glo_fnv_expc-header-test.png",
+            "alt": ""
+          },
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_expc-mobileheader-test.png",
+            "alt": ""
+          },
           "advertiseImage": "",
           "sponsorId": 93,
           "title": "Explore more about Test and Validation Station",
@@ -6026,11 +6722,20 @@
         {
           "marquee": "Showcase E1.S 15mm - Acoustic Surrogate  and NVMe HDD.",
           "sponsorColor": "#343895",
-          "logo": "/img/ocp21glo_fnv_expc-lobbybutton-storage.png",
+          "logo": {
+            "file": "/img/ocp21glo_fnv_expc-lobbybutton-storage.png",
+            "alt": ""
+          },
           "name": "Storage",
           "intro": "### Highlight systems that are using E1.S. There are around 7 SSD vendors.\n\n* ### Supermicro will showcase their server (with NIC 3.0) which supports E1.S 15mm\n* ### Viking will also showcase the HW \n\n### **Acoustic Surrogare concept:** \n\n* ### BASED on the OCP accepted spec. Users will come to know how it is built and used. \n\n### **NVMe HDD:**\n\n* ### A live demo of an NVMe HDD will be shown that is based on the OCP NVMe HDD specification.",
-          "headerImage": "/img/ocp21glo_fnv_expc-header-storage.png",
-          "headerImageMobile": "/img/ocp21glo_fnv_expc-mobileheader-storage.png",
+          "headerImage": {
+            "file": "/img/ocp21glo_fnv_expc-header-storage.png",
+            "alt": ""
+          },
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_expc-mobileheader-storage.png",
+            "alt": ""
+          },
           "advertiseImage": "",
           "sponsorId": 94,
           "title": "Explore more about Storage Station",
@@ -6061,11 +6766,20 @@
         {
           "marquee": "Click on the links below in the right column to view the individual Symposium posters!",
           "sponsorColor": "#00B189",
-          "logo": "/img/ocp21glo_fnv_sym-logo.png",
+          "logo": {
+            "file": "/img/ocp21glo_fnv_sym-logo.png",
+            "alt": ""
+          },
           "name": "OCP Future Technologies Symposium",
           "intro": "![](/img/ocp21glo_fnv_sym-winners.png)\n\n#### The objective of the OCP [Future Technologies Symposium](https://www.opencompute.org/summit/ocp-future-technologies-symposium) is to bring to the OCP Community a forward-looking funnel of technologies which focus on solving future problems facing the industry, and accelerate productization through partnerships and open source R&D. Also, it is a unique opportunity to expose a generation of up-and-coming, best-in-class students to the professional community for purposes of research, training and recruitment. The Global academic, startup and venture communities are invited to participate, as well as industrial organizations performing cutting-edge research related to data center technologies.\n\n#### **MISSION:**\n\n* #### **Innovation:** to bring to the OCP Community a forward-looking funnel of new technologies and accelerate their productization\n* #### **Technology scale:** focus on technologies that can help grow, drive, and support the open hardware ecosystem in, near, and around the datacenter and beyond\n* #### **People:** connect best-in-class researchers to the professional community for purposes of collaboration, training and recruitment\n* #### By year-end 2022, a key success metric is adoption. Adoption can be either OCP members adopting technologies from Symposium, or investing in research\n\n#### **TECHNOLOGY FOCUS AREAS:**\n\n* #### **Sustainability and Data Center Efficiency:** Topics leading to reducing the carbon footprint of the OCP industry by year 2030. Topics can be technology, policy, tools, organizational behaviors or other topics associated with this area. \n* #### **Power Delivery and Efficiency:** Advanced platforms (Compute, Network, Storage, etc) specifically focused on increasing efficiency in these systems. Power efficiency is a common overarching problem from the data center industry and we'd like to hear the best ideas to increase capability while reducing overall power demand in our operations. Scope of this topic starts with power delivery through end node usage. \n* #### **High Performance and Hardware Acceleration:** Scope of this track includes high performance computing, application-specific computing, hardware/software co-design, interconnects and enablers. As performance gains from CPUs slow down, our industry is leaning heavily towards performance-based systems and acceleration of functional computing. \n* **Networking:** Networking continues to provide optimization opportunities for our industry including different approaches like architecture, fabric, topology and optica\n\n#### **FTI WORKSTREAMS:**\n\n#### The [Future Technologies Initiative](https://www.opencompute.org/projects/future-technologies-initiative) (FTI) will focus on three specific technical areas, in alignment with the OCP Foundation Incubation Committee leaders in their [Technology Roadmap](https://www.opencompute.org/blog/ocp-incubation-committee-strategic-plan-for-2021). They will be:\n\n* #### Software Defined Memory\n* #### Cloud Service Model\n* #### AI HW-SW Design Collaboration\n* #### Additional R&D Opportunities area identified by the Community\n\n#### **AWARDS:**\n\n#### The 2021 OCP Future Technologies Symposium winner is Cloud & Heat Technologies (Leonie Banzer): 'Pushing the Boundary Conditions of Data Centers Facilitates Innovative Circular Economy Approaches.'\n\n#### The 2021 OCP Future Technologies Symposium Technical Track winners have also been announced and are listed below:\n\n#### **Sustainability**\n\n* #### Cloud & Heat Technologies (Leonie Banzer): Pushing the Boundary Conditions of Data Centers Facilitates Innovative Circular Economy Approaches\n\n#### **Hardware Performance & Acceleration**\n\n* #### proteanTecs (Alex Burlak): Reliability of Cloud Scale Hardware Through Performance and Health Monitoring Using On-chip Telemetry \n\n#### **Power Delivery & Efficiency**\n\n* * #### Princeton University (Jaeil Baek & Youssef Elasser): Vertical Stacked 48V-1V Voltage Regulator for Ultra High Current Microprocessors\n\n### **Networking**\n\n* * ### Avicena Tech (Robert Kalman): Wide and Parallel LED - Based Optical Links Using Multi-Core Fiber for Chip-to-Chip Communications\n\n![](/img/ocp21glo_fnv_sym-thankyousponsors.png)",
-          "headerImage": "/img/ocp21glo_fnv_sym-header.png",
-          "headerImageMobile": "/img/ocp21glo_fnv_sym-header-mobile.png",
+          "headerImage": {
+            "file": "/img/ocp21glo_fnv_sym-header.png",
+            "alt": ""
+          },
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_sym-header-mobile.png",
+            "alt": ""
+          },
           "advertiseImage": "",
           "sponsorId": 96,
           "title": "2021 OCP Future Technologies Symposium",
@@ -6244,11 +6958,20 @@
       "sponsors": [
         {
           "sponsorColor": "#8Dc63f",
-          "logo": "/img/ocp21glo_fnv_base-logo.png",
+          "logo": {
+            "file": "/img/ocp21glo_fnv_base-logo.png",
+            "alt": ""
+          },
           "name": "OCP Basecamp",
           "intro": "The Open Compute Project Foundation (OCP) was initiated in 2011 with a mission to apply the benefits of open source and open collaboration to hardware and rapidly increase the pace of innovation in, near and around the data center’s networking equipment, general purpose and GPU servers, storage devices and appliances, and scalable rack designs. OCP’s collaboration model is being applied beyond the data center, helping to advance the telecom industry & EDGE infrastructure.",
-          "headerImage": "/img/ocp21glo_fnv_base-header.png",
-          "headerImageMobile": "/img/ocp21glo_fnv_base-header-mobile.png",
+          "headerImage": {
+            "file": "/img/ocp21glo_fnv_base-header.png",
+            "alt": ""
+          },
+          "headerImageMobile": {
+            "file": "/img/ocp21glo_fnv_base-header-mobile.png",
+            "alt": ""
+          },
           "advertiseImage": "",
           "sponsorId": 95,
           "title": "OCP Basecamp",

@@ -1,16 +1,1 @@
-{
-  "centerColumn": {
-    "speakers": {
-      "showTodaySpeakers": true,
-      "showFeatureSpeakers": true
-    }
-  },
-  "homeHero": {
-    "title": "OCP Global Summit",
-    "subTitle": "Nov. 8–10, 2021",
-    "image": "/img/ocp21glo_fnv_lobby_header1.png",
-    "copy": ""
-  },
-  "schedule_default_image": "https://fntech.sfo2.cdn.digitaloceanspaces.com/17/OCP20TW-Session-Thumbnail-110920-OCP.png",
-  "live_now_featured_event_id": 2376
-}
+{"centerColumn":{"speakers":{"showTodaySpeakers":true,"showFeatureSpeakers":true}},"homeHero":{"title":"OCP Global Summit","subTitle":"Nov. 8–10, 2021","image":{"file":"/img/ocp21glo_fnv_lobby_header1.png","alt":""},"copy":""},"schedule_default_image":"https://fntech.sfo2.cdn.digitaloceanspaces.com/OCPGlobalSummitandSymposium2021/Documents/CreativeDepartmentFiles/OCP21GLO_FNv_Lobby_SessionThumbnail-Default_v3.png","live_now_featured_event_id":2376}

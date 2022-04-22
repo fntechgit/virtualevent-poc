@@ -4,14 +4,20 @@
       "section": "lobby",
       "columnAds": [
         {
-          "image": "/img/ocp21glo_fnv_lobby_button-experiencecenter.png",
+          "image": {
+            "file": "/img/ocp21glo_fnv_lobby_button-experiencecenter.png",
+            "alt": ""
+          },
           "button": {
             "link": "/a/sponsor/134-experience-center-(main)-"
           },
           "column": "left"
         },
         {
-          "image": "/img/ocp21glo_fnv_lobby_button-symp.png",
+          "image": {
+            "file": "/img/ocp21glo_fnv_lobby_button-symp.png",
+            "alt": ""
+          },
           "button": {
             "text": "",
             "link": "/a/sponsor/96-ocp-future-technologies-symposium"
@@ -20,35 +26,50 @@
           "id": null
         },
         {
-          "image": "/img/ocp21glo_fnv_lobby_button-basecamp.png",
+          "image": {
+            "file": "/img/ocp21glo_fnv_lobby_button-basecamp.png",
+            "alt": ""
+          },
           "column": "left",
           "button": {
             "link": "/a/sponsor/95-ocp-basecamp"
           }
         },
         {
-          "image": "/img/ocp21glo_fnv_lobby_button-careercenter.png",
+          "image": {
+            "file": "/img/ocp21glo_fnv_lobby_button-careercenter.png",
+            "alt": ""
+          },
           "button": {
             "link": "https://ocpcareercenter.mysmartjobboard.com/"
           },
           "column": "right"
         },
         {
-          "image": "/img/ocp21glo_fnv_lobby_button-marketplace.png",
+          "image":{
+            "file":  "/img/ocp21glo_fnv_lobby_button-marketplace.png",
+            "alt" : ""
+          },
           "button": {
             "link": "https://www.opencompute.org/solutions"
           },
           "column": "right"
         },
         {
-          "image": "/img/ocp21glo_fnv_lobby_button-join.png",
+          "image": {
+            "file": "/img/ocp21glo_fnv_lobby_button-join.png",
+            "alt": ""
+          },
           "button": {
             "link": "https://www.opencompute.org/membership/how-to-join"
           },
           "column": "right"
         },
         {
-          "image": "/img/ocp21glo_fnv_lobby_button-virtualtour-v2.png",
+          "image": {
+            "file": "/img/ocp21glo_fnv_lobby_button-virtualtour-v2.png",
+            "alt": ""
+          },
           "button": {
             "link": "https://fntech.sfo2.cdn.digitaloceanspaces.com/OCPGlobalSummitandSymposium2021/Videos/OCP%20FNvirtual%20Tour%20video.mp4"
           },

@@ -305,7 +305,10 @@
       }
     }
   ],
-  "imageHeader": "/img/ocp21glo_expolandingpage_header_062421.png",
+  "imageHeader": {
+    "file": "/img/ocp21glo_expolandingpage_header_062421.png",
+    "alt": ""
+  },
   "lobbyButton": {
     "text": "Visit the Expo Hall Now",
     "link": "/a/sponsors/"
