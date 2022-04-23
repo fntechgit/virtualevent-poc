@@ -109,7 +109,11 @@ const RegistrationLiteComponent = ({
         getAccessToken: getAccessToken,
         closeWidget: async () => {
             // reload user profile
-            await getUserProfile();
+            try {
+                await getUserProfile();
+            } catch (error) {
+                console.log('Access Token error', error);
+            }
             setIsActive(false)
         },
         goToExtraQuestions: async () => {
