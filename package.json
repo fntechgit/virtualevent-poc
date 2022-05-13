@@ -93,7 +93,7 @@
     "stream-browserify": "^3.0.0",
     "stream-chat": "^2.7.2",
     "stream-chat-react": "3.1.7",
-    "summit-registration-lite": "^2.0.0",
+    "summit-registration-lite": "file:.yalc/summit-registration-lite",
     "superagent": "^5.3.1",
     "sweetalert2": "^9.17.0",
     "upcoming-events-widget": "^2.0.1",
@@ -104,8 +104,8 @@
     "video.js": "^7.8.2",
     "videojs-mux": "^3.1.0",
     "videojs-youtube": "^2.6.1",
-    "xmlhttprequest": "^1.8.0",
-    "what-input": "^5.2.10"
+    "what-input": "^5.2.10",
+    "xmlhttprequest": "^1.8.0"
   },
   "keywords": [
     "gatsby"
@@ -113,10 +113,11 @@
   "license": "MIT",
   "main": "n/a",
   "scripts": {
-    "clean": "gatsby clean",
+    "clean": "find . -name \"node_modules\" -type d -prune -exec rm -rf '{}' + && yarn && yarn gatsby-clean",
+    "gatsby-clean": "gatsby clean",
     "start": "npm run develop",
     "build": "cross-env GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build --log-pages",
-    "develop": "npm run clean && gatsby develop --S -H 0.0.0.0 -o",
+    "develop": "npm run gatsby-clean && gatsby develop --S -H 0.0.0.0 -o",
     "format": "prettier --trailing-comma es5 --no-semi --single-quote --write \"{gatsby-*.js,src/**/*.js}\"",
     "test": "echo \"Error: no test specified\" && exit 1",
     "update-libs": "yarn upgrade live-event-widget openstack-uicore-foundation schedule-lite simple-chat-widget speakers-widget attendee-to-attendee-widget"

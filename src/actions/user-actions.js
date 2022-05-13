@@ -49,7 +49,6 @@ export const TOGGLE_PRESENTATION_VOTE = 'TOGGLE_PRESENTATION_VOTE';
 
 // shortName is the unique identifier assigned to a Disqus site.
 export const getDisqusSSO = (shortName) => async (dispatch, getState) => {
-
   const { userState: { disqusSSO } } = getState();
 
   if (disqusSSO !== null) return;
@@ -70,7 +69,10 @@ export const getDisqusSSO = (shortName) => async (dispatch, getState) => {
   )({})(dispatch).catch(e => {
     console.log('ERROR: ', e);
     clearAccessToken();
-    return Promise.reject(e);
+
+    // Note: Commenting this out because no implementation of this function is actually catching this error,
+    // and it's causing the app to crash in development.
+    // return Promise.reject(e);
   });
 }
 
@@ -543,9 +545,10 @@ export const setUserOrder = (order) => (dispatch) => Promise.resolve().then(() =
 })
 
 export const checkOrderData = (order) => (dispatch, getState) => {
+  if (!order) return;
 
   const { userState: { idpProfile: { company, given_name, family_name } } } = getState();
-  const { owner_company, owner_first_name, owner_last_name } = order;
+  const { owner_company, owner_first_name, owner_last_name } = order || {};
 
   if (owner_company !== company || owner_first_name !== given_name || owner_last_name !== family_name) {
     const newProfile = {
