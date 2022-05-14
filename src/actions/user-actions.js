@@ -43,6 +43,7 @@ export const CAST_PRESENTATION_VOTE_RESPONSE   = 'CAST_PRESENTATION_VOTE_RESPONS
 export const UNCAST_PRESENTATION_VOTE_REQUEST  = 'UNCAST_PRESENTATION_VOTE_REQUEST';
 export const UNCAST_PRESENTATION_VOTE_RESPONSE = 'UNCAST_PRESENTATION_VOTE_RESPONSE';
 export const TOGGLE_PRESENTATION_VOTE          = 'TOGGLE_PRESENTATION_VOTE';
+export const GET_EXTRA_QUESTIONS               = 'GET_EXTRA_QUESTIONS';
 
 // shortName is the unique identifier assigned to a Disqus site.
 export const getDisqusSSO = (shortName) => async (dispatch, getState) => {
@@ -99,10 +100,10 @@ export const getUserProfile = () => async (dispatch) => {
       return dispatch(getScheduleSyncLink()).then(() => dispatch(createAction(STOP_LOADING_PROFILE)()))
     });
   }).catch((e) => {
-      console.log('ERROR: ', e);
-      dispatch(createAction(STOP_LOADING_PROFILE)());
-      clearAccessToken();
-      return (e);
+    console.log('ERROR: ', e);
+    dispatch(createAction(STOP_LOADING_PROFILE)());
+    clearAccessToken();
+    return (e);
   });
 }
 
@@ -125,18 +126,18 @@ export const getIDPProfile = () => async (dispatch) => {
   };
 
   return getRequest(
-      null,
-      createAction(GET_IDP_PROFILE),
-      `${window.IDP_BASE_URL}/api/v1/users/me`,
-      customErrorHandler
-  )(params)(dispatch)
-      .then(() => dispatch(createAction(STOP_LOADING_IDP_PROFILE)()))
-      .catch((e) => {
-        console.log('ERROR: ', e);
-        dispatch(createAction(STOP_LOADING_IDP_PROFILE)())
-        clearAccessToken();
-        return (e);
-      });
+    null,
+    createAction(GET_IDP_PROFILE),
+    `${window.IDP_BASE_URL}/api/v1/users/me`,
+    customErrorHandler
+)(params)(dispatch)
+    .then(() => dispatch(createAction(STOP_LOADING_IDP_PROFILE)()))
+    .catch((e) => {
+      console.log('ERROR: ', e);
+      dispatch(createAction(STOP_LOADING_IDP_PROFILE)())
+      clearAccessToken();
+      return (e);
+    });
 }
 
 export const requireExtraQuestions = () => (dispatch, getState) => {
@@ -146,7 +147,7 @@ export const requireExtraQuestions = () => (dispatch, getState) => {
 
   const owner = userProfile?.summit_tickets[0]?.owner || null;
   // if user does not have an attendee then we dont require extra questions
-  if(!owner) return false;
+  if (!owner) return false;
   if (!owner.first_name || !owner.last_name || !owner.company || !owner.email) return true;
   const disclaimer = summit.registration_disclaimer_mandatory ? owner.disclaimer_accepted : true;
   if (!disclaimer) return true;
@@ -498,9 +499,9 @@ export const saveExtraQuestions = (extra_questions, owner, disclaimer) => async 
   });
 };
 
-export const setPasswordlessLogin = (params) => (dispatch, getState) => {  
+export const setPasswordlessLogin = (params) => (dispatch, getState) => {
   return dispatch(passwordlessLogin(params))
-    .then((res) => {      
+    .then((res) => {
       dispatch(getUserProfile());
     }, (err) => {
       return Promise.resolve(err)
@@ -559,7 +560,7 @@ export const checkOrderData = (order) => (dispatch, getState) => {
  * @param attendee
  * @returns {function(*=, *): *}
  */
-export const doVirtualCheckIn = (attendee) =>  async (dispatch, getState) => {
+export const doVirtualCheckIn = (attendee) => async (dispatch, getState) => {
 
   let accessToken;
   try {
@@ -586,3 +587,25 @@ export const doVirtualCheckIn = (attendee) =>  async (dispatch, getState) => {
     return e;
   });
 };
+
+export const getExtraQuestions = () => async (dispatch, getState) => {
+
+  let accessToken;
+  try {
+    accessToken = await getAccessToken();
+  } catch (e) {
+    console.log('getAccessToken error: ', e);
+    return Promise.reject(e);
+  }
+
+  return getRequest(
+    null,
+    createAction(GET_EXTRA_QUESTIONS),
+    `${window.API_BASE_URL}/api/v1/summits/${window.SUMMIT_ID}/order-extra-questions?filter[]=class==MainQuestion&filter[]=usage==Ticket&expand=*sub_question_rules,*sub_question,*values&access_token=${accessToken}`,
+    customErrorHandler
+  )({})(dispatch).catch(e => {
+    console.log('ERROR: ', e);
+    clearAccessToken();
+    return Promise.reject(e);
+  });
+}
