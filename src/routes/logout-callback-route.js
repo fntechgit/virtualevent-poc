@@ -23,7 +23,7 @@ export class LogOutCallbackRoute extends React.Component {
   componentDidMount() {
     let { location } = this.props;
 
-    // NOTE: reset to the default user state to avoid bugs that cause app to crash (like in registration lite) after logout.
+    // NOTE: Reset to the default user state to avoid bugs that cause app to crash (like in registration lite) after logout.
     this.props.logoutUser();
 
     let postLogoutState = window.localStorage.getItem('post_logout_state')
