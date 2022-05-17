@@ -1,10 +1,11 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useState, useRef, useMemo } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import Layout from '../components/Layout'
 // import ExtraQuestions from '../components/ExtraQuestions'
 
-import { saveExtraQuestions, getExtraQuestions } from '../actions/user-actions'
+import { getExtraQuestions } from '../actions/summit-actions'
+import { saveExtraQuestions } from '../actions/user-actions'
 
 import { ExtraQuestionsForm } from 'openstack-uicore-foundation/lib/components'
 
@@ -23,7 +24,7 @@ export const ExtraQuestionsPageTemplate = ({ user, summit, extraQuestions, saveE
         first_name: ticket?.owner.first_name || '',
         last_name: ticket?.owner.last_name || '',
         company: ticket?.owner.company || '',
-    });
+    });    
 
     // calculate state initial values
     const [disclaimer, setDisclaimer] = useState(ticket?.owner?.disclaimer_accepted || false);
@@ -36,6 +37,8 @@ export const ExtraQuestionsPageTemplate = ({ user, summit, extraQuestions, saveE
     const checkMandatoryDisclaimer = () => {
         return summit.registration_disclaimer_mandatory ? disclaimer : true;
     }
+
+    const disabledButton = useMemo(() => !checkAttendeeInformation() || !checkMandatoryDisclaimer(), [owner]);
 
     const toggleDisclaimer = () => setDisclaimer(!disclaimer);
 
@@ -140,9 +143,7 @@ export const ExtraQuestionsPageTemplate = ({ user, summit, extraQuestions, saveE
                             }
                             <button
                                 className={`${styles.buttonSave} button is-large`}
-                                disabled={
-                                    !checkAttendeeInformation() ||
-                                    !checkMandatoryDisclaimer()}
+                                disabled={disabledButton}
                                 onClick={() => formRef.current.dispatchEvent(new Event("submit", { cancelable: true, bubbles: true }))}>
                                 Save and Continue
                             </button>

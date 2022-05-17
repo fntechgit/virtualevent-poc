@@ -587,25 +587,3 @@ export const doVirtualCheckIn = (attendee) => async (dispatch, getState) => {
     return e;
   });
 };
-
-export const getExtraQuestions = () => async (dispatch, getState) => {
-
-  let accessToken;
-  try {
-    accessToken = await getAccessToken();
-  } catch (e) {
-    console.log('getAccessToken error: ', e);
-    return Promise.reject(e);
-  }
-
-  return getRequest(
-    null,
-    createAction(GET_EXTRA_QUESTIONS),
-    `${window.API_BASE_URL}/api/v1/summits/${window.SUMMIT_ID}/order-extra-questions?filter[]=class==MainQuestion&filter[]=usage==Ticket&expand=*sub_question_rules,*sub_question,*values&access_token=${accessToken}`,
-    customErrorHandler
-  )({})(dispatch).catch(e => {
-    console.log('ERROR: ', e);
-    clearAccessToken();
-    return Promise.reject(e);
-  });
-}
