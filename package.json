@@ -94,7 +94,7 @@
     "speakers-widget": "^2.0.6",
     "stream-chat": "^2.7.2",
     "stream-chat-react": "3.1.7",
-    "summit-registration-lite": "^1.0.78",
+    "summit-registration-lite": "^1.0.80",
     "superagent": "^5.3.1",
     "sweetalert2": "^9.17.0",
     "upcoming-events-widget": "^1.0.15",
@@ -120,7 +120,7 @@
     "develop": "npm run clean && gatsby develop --S -H 0.0.0.0 -o",
     "format": "prettier --trailing-comma es5 --no-semi --single-quote --write \"{gatsby-*.js,src/**/*.js}\"",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "update-libs": "yarn upgrade live-event-widget openstack-uicore-foundation schedule-lite simple-chat-widget speakers-widget attendee-to-attendee-widget"
+    "update-libs": "yarn upgrade live-event-widget q schedule-lite simple-chat-widget speakers-widget attendee-to-attendee-widget"
   },
   "devDependencies": {
     "@babel/core": "^7.10.4",

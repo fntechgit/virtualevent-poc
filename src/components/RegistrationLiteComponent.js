@@ -11,8 +11,8 @@ import {
 import RegistrationLiteWidget from 'summit-registration-lite/dist';
 
 import { FragmentParser } from "openstack-uicore-foundation/lib/components";
+import { doLogin, passwordlessStart, doLogout } from 'openstack-uicore-foundation/lib/methods'
 
-import { doLogin, passwordlessStart } from 'openstack-uicore-foundation/lib/methods'
 import { getEnvVariable, SUMMIT_API_BASE_URL, OAUTH2_CLIENT_ID, REGISTRATION_BASE_URL } from '../utils/envVariables'
 
 import { getUserProfile, setPasswordlessLogin, setUserOrder, checkOrderData } from "../actions/user-actions";
@@ -20,6 +20,7 @@ import { getThirdPartyProviders } from "../actions/base-actions";
 
 import 'summit-registration-lite/dist/index.css';
 import styles from '../styles/marketing-hero.module.scss'
+import Swal from "sweetalert2";
 
 const RegistrationLiteComponent = ({
     registrationProfile,
@@ -56,6 +57,15 @@ const RegistrationLiteComponent = ({
     const onClickLogin = (provider) => {
         doLogin(getBackURL(), provider);
     };
+
+    const handleCompanyError = () => {
+        console.log('company error...')
+        Swal.fire("ERROR", "Hold on. Your session expired!.", "error").then(() => {
+            // save current location and summit slug, for further redirect logic
+            window.localStorage.setItem('post_logout_redirect_path', new URI(window.location.href).pathname());
+            doLogout();
+        });
+    }
 
     const formatThirdPartyProviders = (providers_array) => {
         const providers = [
@@ -129,7 +139,8 @@ const RegistrationLiteComponent = ({
             // check if it's necesary to update profile
             setUserOrder(order).then(_ => checkOrderData(order));
         },
-        inPersonDisclaimer: siteSettings?.registration_in_person_disclaimer
+        inPersonDisclaimer: siteSettings?.registration_in_person_disclaimer,
+        handleCompanyError: () => handleCompanyError
     };
 
     const { registerButton } = siteSettings.heroBanner.buttons;
