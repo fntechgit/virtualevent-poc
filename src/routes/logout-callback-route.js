@@ -14,13 +14,17 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { navigate } from "gatsby"
 import URI from "urijs"
-
-import { doLogout, initLogOut } from 'openstack-uicore-foundation/lib/security/methods'
+import { initLogOut } from 'openstack-uicore-foundation/lib/security/methods'
+import { doLogout } from 'openstack-uicore-foundation/lib/security/actions'
+import { logoutUser } from '../actions/base-actions';
 
 export class LogOutCallbackRoute extends React.Component {
 
   componentDidMount() {
     let { location } = this.props;
+
+    // NOTE: reset to the default user state to avoid bugs that cause app to crash (like in registration lite) after logout.
+    this.props.logoutUser();
 
     let postLogoutState = window.localStorage.getItem('post_logout_state')
     if (postLogoutState) {
@@ -47,6 +51,7 @@ export class LogOutCallbackRoute extends React.Component {
 export default connect(
   null,
   {
-    doLogout
+    doLogout,
+    logoutUser
   }
 )(LogOutCallbackRoute)

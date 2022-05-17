@@ -15,6 +15,7 @@ import styles from '../styles/marketing-hero.module.scss'
 const RegistrationLiteComponent = ({
     registrationProfile,
     userProfile,
+    attendee,
     getThirdPartyProviders,
     thirdPartyProviders,
     getUserProfile,
@@ -27,7 +28,6 @@ const RegistrationLiteComponent = ({
     colorSettings,
     siteSettings
 }) => {
-
     const [isActive, setIsActive] = useState(false);
 
     useEffect(() => {
@@ -92,19 +92,29 @@ const RegistrationLiteComponent = ({
         loading: loadingProfile || loadingIDP,
         // only show info if its not a recent purchase
         ticketOwned: userProfile?.summit_tickets?.length > 0,
-        ownedTickets: userProfile?.summit_tickets,
+        ownedTickets: attendee?.ticket_types || [],
         authUser: (provider) => onClickLogin(provider),
         getPasswordlessCode: getPasswordlessCode,
         loginWithCode: async (code, email) => await loginPasswordless(code, email),
         getAccessToken: getAccessToken,
         closeWidget: async () => {
             // reload user profile
-            await getUserProfile();
+            // NOTE: We need to catch the rejected promise here, or else the app will crash (locally, at least).
+            try {
+                await getUserProfile();
+            } catch (e) {
+                console.error(e);
+            }
             setIsActive(false)
         },
         goToExtraQuestions: async () => {
             // reload user profile
-            await getUserProfile();
+            // NOTE: We need to catch the rejected promise here, or else the app will crash (locally, at least).
+            try {
+                await getUserProfile();
+            } catch (e) {
+                console.error(e);
+            }
             navigate('/a/extra-questions')
         },
         goToEvent: () => navigate('/a/'),
@@ -133,16 +143,19 @@ const RegistrationLiteComponent = ({
 };
 
 
-const mapStateToProps = ({ userState, summitState, settingState }) => ({
-    registrationProfile: userState.idpProfile,
-    userProfile: userState.userProfile,
-    loadingProfile: userState.loading,
-    loadingIDP: userState.loadingIDP,
-    thirdPartyProviders: summitState.third_party_providers,
-    summit: summitState.summit,
-    colorSettings: settingState.colorSettings,
-    siteSettings: settingState.siteSettings,
-});
+const mapStateToProps = ({ userState, summitState, settingState }) => {
+    return ({
+        registrationProfile: userState.idpProfile,
+        userProfile: userState.userProfile,
+        attendee: userState.attendee,
+        loadingProfile: userState.loading,
+        loadingIDP: userState.loadingIDP,
+        thirdPartyProviders: summitState.third_party_providers,
+        summit: summitState.summit,
+        colorSettings: settingState.colorSettings,
+        siteSettings: settingState.siteSettings,
+    })
+};
 
 export default connect(mapStateToProps, {
     getThirdPartyProviders,

@@ -1,10 +1,11 @@
 import { reduceReducers } from '../utils/reducer-utils';
 
-import { LOGOUT_USER } from 'openstack-uicore-foundation/lib/utils/actions';
+import { LOGOUT_USER } from 'openstack-uicore-foundation/lib/security/actions';
 
 import {
   GET_DISQUS_SSO,
   GET_USER_PROFILE,
+  CLEAR_USER_PROFILE,
   START_LOADING_PROFILE,
   STOP_LOADING_PROFILE,
   GET_IDP_PROFILE,
@@ -19,8 +20,6 @@ import {
   UNCAST_PRESENTATION_VOTE_RESPONSE,
   TOGGLE_PRESENTATION_VOTE,
 } from '../actions/user-actions';
-
-import { RESET_STATE } from '../actions/base-actions';
 
 import { isAuthorizedUser } from '../utils/authorizedGroups';
 
@@ -38,9 +37,9 @@ const DEFAULT_STATE = {
 const userReducer = (state = DEFAULT_STATE, action) => {
   const { type, payload } = action;
   switch (type) {
-    case RESET_STATE:
-    case LOGOUT_USER:
+    case LOGOUT_USER: {
       return DEFAULT_STATE;
+    }
     case START_LOADING_PROFILE:
       return { ...state, loading: true };
     case STOP_LOADING_PROFILE:
