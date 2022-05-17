@@ -8,7 +8,7 @@ import {
   startLoading,
   stopLoading,
 } from 'openstack-uicore-foundation/lib/utils/actions';
-
+import { LOGOUT_USER } from 'openstack-uicore-foundation/lib/security/actions';
 import {
   getAccessToken,
   clearAccessToken,
@@ -46,6 +46,10 @@ export const CAST_PRESENTATION_VOTE_RESPONSE = 'CAST_PRESENTATION_VOTE_RESPONSE'
 export const UNCAST_PRESENTATION_VOTE_REQUEST = 'UNCAST_PRESENTATION_VOTE_REQUEST';
 export const UNCAST_PRESENTATION_VOTE_RESPONSE = 'UNCAST_PRESENTATION_VOTE_RESPONSE';
 export const TOGGLE_PRESENTATION_VOTE = 'TOGGLE_PRESENTATION_VOTE';
+
+export const logoutUser = () => (dispatch) => {
+  dispatch(createAction(LOGOUT_USER));
+};
 
 // shortName is the unique identifier assigned to a Disqus site.
 export const getDisqusSSO = (shortName) => async (dispatch, getState) => {

@@ -1,7 +1,5 @@
 import { reduceReducers } from '../utils/reducer-utils';
-
 import { LOGOUT_USER } from 'openstack-uicore-foundation/lib/security/actions';
-
 import {
   GET_DISQUS_SSO,
   GET_USER_PROFILE,

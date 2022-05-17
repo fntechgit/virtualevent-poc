@@ -4,7 +4,6 @@ import {
   startLoading,
   stopLoading
 } from 'openstack-uicore-foundation/lib/utils/actions';
-import { LOGOUT_USER } from 'openstack-uicore-foundation/lib/security/actions';
 import { customErrorHandler } from '../utils/customErrorHandler';
 
 export const RESET_STATE = 'RESET_STATE';
@@ -13,10 +12,6 @@ export const GET_THIRD_PARTY_PROVIDERS = 'GET_THIRD_PARTY_PROVIDERS';
 
 export const resetState = () => (dispatch) => {
   dispatch(createAction(RESET_STATE)({}));
-};
-
-export const logoutUser = () => (dispatch) => {
-  dispatch(createAction(LOGOUT_USER));
 };
 
 export const syncData = () => (dispatch, getState) => {
