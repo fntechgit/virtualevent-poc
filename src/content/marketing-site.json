@@ -2,9 +2,9 @@
   "heroBanner": {
     "title": "FNTECH All Hands 2022",
     "subTitle": "",
-    "date": "Date Information",
-    "time": "Timezone",
-    "dateLayout": true,
+    "date": "May 27  |  12PM",
+    "time": "",
+    "dateLayout": false,
     "buttons": {
       "registerButton": {
         "text": "Register now",
@@ -18,16 +18,7 @@
     "background": "",
     "images": [
       {
-        "file": "/img/tier1-default-header1.png",
-        "alt": ""
-      },
-      {
-        "file": "/img/tier1-default-header2.png",
-        "alt": ""
-      },
-      {
-        "file": "/img/tier1-default-header3.png",
-        "alt": ""
+        "file": ""
       }
     ]
   },
@@ -46,51 +37,9 @@
       "src": ""
     }
   },
-  "sponsors": [
-    {
-      "title": "Top Left",
-      "images": [
-        {
-          "image": "/img/tier1-default-space3.png",
-          "link": "",
-          "alt": ""
-        },
-        {
-          "image": "/img/tier1-default-space4.png",
-          "alt": ""
-        }
-      ]
-    },
-    {
-      "title": "Top Right",
-      "images": [
-        {
-          "image": "/img/tier1-default-space1.png",
-          "link": "",
-          "alt": ""
-        }
-      ]
-    },
-    {
-      "title": "Mid Left",
-      "images": [
-        {
-          "image": "/img/tier1-default-space2.png",
-          "alt": ""
-        }
-      ]
-    },
-    {
-      "images": [
-        {
-          "image": "/img/tier1-default-space4.png",
-          "alt": ""
-        }
-      ]
-    }
-  ],
+  "sponsors": [],
   "countdown": {
     "display": true,
-    "text": "Event Kickoff"
+    "text": "Countdown to Event"
   }
 }
