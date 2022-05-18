@@ -1,6 +1,6 @@
 {
   "heroBanner": {
-    "title": "TIER 1 - EVENT NAME HERE",
+    "title": "FNTECH All Hands 2022",
     "subTitle": "",
     "date": "Date Information",
     "time": "Timezone",
@@ -89,5 +89,8 @@
       ]
     }
   ],
-  "countdown":{"display": true,"text": "Event Kickoff"}
+  "countdown": {
+    "display": true,
+    "text": "Event Kickoff"
+  }
 }
