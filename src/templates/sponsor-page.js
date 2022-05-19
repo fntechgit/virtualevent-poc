@@ -16,7 +16,6 @@ import HeroComponent from '../components/HeroComponent'
 import Link from '../components/Link'
 import Layout from '../components/Layout'
 import { scanBadge } from '../actions/user-actions'
-import { getDisqusSSO } from '../actions/user-actions'
 import MarkdownIt from "markdown-it";
 import { getEnvVariable, LIVE_EVENT_THUMBNAIL_GIF_CAPTURE_STARTS } from "../utils/envVariables";
 import styles from '../styles/sponsor-page.module.scss'
@@ -37,7 +36,6 @@ export const SponsorPageTemplate = class extends React.Component {
 
   componentWillMount() {
     this.setSponsor();
-    this.props.getDisqusSSO();
   }
 
   componentDidUpdate(prevProps) {
@@ -151,7 +149,7 @@ export const SponsorPageTemplate = class extends React.Component {
                   </div>
                   }
                   {disqus &&
-                  <DisqusComponent disqusSSO={user.disqusSSO} className={styles.disqusContainerSponsor} summit={summit} title="" sponsor={sponsor} />
+                  <DisqusComponent className={styles.disqusContainerSponsor} title="" sponsor={sponsor} />
                   }
                   {sponsor.documents &&
                   <DocumentsComponent event={sponsor.documents} />
@@ -171,7 +169,6 @@ const SponsorPage = (
     {
       location,
       user,
-      getDisqusSSO,
       scanBadge,
       sponsorId,
       summit,
@@ -184,7 +181,6 @@ const SponsorPage = (
       <Layout location={location}>
         <SponsorPageTemplate
             user={user}
-            getDisqusSSO={getDisqusSSO}
             scanBadge={scanBadge}
             sponsorId={sponsorId}
             summit={summit}
@@ -197,14 +193,12 @@ const SponsorPage = (
 
 SponsorPage.propTypes = {
   user: PropTypes.object,
-  getDisqusSSO: PropTypes.func,
   scanBadge: PropTypes.func,
   sponsorId: PropTypes.string,
 };
 
 SponsorPageTemplate.propTypes = {
   user: PropTypes.object,
-  getDisqusSSO: PropTypes.func,
   scanBadge: PropTypes.func,
   sponsorId: PropTypes.string,
 };
@@ -216,4 +210,4 @@ const mapStateToProps = ({ userState, sponsorState, summitState }) => ({
   summit: summitState.summit
 });
 
-export default connect(mapStateToProps, { scanBadge, getDisqusSSO })(SponsorPage);
+export default connect(mapStateToProps, { scanBadge })(SponsorPage);
