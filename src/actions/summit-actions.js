@@ -30,6 +30,7 @@ export const getExtraQuestions = () => async (dispatch, getState) => {
     apiUrl.addQuery('filter[]', 'usage==Ticket');
     apiUrl.addQuery('expand', '*sub_question_rules,*sub_question,*values')
     apiUrl.addQuery('access_token', accessToken);
+    apiUrl.addQuery('order', 'order');
 
     return getRequest(
         null,

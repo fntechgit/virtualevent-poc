@@ -6,7 +6,7 @@ import Layout from '../components/Layout'
 
 import { getExtraQuestions } from '../actions/summit-actions'
 import { saveExtraQuestions } from '../actions/user-actions'
-
+import QuestionsSet from 'openstack-uicore-foundation/lib/utils/questions-set'
 import { ExtraQuestionsForm } from 'openstack-uicore-foundation/lib/components'
 
 import styles from '../styles/extra-questions.module.scss'
@@ -44,14 +44,19 @@ export const ExtraQuestionsPageTemplate = ({ user, summit, extraQuestions, saveE
     const toggleDisclaimer = () => setOwner({ ...owner, disclaimer: !owner.disclaimer });
 
     const handleAnswerChanges = (answersForm) => {
-        let newAnsers = [];
-        Object.keys(answersForm).map(a => {
-            let question = summit.order_extra_questions.find(q => q.name === a);
-            const newQuestion = { id: question.id, value: answersForm[a] }
-            newAnsers.push(newQuestion);
+        debugger;
+        const qs = new QuestionsSet(extraQuestions);
+        let newAnswers = [];
+        Object.keys(answersForm).forEach(name => {
+            let question = qs.getQuestionByName(name);
+            if(!question){
+                console.log(`missing question for answer ${name}.`);
+                return;
+            }
+            newAnswers.push({ id: question.id, value: answersForm[name]});
         });
-        setAnswers(newAnsers);
-        saveExtraQuestions(newAnsers, owner)
+        setAnswers(newAnswers);
+        saveExtraQuestions(newAnswers, owner)
     }
 
     if (!ticket) {

@@ -111,6 +111,7 @@ const SSR_getSummitExtraQuestions = async (baseUrl, summitId, accessToken) => {
     apiUrl.addQuery('filter[]', 'usage==Ticket');
     apiUrl.addQuery('expand', '*sub_question_rules,*sub_question,*values')
     apiUrl.addQuery('access_token', accessToken);
+    apiUrl.addQuery('order', 'order');
 
     return await axios.get(apiUrl.toString())
         .then(({data}) => data.data)
