@@ -1,56 +1,5 @@
 {
-  "columns": [
-    {
-      "title": "The Event",
-      "display": true,
-      "items": [
-        {
-          "title": "All Projects",
-          "link": "/footer-content/"
-        },
-        {
-          "title": "Host a project",
-          "link": "/footer-content/"
-        },
-        {
-          "title": "Services",
-          "link": "/footer-content/"
-        }
-      ]
-    },
-    {
-      "title": "The Vision",
-      "display": true,
-      "items": [
-        {
-          "title": "About",
-          "link": "/footer-content/"
-        },
-        {
-          "title": "Supporters",
-          "link": "/footer-content/"
-        }
-      ]
-    },
-    {
-      "title": "Membership",
-      "display": false,
-      "items": [
-        {
-          "title": "Corporate members",
-          "link": "/footer-content/"
-        },
-        {
-          "title": "Join us",
-          "link": "/footer-content/"
-        },
-        {
-          "title": "Services",
-          "link": "/footer-content/"
-        }
-      ]
-    }
-  ],
+  "columns": [],
   "logo": {
     "display": false
   },
@@ -59,23 +8,23 @@
     "display": true,
     "networks": [
       {
+        "icon": "fa-instagram",
+        "link": "https://www.instagram.com/fntech/ ",
+        "display": true
+      },
+      {
         "icon": "fa-facebook",
-        "link": "/footer-content/",
+        "link": "https://www.facebook.com/FNTECH ",
+        "display": true
+      },
+      {
+        "icon": "fa-youtube",
+        "link": "https://www.youtube.com/channel/UC81WrqqnYmigub0fTNKT-Mw",
         "display": true
       },
       {
         "icon": "fa-twitter",
-        "link": "/footer-content/",
-        "display": true
-      },
-      {
-        "icon": "fa-linkedin",
-        "link": "/footer-content/",
-        "display": true
-      },
-      {
-        "link": "/footer-content/",
-        "icon": "TEST",
+        "link": "https://www.facebook.com/FNTECH ",
         "display": true
       }
     ]
@@ -83,15 +32,15 @@
   "legal": [
     {
       "title": "Privacy Policy",
-      "link": "/footer-content/"
+      "link": "/privacy-policy"
     },
     {
-      "title": "Legals",
-      "link": "/footer-content/"
+      "title": "Cookie Policy",
+      "link": "/cookie-policy"
     },
     {
-      "title": "Disclaimer",
-      "link": "/footer-content/"
+      "title": "California Privacy Rights Statement",
+      "link": "/california-privacy-rights-statement"
     }
   ]
 }
