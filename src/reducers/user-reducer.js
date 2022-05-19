@@ -35,6 +35,7 @@ const DEFAULT_STATE = {
 const userReducer = (state = DEFAULT_STATE, action) => {
   const { type, payload } = action;
   switch (type) {
+    case RESET_STATE:
     case LOGOUT_USER: {
       return DEFAULT_STATE;
     }
