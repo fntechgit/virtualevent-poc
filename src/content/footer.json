@@ -40,15 +40,15 @@
   "legal": [
     {
       "title": "PRIVACY POLICY",
-      "link": "/footer-content/"
+      "link": "/privacy-policy"
     },
     {
       "title": "COOKIE POLICY",
-      "link": "/footer-content/"
+      "link": "/cookie-policy"
     },
     {
       "title": "CALIFORNIA PRIVACY RIGHTS STATEMENT",
-      "link": "/footer-content/"
+      "link": "/california-privacy-rights-statement"
     }
   ]
 }
