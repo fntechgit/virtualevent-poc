@@ -1,4 +1,5 @@
 import summit from '../content/summit.json';
+import extraQuestions from '../content/extra-questions.json';
 
 import { START_LOADING, STOP_LOADING, LOGOUT_USER } from "openstack-uicore-foundation/lib/actions";
 import { RESET_STATE, GET_THIRD_PARTY_PROVIDERS, SYNC_DATA } from "../actions/base-actions";
@@ -8,7 +9,7 @@ const DEFAULT_STATE = {
   loading: false,
   third_party_providers: null,
   summit: summit.summit,
-  extra_questions: []
+  extra_questions: extraQuestions
 };
 
 const summitReducer = (state = DEFAULT_STATE, action) => {

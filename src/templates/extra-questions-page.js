@@ -24,10 +24,10 @@ export const ExtraQuestionsPageTemplate = ({ user, summit, extraQuestions, saveE
         first_name: ticket?.owner.first_name || '',
         last_name: ticket?.owner.last_name || '',
         company: ticket?.owner.company || '',
-    });    
+        disclaimer: ticket?.owner?.disclaimer_accepted || false
+    });
 
     // calculate state initial values
-    const [disclaimer, setDisclaimer] = useState(ticket?.owner?.disclaimer_accepted || false);
     const [answers, setAnswers] = useState([]);
 
     const checkAttendeeInformation = () => {
@@ -35,12 +35,13 @@ export const ExtraQuestionsPageTemplate = ({ user, summit, extraQuestions, saveE
     }
 
     const checkMandatoryDisclaimer = () => {
-        return summit.registration_disclaimer_mandatory ? disclaimer : true;
+        return summit.registration_disclaimer_mandatory ? owner.disclaimer : true;
     }
 
-    const disabledButton = useMemo(() => !checkAttendeeInformation() || !checkMandatoryDisclaimer(), [owner]);
+    const disabledButton = useMemo(() => !checkAttendeeInformation() || !checkMandatoryDisclaimer(),
+        [owner.first_name, owner.last_name, owner.company, owner.email, owner.disclaimer]);
 
-    const toggleDisclaimer = () => setDisclaimer(!disclaimer);
+    const toggleDisclaimer = () => setOwner({ ...owner, disclaimer: !owner.disclaimer });
 
     const handleAnswerChanges = (answersForm) => {
         let newAnsers = [];
@@ -50,7 +51,7 @@ export const ExtraQuestionsPageTemplate = ({ user, summit, extraQuestions, saveE
             newAnsers.push(newQuestion);
         });
         setAnswers(newAnsers);
-        saveExtraQuestions(newAnsers, owner, disclaimer)
+        saveExtraQuestions(newAnsers, owner)
     }
 
     if (!ticket) {
@@ -135,7 +136,7 @@ export const ExtraQuestionsPageTemplate = ({ user, summit, extraQuestions, saveE
                             {summit?.registration_disclaimer_content &&
                                 <div className={`columns ${styles.disclaimer}`}>
                                     <div className="column is-12">
-                                        <input type="checkbox" checked={disclaimer} onChange={toggleDisclaimer} />
+                                        <input type="checkbox" checked={owner.disclaimer} onChange={toggleDisclaimer} />
                                         <b>{summit.registration_disclaimer_mandatory ? '*' : ''}</b>
                                         <span dangerouslySetInnerHTML={{ __html: summit.registration_disclaimer_content }} />
                                     </div>

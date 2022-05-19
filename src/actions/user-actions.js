@@ -12,6 +12,8 @@ import {
   clearAccessToken,
 } from 'openstack-uicore-foundation/lib/methods';
 
+import QuestionsSet from 'openstack-uicore-foundation/lib/utils/questions-set'
+
 import Swal from 'sweetalert2';
 import axios from "axios";
 import { navigate } from 'gatsby-link';
@@ -142,7 +144,7 @@ export const getIDPProfile = () => async (dispatch) => {
 
 export const requireExtraQuestions = () => (dispatch, getState) => {
 
-  const { summitState : { summit }} = getState();
+  const { summitState : { summit, extra_questions }} = getState();
   const { userState: { userProfile } } = getState();
 
   const owner = userProfile?.summit_tickets[0]?.owner || null;
@@ -151,18 +153,8 @@ export const requireExtraQuestions = () => (dispatch, getState) => {
   if (!owner.first_name || !owner.last_name || !owner.company || !owner.email) return true;
   const disclaimer = summit.registration_disclaimer_mandatory ? owner.disclaimer_accepted : true;
   if (!disclaimer) return true;
-  const requiredExtraQuestions = summit.order_extra_questions.filter(q => q.mandatory === true);
-  if (requiredExtraQuestions.length > 0 && userProfile && userProfile.summit_tickets.length > 0) {
-    const ticketExtraQuestions = userProfile?.summit_tickets[0]?.owner?.extra_questions || [];
-    if (ticketExtraQuestions.length > 0) {
-      return !requiredExtraQuestions.every(q => {
-        const answer = ticketExtraQuestions.find(answer => answer.question_id === q.id);
-        return answer && answer.value;
-      });
-    }
-    return true;
-  }
-  return false;
+  const qs = new QuestionsSet(extra_questions, userProfile?.summit_tickets[0]?.owner?.extra_questions);
+  return qs.completed();
 }
 
 export const scanBadge = (sponsorId) => async (dispatch) => {
@@ -447,7 +439,7 @@ export const updatePassword = (password) => async (dispatch) => {
     });
 }
 
-export const saveExtraQuestions = (extra_questions, owner, disclaimer) => async (dispatch, getState) => {
+export const saveExtraQuestions = (extra_questions, owner) => async (dispatch, getState) => {
 
   const { userState: { userProfile: { summit_tickets } } } = getState();
 
@@ -460,7 +452,7 @@ export const saveExtraQuestions = (extra_questions, owner, disclaimer) => async 
     attendee_first_name: owner.first_name,
     attendee_last_name: owner.last_name,
     attendee_company: owner.company,
-    disclaimer_accepted: disclaimer,
+    disclaimer_accepted: owner.disclaimer,
     extra_questions: extraQuestionsAnswers
   };
 
