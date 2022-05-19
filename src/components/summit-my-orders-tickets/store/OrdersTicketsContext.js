@@ -1,57 +1,38 @@
-import { createContext } from 'react';
-// import {
-//     authErrorHandler,
-//     getAccessToken,
-//     getRequest,
-//     putRequest,
-//     postRequest,
-//     deleteRequest,
-//     createAction,
-//     stopLoading,
-//     startLoading,
-//     getIdToken
-// } from 'openstack-uicore-foundation/lib/methods';
+import { createContext, useReducer } from 'react';
+import { createReducer } from '../helpers/createReducer';
 
-// export const getUserOrders = (updateId, page = 1, per_page = 5) => async (dispatch, getState) => {
-//     const accessToken = await getAccessToken().catch(_ => dispatch(openWillLogoutModal()));
-//     if (!accessToken) return;
+const initialState = {
+    orders: []
+};
 
-//     dispatch(startLoading());
+const actions = ({ state, dispatch }) => ({
+    setOrders: (orders) => dispatch({ type: 'setOrders', payload: orders }),
+    setLoading: (loading) => dispatch({ type: 'setLoading', payload: loading })
+});
 
-//     let params = {
-//         access_token: accessToken,
-//         expand: 'extra_questions, tickets, tickets.refund_requests, tickets.owner, tickets.owner.extra_questions, tickets.badge, tickets.badge.features',
-//         order: '-id',
-//         filter: 'status==Confirmed,status==Paid,status==Error',
-//         page: page,
-//         per_page: per_page
-//     };
+const actionHandlers = {
+    setOrders: (state, orders) => ({ ...state, orders }),
+    setLoading: (state, loading) => ({ ...state, loading })
+};
 
-//     return getRequest(
-//         null,
-//         createAction(GET_USER_ORDERS),
-//         `${window.API_BASE_URL}/api/v1/summits/all/orders/me`,
-//         authErrorHandler
-//     )(params)(dispatch).then(() => {
-//         if (updateId) {
-//             dispatch(selectOrder({}, updateId))
-//         } else {
-//             dispatch(getUserSummits('orders'));
-//         }
-//     }
-//     ).catch(e => {
-//         dispatch(stopLoading());
-//         return (e);
-//     });
-// }
-
+const reducer = createReducer({ actionHandlers });
 
 export const OrdersTicketsContext = createContext(null);
 
 export const OrdersTicketsProvider = ({ children }) => {
+    const [state, dispatch] = useReducer(reducer, {}, () => initialState);
+
     return (
-        <OrdersTicketsContext.Provider value={{ state, actions }}>
+        <OrdersTicketsContext.Provider value={{ state, dispatch }}>
             {children}
         </OrdersTicketsContext.Provider>
     );
 };
+
+export const useOrdersTicketsContext = () => {
+    const context = useContext(OrdersTicketsContext);
+
+    if (!context) throw new Error('useOrdersTicketsContext must be used within a OrdersTicketsProvider');
+
+    return { ...context, actions: actions(context) };
+}
