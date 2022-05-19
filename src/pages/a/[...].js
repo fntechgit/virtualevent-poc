@@ -18,7 +18,6 @@ import WithBadgeRoute from "../../routes/WithBadgeRoute";
 import PosterDetailPage from "../../templates/poster-detail-page";
 import MyTicketsPage from '../../templates/my-tickets-page';
 
-
 const App = ({ isLoggedUser, user, summit_phase, lastBuild, syncData }) => {
 
   useEffect(() => {
