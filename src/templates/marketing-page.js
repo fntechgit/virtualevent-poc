@@ -17,7 +17,6 @@ import Content, { HTMLContent } from '../components/Content'
 import Countdown from '../components/Countdown'
 import Link from '../components/Link'
 import { PHASES } from '../utils/phasesUtils'
-import { getDisqusSSO } from '../actions/user-actions'
 
 import settings from '../content/settings';
 
@@ -29,9 +28,6 @@ export const MarketingPageTemplate = class extends React.Component {
 
   componentWillMount() {
     const {siteSettings} = this.props;
-    if (siteSettings.leftColumn.disqus && this.props.isLoggedUser) {
-      this.props.getDisqusSSO();
-    }
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
@@ -84,7 +80,7 @@ export const MarketingPageTemplate = class extends React.Component {
             {siteSettings.leftColumn.disqus.display &&
               <React.Fragment>
                 <h2><b>{siteSettings.leftColumn.disqus.title}</b></h2>
-                <DisqusComponent page="marketing-site" disqusSSO={user?.disqusSSO} summit={summit} />
+                <DisqusComponent page="marketing-site"/>
               </React.Fragment>
             }
             {siteSettings.leftColumn.image.display &&
@@ -154,7 +150,7 @@ MarketingPageTemplate.propTypes = {
   isLoggedUser: PropTypes.bool,
 }
 
-const MarketingPage = ({ summit, location, data, summit_phase, user, isLoggedUser, getDisqusSSO, syncData, lastBuild, siteSettings }) => {
+const MarketingPage = ({ summit, location, data, summit_phase, user, isLoggedUser, syncData, lastBuild, siteSettings }) => {
   const { html } = data.markdownRemark;
 
   return (
@@ -167,7 +163,6 @@ const MarketingPage = ({ summit, location, data, summit_phase, user, isLoggedUse
         summit={summit}
         user={user}
         isLoggedUser={isLoggedUser}
-        getDisqusSSO={getDisqusSSO}
         syncData={syncData}
         lastBuild={lastBuild}
         siteSettings={siteSettings}
@@ -185,8 +180,7 @@ MarketingPage.propTypes = {
   summit_phase: PropTypes.number,
   user: PropTypes.object,
   isLoggedUser: PropTypes.bool,
-  getSummitData: PropTypes.func,
-  getDisqusSSO: PropTypes.func,
+  getSummitData: PropTypes.func
 }
 
 const mapStateToProps = ({ clockState, loggedUserState, userState, summitState, settingState }) => ({
@@ -199,7 +193,6 @@ const mapStateToProps = ({ clockState, loggedUserState, userState, summitState, 
 });
 
 export default connect(mapStateToProps, {
-  getDisqusSSO,
   syncData
 })(MarketingPage)
 

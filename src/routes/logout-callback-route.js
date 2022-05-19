@@ -16,7 +16,7 @@ import { navigate } from "gatsby"
 import URI from "urijs"
 import { initLogOut } from 'openstack-uicore-foundation/lib/security/methods'
 import { doLogout } from 'openstack-uicore-foundation/lib/security/actions'
-import { logoutUser } from '../actions/base-actions';
+import { logoutUser } from '../actions/user-actions';
 
 export class LogOutCallbackRoute extends React.Component {
 

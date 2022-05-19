@@ -74,9 +74,7 @@ export const getDisqusSSO = (shortName) => async (dispatch, getState) => {
     console.log('ERROR: ', e);
     clearAccessToken();
 
-    // Note: Commenting this out because no implementation of this function is actually catching this error,
-    // and it's causing the app to crash in development.
-    // return Promise.reject(e);
+    return Promise.reject(e);
   });
 }
 
