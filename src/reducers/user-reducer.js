@@ -18,7 +18,7 @@ import {
   UNCAST_PRESENTATION_VOTE_RESPONSE,
   TOGGLE_PRESENTATION_VOTE,
 } from '../actions/user-actions';
-
+import { RESET_STATE } from '../actions/base-actions';
 import { isAuthorizedUser } from '../utils/authorizedGroups';
 
 const DEFAULT_STATE = {
