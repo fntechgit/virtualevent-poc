@@ -7743,10 +7743,10 @@ gatsby-transformer-remark@^5.10.2:
     unist-util-select "^3.0.4"
     unist-util-visit "^2.0.3"
 
-gatsby-transformer-sharp@^4.10.0:
-  version "4.11.0"
-  resolved "https://registry.yarnpkg.com/gatsby-transformer-sharp/-/gatsby-transformer-sharp-4.11.0.tgz#e80bb5736cfe90e5ee7d826ee451a10f2d743c94"
-  integrity sha512-pQkQs7EALTWwuoEVOGxJt3/6CIF6AaNmp7tEqbqT3+iu6KiEAp5/YxRR56t8eQ6crVt1kajDSy1pQW8VRi5Sig==
+gatsby-transformer-sharp@4.10.0:
+  version "4.10.0"
+  resolved "https://registry.yarnpkg.com/gatsby-transformer-sharp/-/gatsby-transformer-sharp-4.10.0.tgz#9db793a219d0fa85b7d33cb37b32aba63df4c58a"
+  integrity sha512-Gp9eRkGQOrkoD+yJgK2ZdXuVbet/opxdEnuTZ6BhLEVhfTwOnMEaui6ZqO0cKJ7/NYlptO38p+C5cyizC0FRYA==
   dependencies:
     "@babel/runtime" "^7.15.4"
     bluebird "^3.7.2"
@@ -11885,10 +11885,10 @@ open@^7.0.2, open@^7.0.3:
     is-docker "^2.0.0"
     is-wsl "^2.1.1"
 
-openstack-uicore-foundation@^4.0.19:
-  version "4.0.19"
-  resolved "https://registry.yarnpkg.com/openstack-uicore-foundation/-/openstack-uicore-foundation-4.0.19.tgz#78f193077d29bcbe829516b713679cff33a493a2"
-  integrity sha512-U4+Wk/lrUuoitPX/+IegGUCLRQEJJJIn33PWutin0auv0NaK+U1dvSPHcBno/W5z+t+YckMgXfq7UhEqz8woDA==
+openstack-uicore-foundation@4.0.23:
+  version "4.0.23"
+  resolved "https://registry.yarnpkg.com/openstack-uicore-foundation/-/openstack-uicore-foundation-4.0.23.tgz#2b542c6547a36371a215af0ab6d1cb69fe453e3b"
+  integrity sha512-3ivMLKq//ETMY4B/X0Rr47fy/s8344eHMx+wXclrQb2PcLrTrgT1oej4NxGNp9CGJFjDFx6Og0Qe59JiePl26w==
 
 opentracing@^0.14.5:
   version "0.14.7"
@@ -15796,10 +15796,10 @@ sudo-prompt@^8.2.0:
   resolved "https://registry.yarnpkg.com/sudo-prompt/-/sudo-prompt-8.2.5.tgz#cc5ef3769a134bb94b24a631cc09628d4d53603e"
   integrity sha512-rlBo3HU/1zAJUrkY6jNxDOC9eVYliG6nS4JA8u8KAshITd07tafMc/Br7xQwCSseXwJ2iCcHCE8SNWX3q8Z+kw==
 
-summit-registration-lite@^2.0.3:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/summit-registration-lite/-/summit-registration-lite-2.0.3.tgz#c993f92e40b0e03bb9e55a2165a1a8a148b41908"
-  integrity sha512-Y0DdkfUoQETIr1I2psgLAe49PpnNzWc5rBpuISyxnvE+b6c5e1CeklBEDUMY9kkr3OE9LXBZ99p64L5UfGsOeA==
+summit-registration-lite@^2.0.4:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/summit-registration-lite/-/summit-registration-lite-2.0.4.tgz#41856d427b2c97287ca9651aa0a82fe0adcc7ffe"
+  integrity sha512-ZMFaUzh7AbpccQek2VaJkLmLFPi3wNSkrCZNzWMfJmlXsYqiYCSiKHBTqW39cmxXABu8xiWSluCBID0HIlnOAg==
   dependencies:
     "@stripe/react-stripe-js" "^1.4.1"
     "@stripe/stripe-js" "^1.15.0"
