@@ -73,5 +73,3 @@ We share personal data with companies, organizations, or individuals outside of 
 Right to Correct or Update Your Information
 
 If you would like to correct or update information that you have provided to us, please logon to your account and update your profile.
-
-*Updated 07/2021*
