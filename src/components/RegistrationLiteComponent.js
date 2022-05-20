@@ -35,7 +35,10 @@ const RegistrationLiteComponent = ({
     loadingIDP,
     summit,
     colorSettings,
-    siteSettings }) => {
+    siteSettings , 
+    allowsNativeAuth,
+    allowsOtpAuth,
+}) => {
 
     const [isActive, setIsActive] = useState(false);
     // this variable let to know to the widget that should not show
@@ -46,7 +49,7 @@ const RegistrationLiteComponent = ({
         const fragmentParser = new FragmentParser();
         setIsActive(fragmentParser.getParam('registration'));
         getThirdPartyProviders();
-    }, [getThirdPartyProviders]);
+    }, []);
 
 
     const getBackURL = () => {
@@ -140,7 +143,9 @@ const RegistrationLiteComponent = ({
             setUserOrder(order).then(_ => checkOrderData(order));
         },
         inPersonDisclaimer: siteSettings?.registration_in_person_disclaimer,
-        handleCompanyError: () => handleCompanyError
+        handleCompanyError: () => handleCompanyError,
+        allowsNativeAuth: allowsNativeAuth,
+        allowsOtpAuth: allowsOtpAuth,
     };
 
     const { registerButton } = siteSettings.heroBanner.buttons;
@@ -167,6 +172,8 @@ const mapStateToProps = ({ userState, summitState, settingState }) => ({
     loadingProfile: userState.loading,
     loadingIDP: userState.loadingIDP,
     thirdPartyProviders: summitState.third_party_providers,
+    allowsNativeAuth: summitState.allows_native_auth,
+    allowsOtpAuth: summitState.allows_otp_auth,
     summit: summitState.summit,
     colorSettings: settingState.colorSettings,
     siteSettings: settingState.siteSettings,

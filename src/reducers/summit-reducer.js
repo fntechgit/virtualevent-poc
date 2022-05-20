@@ -9,7 +9,9 @@ const DEFAULT_STATE = {
   loading: false,
   third_party_providers: null,
   summit: summit.summit,
-  extra_questions: extraQuestions
+  extra_questions: extraQuestions,
+  allows_native_auth: true,
+  allows_otp_auth: true,
 };
 
 const summitReducer = (state = DEFAULT_STATE, action) => {
@@ -25,8 +27,13 @@ const summitReducer = (state = DEFAULT_STATE, action) => {
     case STOP_LOADING:
       return { ...state, loading: false };
     case GET_THIRD_PARTY_PROVIDERS:
-      const providers = payload.response.third_party_identity_providers;
-      return { ...state, loading: false, third_party_providers: providers }
+      const { third_party_identity_providers : third_party_providers, allows_native_auth, allows_otp_auth } = payload.response;
+      return { ...state,
+                  loading: false,
+                  third_party_providers,
+                  allows_native_auth,
+                  allows_otp_auth
+            };
     case GET_EXTRA_QUESTIONS: {
       const extraQuestions = payload.response.data;
       return { ...state, loading: false, extra_questions: extraQuestions }
