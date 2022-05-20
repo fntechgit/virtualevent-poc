@@ -44,7 +44,6 @@ export const ExtraQuestionsPageTemplate = ({ user, summit, extraQuestions, saveE
     const toggleDisclaimer = () => setOwner({ ...owner, disclaimer: !owner.disclaimer });
 
     const handleAnswerChanges = (answersForm) => {
-        debugger;
         const qs = new QuestionsSet(extraQuestions);
         let newAnswers = [];
         Object.keys(answersForm).forEach(name => {
@@ -57,6 +56,10 @@ export const ExtraQuestionsPageTemplate = ({ user, summit, extraQuestions, saveE
         });
         setAnswers(newAnswers);
         saveExtraQuestions(newAnswers, owner)
+    }
+
+    const triggerFormSubmit = () => {
+        formRef.current.dispatchEvent(new Event("submit", { cancelable: true, bubbles: true }))
     }
 
     if (!ticket) {
@@ -150,7 +153,7 @@ export const ExtraQuestionsPageTemplate = ({ user, summit, extraQuestions, saveE
                             <button
                                 className={`${styles.buttonSave} button is-large`}
                                 disabled={disabledButton}
-                                onClick={() => formRef.current.dispatchEvent(new Event("submit", { cancelable: true, bubbles: true }))}>
+                                onClick={() => triggerFormSubmit()}>
                                 Save and Continue
                             </button>
                         </>
