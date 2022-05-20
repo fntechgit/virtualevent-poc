@@ -4,6 +4,7 @@ const fs = require("fs");
 const {createFilePath} = require('gatsby-source-filesystem');
 const {fmImagesToRelative} = require('gatsby-remark-relative-images');
 const {ClientCredentials} = require('simple-oauth2');
+const URI = require('urijs');
 
 const colorsFilepath = 'src/content/colors.json';
 const disqusFilepath = 'src/content/disqus-settings.json';
@@ -103,6 +104,20 @@ const SSR_getSummit = async (baseUrl, summitId) => {
         .catch(e => console.log('ERROR: ', e));
 };
 
+const SSR_getSummitExtraQuestions = async (baseUrl, summitId, accessToken) => {
+
+    let apiUrl = URI(`${baseUrl}/api/v1/summits/${summitId}/order-extra-questions`);
+    apiUrl.addQuery('filter[]', 'class==MainQuestion');
+    apiUrl.addQuery('filter[]', 'usage==Ticket');
+    apiUrl.addQuery('expand', '*sub_question_rules,*sub_question,*values')
+    apiUrl.addQuery('access_token', accessToken);
+    apiUrl.addQuery('order', 'order');
+
+    return await axios.get(apiUrl.toString())
+        .then(({data}) => data.data)
+        .catch(e => console.log('ERROR: ', e));
+};
+
 const SSR_getVoteablePresentations = async (baseUrl, summitId, accessToken, page = 1, results = []) => {
     console.log(`SSR_getVoteablePresentations page ${page} results ${results.length}`)
     return await axios.get(
@@ -189,6 +204,11 @@ exports.onPreBootstrap = async () => {
     const allVoteablePresentations = await SSR_getVoteablePresentations(summitApiBaseUrl, summitId, accessToken);
     console.log(`allVoteablePresentations ${allVoteablePresentations.length}`);
     fs.writeFileSync('src/content/voteable_presentations.json', JSON.stringify(allVoteablePresentations), 'utf8');
+
+    // Get Summit Extra Questions
+    const extraQuestions = await SSR_getSummitExtraQuestions(summitApiBaseUrl, summitId, accessToken);
+    console.log(`extraQuestions ${extraQuestions.length}`);
+    fs.writeFileSync('src/content/extra-questions.json', JSON.stringify(extraQuestions), 'utf8');
 };
 
 // makes Summit logo optional for graphql queries
