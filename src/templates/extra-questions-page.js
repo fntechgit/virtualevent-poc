@@ -139,6 +139,9 @@ export const ExtraQuestionsPageTemplate = ({ user, summit, extraQuestions, saveE
                                     userAnswers={userAnswers}
                                     onAnswerChanges={handleAnswerChanges}
                                     formRef={formRef}
+                                    questionContainerClassName={'columns'}
+                                    questionLabelContainerClassName={'column is-one-third'}
+                                    questionControlContainerClassName={'column is-two-thirds'}
                                 />
                             </div>
                             {summit?.registration_disclaimer_content &&
@@ -152,7 +155,6 @@ export const ExtraQuestionsPageTemplate = ({ user, summit, extraQuestions, saveE
                             }
                             <button
                                 className={`${styles.buttonSave} button is-large`}
-                                disabled={disabledButton}
                                 onClick={() => triggerFormSubmit()}>
                                 Save and Continue
                             </button>
