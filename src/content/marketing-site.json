@@ -57,7 +57,7 @@
   },
   "leftColumn": {
     "schedule": {
-      "display": true,
+      "display": false,
       "title": "Full Event Schedule"
     },
     "disqus": {
@@ -65,9 +65,9 @@
       "title": "Login to join the conversation"
     },
     "image": {
-      "display": false,
-      "title": "Image",
-      "src": ""
+      "display": true,
+      "title": "Full Event Schedule",
+      "src": "/img/fntech-ah22-marketingleft.png"
     }
   },
   "sponsors": [
