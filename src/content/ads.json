@@ -1,7 +1,15 @@
 {
   "ads": [
     {
-      "columnAds": [],
+      "columnAds": [
+        {
+          "image": {
+            "file": "/img/fntech-ah22-lobby-space1.png",
+            "alt": ""
+          },
+          "column": "left"
+        }
+      ],
       "section": "lobby"
     }
   ]
