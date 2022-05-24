@@ -8,6 +8,13 @@
             "alt": ""
           },
           "column": "left"
+        },
+        {
+          "image": {
+            "file": "/img/fntech-ah22-lobby-space2.png",
+            "alt": ""
+          },
+          "column": "right"
         }
       ],
       "section": "lobby"
