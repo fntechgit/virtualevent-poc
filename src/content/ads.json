@@ -1,3 +1,44 @@
 {
-  "ads": []
+  "ads": [
+    {
+      "columnAds": [
+        {
+          "image": {
+            "file": "/img/fntech-ah22-lobbyspace-lobby-space1.png",
+            "alt": ""
+          },
+          "column": "left"
+        },
+        {
+          "image": {
+            "file": "/img/fntech-ah22-lobbyspace-lobby-space2.png",
+            "alt": ""
+          },
+          "column": "left"
+        },
+        {
+          "image": {
+            "file": "/img/fntech-ah22-lobbyspace-artboard-41.png",
+            "alt": ""
+          },
+          "column": "left"
+        },
+        {
+          "image": {
+            "file": "/img/fntech-ah22-lobbyspace-artboard-42.png",
+            "alt": ""
+          },
+          "column": "left"
+        },
+        {
+          "image": {
+            "file": "/img/fntech-ah22-lobbyspace-artboard-45.png",
+            "alt": ""
+          },
+          "column": "left"
+        }
+      ],
+      "section": "lobby"
+    }
+  ]
 }
