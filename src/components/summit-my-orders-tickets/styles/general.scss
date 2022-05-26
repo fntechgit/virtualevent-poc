@@ -1,0 +1,36 @@
+@import "./variables";
+
+.ticket-refund-button {
+  border: 1px solid $color-gray-light;
+  margin-top: 20px;
+  padding: 15px;
+  font-weight: bold;
+  width: 50%;
+  margin-right: auto;
+  margin-left: auto;
+
+  a {
+    line-height: 2em;
+    cursor: pointer;
+  }
+
+  .cancel {
+    color: $color-danger;
+  }
+
+  .info {
+    font-weight: normal;
+
+    h4 {
+      font-weight: bold;
+    }
+
+    .role-badge {
+      text-transform: uppercase;
+    }
+  }
+
+  &:empty {
+    display: none;
+  }
+}

@@ -1,15 +1,22 @@
 import React from "react";
 import { connect } from "react-redux";
-import { MyOrdersTickets } from '../components/MyOrdersTicketsComponent';
+import Layout from "../components/Layout";
+import { MyOrdersTicketsComponent } from '../components/MyOrdersTicketsComponent';
 
-const MyTicketsPage = ({ }) => {
+const MyTicketsPage = ({ location, user, isLoggedUser }) => {
+    // console.log(user);
+
     return (
-        <MyOrdersTickets />
+        <Layout location={location}>
+            <div className="container">
+                <MyOrdersTicketsComponent />
+            </div>
+        </Layout>
     );
 };
 
 const mapStateToProps = ({ userState }) => ({
-    userProfile: userState.userProfile
+    user: userState,
 });
 
 export default connect(mapStateToProps, {})(MyTicketsPage);

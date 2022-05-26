@@ -1,1 +1,1 @@
-export * from './MyOrdersTickets';
+export * from './summit-my-orders-tickets';
