@@ -35,7 +35,8 @@ export const reloadScheduleData = () => (dispatch, getState) => {
   const { isLoggedUser } = loggedUserState;
   const { userProfile } = userState;
   dispatch(createAction(RELOAD_SCHED_DATA)({ isLoggedUser, userProfile }));
-  dispatch(createAction(RELOAD_USER_PROFILE)({ isLoggedUser, userProfile }));
+  if(isLoggedUser)
+    dispatch(createAction(RELOAD_USER_PROFILE)({ isLoggedUser, userProfile }));
 };
 
 export const deepLinkToEvent = () => {

@@ -7322,13 +7322,14 @@ fsevents@~2.3.2:
   resolved "https://registry.yarnpkg.com/fsevents/-/fsevents-2.3.2.tgz#8a526f78b8fdf4623b709e0b975c52c24c02fd1a"
   integrity sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==
 
-full-schedule-widget@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/full-schedule-widget/-/full-schedule-widget-2.0.2.tgz#8c5c0719990780065cfefb33222eda77b575b098"
-  integrity sha512-JqoM0LHYWOkiuZF9Mj9a/c9wPe8eDeXE8ImLdN5abmfGI1dpGRBRll5YQNTQMPpf7/mhVm6vHd3S2p52m/eu3A==
+full-schedule-widget@^2.0.5:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/full-schedule-widget/-/full-schedule-widget-2.0.5.tgz#718eca8c5f8123fa54e93d22d5c4086b3ae2737e"
+  integrity sha512-o1H4w65660WRQQqaBksOZeVHkanv19nZLAN/MvNXwHX4Awps/0/AfEWH6T/8u9JmiCK7CdU83wYq99W7rYNlBQ==
   dependencies:
     bootstrap "^5.1.3"
     pure-react-carousel "^1.27.4"
+    react-scroll "^1.8.7"
 
 function-bind@^1.1.1:
   version "1.1.1"
@@ -11937,10 +11938,10 @@ open@^7.0.2, open@^7.0.3:
     is-docker "^2.0.0"
     is-wsl "^2.1.1"
 
-openstack-uicore-foundation@^4.0.28:
-  version "4.0.28"
-  resolved "https://registry.yarnpkg.com/openstack-uicore-foundation/-/openstack-uicore-foundation-4.0.28.tgz#e884492fcf25abeaa1c0334cd3f2db5632b7b1fb"
-  integrity sha512-gse7HUseD6Yi6oWrtCxitag1NeggfAYT6cDWtHmwnPvZUigIxfHUbb4XGSz3YZtJVrDLRwzpYeZ7I3e1QmsvXA==
+openstack-uicore-foundation@4.0.29:
+  version "4.0.29"
+  resolved "https://registry.yarnpkg.com/openstack-uicore-foundation/-/openstack-uicore-foundation-4.0.29.tgz#e7a99c48a8501467890d60414ff7265dd848c13b"
+  integrity sha512-IXKUIUs3Ylv/JMYaI0VRjTJySY1e/kjk9Oa9YHKJ76iS54+4h1WlpFsHFI6DWV11HQvfEeioVA/E5+tkoTDi5w==
 
 opentracing@^0.14.5:
   version "0.14.7"
@@ -13757,6 +13758,14 @@ react-scroll-sync@^0.9.0:
   integrity sha512-IaMUSTbarj9mhjVtBl9I45Er8gQqV8rdb9A0eK77JJ8MvnLcFIlnoiXVx1NS9ACy9QELq7xCTxdIVEdhDV9R0Q==
   dependencies:
     prop-types "^15.5.7"
+
+react-scroll@^1.8.7:
+  version "1.8.7"
+  resolved "https://registry.yarnpkg.com/react-scroll/-/react-scroll-1.8.7.tgz#8020035329efad00f03964e18aff6822137de3aa"
+  integrity sha512-fBOIwweAlhicx8RqP9tQXn/Uhd+DTtVRjw+0VBsIn1Z+MjRYLhTZ0tMoTAU1vOD3dce8mI6copexI4yWII+Luw==
+  dependencies:
+    lodash.throttle "^4.1.1"
+    prop-types "^15.7.2"
 
 react-select@^2.4.4:
   version "2.4.4"
