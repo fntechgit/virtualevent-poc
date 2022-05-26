@@ -1,80 +1,65 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState, useRef, useMemo } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import Layout from '../components/Layout'
-import ExtraQuestions from '../components/ExtraQuestions'
 
+import { getExtraQuestions } from '../actions/summit-actions'
 import { saveExtraQuestions } from '../actions/user-actions'
+import QuestionsSet  from 'openstack-uicore-foundation/lib/utils/questions-set'
+import ExtraQuestionsForm from 'openstack-uicore-foundation/lib/components/extra-questions'
 
 import styles from '../styles/extra-questions.module.scss'
 import { navigate } from "gatsby";
 
-export const ExtraQuestionsPageTemplate = ({ user, summit, saveExtraQuestions }) => {
+export const ExtraQuestionsPageTemplate = ({ user, summit, extraQuestions, saveExtraQuestions }) => {
+
+    const formRef = useRef(null);
 
     const ticket = user.summit_tickets.length > 0 ? user.summit_tickets[user.summit_tickets.length - 1] : null;
-    const extraQuestions = summit.order_extra_questions.sort((a, b) => (a.order > b.order) ? 1 : -1);
+
     const userAnswers = ticket ? ticket.owner.extra_questions : [];
     const [owner, setOwner] = useState({
         email: ticket?.owner.email || '',
         first_name: ticket?.owner.first_name || '',
         last_name: ticket?.owner.last_name || '',
         company: ticket?.owner.company || '',
+        disclaimer: ticket?.owner?.disclaimer_accepted || false
     });
 
     // calculate state initial values
-    const [disclaimer, setDisclaimer] = useState(ticket?.owner?.disclaimer_accepted || false);
-    const [answers, setAnswers] = useState(extraQuestions.map(question => {
-        const userAnswer = userAnswers.filter(a => a.question_id === question.id);
-        let newAnswer = { name: question.name, id: question.id, value: '' };
-        if (userAnswer.length > 0) {
-            newAnswer = { ...newAnswer, value: userAnswer[0].value };
-        }
-        return newAnswer
-    }));
-
-    const mandatoryQuestionsAnswered = () => {
-
-        const mandatoryQuestions = extraQuestions.filter(question => question.mandatory === true);
-        const mandatoryAnswers = mandatoryQuestions.every(question => {
-            const answer = answers.find(a => a.id === question.id);
-            return answer && answer.value;
-        });
-
-        if (summit.registration_disclaimer_mandatory) {
-            return disclaimer && mandatoryAnswers;
-        }
-
-        return mandatoryAnswers;
-    }
+    const [answers, setAnswers] = useState([]);
 
     const checkAttendeeInformation = () => {
         return !!owner.first_name && !!owner.last_name && !!owner.company && !!owner.email
     }
 
     const checkMandatoryDisclaimer = () => {
-        return summit.registration_disclaimer_mandatory ? disclaimer : true;
+        return summit.registration_disclaimer_mandatory ? owner.disclaimer : true;
     }
 
-    const toggleDisclaimer = () => setDisclaimer(!disclaimer);
+    const disabledButton = useMemo(() => !checkAttendeeInformation() || !checkMandatoryDisclaimer(),
+        [owner.first_name, owner.last_name, owner.company, owner.email, owner.disclaimer]);
 
-    const handleChange = (ev) => {
-        let { value, id } = ev.target;
+    const toggleDisclaimer = () => setOwner({ ...owner, disclaimer: !owner.disclaimer });
 
-        if (ev.target.type === 'checkbox') {
-            value = ev.target.checked ? "true" : "false";
-        }
-
-        if (ev.target.type === 'checkboxlist') {
-            value = ev.target.value.join(',');
-        }
-
-        let newAnswer = answers.find(a => a.id === parseInt(id));
-        newAnswer.value = value;
-
-        setAnswers(answers => [...answers.filter(a => a.id !== parseInt(id)), newAnswer]);
+    const handleAnswerChanges = (answersForm) => {
+        const qs = new QuestionsSet(extraQuestions);
+        let newAnswers = [];
+        Object.keys(answersForm).forEach(name => {
+            let question = qs.getQuestionByName(name);
+            if(!question){
+                console.log(`missing question for answer ${name}.`);
+                return;
+            }
+            newAnswers.push({ id: question.id, value: answersForm[name]});
+        });
+        setAnswers(newAnswers);
+        saveExtraQuestions(newAnswers, owner)
     }
 
-    const getAnswer = (question) => answers.find(a => a.id === question.id).value;
+    const triggerFormSubmit = () => {
+        formRef.current.dispatchEvent(new Event("submit", { cancelable: true, bubbles: true }))
+    }
 
     if (!ticket) {
         navigate('/');
@@ -139,36 +124,44 @@ export const ExtraQuestionsPageTemplate = ({ user, summit, saveExtraQuestions })
                             </div>
                         </div>
                     </div>
-                    <h2>Additional Information</h2>
-                    <span>
-                        Please answer these additional questions. 
-                        <br/>
-                        * Required questions
-                    </span>
-                    <div>
-                        {answers.length === extraQuestions.length && extraQuestions.map(question => {
-                            return <ExtraQuestions key={question.id} question={question} handleChange={handleChange} getAnswer={getAnswer} />
-                        })}
-                    </div>
-                    {summit?.registration_disclaimer_content &&
-                        <div className={`columns ${styles.disclaimer}`}>
-                            <div className="column is-12">
-                                <input type="checkbox" checked={disclaimer} onChange={toggleDisclaimer} />
-                                <b>{summit.registration_disclaimer_mandatory ? '*' : ''}</b>
-                                <span dangerouslySetInnerHTML={{ __html: summit.registration_disclaimer_content }} />
+                    {extraQuestions.length > 0 ?
+                        <>
+                            <h2>Additional Information</h2>
+                            <span>
+                                Please answer these additional questions.
+                                <br />
+                                * Required questions
+                            </span>
+                            <div>
+                                <ExtraQuestionsForm
+                                    extraQuestions={extraQuestions}
+                                    userAnswers={userAnswers}
+                                    onAnswerChanges={handleAnswerChanges}
+                                    ref={formRef}
+                                    questionContainerClassName={'columns'}
+                                    questionLabelContainerClassName={'column is-one-third'}
+                                    questionControlContainerClassName={'column is-two-thirds'}
+                                />
                             </div>
-                        </div>
+                            {summit?.registration_disclaimer_content &&
+                                <div className={`columns ${styles.disclaimer}`}>
+                                    <div className="column is-12">
+                                        <input type="checkbox" checked={owner.disclaimer} onChange={toggleDisclaimer} />
+                                        <b>{summit.registration_disclaimer_mandatory ? '*' : ''}</b>
+                                        <span dangerouslySetInnerHTML={{ __html: summit.registration_disclaimer_content }} />
+                                    </div>
+                                </div>
+                            }
+                            <button
+                                className={`${styles.buttonSave} button is-large`}
+                                disabled={disabledButton}
+                                onClick={() => triggerFormSubmit()}>
+                                Save and Continue
+                            </button>
+                        </>
+                        :
+                        <span>Loading...</span>
                     }
-                    <button
-                        className={`${styles.buttonSave} button is-large`}
-                        disabled={
-                            !checkAttendeeInformation() ||
-                            !checkMandatoryDisclaimer() ||
-                            !mandatoryQuestionsAnswered()}
-                        onClick={() => saveExtraQuestions(answers, owner, disclaimer)}
-                    >
-                        Save and Continue
-                    </button>
                 </div>
             </div>
         </>
@@ -180,14 +173,22 @@ const ExtraQuestionsPage = (
         location,
         user,
         summit,
+        extraQuestions,
         saveExtraQuestions,
+        getExtraQuestions,
     }
 ) => {
+
+    useEffect(() => {
+        getExtraQuestions();
+    }, [])
+
     return (
         <Layout location={location}>
             <ExtraQuestionsPageTemplate
                 user={user}
                 summit={summit}
+                extraQuestions={extraQuestions}
                 saveExtraQuestions={saveExtraQuestions} />
         </Layout>
     )
@@ -206,11 +207,13 @@ ExtraQuestionsPageTemplate.propTypes = {
 const mapStateToProps = ({ userState, summitState }) => ({
     user: userState.userProfile,
     loading: userState.loading,
-    summit: summitState.summit
+    summit: summitState.summit,
+    extraQuestions: summitState.extra_questions,
 })
 
 export default connect(mapStateToProps,
     {
         saveExtraQuestions,
+        getExtraQuestions,
     }
 )(ExtraQuestionsPage);

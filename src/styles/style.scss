@@ -568,3 +568,31 @@ h2 {
     padding-left: 10px !important;
   }
 }
+
+.css-kj6f9i-menu {
+  height: auto !important;
+  max-height: 100px !important;
+  position: inherit !important;
+  overflow: auto !important;
+  > div {
+    height: auto !important;
+  }
+}
+
+.css-dvua67-singleValue {
+  top: 70% !important;
+}
+
+.extra-question-error {
+  display: block;
+  color: red;
+  margin: 5px 0 10px;
+  font-weight: bold;
+  padding-left: 1em;
+}
+
+.questions-form {
+  h4{
+    font-size: 12pt;
+  }
+}

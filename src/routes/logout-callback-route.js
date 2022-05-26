@@ -10,48 +10,63 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **/
+import { Redirect } from '@reach/router'
 import React from 'react';
 import { connect } from 'react-redux';
 import { navigate } from "gatsby"
 import URI from "urijs"
 import { initLogOut } from 'openstack-uicore-foundation/lib/security/methods'
 import { doLogout } from 'openstack-uicore-foundation/lib/security/actions'
-import { logoutUser } from '../actions/user-actions';
+import { getFromLocalStorage } from 'openstack-uicore-foundation/lib/utils/methods'
 
 export class LogOutCallbackRoute extends React.Component {
 
-  componentDidMount() {
-    let { location } = this.props;
+    constructor(props) {
+        super(props);
 
-    // NOTE: Reset to the default user state to avoid bugs that cause app to crash (like in registration lite) after logout.
-    this.props.logoutUser();
-
-    let postLogoutState = window.localStorage.getItem('post_logout_state')
-    if (postLogoutState) {
-      window.localStorage.removeItem('post_logout_state');
-      let query = URI.parseQuery(location.search);
-      if (query.hasOwnProperty("state") && query["state"] === postLogoutState) {
-        this.props.doLogout();
-      }
-      let backUrl = window.localStorage.getItem('post_logout_redirect_path');
-      window.localStorage.removeItem('post_logout_redirect_path');
-      navigate(backUrl ? backUrl : '/');
-    } else {
-      let backUrl = location.state?.backUrl ? location.state.backUrl : '/';
-      window.localStorage.setItem('post_logout_redirect_path', backUrl);
-      initLogOut();
+        // initial state
+        this.state = {
+            error: null,
+            error_description: null,
+        };
     }
-  }
 
-  render() {
-    return null;
-  }
+    componentDidMount() {
+        let {location} = this.props;
+
+        let postLogoutState = getFromLocalStorage('post_logout_state', true);
+        if (postLogoutState) {
+            // if we have the nonce we alredy start a logout process
+            let query = URI.parseQuery(location.search);
+            // compare the state and perform the final logout
+            if (query.hasOwnProperty("state") && query["state"] === postLogoutState) {
+                this.props.doLogout();
+                let backUrl = getFromLocalStorage('post_logout_redirect_path', true);
+                navigate(backUrl ? backUrl : '/');
+                return;
+            }
+            // error
+            this.setState({...this.state, error: 'Invalid Nonce', error_description:'There was an error on logout process. Please try again.'})
+            return;
+        }
+        // starts logout process
+        let backUrl = location.state?.backUrl ? location.state.backUrl : '/';
+        window.localStorage.setItem('post_logout_redirect_path', backUrl);
+        initLogOut();
+    }
+
+    render() {
+        let { error, error_description } = this.state;
+        if(error){
+            return <Redirect to={`/error?error=${error}&error_description=${error_description}`} noThrow/>;
+        }
+        return null;
+    }
 }
 
 export default connect(
-  null,
-  {
-    doLogout,
-    logoutUser
-  }
+    null,
+    {
+        doLogout
+    }
 )(LogOutCallbackRoute)
