@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { DiscussionEmbed } from 'disqus-react';
 import { getEnvVariable, DISQUS_SHORTNAME } from '../utils/envVariables';
 import { getDisqusSSO } from '../actions/user-actions';
+import PropTypes from "prop-types";
 
 const DisqusComponent = class extends React.Component {
 
@@ -23,7 +24,9 @@ const DisqusComponent = class extends React.Component {
 
   componentDidMount() {
     const shortname = getEnvVariable(DISQUS_SHORTNAME);
-    if (shortname) this.props.getDisqusSSO(shortname);
+    if (shortname)
+      this.props.getDisqusSSO(shortname).catch((e) => console.log(e));
+
     window.addEventListener('resize', this.onResize);
     if (window.innerWidth <= 768) {
       this.setState({ isMobile: true })
@@ -165,5 +168,13 @@ const mapStateToProps = ({ summitState, userState, settingState }) => ({
   disqusSSO: userState.disqusSSO,
   disqusSettings: settingState.disqusSettings
 });
+
+DisqusComponent.propTypes = {
+  event: PropTypes.object,
+  sponsor: PropTypes.object,
+  title: PropTypes.string,
+  hideMobile: PropTypes.bool,
+  page: PropTypes.string,
+};
 
 export default connect(mapStateToProps, { getDisqusSSO })(DisqusComponent)

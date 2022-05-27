@@ -21,7 +21,6 @@ import NotificationHub from '../components/notification-hub';
 import AttendanceTrackerComponent from '../components/AttendanceTrackerComponent';
 import AccessTracker, { AttendeesWidget } from '../components/AttendeeToAttendeeWidgetComponent';
 
-import { getDisqusSSO } from '../actions/user-actions';
 import { getAllVoteablePresentations, getPresentationById, setInitialDataset } from '../actions/presentation-actions';
 import { castPresentationVote, uncastPresentationVote } from '../actions/user-actions';
 
@@ -31,7 +30,6 @@ import { isAuthorizedBadge } from '../utils/authorizedGroups';
 export const PosterDetailPage = ({
   location,
   presentationId,
-  getDisqusSSO,
   setInitialDataset,
   getAllVoteablePresentations,
   getPresentationById,
@@ -71,7 +69,6 @@ export const PosterDetailPage = ({
   }, []);
 
   useEffect(() => {
-    getDisqusSSO();
     if (!allPosters.length) setInitialDataset().then(() => getAllVoteablePresentations());
   }, []);
 
@@ -189,9 +186,7 @@ export const PosterDetailPage = ({
           >
             <DisqusComponent
               hideMobile={true}
-              disqusSSO={user.disqusSSO}
               event={poster}
-              summit={summit}
               title="Public Conversation"
             />
           </div>
@@ -225,9 +220,7 @@ export const PosterDetailPage = ({
             <div className="is-hidden-tablet">
               <DisqusComponent
                 hideMobile={false}
-                disqusSSO={user.disqusSSO}
                 event={poster}
-                summit={summit}
                 title="Public Conversation"
               />
             </div>
@@ -258,7 +251,6 @@ export const PosterDetailPage = ({
 const PosterDetailPageTemplate = ({
   location,
   presentationId,
-  getDisqusSSO,
   setInitialDataset,
   getAllVoteablePresentations,
   getPresentationById,
@@ -279,7 +271,6 @@ const PosterDetailPageTemplate = ({
       <PosterDetailPage
         location={location}
         presentationId={presentationId}
-        getDisqusSSO={getDisqusSSO}
         setInitialDataset={setInitialDataset}
         getAllVoteablePresentations={getAllVoteablePresentations}
         getPresentationById={getPresentationById}
@@ -302,7 +293,6 @@ const PosterDetailPageTemplate = ({
 const posterDetailPageTemplatePropTypes = {
   location: PropTypes.object,
   presentationId: PropTypes.string,
-  getDisqusSSO: PropTypes.func,
   setInitialDataset: PropTypes.func,
   getAllVoteablePresentations: PropTypes.func,
   getPresentationById: PropTypes.func,
@@ -336,7 +326,6 @@ const mapStateToProps = ({ userState, summitState, presentationsState }) => ({
 
 export default connect(mapStateToProps, {
   getPresentationById,
-  getDisqusSSO,
   setInitialDataset,
   getAllVoteablePresentations,
   castPresentationVote,

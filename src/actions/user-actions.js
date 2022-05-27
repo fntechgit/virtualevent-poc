@@ -8,12 +8,14 @@ import {
   startLoading,
   stopLoading,
 } from 'openstack-uicore-foundation/lib/utils/actions';
-import { LOGOUT_USER } from 'openstack-uicore-foundation/lib/security/actions';
+
 import {
   getAccessToken,
   clearAccessToken,
   passwordlessLogin
 } from 'openstack-uicore-foundation/lib/security/methods';
+
+import QuestionsSet from 'openstack-uicore-foundation/lib/utils/questions-set'
 
 import Swal from 'sweetalert2';
 import axios from "axios";
@@ -46,10 +48,7 @@ export const CAST_PRESENTATION_VOTE_RESPONSE = 'CAST_PRESENTATION_VOTE_RESPONSE'
 export const UNCAST_PRESENTATION_VOTE_REQUEST = 'UNCAST_PRESENTATION_VOTE_REQUEST';
 export const UNCAST_PRESENTATION_VOTE_RESPONSE = 'UNCAST_PRESENTATION_VOTE_RESPONSE';
 export const TOGGLE_PRESENTATION_VOTE = 'TOGGLE_PRESENTATION_VOTE';
-
-export const logoutUser = () => (dispatch) => {
-  dispatch(createAction(LOGOUT_USER));
-};
+export const GET_EXTRA_QUESTIONS = 'GET_EXTRA_QUESTIONS';
 
 // shortName is the unique identifier assigned to a Disqus site.
 export const getDisqusSSO = (shortName) => async (dispatch, getState) => {
@@ -74,9 +73,7 @@ export const getDisqusSSO = (shortName) => async (dispatch, getState) => {
     console.log('ERROR: ', e);
     clearAccessToken();
 
-    // Note: Commenting this out because no implementation of this function is actually catching this error,
-    // and it's causing the app to crash in development.
-    // return Promise.reject(e);
+    return Promise.reject(e);
   });
 }
 
@@ -93,7 +90,7 @@ export const getUserProfile = () => async (dispatch) => {
 
   let params = {
     access_token: accessToken,
-    expand: 'groups,summit_tickets,summit_tickets,summit_tickets.owner,summit_tickets.owner.presentation_votes,summit_tickets.owner.extra_questions,summit_tickets.badge,summit_tickets.badge.features,summit_tickets.badge.type, summit_tickets.badge.type.access_levels,summit_tickets.badge.type.features,favorite_summit_events,feedback,schedule_summit_events,rsvp,rsvp.answers'
+    expand: 'groups,summit_tickets,summit_tickets.owner,summit_tickets.owner.presentation_votes,summit_tickets.owner.extra_questions,summit_tickets.badge,summit_tickets.badge.features,summit_tickets.badge.type, summit_tickets.badge.type.access_levels,summit_tickets.badge.type.features,favorite_summit_events,feedback,schedule_summit_events,rsvp,rsvp.answers'
   };
 
   dispatch(startLoading());
@@ -130,7 +127,7 @@ export const getIDPProfile = () => async (dispatch) => {
 
   let params = {
     access_token: accessToken,
-    expand: 'groups,summit_tickets,summit_tickets,summit_tickets.owner,summit_tickets.owner.presentation_votes,summit_tickets.owner.extra_questions,summit_tickets.badge,summit_tickets.badge.features,summit_tickets.badge.type, summit_tickets.badge.type.access_levels,summit_tickets.badge.type.features,favorite_summit_events,feedback,schedule_summit_events,rsvp,rsvp.answers'
+    expand: 'groups'
   };
 
   return getRequest(
@@ -150,7 +147,7 @@ export const getIDPProfile = () => async (dispatch) => {
 
 export const requireExtraQuestions = () => (dispatch, getState) => {
 
-  const { summitState: { summit } } = getState();
+  const { summitState : { summit, extra_questions }} = getState();
   const { userState: { userProfile } } = getState();
 
   const owner = userProfile?.summit_tickets[0]?.owner || null;
@@ -159,16 +156,9 @@ export const requireExtraQuestions = () => (dispatch, getState) => {
   if (!owner.first_name || !owner.last_name || !owner.company || !owner.email) return true;
   const disclaimer = summit.registration_disclaimer_mandatory ? owner.disclaimer_accepted : true;
   if (!disclaimer) return true;
-  const requiredExtraQuestions = summit.order_extra_questions.filter(q => q.mandatory === true);
-  if (requiredExtraQuestions.length > 0 && userProfile && userProfile.summit_tickets.length > 0) {
-    const ticketExtraQuestions = userProfile?.summit_tickets[0]?.owner?.extra_questions || [];
-    if (ticketExtraQuestions.length > 0) {
-      return !requiredExtraQuestions.every(q => {
-        const answer = ticketExtraQuestions.find(answer => answer.question_id === q.id);
-        return answer && answer.value;
-      });
-    }
-    return true;
+  if (extra_questions.length > 0) {
+    const qs = new QuestionsSet(extra_questions, owner.extra_questions || []);
+    return !qs.completed();
   }
   return false;
 }
@@ -455,7 +445,7 @@ export const updatePassword = (password) => async (dispatch) => {
     });
 }
 
-export const saveExtraQuestions = (extra_questions, owner, disclaimer) => async (dispatch, getState) => {
+export const saveExtraQuestions = (extra_questions, owner) => async (dispatch, getState) => {
 
   const { userState: { userProfile: { summit_tickets } } } = getState();
 
@@ -468,7 +458,7 @@ export const saveExtraQuestions = (extra_questions, owner, disclaimer) => async 
     attendee_first_name: owner.first_name,
     attendee_last_name: owner.last_name,
     attendee_company: owner.company,
-    disclaimer_accepted: disclaimer,
+    disclaimer_accepted: owner.disclaimer,
     extra_questions: extraQuestionsAnswers
   };
 

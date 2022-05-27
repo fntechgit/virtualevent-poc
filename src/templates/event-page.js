@@ -129,9 +129,7 @@ export const EventPageTemplate = class extends React.Component {
                 >
                   <DisqusComponent
                     hideMobile={true}
-                    disqusSSO={user.disqusSSO}
                     event={event}
-                    summit={summit}
                     title="Public Conversation"
                   />
                 </div>
@@ -153,9 +151,7 @@ export const EventPageTemplate = class extends React.Component {
                     <div className="is-hidden-tablet">
                       <DisqusComponent
                         hideMobile={false}
-                        disqusSSO={user.disqusSSO}
                         event={event}
-                        summit={summit}
                         title="Public Conversation"
                       />
                       ∆

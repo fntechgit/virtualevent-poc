@@ -18,7 +18,7 @@ import {
   UNCAST_PRESENTATION_VOTE_RESPONSE,
   TOGGLE_PRESENTATION_VOTE,
 } from '../actions/user-actions';
-
+import { RESET_STATE } from '../actions/base-actions';
 import { isAuthorizedUser } from '../utils/authorizedGroups';
 
 const DEFAULT_STATE = {
@@ -35,6 +35,7 @@ const DEFAULT_STATE = {
 const userReducer = (state = DEFAULT_STATE, action) => {
   const { type, payload } = action;
   switch (type) {
+    case RESET_STATE:
     case LOGOUT_USER: {
       return DEFAULT_STATE;
     }

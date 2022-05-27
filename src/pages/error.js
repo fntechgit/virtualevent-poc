@@ -9,14 +9,28 @@ const ErrorPage = () => {
         query = URI.parseQuery(window.location.search);
     }
 
+    let errorTittle = 'Error';
+
+    if(query.error){
+        errorTittle = query.error;
+    }
+
+    let errorDetails = '';
+
+    if(query.error_description){
+        errorDetails = query.error_description;
+    }
+
     return (
         <Layout>
             <div className={styles.wrapper}>
-                <h1>Error</h1>
+                <h1>{errorTittle}</h1>
                 <p>Server returned with an error. Please contact admin.</p>
-                <details>
-                    {query.error}
-                </details>
+                { errorDetails &&
+                    <details>
+                        {errorDetails}
+                    </details>
+                }
             </div>
         </Layout>
     );

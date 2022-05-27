@@ -99,7 +99,7 @@ const MarketingHeroComponent = ({ siteSettings, summit_phase, isLoggedUser, summ
     <section className={styles.heroMarketing}>
       <div className={`${styles.heroMarketingColumns} columns is-gapless`}>
         <div
-          className={`${styles.leftColumn} column is-6 is-black`}
+          className={`${styles.leftColumn} column is-6`}
           style={{
             backgroundImage: siteSettings.heroBanner.background?.file
               ? `url(${siteSettings.heroBanner.background.file})`
