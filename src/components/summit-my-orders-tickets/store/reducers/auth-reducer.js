@@ -10,7 +10,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **/
-
+import { LOGOUT_USER, SET_LOGGED_USER } from "openstack-uicore-foundation/lib/utils/actions";
+import { RESET_STATE } from "../actions/base-actions";
 import {
     CLOSE_SIGNIN_MODAL,
     FINISH_PASSWORDLESS_LOGIN,
@@ -25,8 +26,8 @@ import {
     SET_PASSWORDLESS_ERROR,
     OPEN_WILL_LOGOUT_MODAL,
     CLOSE_WILL_LOGOUT_MODAL,
+    CLEAR_AUTH_STATE
 } from "../actions/auth-actions";
-import { RESET_STATE } from "../actions/base-actions";
 
 const DEFAULT_STATE = {
     allows_native_auth: false,
@@ -48,7 +49,12 @@ const AuthReducer = (state = DEFAULT_STATE, action) => {
     const { type, payload } = action;
     switch (type) {
         case RESET_STATE:
+        case LOGOUT_USER:
             return DEFAULT_STATE;
+        case SET_LOGGED_USER:
+        case CLEAR_AUTH_STATE: {
+            return { ...state, logoutModalOpened: false, signInModalOpened: false, loading: false };
+        }
         case LOGIN_START_LOADING: {
             return { ...state, loading: true };
         }

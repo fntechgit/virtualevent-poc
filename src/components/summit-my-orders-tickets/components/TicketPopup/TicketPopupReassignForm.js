@@ -51,7 +51,6 @@ export const TicketPopupReassignForm = ({ ticket, summit, order, closePopup }) =
             order,
             data: { attendee_email: newAttendeeEmail }
         }));
-
     };
 
     const handleConfirmReject = () => {

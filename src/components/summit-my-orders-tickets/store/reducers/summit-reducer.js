@@ -19,7 +19,8 @@ import {
     SUMMIT_NOT_FOUND,
     SELECT_PURCHASE_SUMMIT,
     GET_SUMMIT_REFUND_POLICY,
-    GET_SUGGESTED_SUMMITS
+    GET_SUGGESTED_SUMMITS,
+    GET_MAIN_EXTRA_QUESTIONS
 } from "../actions/summit-actions";
 
 
@@ -77,6 +78,10 @@ const summitReducer = (state = DEFAULT_STATE, action) => {
             return { ...state, selectedSummit: { ...state.selectedSummit, refund_policy: payload.response } };
         case GET_SUGGESTED_SUMMITS:
             return { ...state, suggestedSummits: payload.response.data };
+        case GET_MAIN_EXTRA_QUESTIONS: {
+            const extraQuestions = payload.response.data;
+            return { ...state, loading: false, extra_questions: extraQuestions }
+        }
         default:
             return state;
             break;

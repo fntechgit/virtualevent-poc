@@ -32,6 +32,8 @@ export const OrderList = ({ className }) => {
     const isLoading = orderLoading || summitLoading;
     const hasOrders = orders.length > 0;
     const hasSummits = summits.length > 0;
+    const hasMultiplePages = orders.length > perPage;
+
 
     return (
         <>
@@ -44,7 +46,7 @@ export const OrderList = ({ className }) => {
 
             {/* TODO: Replace with `Empty` component. */}
             {(!isLoading && (!hasOrders || !hasSummits)) && (
-                <div className="order-list-empty">You have no orders.</div>
+                <div className="order-list-empty">You have not placed any orders yet.</div>
             )}
 
             {(hasOrders && hasSummits) && (
@@ -55,25 +57,27 @@ export const OrderList = ({ className }) => {
                         ))}
                     </ul>
 
-                    <div className="order-list-pagination">
-                        <div className="row">
-                            <div className="col-md-8">
-                                <Pagination
-                                    bsSize="medium"
-                                    prev
-                                    next
-                                    first
-                                    last
-                                    ellipsis
-                                    boundaryLinks
-                                    maxButtons={5}
-                                    items={lastPage}
-                                    activePage={currentPage}
-                                    onSelect={handlePageChange}
-                                />
+                    {hasMultiplePages && (
+                        <div className="order-list-pagination">
+                            <div className="row">
+                                <div className="col-md-8">
+                                    <Pagination
+                                        bsSize="medium"
+                                        prev
+                                        next
+                                        first
+                                        last
+                                        ellipsis
+                                        boundaryLinks
+                                        maxButtons={5}
+                                        items={lastPage}
+                                        activePage={currentPage}
+                                        onSelect={handlePageChange}
+                                    />
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    )}
                 </>
             )}
         </>

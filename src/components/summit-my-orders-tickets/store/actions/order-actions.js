@@ -23,10 +23,9 @@ import {
     deleteRequest,
     createAction,
     stopLoading,
-    startLoading,
-    getIdToken
+    startLoading
 } from 'openstack-uicore-foundation/lib/utils/actions';
-import { getAccessToken } from 'openstack-uicore-foundation/lib/security/methods';
+import { getAccessToken, getIdToken } from 'openstack-uicore-foundation/lib/security/methods';
 import { stepDefs } from '../../global/constants';
 import history from '../history'
 import { getUserSummits } from './summit-actions';
@@ -122,7 +121,7 @@ export const createReservation = (owner_email, owner_first_name, owner_last_name
     if (!accessToken) return;
 
     let { summitState } = getState();
-    let { purchaseSummit } = summitState;
+    let { purchaseSummit, mainExtraQuestions } = summitState;
 
     dispatch(startLoading());
 
@@ -175,7 +174,7 @@ export const createReservation = (owner_email, owner_first_name, owner_last_name
         .then((payload) => {
             dispatch(stopLoading());
             const isFree = payload.response.discount_amount === payload.response.raw_amount;
-            const hasTicketExtraQuestion = purchaseSummit.order_extra_questions.filter((q) => q.usage === 'Ticket' || q.usage === 'Both').length > 0;
+            const hasTicketExtraQuestion = mainExtraQuestions.filter((q) => q.usage === 'Ticket' || q.usage === 'Both').length > 0;
             const mandatoryDisclaimer = purchaseSummit.registration_disclaimer_mandatory;
             if (isFree) {
                 if (hasTicketExtraQuestion || mandatoryDisclaimer) {
@@ -221,7 +220,7 @@ export const deleteReservation = () => (dispatch, getState, { apiBaseUrl }) => {
 
 export const payReservation = (token = null, stripe = null) => (dispatch, getState, { apiBaseUrl }) => {
 
-    let { orderState: { purchaseOrder, purchaseOrder: { reservation } }, summitState: { purchaseSummit } } = getState();
+    let { orderState: { purchaseOrder, purchaseOrder: { reservation } }, summitState: { purchaseSummit, mainExtraQuestions } } = getState();
 
     let success_message = {
         title: T.translate("general.done"),
@@ -229,7 +228,7 @@ export const payReservation = (token = null, stripe = null) => (dispatch, getSta
         type: 'success'
     };
 
-    let hasTicketExtraQuestion = purchaseSummit.order_extra_questions.filter((q) => q.usage === 'Ticket' || q.usage === 'Both').length > 0;
+    let hasTicketExtraQuestion = mainExtraQuestions.filter((q) => q.usage === 'Ticket' || q.usage === 'Both').length > 0;
     let mandatoryDisclaimer = purchaseSummit.registration_disclaimer_mandatory;
 
     let params = {

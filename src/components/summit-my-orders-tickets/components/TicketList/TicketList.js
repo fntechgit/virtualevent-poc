@@ -32,6 +32,7 @@ export const TicketList = ({ className }) => {
     const isLoading = ticketLoading || summitLoading;
     const hasTickets = tickets.length > 0;
     const hasSummits = summits.length > 0;
+    const hasMultiplePages = tickets.length > perPage;
 
     return (
         <>
@@ -44,7 +45,7 @@ export const TicketList = ({ className }) => {
 
             {/* TODO: Replace with `Empty` component. */}
             {(!isLoading && (!hasTickets || !hasSummits)) && (
-                <div className="ticket-list-empty">You have no tickets.</div>
+                <div className="ticket-list-empty">You don't have any other tickets assigned to you.</div>
             )}
 
             {(hasTickets && hasSummits) && (
@@ -55,25 +56,27 @@ export const TicketList = ({ className }) => {
                         ))}
                     </ul>
 
-                    <div className="ticket-list-pagination">
-                        <div className="row">
-                            <div className="col-md-8">
-                                <Pagination
-                                    bsSize="medium"
-                                    prev
-                                    next
-                                    first
-                                    last
-                                    ellipsis
-                                    boundaryLinks
-                                    maxButtons={5}
-                                    items={lastPage}
-                                    activePage={currentPage}
-                                    onSelect={handlePageChange}
-                                />
+                    {hasMultiplePages && (
+                        <div className="ticket-list-pagination">
+                            <div className="row">
+                                <div className="col-md-8">
+                                    <Pagination
+                                        bsSize="medium"
+                                        prev
+                                        next
+                                        first
+                                        last
+                                        ellipsis
+                                        boundaryLinks
+                                        maxButtons={5}
+                                        items={lastPage}
+                                        activePage={currentPage}
+                                        onSelect={handlePageChange}
+                                    />
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    )}
                 </>
             )}
         </>

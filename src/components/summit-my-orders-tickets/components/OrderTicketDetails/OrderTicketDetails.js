@@ -6,8 +6,6 @@ import { TicketPopup } from "../TicketPopup/TicketPopup";
 import './order-ticket-details.scss';
 
 export const OrderTicketDetails = ({ ticket, summit, order, className }) => {
-    const ticketDetails = useTicketDetails({ ticket });
-
     const {
         status,
         role,
@@ -17,7 +15,7 @@ export const OrderTicketDetails = ({ ticket, summit, order, className }) => {
         showPopup,
         handlePopupClose,
         isReassignable
-    } = ticketDetails;
+    } = useTicketDetails({ ticket, summit });
 
     return (
         <>

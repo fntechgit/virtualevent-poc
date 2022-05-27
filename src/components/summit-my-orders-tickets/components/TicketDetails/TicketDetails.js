@@ -3,6 +3,8 @@ import classNames from 'classnames';
 import { useTicketDetails } from "../../util";
 import { TicketPopup } from '../TicketPopup/TicketPopup';
 
+import './ticket-details.scss';
+
 export const TicketDetails = ({ ticket, summit, className }) => {
     const {
         status,

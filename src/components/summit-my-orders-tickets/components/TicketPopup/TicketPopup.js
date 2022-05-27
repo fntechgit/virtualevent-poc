@@ -29,7 +29,7 @@ import './ticket-popup.scss';
 //     }
 // };
 
-export const TicketPopup = ({ ticket, order, summit, onClose, fromTicketList, className }) => {
+export const TicketPopup = ({ ticket, order, summit, onClose, fromTicketList, fromOrderList, className }) => {
     const previousScrollPosition = useRef(getWindowScroll());
     const { t } = useTranslation();
     const dispatch = useDispatch();
@@ -50,7 +50,10 @@ export const TicketPopup = ({ ticket, order, summit, onClose, fromTicketList, cl
     } = useTicketDetails({ ticket, summit });
 
     const ticketName = ticketType.name;
-    const isUserTicketOwner = order.owner_id === member.id
+    const isUserTicketOwner = order.owner_id === member.id;
+    // If the user is purchasing a ticket, allow to edit the extra questions (fromTicketList === undefined && fromOrderList === undefined)
+    const allowExtraQuestionsEdit = (fromTicketList === undefined && fromOrderList === undefined) || isUserTicketOwner && summit.allow_update_attendee_extra_questions;
+
 
     useEffect(() => {
         document.body.style.overflow = 'hidden';
@@ -64,36 +67,6 @@ export const TicketPopup = ({ ticket, order, summit, onClose, fromTicketList, cl
         };
     }, []);
 
-    // useEffect(() => {
-    //     const {
-    //         email,
-    //         first_name,
-    //         last_name,
-    //         company,
-    //         disclaimer_accepted_date,
-    //         extra_questions
-    //     } = owner;
-
-    //     const formattedQuestions = extra_questions.map(({ question_id, value }) => ({
-    //         question_id,
-    //         answer: value
-    //     }));
-
-    //     setTempTicket({
-    //         id: ticket.id,
-    //         attendee_email: email,
-    //         attendee_first_name: first_name,
-    //         attendee_last_name: last_name,
-    //         attendee_company: company,
-    //         disclaimer_accepted: disclaimer_accepted_date ? true : false,
-    //         extra_questions: formattedQuestions,
-    //         reassign_email: '',
-    //         errors: {
-    //             reassign_email: '',
-    //             attendee_email: ''
-    //         }
-    //     })
-    // }, [ticket]);
 
     const closePopup = () => {
         if (onClose) onClose();
@@ -164,16 +137,21 @@ export const TicketPopup = ({ ticket, order, summit, onClose, fromTicketList, cl
                         </TabList>
 
                         {isUnassigned && (
-                            <TabPanel className="ticket-popup-panel ticket-popup-panel--edit">
+                            <TabPanel className="ticket-popup-panel ticket-popup-panel--assign">
                                 <div className="ticket-popup-scroll">
                                     <TicketPopupAssignForm ticket={ticket} summit={summit} order={order} closePopup={closePopup} />
                                 </div>
                             </TabPanel>
                         )}
 
-                        <TabPanel className="ticket-popup-panel ticket-popup-panel--assign">
+                        <TabPanel className="ticket-popup-panel ticket-popup-panel--edit">
                             <div className="ticket-popup-scroll">
-                                <TicketPopupEditDetailsForm ticket={ticket} summit={summit} order={order} closePopup={closePopup} />
+                                <TicketPopupEditDetailsForm
+                                    ticket={ticket}
+                                    summit={summit}
+                                    order={order}
+                                    closePopup={closePopup}
+                                    allowExtraQuestionsEdit={allowExtraQuestionsEdit} />
                             </div>
                         </TabPanel>
 

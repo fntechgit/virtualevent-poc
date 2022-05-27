@@ -22,10 +22,9 @@ import {
     createAction,
     stopLoading,
     startLoading,
-    objectToQueryString,
-    getIdToken
+    objectToQueryString
 } from 'openstack-uicore-foundation/lib/utils/actions';
-import { getAccessToken } from 'openstack-uicore-foundation/lib/security/methods';
+import { getAccessToken, getIdToken } from 'openstack-uicore-foundation/lib/security/methods';
 import { getUserSummits, selectSummitById } from "./summit-actions";
 import { getUserOrders } from "./order-actions";
 import { openWillLogoutModal } from "./auth-actions";
@@ -78,6 +77,7 @@ export const handleResetTicket = () => (dispatch, getState) => {
 
 export const getUserTickets = (ticketRefresh, page = 1, per_page = 5) => async (dispatch, getState, { apiBaseUrl, summitId }) => {
     const accessToken = await getAccessToken().catch(_ => dispatch(openWillLogoutModal()));
+    const { loggedUserState: { member } } = getState();
 
     if (!accessToken) return;
 
@@ -87,7 +87,7 @@ export const getUserTickets = (ticketRefresh, page = 1, per_page = 5) => async (
         access_token: accessToken,
         expand: 'order, owner, owner.extra_questions, order, badge, badge.features, refund_requests',
         order: '-id',
-        filter: 'status==Confirmed,status==Paid,status==Error',
+        'filter[]': [`status==Confirmed,status==Paid,status==Error`, `order_owner_id<>${member.id}`],
         page: page,
         per_page: per_page,
     };

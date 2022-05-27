@@ -1,5 +1,7 @@
+import { LOGOUT_USER } from "openstack-uicore-foundation/lib/utils/actions";
+import { GET_ATTENDEE_PROFILE } from "../actions/user-actions";
 /**
- * Copyright 2020
+ * Copyright 2022
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -11,24 +13,22 @@
  * limitations under the License.
  **/
 
-import { SET_CURRENT_STEP, SET_TOTAL_STEPS } from "../actions/wizzard-actions";
-
 const DEFAULT_STATE = {
-    totalSteps: 4,
-    currentStep: 0,
-};
+    currentAttendee: null
+}
 
-const wizzardReducer = (state = DEFAULT_STATE, action) => {
-    const { type, payload } = action;
-
+const userReducer = (state = DEFAULT_STATE, action) => {
+    const { type, payload } = action
     switch (type) {
-        case SET_CURRENT_STEP:
-            return { ...state, payload };
-        case SET_TOTAL_STEPS:
-            return { ...state, payload };
+        case LOGOUT_USER:
+            return DEFAULT_STATE;
+        case GET_ATTENDEE_PROFILE:
+            const { response: member } = payload;
+            const { attendee } = member;
+            return { ...state, currentAttendee: attendee }
         default:
             return state;
     }
-};
+}
 
-export default wizzardReducer;
+export default userReducer

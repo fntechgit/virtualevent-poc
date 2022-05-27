@@ -36,6 +36,11 @@ export const SET_PASSWORDLESS_LENGTH = "SET_PASSWORDLESS_LENGTH";
 export const SET_PASSWORDLESS_LOGIN = "SET_PASSWORDLESS_LOGIN";
 export const OPEN_WILL_LOGOUT_MODAL = "OPEN_WILL_LOGOUT_MODAL";
 export const CLOSE_WILL_LOGOUT_MODAL = "CLOSE_WILL_LOGOUT_MODAL";
+export const CLEAR_AUTH_STATE = 'CLEAR_AUTH_STATE';
+
+export const clearAuthState = () => (dispatch) => {
+    dispatch(createAction(CLEAR_AUTH_STATE)());
+};
 
 export const goToLogin = () => (dispatch) => {
     dispatch(createAction(GO_TO_LOGIN)());
@@ -97,8 +102,8 @@ export const getThirdPartyProviders = () => (dispatch) => {
         });
 };
 
-export const pwdlessLogin =
-    (code, loginWithCode) => async (dispatch, getState) => {
+export const pwdlessLogin = (code, loginWithCode) =>
+    async (dispatch, getState) => {
         const {
             authState: {
                 passwordless: { email },

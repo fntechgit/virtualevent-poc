@@ -1,6 +1,6 @@
 @import "../../../styles/variables";
 
-.ticket-edit-details-form {
+.ticket-popup-edit-details-form {
   padding: 0 10%;
 
   .ticket-popup-basic-info {
@@ -44,6 +44,7 @@
         background-color: $color-gray-light;
       }
     }
+
     .css-bg1rzq-control,
     .css-1szy77t-control {
       background-color: $color-primary-contrast;
@@ -53,6 +54,7 @@
         color: $color-text-dark !important;
       }
     }
+
     textarea {
       background-color: $color-primary-contrast;
       border-color: $color-primary;
@@ -61,6 +63,7 @@
         background-color: $color-gray-light;
       }
     }
+
     &--textarea {
       align-items: flex-start;
       margin-bottom: 0px;
@@ -79,6 +82,7 @@
       cursor: pointer;
     }
   }
+
   .form-group {
     input {
       background-color: $color-primary-contrast;
@@ -218,7 +222,7 @@
 }
 
 @media (min-width: 768px) {
-  .ticket-edit-details-form {
+  .ticket-popup-edit-details-form {
     .field-wrapper-mobile {
       display: none;
     }
@@ -226,7 +230,7 @@
 }
 
 @media (max-width: 768px) {
-  .ticket-edit-details-form {
+  .ticket-popup-edit-details-form {
     padding: 0;
 
     .ticket-popup-basic-info {
@@ -261,6 +265,7 @@
       .css-1szy77t-control {
         background-color: $color-primary-contrast;
         border-color: $color-primary;
+
         .css-dvua67-singleValue {
           color: $color-text-dark !important;
         }
@@ -280,7 +285,7 @@
       }
     }
 
-    .popup-cancel-ticket {
+    .ticket-popup-cancel-ticket {
       font-size: 14px;
     }
   }

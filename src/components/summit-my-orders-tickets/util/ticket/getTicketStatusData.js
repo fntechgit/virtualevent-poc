@@ -23,7 +23,7 @@ export const statusData = {
         type: STATUS_COMPLETE,
         text: 'READY TO USE',
         icon: 'fa-check-circle',
-        className: 'ticket-complete'
+        className: 'complete'
     },
     [STATUS_CANCELLED]: {
         type: STATUS_CANCELLED,

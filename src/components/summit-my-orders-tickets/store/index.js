@@ -22,8 +22,7 @@ import summitReducer from './reducers/summit-reducer'
 import orderReducer from './reducers/order-reducer'
 import ticketReducer from './reducers/ticket-reducer'
 import timerReducer from "./reducers/timer-reducer";
-import InvitationReducer from './reducers/invitation-reducer';
-import wizzardReducer from './reducers/wizzard-reducer';
+import userReducer from './reducers/user-reducer';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -38,8 +37,6 @@ export const getStore = ({ clientId, apiBaseUrl, getAccessToken, summitId }) => 
             'ticketState',
             'summitState',
             'timerState',
-            'invitationState',
-            'wizzardState'
         ]
     }
 
@@ -51,8 +48,7 @@ export const getStore = ({ clientId, apiBaseUrl, getAccessToken, summitId }) => 
         orderState: orderReducer,
         ticketState: ticketReducer,
         timerState: timerReducer,
-        invitationState: InvitationReducer,
-        wizzardState: wizzardReducer,
+        userState: userReducer
     });
 
     const store = createStore(

@@ -14,6 +14,7 @@
 import T from "i18n-react/dist/i18n-react";
 import history from '../history'
 import Swal from 'sweetalert2';
+import URI from "urijs";
 import {
     getRequest,
     createAction,
@@ -26,8 +27,8 @@ import {
 import { getAccessToken } from 'openstack-uicore-foundation/lib/security/methods';
 import { initLogOut } from "openstack-uicore-foundation/lib/security/actions";
 import { doLogin } from 'openstack-uicore-foundation/lib/security/methods'
-import { setTotalSteps } from "./wizzard-actions";
-import { openWillLogoutModal } from "./auth-actions";
+import { clearAuthState, openWillLogoutModal } from "./auth-actions";
+import { getAttendeeProfileForSummit } from "./user-actions";
 
 export const GET_SUMMIT_BY_SLUG = 'GET_SUMMIT_BY_SLUG';
 export const GET_SUMMIT_BY_ID = 'GET_SUMMIT_BY_ID';
@@ -40,14 +41,16 @@ export const RECEIVE_MARKETING_SETTINGS = 'RECEIVE_MARKETING_SETTINGS';
 export const CLEAR_MARKETING_SETTINGS = 'CLEAR_MARKETING_SETTINGS';
 export const CLEAR_SESSION_STATE = 'CLEAR_SESSION_STATE';
 export const VALIDATE = 'VALIDATE';
+export const GET_MAIN_EXTRA_QUESTIONS = 'GET_MAIN_EXTRA_QUESTIONS';
+export const CLEAR_SUMMIT_STATE = 'CLEAR_SUMMIT_STATE';
 
-export const handleResetReducers = () => (dispatch, getState) => {
+export const handleResetReducers = () => (dispatch) => {
     dispatch(createAction(LOGOUT_USER)({}));
 }
 
 export const getSummitBySlug = (slug, updateSummit) => (dispatch, getState, { apiBaseUrl }) => {
-    let params = {
-        expand: 'order_extra_questions.values,ticket_types,ticket_types.badge_type,ticket_types.badge_type.access_levels'
+    const params = {
+        expand: 'ticket_types,ticket_types.badge_type,ticket_types.badge_type.access_levels'
     }
 
     dispatch(startLoading());
@@ -58,11 +61,16 @@ export const getSummitBySlug = (slug, updateSummit) => (dispatch, getState, { ap
         `${apiBaseUrl}/api/public/v1/summits/all/${slug}`,
         customErrorHandler
     )(params)(dispatch).then((payload) => {
-        if (updateSummit) {
-            dispatch(createAction(SELECT_SUMMIT)(payload.response, false));
-        }
-        dispatch(setMarketingSettings(payload.response.id));
+        const summit = payload.response;
+        const { id: summitId } = summit;
+
+        if (updateSummit) dispatch(createAction(SELECT_SUMMIT)(payload.response, false));
+        dispatch(getMainOrderExtraQuestions(summitId))
+        dispatch(setMarketingSettings(summitId));
+        dispatch(getAttendeeProfileForSummit(summitId));
         dispatch(stopLoading());
+
+        return summit;
     }
     ).catch(e => {
         dispatch(createAction(SUMMIT_NOT_FOUND)({}))
@@ -73,20 +81,19 @@ export const getSummitBySlug = (slug, updateSummit) => (dispatch, getState, { ap
 }
 
 export const getUserSummits = (from) => (dispatch, getState) => {
-
     dispatch(startLoading());
 
-    let { orderState: { memberOrders }, ticketState: { memberTickets }, summitState: { summits } } = getState();
+    const { orderState: { memberOrders }, ticketState: { memberTickets }, summitState: { summits } } = getState();
 
     let summitsId;
 
     if (from === 'tickets') {
-        summitsId = [... new Set(memberTickets.map(p => p.owner.summit_id))];
+        summitsId = [...new Set(memberTickets.map(p => p.owner.summit_id))];
     } else {
-        summitsId = [... new Set(memberOrders.map(p => p.summit_id))];
+        summitsId = [...new Set(memberOrders.map(p => p.summit_id))];
     }
 
-    const storedSummits = [... new Set(summits.map(p => p.id))];
+    const storedSummits = [...new Set(summits.map(p => p.id))];
 
     summitsId = summitsId.filter(s => storedSummits.indexOf(s) == -1);
     const summitCall = summitsId.map(s => dispatch(getSummitById(s)));
@@ -103,8 +110,8 @@ export const getUserSummits = (from) => (dispatch, getState) => {
 export const getSummitById = (id, select = false) => (dispatch, getState, { apiBaseUrl }) => {
     dispatch(startLoading());
 
-    let params = {
-        expand: 'order_extra_questions.values,ticket_types,ticket_types.badge_type,ticket_types.badge_type.access_levels'
+    const params = {
+        expand: 'ticket_types,ticket_types.badge_type,ticket_types.badge_type.access_levels'
     }
 
     return getRequest(
@@ -125,11 +132,13 @@ export const getSummitById = (id, select = false) => (dispatch, getState, { apiB
 
 export const getSuggestedSummits = () => (dispatch, getState, { apiBaseUrl }) => {
     dispatch(startLoading());
+    dispatch(clearAuthState());
+    dispatch(createAction(CLEAR_SUMMIT_STATE)());
     dispatch(createAction(CLEAR_MARKETING_SETTINGS)());
 
     let params = {
         filter: 'ticket_types_count>0',
-        expand: 'order_extra_questions.values,ticket_types,ticket_types.badge_type,ticket_types.badge_type.access_levels'
+        expand: 'ticket_types,ticket_types.badge_type,ticket_types.badge_type.access_levels'
     };
 
     return getRequest(
@@ -175,23 +184,6 @@ export const selectSummit = (summit, updateSummit = true) => (dispatch, getState
     return dispatch(getSummitBySlug(summit.slug, updateSummit));
 }
 
-export const selectPurchaseSummit = (slug) => (dispatch, getState) => {
-    dispatch(startLoading());
-
-    let { summitState: { suggestedSummits } } = getState();
-    let summit = suggestedSummits.find(s => s.slug === slug);
-
-    dispatch(createAction(SELECT_PURCHASE_SUMMIT)(summit));
-
-    //const { ticket_types } = summit;
-
-    //const totalSteps = ticket_types.length > 0 && ticket_types[0].cost === 0 ? 3 : 4;
-
-    dispatch(setTotalSteps(4));
-
-    history.push(`/a/${slug}/`);
-};
-
 export const selectSummitById = (id) => (dispatch, getState) => {
     let { summitState: { summits } } = getState();
 
@@ -216,11 +208,39 @@ export const setMarketingSettings = (summitId) => (dispatch, getState, { apiBase
     return getRequest(
         null,
         createAction(RECEIVE_MARKETING_SETTINGS),
-        `${apiBaseUrl}/api/public/v1/config-values/all/shows/${summitId}`,
+        // TODO: Need to make sure we get this URL from the widget options/props.
+        `${window.MARKETING_API_BASE_URL}/api/public/v1/config-values/all/shows/${summitId}`,
         authErrorHandler
     )(params)(dispatch);
 };
 
+export const getMainOrderExtraQuestions = ({ summit }) => async (dispatch, getState, { apiBaseUrl }) => {
+    dispatch(startLoading());
+
+    if (!summit) return;
+
+    const apiUrl = URI(`${apiBaseUrl}/api/public/v1/summits/${summit.id}/order-extra-questions`);
+
+    apiUrl.addQuery('filter[]', 'class==MainQuestion');
+    apiUrl.addQuery('filter[]', 'usage==Ticket');
+    apiUrl.addQuery('expand', '*sub_question_rules,*sub_question,*values')
+    apiUrl.addQuery('order', 'order');
+    apiUrl.addQuery('page', 1);
+    apiUrl.addQuery('per_page', 100);
+
+    return getRequest(
+        null,
+        createAction(GET_MAIN_EXTRA_QUESTIONS),
+        `${apiUrl}`,
+        authErrorHandler
+    )({})(dispatch).then(() => {
+        dispatch(stopLoading());
+    }).catch(e => {
+        console.log('ERROR: ', e);
+        dispatch(stopLoading());
+        return Promise.reject(e);
+    });
+};
 
 export const customErrorHandler = (err, res) => (dispatch, state) => {
     let code = err.status;

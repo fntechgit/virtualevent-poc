@@ -20,6 +20,8 @@ export const MyOrdersTickets = ({ className }) => {
                 <OrderList />
             </OrderListContextProvider>
 
+            <hr className="orders-tickets-divider" />
+
             <TicketList />
         </div>
     );

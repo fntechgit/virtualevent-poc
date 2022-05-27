@@ -1,5 +1,1 @@
-{
-  "favicon": "/img/favicon.png",
-  "widgets": { "chat": { "showQA": false, "showHelp": false } },
-  "lastBuild": 1653321323865
-}
+{"favicon":"/img/favicon.png","widgets":{"chat":{"showQA":false,"showHelp":false}},"lastBuild":1653669514327}

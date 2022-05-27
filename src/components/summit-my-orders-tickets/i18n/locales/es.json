@@ -197,6 +197,7 @@
         "notify_button": "Re-Send Notification",
         "cancel_ticket": "Cancel Ticket (Request Refund)",
         "save_changes": "Save Changes",
+        "saving_changes": "Saving Changes",
         "do_it_later": "Do this later",
         "do_it_later_exp": "You may fill in the required information now or complete this step on the 'My Orders' page later."
     },
