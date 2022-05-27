@@ -16,7 +16,7 @@ import ExtraQuestionsPage from "../../templates/extra-questions-page"
 import ShowOpenRoute from "../../routes/ShowOpenRoute";
 import WithBadgeRoute from "../../routes/WithBadgeRoute";
 import PosterDetailPage from "../../templates/poster-detail-page";
-
+import MyTicketsPage from '../../templates/my-tickets-page';
 
 const App = ({ isLoggedUser, user, summit_phase, lastBuild, syncData }) => {
 
@@ -38,6 +38,7 @@ const App = ({ isLoggedUser, user, summit_phase, lastBuild, syncData }) => {
             <SchedulePage path="/my-schedule" location={location} summit_phase={summit_phase} isLoggedIn={isLoggedUser} user={user} scheduleProps={{ title: 'My Schedule' }} schedKey="my-schedule-main" />
             <ExtraQuestionsPage path="/extra-questions" isLoggedIn={isLoggedUser} user={user} location={location} />
             <FullProfilePage path="/profile" summit_phase={summit_phase} isLoggedIn={isLoggedUser} user={user} location={location} />
+            <MyTicketsPage path="/my-tickets" isLoggedIn={isLoggedUser} user={user} location={location} />
             <ShowOpenRoute path="/" summit_phase={summit_phase} isLoggedIn={isLoggedUser} user={user} location={location}>
               <WithBadgeRoute path="/event/:eventId" summit_phase={summit_phase} isLoggedIn={isLoggedUser} user={user} location={location}>
                 <EventPage path="/" summit_phase={summit_phase} isLoggedIn={isLoggedUser} user={user} location={location} />
