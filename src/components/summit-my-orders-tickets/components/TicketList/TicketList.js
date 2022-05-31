@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Pagination } from 'react-bootstrap';
+import { useTranslation } from "react-i18next";
 import classNames from 'classnames';
 import { getUserTickets } from "../../store/actions/ticket-actions";
 import { TicketListItem } from './TicketListItem';
@@ -8,6 +9,7 @@ import { TicketListItem } from './TicketListItem';
 import './ticket-list.scss';
 
 export const TicketList = ({ className }) => {
+    const { t } = useTranslation();
     const dispatch = useDispatch();
 
     const {
@@ -38,14 +40,16 @@ export const TicketList = ({ className }) => {
         <>
             <h2 className="ticket-list-title">Other Tickets Assigned to Me</h2>
 
-            {/* TODO: Replace with `Loading` component. */}
+            {/* TODO: Replace with inline `Loading` component. */}
             {(isLoading) && (
-                <div className="ticket-list-loading">Loading...</div>
+                <div className="ticket-list-loading">
+                    {t("tickets.loading")}
+                </div>
             )}
 
             {/* TODO: Replace with `Empty` component. */}
             {(!isLoading && (!hasTickets || !hasSummits)) && (
-                <div className="ticket-list-empty">You don't have any other tickets assigned to you.</div>
+                <div className="ticket-list-empty">{t('tickets.empty')}</div>
             )}
 
             {(hasTickets && hasSummits) && (

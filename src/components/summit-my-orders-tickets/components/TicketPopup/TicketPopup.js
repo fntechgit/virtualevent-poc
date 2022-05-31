@@ -13,37 +13,17 @@ import { TicketPopupEditDetailsForm } from './TicketPopupEditDetailsForm/TicketP
 
 import './ticket-popup.scss';
 
-
-// const defaultTemporaryTicket = {
-//     id: 0,
-//     attendee_email: '',
-//     attendee_first_name: '',
-//     attendee_last_name: '',
-//     attendee_company: '',
-//     reassign_email: '',
-//     disclaimer_accepted: null,
-//     extra_questions: [],
-//     errors: {
-//         reassign_email: '',
-//         attendee_email: ''
-//     }
-// };
-
 export const TicketPopup = ({ ticket, order, summit, onClose, fromTicketList, fromOrderList, className }) => {
     const previousScrollPosition = useRef(getWindowScroll());
     const { t } = useTranslation();
     const dispatch = useDispatch();
     const userProfile = useSelector(state => state.userState.userProfile);
-    const isLoading = useSelector(state => state.summitState.loading || state.orderState.loading || state.summitState.loading);
 
     const {
-        isSummitPast,
         isSummitStarted,
         type: ticketType,
         role: ticketRole,
         status: statusData,
-        reassignDate,
-        isActive,
         isUnassigned,
         isReassignable,
         isRefundable
@@ -53,7 +33,6 @@ export const TicketPopup = ({ ticket, order, summit, onClose, fromTicketList, fr
     const isUserTicketOwner = order.owner_id === userProfile.id;
     // If the user is purchasing a ticket, allow to edit the extra questions (fromTicketList === undefined && fromOrderList === undefined)
     const allowExtraQuestionsEdit = (fromTicketList === undefined && fromOrderList === undefined) || isUserTicketOwner && summit.allow_update_attendee_extra_questions;
-
 
     useEffect(() => {
         document.body.style.overflow = 'hidden';
@@ -66,7 +45,6 @@ export const TicketPopup = ({ ticket, order, summit, onClose, fromTicketList, fr
             });
         };
     }, []);
-
 
     const closePopup = () => {
         if (onClose) onClose();

@@ -1,6 +1,7 @@
 import React, { useEffect } from "react"
 import { useDispatch, useSelector } from 'react-redux';
 import { Pagination } from 'react-bootstrap';
+import { useTranslation } from "react-i18next";
 import classNames from 'classnames';
 import { getUserOrders } from "../../store/actions/order-actions";
 import { OrderListItem } from './OrderListItem';
@@ -8,6 +9,7 @@ import { OrderListItem } from './OrderListItem';
 import './order-list.scss';
 
 export const OrderList = ({ className }) => {
+    const { t } = useTranslation();
     const dispatch = useDispatch();
 
     const {
@@ -39,14 +41,14 @@ export const OrderList = ({ className }) => {
         <>
             <h2 className="order-list-title">My Purchase Orders</h2>
 
-            {/* TODO: Replace with `Loading` component. */}
+            {/* TODO: Replace with inline `Loading` component. */}
             {(isLoading) && (
-                <div className="order-list-loading">Loading...</div>
+                <div className="order-list-loading">{t("orders.loading")}</div>
             )}
 
             {/* TODO: Replace with `Empty` component. */}
             {(!isLoading && (!hasOrders || !hasSummits)) && (
-                <div className="order-list-empty">You have not placed any orders yet.</div>
+                <div className="order-list-empty">{t("orders.empty")}</div>
             )}
 
             {(hasOrders && hasSummits) && (

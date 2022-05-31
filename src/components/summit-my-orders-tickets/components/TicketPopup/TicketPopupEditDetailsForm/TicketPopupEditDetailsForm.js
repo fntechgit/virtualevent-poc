@@ -51,7 +51,7 @@ export const TicketPopupEditDetailsForm = ({ ticket, summit, order, allowExtraQu
     const dispatch = useDispatch();
     const userProfile = useSelector(state => state.userState.userProfile);
     const extraQuestions = useSelector(state => state.summitState.extra_questions || []);
-    const isLoading = useSelector(state => state.summitState.loading || state.summitState.loading);
+    const isLoading = useSelector(state => state.orderState.loading || state.summitState.loading);
     const [inputEmail, setInputEmail] = useState(false);
     const [showSaveMessage, setShowSaveMessage] = useState(false);
     const { isUnassigned, isReassignable } = useTicketDetails({ ticket, summit });

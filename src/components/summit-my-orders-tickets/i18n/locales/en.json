@@ -140,7 +140,8 @@
     },
     "orders": {
         "purchased": "Purchased on",
-        "empty": "There are no active orders so far"
+        "empty": "There are no active orders so far",
+        "loading": "Loading orders..."
     },
     "no-summit": {
         "not-found": "",
@@ -158,6 +159,7 @@
     },
     "tickets": {
         "empty": "There are no tickets so far",
+        "loading": "Loading tickets...",
         "save_message": "Thank you! Your information has been saved and ticket updated.",
         "refund_request_success_message": "Your refund request has been received. Please allow 24 - 48 hours for a response."
     },
