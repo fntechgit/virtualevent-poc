@@ -1,39 +1,30 @@
 {
   "heroBanner": {
-    "title": "TIER 1 - EVENT NAME HERE",
+    "title": "Stars Fest",
     "subTitle": "",
-    "date": "Date Information",
-    "time": "Timezone",
-    "dateLayout": true,
+    "date": "December 2021",
+    "time": "A monthlong Stars content celebration!",
+    "dateLayout": false,
     "buttons": {
       "registerButton": {
-        "text": "Register now",
-        "display": true
+        "text": "Register Now",
+        "display": false
       },
       "loginButton": {
-        "text": "Log in",
-        "display": true
+        "text": "Stars Day VOD",
+        "display": false
       }
     },
-    "background": "",
+    "background": "/img/sf21-header-left.png",
     "images": [
       {
-        "file": "/img/tier1-default-header1.png",
-        "alt": ""
-      },
-      {
-        "file": "/img/tier1-default-header2.png",
-        "alt": ""
-      },
-      {
-        "file": "/img/tier1-default-header3.png",
-        "alt": ""
+        "image": "/img/sf21-header-right_120221.png"
       }
     ]
   },
   "leftColumn": {
     "schedule": {
-      "display": true,
+      "display": false,
       "title": "Full Event Schedule"
     },
     "disqus": {
@@ -41,53 +32,46 @@
       "title": "Join the conversation"
     },
     "image": {
-      "display": false,
-      "title": "Image",
-      "src": ""
+      "display": true,
+      "title": "",
+      "src": "/img/sf21-calendar_120721.png",
+      "mobileSrc": "/img/sf21-calendar-mobile_120721.png"
     }
   },
   "sponsors": [
     {
-      "title": "Top Left",
       "images": [
         {
-          "image": "/img/tier1-default-space3.png",
-          "link": "",
-          "alt": ""
-        },
-        {
-          "image": "/img/tier1-default-space4.png",
-          "alt": ""
-        }
-      ]
-    },
-    {
-      "title": "Top Right",
-      "images": [
-        {
-          "image": "/img/tier1-default-space1.png",
-          "link": "",
-          "alt": ""
-        }
-      ]
-    },
-    {
-      "title": "Mid Left",
-      "images": [
-        {
-          "image": "/img/tier1-default-space2.png",
-          "alt": ""
+          "image": "/img/sf21-mrkt-space-1.png",
+          "link": "/creator-competition"
         }
       ]
     },
     {
       "images": [
         {
-          "image": "/img/tier1-default-space4.png",
-          "alt": ""
+          "image": "/img/sf21-mrkt-space-2.png",
+          "link": "/a/programming"
+        }
+      ]
+    },
+    {
+      "images": [
+        {
+          "image": "/img/sf21-mrkt-space-3_113021.png",
+          "link": "https://www.facebook.com/creators/stars-fest-is-here"
+        }
+      ]
+    },
+    {
+      "images": [
+        {
+          "image": "/img/sf21-mrkt-space-4_120321.png",
+          "link": "https://www.facebook.com/stars"
         }
       ]
     }
   ],
-  "countdown":{"display": true,"text": "Event Kickoff"}
+  "registration_in_person_disclaimer": null,
+  "summit_delta_start_time": "900"
 }

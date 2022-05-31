@@ -1,72 +1,130 @@
 {
   "tiers": [
     {
-      "id": "tier-cYGYq5-ae",
-      "name": "Top-Tier",
-      "badge": "/img/tier1-default-sessionbar-logo.png",
+      "badge": "",
+      "sponsorPage": {
+        "sponsorTemplate": "big-header",
+        "widgets": {
+          "disqus": false,
+          "liveEvent": false,
+          "schedule": false,
+          "banner": false
+        }
+      },
+      "name": "DEC 13",
+      "expoHallSize": "large",
+      "eventTemplate": "small-images",
+      "widgetTitle": "",
       "lobby": {
         "lobbyTemplate": "big-images",
         "display": true
       },
-      "sponsorPage": {
-        "sponsorTemplate": "big-header",
-        "widgets": {
-          "disqus": true,
-          "liveEvent": true,
-          "schedule": true,
-          "banner": true
-        }
-      },
-      "eventTemplate": "",
-      "expoHallSize": "large"
-    },
-    {
-      "id": "tier-DHcI3dWGk",
-      "name": "Mid-Tier",
-      "badge": "/img/tier1-default-sessionbar-logo.png",
-      "lobby": {
-        "lobbyTemplate": "small-images",
+      "expoHallPage": {
+        "expoHallTemplate": "big-images",
         "display": true
       },
+      "id": "tier-cYGYq5-ae"
+    },
+    {
+      "badge": "",
       "sponsorPage": {
         "sponsorTemplate": "big-header",
         "widgets": {
-          "disqus": true,
-          "liveEvent": true,
-          "schedule": true,
-          "banner": true
+          "disqus": false,
+          "liveEvent": false,
+          "schedule": false,
+          "banner": false
         }
       },
+      "name": "DEC 14",
+      "expoHallSize": "medium",
       "eventTemplate": "",
-      "expoHallSize": "medium"
+      "widgetTitle": "",
+      "lobby": {
+        "lobbyTemplate": "big-images",
+        "display": false
+      },
+      "expoHallPage": {
+        "expoHallTemplate": "big-images",
+        "display": true
+      },
+      "id": "tier-DHcI3dWGk"
     },
     {
-      "id": "tier-U_wEwGX8a",
-      "name": "Lower-Tier",
-      "badge": "/img/tier1-default-sessionbar-logo.png",
+      "badge": "",
+      "sponsorPage": {
+        "sponsorTemplate": "big-header",
+        "widgets": {
+          "disqus": false,
+          "liveEvent": false,
+          "schedule": false,
+          "banner": false
+        }
+      },
+      "name": "DEC 15",
+      "expoHallSize": "small",
+      "eventTemplate": "",
+      "widgetTitle": "",
       "lobby": {
-        "lobbyTemplate": "small-images",
+        "lobbyTemplate": "big-images",
+        "display": true
+      },
+      "expoHallPage": {
+        "expoHallTemplate": "big-images",
+        "display": true
+      },
+      "id": "tier-U_wEwGX8a"
+    },
+    {
+      "badge": "",
+      "lobby": {
+        "lobbyTemplate": "big-images",
+        "display": false
+      },
+      "expoHallPage": {
+        "expoHallTemplate": "big-images",
         "display": true
       },
       "sponsorPage": {
         "sponsorTemplate": "small-header",
         "widgets": {
-          "disqus": true,
-          "liveEvent": true,
-          "schedule": true,
-          "banner": true
+          "disqus": false,
+          "liveEvent": false,
+          "schedule": false,
+          "banner": false
         }
       },
-      "eventTemplate": "",
-      "expoHallSize": "small"
+      "eventTemplate": null,
+      "id": "tier-YmCF3KhTU",
+      "name": "DEC 16"
+    },
+    {
+      "badge": "",
+      "lobby": {
+        "lobbyTemplate": "big-images",
+        "display": false
+      },
+      "expoHallPage": {
+        "expoHallTemplate": "big-images",
+        "display": true
+      },
+      "sponsorPage": {
+        "sponsorTemplate": "small-header",
+        "widgets": {
+          "disqus": false,
+          "liveEvent": false,
+          "schedule": false,
+          "banner": false
+        }
+      },
+      "eventTemplate": null,
+      "id": "tier-Ki3GMmOln",
+      "name": "DEC 17"
     }
   ],
-  "imageHeader": {
-    "file": "/img/tier1-default-sponsor-headerimage-expopage.png",
-    "alt": "header"
-  },
+  "imageHeader": "/img/sf21-creatorprog-headerimage-expopage.png",
   "lobbyButton": {
-    "text": "Visit the Expo Hall",
-    "link": "/a/sponsors/"
+    "text": "",
+    "link": ""
   }
 }

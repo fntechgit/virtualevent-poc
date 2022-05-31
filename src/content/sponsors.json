@@ -4,64 +4,70 @@
       "tier": [
         {
           "value": "tier-cYGYq5-ae",
-          "label": "Top-Tier"
+          "label": "DEC 13"
         }
       ],
       "sponsors": [
         {
-          "marquee": "Your text here! (150-characters max)",
-          "sponsorColor": "#414042",
-          "logo": "/img/tier1-default-sponsor-logo.png",
-          "name": "Top-Tier",
-          "intro": "Sponsor Description (1000-character max) Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eget ipsum tempor lorem interdum volutpat eu et elit. Sed eleifend justo et semper ultrices. Fusce porta ut sapien at posuere. Donec placerat, lacus eget imperdiet maximus, nunc lectus viverra ligula, in sodales tortor justo vel sem. Vestibulum eleifend, nibh a dapibus rhoncus, tortor dui venenatis enim, ac euismod augue velit at justo. Cras porta lacus est, nec rhoncus augue luctus quis. Pellentesque justo risus, scelerisque laoreet tortor quis, TOP TIER TEXT.",
-          "headerImage": "/img/tier1-default-sponsor-headerimage-toptier.png",
-          "socialNetworks": [],
-          "sponsorId": 24,
-          "title": "Top-Tier Sponsor Test ",
-          "companyId": 22,
+          "marquee": "",
+          "externalLink": "",
+          "sponsorColor": "",
+          "logo": "/img/sf21-sponsor-dec13_113021.png",
+          "name": "DEC 13 TOP WEEKLY CREATORS",
+          "intro": "",
+          "headerVideo": "",
+          "headerImage": "",
+          "headerImageMobile": "",
+          "chatLink": "",
+          "advertiseImage": "",
+          "sponsorId": "",
+          "companyId": "",
           "documents": {
-            "links": [
-              {
-                "class_name": "PresentationLink",
-                "name": "Your social media links here ",
-                "order": 1,
-                "link": "https://www.facebook.com/FNTECH"
-              }
-            ],
-            "videos": [
-              {
-                "class_name": "PresentationVideo",
-                "name": "Your external video links here ",
-                "order": 2,
-                "link": "https://www.youtube.com/channel/UC81WrqqnYmigub0fTNKT-Mw"
-              }
-            ]
+            "links": [],
+            "videos": []
           },
-          "columnAds": [
-            {
-              "image": "/img/tier1-default-sponsor-space1.png",
-              "link": "fntech.com"
-            }
-          ],
-          "id": 24,
-          "email": "support@fntech.com",
-          "usesSponsorPage": true
+          "columnAds": [],
+          "id": 5,
+          "email": "",
+          "usesSponsorPage": false
         },
         {
-          "marquee": "Your event one-stop-shop, no matter the scope or size. Production + Event Management + Creative. We have you covered. ",
-          "sponsorColor": "#0C64C8",
-          "logo": "/img/logo-top-tier-fntech.png",
-          "name": "FNTECH",
-          "intro": "**WE SPEAK EVENTS: In-person, virtual, and everything in-between.**\\\nOver the past 20+ years, we’ve successfully partnered with top-tier companies like Apple, Facebook, Wells Fargo, Vans, and Volcom on events of all sizes, types and budgets. Domestic and abroad. Intimate and straightforward to extremely complex and expansive. We have two large headquarters—one in the Northern California Bay Area and another in Southern California, which includes a virtual reality lab, 3D printing hub, and robust wood/metal fabrication shop. We’re a people-first company, which to us means treating every employee, client, vendor, partner, and community member with honesty, integrity, and respect. It’s part of our corporate ethos. People power our mission and we are eternally grateful to know and work with some of the best in the business. And as always, we make sure to have a lot of fun along the way. For more FNinfo, visit us at [fntech.com](http://fntech.com/).",
-          "headerVideo": "https://fntech.sfo2.cdn.digitaloceanspaces.com/Yoco/FNTECH%20animated%20logo_Black_012021.mp4",
+          "externalLink": "https://www.facebook.com/FiddleAndDance",
+          "featuredEventId": "",
+          "logo": "/img/sf21-sponsor-dec13-9am.png",
+          "name": "Dec 13 Hillary Klug 9AM",
           "advertiseImage": "",
-          "sponsorId": 44,
-          "title": "",
-          "companyId": 4,
-          "columnAds": [],
-          "id": 44,
-          "email": "info@fntech.com",
-          "usesSponsorPage": true
+          "sponsorId": "",
+          "companyId": "",
+          "id": 6,
+          "showLogoInEventPage": false
+        },
+        {
+          "advertiseImage": "",
+          "showLogoInEventPage": false,
+          "name": "Dec 13 GreenBay Packer Nation 10AM",
+          "id": 7,
+          "sponsorId": "",
+          "companyId": "",
+          "externalLink": "https://www.facebook.com/GreenBayPackerNation",
+          "logo": "/img/sf21-sponsor-dec13-10am.png"
+        },
+        {
+          "advertiseImage": "",
+          "showLogoInEventPage": false,
+          "name": "Dec 13 Lil Jacob Walker 1PM",
+          "id": 8,
+          "sponsorId": "",
+          "logo": "/img/sf21-sponsor-dec13-1pm.png",
+          "externalLink": "https://www.facebook.com/LILJACOBWALKER"
+        },
+        {
+          "advertiseImage": "",
+          "showLogoInEventPage": false,
+          "name": "Dec 13 La Fatshionista 3PM",
+          "id": 9,
+          "logo": "/img/sf21-sponsor-dec13-3pm.png",
+          "externalLink": "https://www.facebook.com/LaFatshionistaMX"
         }
       ]
     },
@@ -69,54 +75,71 @@
       "tier": [
         {
           "value": "tier-DHcI3dWGk",
-          "label": "Mid-Tier"
+          "label": "DEC 14"
         }
       ],
       "sponsors": [
         {
-          "marquee": "Your text here! (150-characters max)",
-          "sideImage": "",
-          "externalLink": "",
-          "sponsorColor": "#58595b",
-          "logo": "/img/tier1-default-sponsor-logo.png",
-          "name": "Mid-Tier",
-          "intro": "Sponsor Description (1000-character max) Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eget ipsum tempor lorem interdum volutpat eu et elit. Sed eleifend justo et semper ultrices. Fusce porta ut sapien at posuere. Donec placerat, lacus eget imperdiet maximus, nunc lectus viverra ligula, in sodales tortor justo vel sem. Vestibulum eleifend, nibh a dapibus rhoncus, tortor dui venenatis enim, ac euismod augue velit at justo. Cras porta lacus est, nec rhoncus augue luctus quis. Pellentesque justo risus, scelerisque laoreet tortor quis, Test Text",
-          "headerVideo": "",
-          "headerImage": "/img/tier1-default-sponsor-headerimage-middletier.png",
-          "socialNetworks": [],
-          "chatLink": "",
-          "sponsorId": 25,
-          "title": "Mid-Tier Sponsor",
-          "companyId": 23,
-          "documents": {
-            "slides": [],
-            "links": [
-              {
-                "class_name": "PresentationLink",
-                "name": "Your social media links here ",
-                "order": 1,
-                "link": "https://www.facebook.com/FNTECH"
-              }
-            ],
-            "videos": [
-              {
-                "class_name": "PresentationVideo",
-                "name": "Your external video links here ",
-                "link": "https://www.youtube.com/channel/UC81WrqqnYmigub0fTNKT-Mw",
-                "order": 2
-              }
-            ]
-          },
-          "columnAds": [
-            {
-              "image": "/img/tier1-default-sponsor-space1.png",
-              "button": "",
-              "link": "https://fntech.com"
-            }
-          ],
-          "id": 25,
-          "email": "support@fntech.com",
-          "usesSponsorPage": true
+          "advertiseImage": "",
+          "name": "DEC 14 TOP WEEKLY CREATORS",
+          "id": 4,
+          "logo": "/img/sf21-sponsor-dec14_113021.png",
+          "externalLink": ""
+        },
+        {
+          "advertiseImage": "",
+          "showLogoInEventPage": false,
+          "name": "Dec 14 Verosweethobby 9AM",
+          "id": 10,
+          "externalLink": "https://www.facebook.com/verosweethobby",
+          "logo": "/img/sf21-sponsor-dec14-9am.png",
+          "sponsorId": 10
+        },
+        {
+          "advertiseImage": "",
+          "showLogoInEventPage": false,
+          "name": "Dec 14 Iammoshow 10AM",
+          "id": 50,
+          "sponsorId": -1,
+          "logo": "/img/sf21-sponsor-dec14-10am.png",
+          "externalLink": "https://www.facebook.com/iammoshow"
+        },
+        {
+          "advertiseImage": "",
+          "showLogoInEventPage": false,
+          "name": "Dec 14 John Nonny from The Pun Guys 11AM",
+          "id": 11,
+          "sponsorId": 11,
+          "logo": "/img/sf21-sponsor-dec14-11am.png",
+          "externalLink": "https://www.facebook.com/johnnonnyofficial"
+        },
+        {
+          "advertiseImage": "",
+          "showLogoInEventPage": false,
+          "name": "Dec 14 Adriana Meaury 2PM",
+          "id": 12,
+          "sponsorId": 12,
+          "logo": "/img/sf21-sponsor-dec14-2pm.png",
+          "externalLink": "https://www.facebook.com/adrianameauryfit"
+        },
+        {
+          "advertiseImage": "",
+          "showLogoInEventPage": false,
+          "name": "Dec 14 Roccibella 4PM",
+          "id": 13,
+          "sponsorId": 13,
+          "logo": "/img/sf21-sponsor-dec14-4pm.png",
+          "externalLink": "https://www.facebook.com/roccibella"
+        },
+        {
+          "advertiseImage": "",
+          "showLogoInEventPage": false,
+          "name": "Dec 14 Makeup by Paul & Jenn 5PM",
+          "id": 14,
+          "sponsorId": 14,
+          "featuredEventId": -1,
+          "logo": "/img/sf21-sponsor-dec14-5pm.png",
+          "externalLink": "https://www.facebook.com/makeupbypaulandjenn"
         }
       ]
     },
@@ -124,54 +147,213 @@
       "tier": [
         {
           "value": "tier-U_wEwGX8a",
-          "label": "Lower-Tier"
+          "label": "DEC 15"
         }
       ],
       "sponsors": [
         {
-          "marquee": "Your text here! (150-characters max)",
-          "sideImage": "/img/tier1-default-sponsor-sideimage.png",
-          "externalLink": "",
-          "sponsorColor": "#6d6e71",
-          "logo": "/img/tier1-default-sponsor-logo.png",
-          "name": "Lower-Tier",
-          "intro": "Sponsor Description (1000-character max) Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eget ipsum tempor lorem interdum volutpat eu et elit. Sed eleifend justo et semper ultrices. Fusce porta ut sapien at posuere. Donec placerat, lacus eget imperdiet maximus, nunc lectus viverra ligula, in sodales tortor justo vel sem. Vestibulum eleifend, nibh a dapibus rhoncus, tortor dui venenatis enim, ac euismod augue velit at justo. Cras porta lacus est, nec rhoncus augue luctus quis. Pellentesque justo risus, scelerisque laoreet tortor quis, vehicula volutpat ipsum.",
-          "headerVideo": "",
-          "headerImage": "/img/tier1-default-sponsor-headerimage-lowertier.png",
-          "socialNetworks": [],
-          "chatLink": "",
-          "sponsorId": 26,
-          "title": "Lower-Tier Sponsor",
-          "companyId": 24,
+          "marquee": "",
+          "sponsorColor": "",
+          "logo": "/img/sf21-sponsor-dec15_113021.png",
+          "name": "DEC 15 TOP WEEKLY CREATORS",
+          "intro": "",
+          "headerImage": "",
+          "headerImageMobile": "",
+          "advertiseImage": "",
+          "sponsorId": "",
+          "title": "",
+          "companyId": "",
           "documents": {
-            "slides": [],
-            "links": [
-              {
-                "class_name": "PresentationLink",
-                "name": "Your social media links here ",
-                "link": "https://www.facebook.com/FNTECH",
-                "order": 1
-              }
-            ],
-            "videos": [
-              {
-                "class_name": "PresentationVideo",
-                "link": "https://www.youtube.com/channel/UC81WrqqnYmigub0fTNKT-Mw",
-                "order": 2,
-                "name": "Your external video links here "
-              }
-            ]
+            "links": []
           },
-          "columnAds": [
-            {
-              "image": "/img/tier1-default-sponsor-space1.png",
-              "button": "",
-              "link": "https://www.fntech.com"
-            }
-          ],
-          "id": 26,
-          "email": "support@fntech.com",
-          "usesSponsorPage": true
+          "columnAds": [],
+          "id": 29,
+          "showLogoInEventPage": false,
+          "email": "",
+          "usesSponsorPage": false
+        },
+        {
+          "advertiseImage": "",
+          "showLogoInEventPage": false,
+          "name": "Dec 15 Erica Derrickson 9AM",
+          "id": 16,
+          "sponsorId": 16,
+          "logo": "/img/sf21-sponsor-dec15-9am-erica.png",
+          "externalLink": "https://www.facebook.com/withErica"
+        },
+        {
+          "advertiseImage": "",
+          "showLogoInEventPage": false,
+          "name": "Dec 15 Ali Spagnola 9AM",
+          "id": 17,
+          "sponsorId": 17,
+          "logo": "/img/sf21-sponsor-dec15-9am-ali.png",
+          "externalLink": "https://www.facebook.com/alispagnola"
+        },
+        {
+          "advertiseImage": "",
+          "showLogoInEventPage": false,
+          "name": "Dec 15 Idressitalian 12:30PM",
+          "id": 18,
+          "sponsorId": 18,
+          "logo": "/img/sf21-sponsor-dec15-12-30pm.png",
+          "externalLink": "https://www.facebook.com/Idressitalian"
+        },
+        {
+          "advertiseImage": "",
+          "showLogoInEventPage": false,
+          "name": "Dec 15 Yeri MUA 1PM",
+          "id": 19,
+          "sponsorId": 19,
+          "companyId": -1,
+          "logo": "/img/sf21-sponsor-dec15-1pm.png",
+          "externalLink": "https://www.facebook.com/yerimua"
+        },
+        {
+          "advertiseImage": "",
+          "showLogoInEventPage": true,
+          "name": "Dec 15 Rellik the Clown 4PM",
+          "externalLink": "https://www.facebook.com/relliktheclown1",
+          "id": 20,
+          "logo": "/img/sf21-sponsor-dec15-4pm.png"
+        },
+        {
+          "advertiseImage": "",
+          "showLogoInEventPage": false,
+          "name": "Dec 15 Candylover89 5PM",
+          "id": 21,
+          "logo": "/img/sf21-sponsor-dec15-5pm.png",
+          "externalLink": "https://www.facebook.com/Candylover89Official"
+        }
+      ]
+    },
+    {
+      "tier": [
+        {
+          "value": "tier-YmCF3KhTU",
+          "label": "DEC 16"
+        }
+      ],
+      "sponsors": [
+        {
+          "advertiseImage": "",
+          "showLogoInEventPage": true,
+          "name": "DEC 16 TOP WEEKLY CREATORS",
+          "id": 30,
+          "logo": "/img/sf21-sponsor-dec16_113021.png"
+        },
+        {
+          "advertiseImage": "",
+          "showLogoInEventPage": false,
+          "name": "Dec 16 ARMRgarden 9AM",
+          "id": 22,
+          "sponsorId": -1,
+          "logo": "/img/sf21-sponsor-dec16-9am.png",
+          "externalLink": "https://www.facebook.com/armrgarden"
+        },
+        {
+          "advertiseImage": "",
+          "showLogoInEventPage": false,
+          "name": "Dec 16 Bevan 1PM",
+          "id": 23,
+          "sponsorId": 1,
+          "companyId": -1,
+          "logo": "/img/sf21-sponsor-dec16-1pm.png",
+          "externalLink": "https://www.facebook.com/GibsonsGaming/"
+        },
+        {
+          "advertiseImage": "",
+          "showLogoInEventPage": false,
+          "name": "Dec 16 Agustin Unaplay 5PM",
+          "id": 25,
+          "logo": "/img/sf21-sponsor-dec16-5pm.png",
+          "externalLink": "https://www.facebook.com/AgustinUnaplay8"
+        },
+        {
+          "advertiseImage": "",
+          "showLogoInEventPage": false,
+          "name": "Dec 16 ChooxTv 6PM",
+          "id": 28,
+          "logo": "/img/sf21-sponsor-dec16-6pm.png",
+          "externalLink": "https://www.facebook.com/ChooxTv"
+        },
+        {
+          "advertiseImage": "",
+          "showLogoInEventPage": true,
+          "name": "Dec 16 Minks 7PM",
+          "id": 100,
+          "sponsorId": 100,
+          "externalLink": "https://www.facebook.com/xMinks",
+          "logo": "/img/sf21-sponsor-dec16-7pm.png"
+        }
+      ]
+    },
+    {
+      "tier": [
+        {
+          "value": "tier-Ki3GMmOln",
+          "label": "DEC 17"
+        }
+      ],
+      "sponsors": [
+        {
+          "advertiseImage": "",
+          "showLogoInEventPage": true,
+          "name": "DEC 17 TOP WEEKLY CREATORS",
+          "id": 31,
+          "logo": "/img/sf21-sponsor-dec17_113021.png"
+        },
+        {
+          "advertiseImage": "",
+          "showLogoInEventPage": false,
+          "name": "Dec 17 Pew Pew 4AM",
+          "id": 32,
+          "sponsorId": -1,
+          "logo": "/img/sf21-sponsor-dec17-4am.png",
+          "externalLink": "https://www.facebook.com/PewPewReal"
+        },
+        {
+          "advertiseImage": "",
+          "showLogoInEventPage": false,
+          "name": "Dec 17 Rexzilla 9AM",
+          "logo": "/img/sf21-sponsor-dec17-9am.png",
+          "externalLink": "https://www.facebook.com/profile.php?id=100052765274608",
+          "id": 33
+        },
+        {
+          "advertiseImage": "",
+          "showLogoInEventPage": false,
+          "name": "Dec 17 Trixx TV 11AM",
+          "id": 34,
+          "sponsorId": -1,
+          "logo": "/img/sf21-sponsor-dec17-11am.png",
+          "externalLink": "https://www.facebook.com/trixxtv"
+        },
+        {
+          "advertiseImage": "",
+          "showLogoInEventPage": false,
+          "name": "Dec 17 Mystic Ignite 1PM",
+          "id": 35,
+          "sponsorId": -1,
+          "logo": "/img/sf21-sponsor-dec17-1pm.png",
+          "externalLink": "https://www.facebook.com/MysticIgnite99"
+        },
+        {
+          "advertiseImage": "",
+          "showLogoInEventPage": false,
+          "name": "Dec 17 MirreyTv 5PM",
+          "id": 35,
+          "sponsorId": -1,
+          "logo": "/img/sf21-sponsor-dec17-5pm.png",
+          "externalLink": "https://www.facebook.com/MirreyTv"
+        },
+        {
+          "advertiseImage": "",
+          "showLogoInEventPage": false,
+          "name": "Dec 17 NatChats 7PM",
+          "id": 35,
+          "logo": "/img/sf21-sponsor-dec17-7pm.png",
+          "externalLink": "https://www.facebook.com/NatChats"
         }
       ]
     }
