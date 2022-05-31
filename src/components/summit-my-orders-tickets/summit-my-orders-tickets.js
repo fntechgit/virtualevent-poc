@@ -14,7 +14,8 @@ export const MyOrdersTicketsWidget = ({ className, ...props }) => {
         apiBaseUrl: props.apiBaseUrl,
         getAccessToken: props.getAccessToken,
         summitId: props.summitId,
-        user: props.user
+        user: props.user,
+        loginUrl: props.loginUrl
     });
 
     const handleBeforeLift = () => {
@@ -34,5 +35,6 @@ export const MyOrdersTicketsWidget = ({ className, ...props }) => {
 };
 
 MyOrdersTicketsWidget.defaultProps = {
-    summitId: 'all'
+    summitId: 'all',
+    loginUrl: '/'
 };

@@ -11,11 +11,7 @@
  * limitations under the License.
  **/
 
-import {
-    authErrorHandler,
-    createAction,
-    getRequest
-} from 'openstack-uicore-foundation/lib/utils/actions';
+import { createAction, getRequest } from 'openstack-uicore-foundation/lib/utils/actions';
 
 export const TIMER_UPDATE = 'TIMER_UPDATE';
 export const TIMER_INIT = 'TIMER_INIT';

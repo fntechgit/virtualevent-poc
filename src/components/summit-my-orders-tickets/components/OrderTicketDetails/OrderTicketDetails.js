@@ -1,6 +1,6 @@
 import React from "react"
 import classNames from 'classnames';
-import { useSummitDetails, useTicketDetails } from "../../util";
+import { useTicketDetails } from "../../util";
 import { TicketPopup } from "../TicketPopup/TicketPopup";
 
 import './order-ticket-details.scss';

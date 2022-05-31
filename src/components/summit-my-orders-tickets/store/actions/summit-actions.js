@@ -11,8 +11,7 @@
  * limitations under the License.
  **/
 
-import T from "i18n-react/dist/i18n-react";
-import history from '../history'
+import { default as t } from '../../i18n';
 import Swal from 'sweetalert2';
 import URI from "urijs";
 import {
@@ -26,8 +25,8 @@ import {
 } from 'openstack-uicore-foundation/lib/utils/actions';
 import { getAccessToken } from 'openstack-uicore-foundation/lib/security/methods';
 import { initLogOut } from "openstack-uicore-foundation/lib/security/actions";
-import { doLogin } from 'openstack-uicore-foundation/lib/security/methods'
-import { clearAuthState, openWillLogoutModal } from "./auth-actions";
+import { doLogin } from 'openstack-uicore-foundation/lib/security/methods';
+import history from '../history';
 import { getAttendeeProfileForSummit } from "./user-actions";
 
 export const GET_SUMMIT_BY_SLUG = 'GET_SUMMIT_BY_SLUG';
@@ -130,34 +129,8 @@ export const getSummitById = (id, select = false) => (dispatch, getState, { apiB
     });
 }
 
-export const getSuggestedSummits = () => (dispatch, getState, { apiBaseUrl }) => {
-    dispatch(startLoading());
-    dispatch(clearAuthState());
-    dispatch(createAction(CLEAR_SUMMIT_STATE)());
-    dispatch(createAction(CLEAR_MARKETING_SETTINGS)());
-
-    let params = {
-        filter: 'ticket_types_count>0',
-        expand: 'ticket_types,ticket_types.badge_type,ticket_types.badge_type.access_levels'
-    };
-
-    return getRequest(
-        dispatch(startLoading()),
-        createAction(GET_SUGGESTED_SUMMITS),
-        `${apiBaseUrl}/api/public/v1/summits/all`,
-        authErrorHandler
-    )(params)(dispatch).then(() => {
-        dispatch(stopLoading());
-    }
-    ).catch(e => {
-        dispatch(stopLoading());
-        return (e);
-    });
-
-}
-
-export const getSummitRefundPolicy = (id, select = false) => async (dispatch, getState, { apiBaseUrl }) => {
-    const accessToken = await getAccessToken().catch(_ => dispatch(openWillLogoutModal()));
+export const getSummitRefundPolicy = (id, select = false) => async (dispatch, getState, { apiBaseUrl, loginUrl }) => {
+    const accessToken = await getAccessToken().catch(_ => history.replace(loginUrl));
 
     if (!accessToken) return;
 
@@ -252,7 +225,7 @@ export const customErrorHandler = (err, res) => (dispatch, state) => {
         case 403:
             let error_message = {
                 title: 'ERROR',
-                html: T.translate("errors.user_not_authz"),
+                html: t('errors.user_not_authz'),
                 type: 'error'
             };
 
@@ -298,6 +271,6 @@ export const customErrorHandler = (err, res) => (dispatch, state) => {
             });
             break;
         default:
-        // Swal.fire("ERROR", T.translate("errors.server_error"), "error");
+        // Swal.fire("ERROR", t("errors.server_error"), "error");
     }
 }

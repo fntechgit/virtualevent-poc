@@ -16,7 +16,6 @@ import thunk from 'redux-thunk';
 import { persistStore, persistCombineReducers } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 import { loggedUserReducer } from "openstack-uicore-foundation/lib/security/reducers"
-import authReducer from './reducers/auth-reducer'
 import baseReducer from './reducers/base-reducer'
 import summitReducer from './reducers/summit-reducer'
 import orderReducer from './reducers/order-reducer'
@@ -26,7 +25,7 @@ import userReducer from './reducers/user-reducer';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-export const getStore = ({ clientId, apiBaseUrl, getAccessToken, summitId, user }) => {
+export const getStore = ({ clientId, apiBaseUrl, getAccessToken, summitId, user, loginUrl }) => {
     const config = {
         key: `root_registration_${clientId}`,
         storage,
@@ -42,7 +41,6 @@ export const getStore = ({ clientId, apiBaseUrl, getAccessToken, summitId, user 
 
     const reducers = persistCombineReducers(config, {
         loggedUserState: loggedUserReducer,
-        authState: authReducer,
         baseState: baseReducer,
         summitState: summitReducer,
         orderState: orderReducer,
@@ -60,7 +58,8 @@ export const getStore = ({ clientId, apiBaseUrl, getAccessToken, summitId, user 
                 thunk.withExtraArgument({
                     apiBaseUrl,
                     getAccessToken,
-                    summitId
+                    summitId,
+                    loginUrl
                 })
             )
         )
@@ -84,9 +83,9 @@ export const getPersistor = (store) => {
     return persistor;
 };
 
-export const useInitStore = ({ clientId, apiBaseUrl, getAccessToken, summitId, user }) => {
-    const store = useMemo(() => getStore({ clientId, apiBaseUrl, getAccessToken, summitId, user }), []);
+export const useInitStore = (config) => {
+    const store = useMemo(() => getStore(config), []);
     const persistor = useMemo(() => getPersistor(store), [store]);
 
     return { store, persistor };
-}
+};

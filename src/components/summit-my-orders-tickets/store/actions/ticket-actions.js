@@ -11,9 +11,10 @@
  * limitations under the License.
  **/
 
-import T from "i18n-react/dist/i18n-react";
+import { default as t } from '../../i18n';
 import IdTokenVerifier from 'idtoken-verifier';
 import Swal from 'sweetalert2';
+import history from '../history';
 import {
     authErrorHandler,
     getRequest,
@@ -27,21 +28,13 @@ import {
 import { getAccessToken, getIdToken } from 'openstack-uicore-foundation/lib/security/methods';
 import { getUserSummits, selectSummitById } from "./summit-actions";
 import { getUserOrders } from "./order-actions";
-import { openWillLogoutModal } from "./auth-actions";
 import { updateProfile } from "./user-actions";
 
-export const RESET_TICKET = 'RESET_TICKET';
 export const GET_TICKETS = 'GET_TICKETS';
 export const SELECT_TICKET = 'SELECT_TICKET';
-export const CHANGE_TICKET = 'CHANGE_TICKET';
 export const ASSIGN_TICKET = 'ASSIGN_TICKET';
 export const REMOVE_TICKET_ATTENDEE = 'REMOVE_TICKET_ATTENDEE';
 export const REFUND_TICKET = 'REFUND_TICKET';
-export const GET_TICKET_BY_HASH = 'GET_TICKET_BY_HASH';
-export const GET_TICKET_BY_HASH_ERROR = 'GET_TICKET_BY_HASH_ERROR';
-export const ASSIGN_TICKET_BY_HASH = 'ASSIGN_TICKET_BY_HASH';
-export const GUEST_TICKET_COMPLETED = 'GUEST_TICKET_COMPLETED';
-export const REGENERATE_TICKET_HASH = 'REGENERATE_TICKET_HASH';
 export const RESEND_NOTIFICATION = 'RESEND_NOTIFICATION';
 
 const customFetchErrorHandler = (response) => {
@@ -50,10 +43,10 @@ const customFetchErrorHandler = (response) => {
 
     switch (code) {
         case 403:
-            Swal.fire("ERROR", T.translate("errors.user_not_authz"), "warning");
+            Swal.fire("ERROR", t("errors.user_not_authz"), "warning");
             break;
         case 401:
-            Swal.fire("ERROR", T.translate("errors.session_expired"), "error");
+            Swal.fire("ERROR", t("errors.session_expired"), "error");
             break;
         case 412:
             msg = '';
@@ -67,16 +60,12 @@ const customFetchErrorHandler = (response) => {
             Swal.fire("Validation error", msg, "warning");
             break;
         case 500:
-            Swal.fire("ERROR", T.translate("errors.server_error"), "error");
+            Swal.fire("ERROR", t("errors.server_error"), "error");
     }
 };
 
-export const handleResetTicket = () => (dispatch, getState) => {
-    dispatch(createAction(RESET_TICKET)({}));
-};
-
-export const getUserTickets = (ticketRefresh, page = 1, per_page = 5) => async (dispatch, getState, { apiBaseUrl, summitId }) => {
-    const accessToken = await getAccessToken().catch(_ => dispatch(openWillLogoutModal()));
+export const getUserTickets = (ticketRefresh, page = 1, per_page = 5) => async (dispatch, getState, { apiBaseUrl, summitId, loginUrl }) => {
+    const accessToken = await getAccessToken().catch(_ => history.replace(loginUrl));
     const { userState: { userProfile } } = getState();
 
     if (!accessToken) return;
@@ -129,23 +118,6 @@ export const selectTicket = (ticket, ticketList = false, ticketRefresh) => (disp
     }
 };
 
-export const handleTicketChange = (ticket, errors = {}) => (dispatch, getState) => {
-
-    // if (validator.isEmpty(ticket.attendee_first_name)) errors.attendee_first_name = 'Please enter your First Name.';
-    // if (validator.isEmpty(ticket.attendee_last_name)) errors.attendee_last_name = 'Please enter your Last Name.';
-    // if (!validator.isEmail(ticket.attendee_email)) errors.attendee_email = 'Please enter a valid Email.';
-
-    /*ticket.tickets.forEach(tix => {
-        if (tix.coupon && tix.coupon.code == 'NOTACOUPON') errors[`tix_coupon_${tix.id}`] = 'Coupon not valid.';
-        else delete(errors[`tix_coupon_${tix.id}`]);
-
-        if (tix.email && !validator.isEmail(tix.email)) errors[`tix_email_${tix.id}`] = 'Please enter a valid Email.';
-        else delete(errors[`tix_email_${tix.id}`]);
-    });*/
-    dispatch(createAction(CHANGE_TICKET)({ ticket, errors }));
-
-}
-
 export const assignAttendee = ({
     ticket,
     order,
@@ -159,8 +131,8 @@ export const assignAttendee = ({
         reassignOrderId = null,
         refreshTickets = false
     }
-}) => async (dispatch, getState, { apiBaseUrl, summitId }) => {
-    const accessToken = await getAccessToken().catch(_ => dispatch(openWillLogoutModal()));
+}) => async (dispatch, getState, { apiBaseUrl, loginUrl }) => {
+    const accessToken = await getAccessToken().catch(_ => history.replace(loginUrl));
 
     if (!accessToken) return;
 
@@ -234,8 +206,8 @@ export const editOwnedTicket = ({
         extra_questions,
         updateOrder = false
     }
-}) => async (dispatch, getState, { apiBaseUrl, summitId }) => {
-    const accessToken = await getAccessToken().catch(_ => dispatch(openWillLogoutModal()));
+}) => async (dispatch, getState, { apiBaseUrl, loginUrl }) => {
+    const accessToken = await getAccessToken().catch(_ => history.replace(loginUrl));
 
     if (!accessToken) return;
 
@@ -309,8 +281,8 @@ export const editOwnedTicket = ({
     });
 };
 
-export const resendNotification = ({ ticket }) => async (dispatch, getState, { apiBaseUrl, summitId }) => {
-    const accessToken = await getAccessToken().catch(_ => dispatch(openWillLogoutModal()));
+export const resendNotification = ({ ticket }) => async (dispatch, getState, { apiBaseUrl, loginUrl }) => {
+    const accessToken = await getAccessToken().catch(_ => history.replace(loginUrl));
 
     if (!accessToken) return;
 
@@ -345,8 +317,8 @@ export const removeAttendee = ({
     ticket,
     order,
     data: { attendee_email, fromTicket = false }
-}) => async (dispatch, getState, { apiBaseUrl, summitId }) => {
-    const accessToken = await getAccessToken().catch(_ => dispatch(openWillLogoutModal()));
+}) => async (dispatch, getState, { apiBaseUrl, loginUrl }) => {
+    const accessToken = await getAccessToken().catch(_ => history.replace(loginUrl));
 
     if (!accessToken) return;
 
@@ -393,8 +365,8 @@ export const removeAttendee = ({
     });
 };
 
-export const getTicketPDF = (ticket) => async (dispatch, getState, { apiBaseUrl, summitId }) => {
-    const accessToken = await getAccessToken().catch(_ => dispatch(openWillLogoutModal()));
+export const getTicketPDF = (ticket) => async (dispatch, getState, { apiBaseUrl, loginUrl }) => {
+    const accessToken = await getAccessToken().catch(_ => history.replace(loginUrl));
 
     if (!accessToken) return;
 
@@ -435,8 +407,8 @@ export const getTicketPDF = (ticket) => async (dispatch, getState, { apiBaseUrl,
         .catch(customFetchErrorHandler);
 };
 
-export const refundTicket = ({ ticket, order }) => async (dispatch, getState, { apiBaseUrl, summitId }) => {
-    const accessToken = await getAccessToken().catch(_ => dispatch(openWillLogoutModal()));
+export const refundTicket = ({ ticket, order }) => async (dispatch, getState, { apiBaseUrl, loginUrl }) => {
+    const accessToken = await getAccessToken().catch(_ => history.replace(loginUrl));
 
     if (!accessToken) return;
 
@@ -482,95 +454,4 @@ export const refundTicket = ({ ticket, order }) => async (dispatch, getState, { 
         dispatch(stopLoading());
         throw (e);
     });
-};
-
-export const getTicketByHash = (hash) => (dispatch, getState, { apiBaseUrl }) => {
-    dispatch(startLoading());
-
-    const params = {
-        expand: 'order_extra_questions.values, owner, owner.extra_questions, badge, badge.features'
-    };
-
-    return getRequest(
-        null,
-        createAction(GET_TICKET_BY_HASH),
-        `${apiBaseUrl}/api/public/v1/summits/all/orders/all/tickets/${hash}`,
-        null,
-    )(params)(dispatch).then((ticket) => {
-        dispatch(selectSummitById(ticket.response.owner.summit_id, true));
-    }).catch((err) => {
-        dispatch(createAction(GET_TICKET_BY_HASH_ERROR)(err.res));
-        //dispatch(handleResetTicket());
-        dispatch(stopLoading());
-    });
-};
-
-export const assignTicketByHash = (
-    attendee_first_name,
-    attendee_last_name,
-    attendee_company,
-    disclaimer_accepted,
-    share_contact_info,
-    extra_questions,
-    hash
-) => (dispatch, getState, { apiBaseUrl }) => {
-    dispatch(startLoading());
-
-    const params = {
-        expand: 'order_extra_questions.values, owner, owner.extra_questions, badge, badge.features'
-    };
-
-    const normalizedEntity = {
-        attendee_first_name,
-        attendee_last_name,
-        attendee_company,
-        disclaimer_accepted,
-        share_contact_info,
-        extra_questions
-    };
-
-    return putRequest(
-        null,
-        createAction(ASSIGN_TICKET_BY_HASH),
-        `${apiBaseUrl}/api/public/v1/summits/all/orders/all/tickets/${hash}`,
-        normalizedEntity,
-        authErrorHandler
-    )(params)(dispatch).then(() => {
-        dispatch(createAction(GUEST_TICKET_COMPLETED)({}));
-        dispatch(stopLoading());
-    }).catch(e => {
-        dispatch(stopLoading());
-        return (e);
-    });
-};
-
-export const regenerateTicketHash = (formerHash) => (dispatch, getState, { apiBaseUrl }) => {
-    dispatch(startLoading());
-
-    return putRequest(
-        null,
-        createAction(REGENERATE_TICKET_HASH),
-        `${apiBaseUrl}/api/public/v1/summits/all/orders/all/tickets/${formerHash}/regenerate`,
-        authErrorHandler
-    )()(dispatch).then(() => {
-        Swal.fire("SUCCESS", T.translate("guests.hash_regenerated"), "success");
-        dispatch(stopLoading());
-    }
-    ).catch(e => {
-        dispatch(stopLoading());
-        return (e);
-    });
-};
-
-export const getTicketPDFByHash = (hash) => (dispatch, getState, { apiBaseUrl }) => {
-    dispatch(startLoading());
-
-    const apiUrl = `${apiBaseUrl}/api/public/v1/summits/all/orders/all/tickets/${hash}/pdf`;
-
-    const link = document.createElement('a');
-    link.href = apiUrl;
-    link.download = 'ticket.pdf';
-    link.dispatchEvent(new MouseEvent('click'));
-
-    dispatch(stopLoading());
 };
