@@ -25,7 +25,7 @@ const emptyAttendee = {
 export const TicketPopupAssignForm = ({ ticket, summit, order, closePopup }) => {
     const { t } = useTranslation();
     const dispatch = useDispatch();
-    const member = useSelector(state => state.loggedUserState.member);
+    const userProfile = useSelector(state => state.userState.userProfile);
 
     const handleSubmit = (values, formikHelpers) => {
         dispatch(assignAttendee({
@@ -44,9 +44,9 @@ export const TicketPopupAssignForm = ({ ticket, summit, order, closePopup }) => 
             ticket,
             order,
             data: {
-                attendee_email: member.email,
-                attendee_first_name: member.first_name,
-                attendee_last_name: member.last_name
+                attendee_email: userProfile.email,
+                attendee_first_name: userProfile.first_name,
+                attendee_last_name: userProfile.last_name
             }
         }));
         closePopup();

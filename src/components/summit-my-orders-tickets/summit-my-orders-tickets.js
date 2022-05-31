@@ -13,7 +13,8 @@ export const MyOrdersTicketsWidget = ({ className, ...props }) => {
         clientId: props.clientId,
         apiBaseUrl: props.apiBaseUrl,
         getAccessToken: props.getAccessToken,
-        summitId: props.summitId
+        summitId: props.summitId,
+        user: props.user
     });
 
     const handleBeforeLift = () => {

@@ -33,7 +33,7 @@ export const TicketPopup = ({ ticket, order, summit, onClose, fromTicketList, fr
     const previousScrollPosition = useRef(getWindowScroll());
     const { t } = useTranslation();
     const dispatch = useDispatch();
-    const member = useSelector(state => state.loggedUserState.member);
+    const userProfile = useSelector(state => state.userState.userProfile);
     const isLoading = useSelector(state => state.summitState.loading || state.orderState.loading || state.summitState.loading);
 
     const {
@@ -50,7 +50,7 @@ export const TicketPopup = ({ ticket, order, summit, onClose, fromTicketList, fr
     } = useTicketDetails({ ticket, summit });
 
     const ticketName = ticketType.name;
-    const isUserTicketOwner = order.owner_id === member.id;
+    const isUserTicketOwner = order.owner_id === userProfile.id;
     // If the user is purchasing a ticket, allow to edit the extra questions (fromTicketList === undefined && fromOrderList === undefined)
     const allowExtraQuestionsEdit = (fromTicketList === undefined && fromOrderList === undefined) || isUserTicketOwner && summit.allow_update_attendee_extra_questions;
 

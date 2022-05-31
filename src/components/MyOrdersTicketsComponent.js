@@ -15,7 +15,8 @@ export const MyOrdersTicketsComponent = () => {
         apiBaseUrl: getEnvVariable(SUMMIT_API_BASE_URL),
         clientId: getEnvVariable(OAUTH2_CLIENT_ID),
         getAccessToken,
-        summitId: summit.id
+        summitId: summit.id,
+        user
     };
 
     return (

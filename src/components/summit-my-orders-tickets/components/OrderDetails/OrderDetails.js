@@ -33,8 +33,6 @@ export const OrderDetails = ({ order, summit, className }) => {
         setTimeout(() => {
             const offset = getDocumentOffset(elementRef.current);
 
-            console.log('offset', offset);
-
             window.scroll({
                 top: offset.top - 30,
                 behavior: 'smooth'

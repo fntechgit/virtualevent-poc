@@ -77,7 +77,7 @@ export const handleResetTicket = () => (dispatch, getState) => {
 
 export const getUserTickets = (ticketRefresh, page = 1, per_page = 5) => async (dispatch, getState, { apiBaseUrl, summitId }) => {
     const accessToken = await getAccessToken().catch(_ => dispatch(openWillLogoutModal()));
-    const { loggedUserState: { member } } = getState();
+    const { userState: { userProfile } } = getState();
 
     if (!accessToken) return;
 
@@ -87,7 +87,7 @@ export const getUserTickets = (ticketRefresh, page = 1, per_page = 5) => async (
         access_token: accessToken,
         expand: 'order, owner, owner.extra_questions, order, badge, badge.features, refund_requests',
         order: '-id',
-        'filter[]': [`status==Confirmed,status==Paid,status==Error`, `order_owner_id<>${member.id}`],
+        'filter[]': [`status==Confirmed,status==Paid,status==Error`, `order_owner_id<>${userProfile.id}`],
         page: page,
         per_page: per_page,
     };
@@ -242,7 +242,7 @@ export const editOwnedTicket = ({
     dispatch(startLoading());
 
     const {
-        loggedUserState: { member },
+        userState: { userProfile },
         orderState: {
             selectedOrder,
             current_page: orderPage
@@ -293,7 +293,7 @@ export const editOwnedTicket = ({
         authErrorHandler
     )(params)(dispatch).then(() => {
         // Check if there's changes in the ticket data to update the profile
-        if (attendee_company !== company || attendee_first_name !== member.first_name || attendee_last_name !== member.last_name) {
+        if (attendee_company !== company || attendee_first_name !== userProfile.first_name || attendee_last_name !== userProfile.last_name) {
             const newProfile = {
                 first_name: attendee_first_name,
                 last_name: attendee_last_name,

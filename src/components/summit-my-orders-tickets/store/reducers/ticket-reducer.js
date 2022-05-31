@@ -35,7 +35,7 @@ const DEFAULT_STATE = {
     total: 0,
 }
 
-const memberReducer = (state = DEFAULT_STATE, action) => {
+const ticketReducer = (state = DEFAULT_STATE, action) => {
     const { type, payload } = action
 
     switch (type) {
@@ -76,4 +76,4 @@ const memberReducer = (state = DEFAULT_STATE, action) => {
     }
 }
 
-export default memberReducer;
+export default ticketReducer;

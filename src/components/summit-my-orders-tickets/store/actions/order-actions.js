@@ -53,8 +53,7 @@ export const handleResetOrder = (step = null) => (dispatch, getState) => {
 }
 
 export const checkOrderData = () => (dispatch, getState) => {
-
-    const { loggedUserState: { member: { first_name, last_name } } } = getState();
+    const { userState: { userProfile: { first_name, last_name } } } = getState();
     const { orderState: { purchaseOrder: { reservation: { owner_company, owner_first_name, owner_last_name } } } } = getState();
 
     const idToken = getIdToken();

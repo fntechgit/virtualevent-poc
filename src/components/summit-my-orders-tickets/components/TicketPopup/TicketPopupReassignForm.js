@@ -19,11 +19,11 @@ const validationSchema = Yup.object().shape({
 export const TicketPopupReassignForm = ({ ticket, summit, order, closePopup }) => {
     const { t } = useTranslation();
     const dispatch = useDispatch();
-    const member = useSelector(state => state.loggedUserState.member);
+    const userProfile = useSelector(state => state.userState.userProfile);
     const [showConfirm, setShowConfirm] = useState(false);
     const [newAttendeeEmail, setNewAttendeeEmail] = useState('');
 
-    const isUserTicketOwner = member.email === ticket.owner?.email;
+    const isUserTicketOwner = userProfile.email === ticket.owner?.email;
 
     const handleSubmit = (values, formikHelpers) => {
         setNewAttendeeEmail(values.attendee_email);
@@ -31,7 +31,7 @@ export const TicketPopupReassignForm = ({ ticket, summit, order, closePopup }) =
     };
 
     const assignTicketToSelf = () => {
-        setNewAttendeeEmail(member.email);
+        setNewAttendeeEmail(userProfile.email);
         setShowConfirm(true);
     };
 

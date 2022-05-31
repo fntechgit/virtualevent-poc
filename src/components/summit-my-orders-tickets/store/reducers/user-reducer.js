@@ -1,5 +1,5 @@
 import { LOGOUT_USER } from "openstack-uicore-foundation/lib/utils/actions";
-import { GET_ATTENDEE_PROFILE } from "../actions/user-actions";
+import { SET_USER } from "../actions/user-actions";
 /**
  * Copyright 2022
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,22 +13,19 @@ import { GET_ATTENDEE_PROFILE } from "../actions/user-actions";
  * limitations under the License.
  **/
 
-const DEFAULT_STATE = {
-    currentAttendee: null
-}
+const DEFAULT_STATE = {};
 
 const userReducer = (state = DEFAULT_STATE, action) => {
-    const { type, payload } = action
+    const { type, payload } = action;
+
     switch (type) {
         case LOGOUT_USER:
             return DEFAULT_STATE;
-        case GET_ATTENDEE_PROFILE:
-            const { response: member } = payload;
-            const { attendee } = member;
-            return { ...state, currentAttendee: attendee }
+        case SET_USER:
+            return payload;
         default:
             return state;
     }
-}
+};
 
 export default userReducer

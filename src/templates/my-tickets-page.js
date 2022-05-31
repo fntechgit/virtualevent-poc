@@ -3,9 +3,7 @@ import { connect } from "react-redux";
 import Layout from "../components/Layout";
 import { MyOrdersTicketsComponent } from '../components/MyOrdersTicketsComponent';
 
-const MyTicketsPage = ({ location, user, isLoggedUser }) => {
-    // console.log(user);
-
+const MyTicketsPage = ({ location }) => {
     return (
         <Layout location={location}>
             <div className="container">

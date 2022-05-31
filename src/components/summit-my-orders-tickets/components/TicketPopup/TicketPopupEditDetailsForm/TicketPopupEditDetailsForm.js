@@ -49,7 +49,7 @@ export const TicketPopupEditDetailsForm = ({ ticket, summit, order, allowExtraQu
     const formRef = useRef(null);
     const { t } = useTranslation();
     const dispatch = useDispatch();
-    const member = useSelector(state => state.loggedUserState.member);
+    const userProfile = useSelector(state => state.userState.userProfile);
     const extraQuestions = useSelector(state => state.summitState.extra_questions || []);
     const isLoading = useSelector(state => state.summitState.loading || state.summitState.loading);
     const [inputEmail, setInputEmail] = useState(false);
@@ -58,7 +58,7 @@ export const TicketPopupEditDetailsForm = ({ ticket, summit, order, allowExtraQu
 
     const readOnly = !isReassignable;
     const hasExtraQuestions = extraQuestions.length > 0;
-    const isUserTicketOwner = order.owner_id === member.id;
+    const isUserTicketOwner = order.owner_id === userProfile.id;
 
     const initialValues = getInitialValues(ticket);
 

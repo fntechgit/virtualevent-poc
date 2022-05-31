@@ -26,7 +26,7 @@ import userReducer from './reducers/user-reducer';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-export const getStore = ({ clientId, apiBaseUrl, getAccessToken, summitId }) => {
+export const getStore = ({ clientId, apiBaseUrl, getAccessToken, summitId, user }) => {
     const config = {
         key: `root_registration_${clientId}`,
         storage,
@@ -53,6 +53,8 @@ export const getStore = ({ clientId, apiBaseUrl, getAccessToken, summitId }) => 
 
     const store = createStore(
         reducers,
+        // Initialize the userState with the user passed in to the widget props.
+        { userState: user },
         composeEnhancers(
             applyMiddleware(
                 thunk.withExtraArgument({
@@ -82,8 +84,8 @@ export const getPersistor = (store) => {
     return persistor;
 };
 
-export const useInitStore = ({ clientId, apiBaseUrl, getAccessToken, summitId }) => {
-    const store = useMemo(() => getStore({ clientId, apiBaseUrl, getAccessToken, summitId }), []);
+export const useInitStore = ({ clientId, apiBaseUrl, getAccessToken, summitId, user }) => {
+    const store = useMemo(() => getStore({ clientId, apiBaseUrl, getAccessToken, summitId, user }), []);
     const persistor = useMemo(() => getPersistor(store), [store]);
 
     return { store, persistor };
