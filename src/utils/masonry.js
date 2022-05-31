@@ -3,7 +3,9 @@ export const formatMasonry = (masonry) => {
     let dummyImage = false
     masonry.map((image, index) => {
         if (index + 1 === masonry.length) {
-            if (image.size + leftColumn !== rightColumn) {
+            // If the last image makes both columns equals and the masonry array length is odd
+            // add a dummy image to force the last image on the right side 
+            if (image.size + rightColumn === leftColumn && masonry.length % 2 !== 0) {
                 dummyImage = true;
             }
         } else {
