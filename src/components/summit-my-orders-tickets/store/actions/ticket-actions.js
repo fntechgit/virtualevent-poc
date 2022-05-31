@@ -22,9 +22,9 @@ import {
     deleteRequest,
     createAction,
     stopLoading,
-    startLoading,
-    objectToQueryString
+    startLoading
 } from 'openstack-uicore-foundation/lib/utils/actions';
+import { objectToQueryString } from 'openstack-uicore-foundation/lib/utils/methods';
 import { getAccessToken, getIdToken } from 'openstack-uicore-foundation/lib/security/methods';
 import { getUserSummits, selectSummitById } from "./summit-actions";
 import { getUserOrders } from "./order-actions";
