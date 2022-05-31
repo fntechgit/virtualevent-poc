@@ -28,6 +28,7 @@ export const OrderDetails = ({ order, summit, className }) => {
 
     const handleClick = (event) => {
         if (state.activeOrderId === order.id) return actions.setActiveOrderId(null);
+
         actions.setActiveOrderId(order.id);
 
         setTimeout(() => {
@@ -41,48 +42,44 @@ export const OrderDetails = ({ order, summit, className }) => {
     };
 
     return (
-        <div ref={elementRef} className="order-details" onClick={handleClick}>
-            <div className="col-sm-1">
-                <i className={classNames(
-                    'order-details-icon',
-                    `fa fa-2x ${statusData.icon}`,
-                    `order-${statusData.className}`
-                )} />
+        <div ref={elementRef} className={classNames('order-details', `order-details--${statusData.className}`)} onClick={handleClick}>
+            <i className={classNames(`order-details__icon fa fa-2x ${statusData.icon}`)} />
+
+            <div className="order-details__content">
+                <div className="order-details__header">
+                    <h4 className="order-details__event-name">
+                        {summit.name}
+                        <br />
+                        {getSummitFormattedDate(summit)}
+                    </h4>
+
+                    <p className="order-details__status">
+                        {statusData.text}
+                    </p>
+                </div>
+
+                <div className="order-details__meta">
+                    <h5 className="order-details__purchase-date">
+                        {t("orders.purchased")}{` `}
+                        {getFormattedDate(order.created)}
+                    </h5>
+
+                    <ul className="order-details__tickets">
+                        {Object.values(ticketQuantities).map(ticket => (
+                            <li key={ticket.ticket_type_id}>
+                                x{ticket.quantity} {ticket.name}
+                            </li>
+                        ))}
+                    </ul>
+
+                    <div className="order-details__number">
+                        {order.number}
+                    </div>
+                </div>
             </div>
 
-            <div className="col-sm-5">
-                <h4>
-                    {summit.name}
-                    <br />
-                    {getSummitFormattedDate(summit)}
-                </h4>
-
-                <p className={classNames(
-                    'status',
-                    `order-${statusData.className}`,
-                )}>
-                    {statusData.text}
-                </p>
-            </div>
-
-            <div className="col-sm-4">
-                <h5>{t("orders.purchased")} {getFormattedDate(order.created)}</h5>
-
-                <ul>
-                    {Object.values(ticketQuantities).map(ticket => (
-                        <li key={ticket.ticket_type_id}>
-                            x{ticket.quantity} {ticket.name}
-                        </li>
-                    ))}
-                </ul>
-
-                <ul>
-                    {order.number}
-                </ul>
-            </div>
-
-            <div className="col-sm-2">
-                <h4>${order.amount}</h4>
+            <div className="order-details__footer">
+                <h4 className="order-details__amount">${order.amount}</h4>
             </div>
         </div>
     );

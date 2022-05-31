@@ -1,94 +1,106 @@
 @import "../../styles/variables";
 
 .order-details {
+  position: relative;
   display: flex;
+  flex-flow: row nowrap;
   background-color: $color-white;
   border: 1px solid $color-gray-light;
   border-radius: 4px;
   min-height: 6em;
+  padding: 16px 16px 16px 32px;
   cursor: pointer;
+  gap: 12px;
 
-  ul {
-    padding: 0;
-    list-style-type: none;
-    word-wrap: break-word;
-  }
-
-  div:first-of-type {
-    margin-top: 10px;
-    margin-left: -30px;
-    padding-right: 0px;
-
-    .order-warning {
-      color: $color-warning;
-
-      &::before {
-        background: $color-white;
-        border-radius: 50%;
-        height: 1em;
-        width: 1em;
-      }
-    }
-
-    .order-complete {
-      color: $color-success;
-
-      &::before {
-        background: $color-white;
-        border-radius: 50%;
-        height: 1em;
-        width: 1em;
-      }
-    }
-
-    .order-unset {
-      color: $color-black;
-
-      &::before {
-        background: $color-white;
-        border-radius: 50%;
-        height: 1em;
-        width: 1em;
-      }
-    }
-  }
-
-  div:nth-child(2) {
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 10px;
-  }
-
-  .status {
-    margin-top: auto;
-    font-size: 0.7em;
-    color: $color-black;
-    text-transform: uppercase;
-
-    &.order-warning {
-      color: $color-warning;
-    }
-
-    &.order-complete {
-      color: $color-success;
-    }
-
-    &.order-unset {
-      color: $color-black;
-    }
-
-    &.order-cancel {
-      color: $color-danger;
-    }
-  }
-
-  div:last-child {
-    padding: 0 15px 0 0;
-    width: 20%;
-    text-align: right;
+  @media screen and (min-width: 768px) {
+    padding-left: 48px;
   }
 
   &:hover {
     background-color: $color-gray-lighter;
+  }
+
+  * {
+    margin: 0;
+  }
+
+  ul {
+    padding: 0;
+    list-style-type: none;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    flex-basis: calc(80% - 6px);
+    max-width: calc(80% - 6px);
+    gap: 12px;
+
+    @media screen and (min-width: 768px) {
+      flex-flow: row nowrap;
+    }
+  }
+
+  &__footer {
+    flex-basis: calc(20% - 6px);
+    max-width: calc(20% - 6px);
+    text-align: right;
+  }
+
+  &__header,
+  &__meta {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    @media screen and (min-width: 768px) {
+      flex-basis: calc(50% - 6px);
+      max-width: calc(50% - 6px);
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    top: 20px;
+    left: -12px;
+
+    &::before {
+      background: $color-white;
+      border-radius: 50%;
+      height: 1em;
+      width: 1em;
+    }
+  }
+
+  &__status {
+    margin-top: auto;
+    font-size: 0.7em;
+    color: $color-black;
+    text-transform: uppercase;
+    margin-top: auto;
+  }
+
+  &__number {
+    word-wrap: break-word;
+  }
+
+  &--warning &__icon,
+  &--warning &__status {
+    color: $color-warning;
+  }
+
+  &--complete &__icon,
+  &--complete &__status {
+    color: $color-success;
+  }
+
+  &--unset &__icon,
+  &--unset &__status {
+    color: $color-black;
+  }
+
+  &--cancel &__icon,
+  &--cancel &__status {
+    color: $color-danger;
   }
 }

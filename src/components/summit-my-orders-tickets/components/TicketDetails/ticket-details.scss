@@ -1,117 +1,111 @@
 @import "../../styles/variables";
 
 .ticket-details {
+  position: relative;
   display: flex;
   background-color: $color-white;
   border: 1px solid $color-gray-light;
   border-radius: 4px;
   min-height: 6em;
+  padding: 16px 16px 16px 32px;
+  cursor: pointer;
+  gap: 12px;
+
+  @media screen and (min-width: 768px) {
+    padding-left: 48px;
+  }
+
+  &:hover {
+    background-color: $color-gray-lighter;
+  }
+
+  * {
+    margin: 0;
+  }
 
   ul {
     padding: 0;
     list-style-type: none;
   }
 
-  div:first-of-type {
-    margin-top: 10px;
-    margin-left: -30px;
-    padding-right: 0px;
-
-    .ticket-warning {
-      color: $color-warning;
-
-      &::before {
-        background: $color-white;
-        border-radius: 50%;
-        height: 1em;
-        width: 1em;
-      }
-    }
-
-    .ticket-complete {
-      color: $color-success;
-
-      &::before {
-        background: $color-white;
-        border-radius: 50%;
-        height: 1em;
-        width: 1em;
-      }
-    }
-
-    .ticket-unset {
-      color: $color-black;
-
-      &::before {
-        background: $color-white;
-        border-radius: 50%;
-        height: 1em;
-        width: 1em;
-      }
-    }
-
-    .undefined {
-      padding-right: 15px;
-    }
-  }
-
-  div:nth-child(2) {
+  &__content {
     display: flex;
     flex-direction: column;
-    p {
-      font-size: 12px;
-      margin-bottom: 10px;
+    flex-basis: calc(80% - 6px);
+    max-width: calc(80% - 6px);
+    gap: 12px;
+
+    @media screen and (min-width: 768px) {
+      flex-flow: row nowrap;
     }
   }
 
-  div:nth-child(3) {
-    white-space: normal;
-    overflow: hidden;
-  }
-
-  div:last-child {
-    margin-left: auto;
-    align-self: center;
-    font-size: 1.5em;
+  &__footer {
+    display: flex;
+    flex-basis: calc(20% - 6px);
+    max-width: calc(20% - 6px);
     text-align: right;
+    justify-content: end;
+    text-align: right;
+
+    @media screen and (min-width: 768px) {
+      align-items: center;
+    }
   }
 
-  .status {
+  &__header,
+  &__meta {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    > * {
+      margin: 0;
+    }
+
+    @media screen and (min-width: 768px) {
+      flex-basis: calc(50% - 6px);
+      max-width: calc(50% - 6px);
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    top: 20px;
+    left: -12px;
+
+    &::before {
+      background: $color-white;
+      border-radius: 50%;
+      height: 1em;
+      width: 1em;
+    }
+  }
+
+  &__status {
     margin-top: auto;
     font-size: 0.8em !important;
     color: $color-black;
     text-transform: uppercase;
-
-    &.ticket-warning {
-      color: $color-warning;
-    }
-    &.ticket-complete {
-      color: $color-success;
-    }
-    &.ticket-unset {
-      color: $color-black;
-    }
-    &.ticket-cancel {
-      color: $color-danger;
-    }
   }
 
-  &:hover {
-    background-color: $color-gray-lighter;
-    cursor: pointer;
+  &--warning &__icon,
+  &--warning &__status {
+    color: $color-warning;
   }
-}
 
-@media (max-width: 768px) {
-  .ticket-details {
-    div:nth-child(2) {
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      overflow: hidden;
+  &--complete &__icon,
+  &--complete &__status {
+    color: $color-success;
+  }
 
-      p.ticket-number {
-        font-size: 2.4vw;
-      }
-    }
+  &--unset &__icon,
+  &--unset &__status {
+    color: $color-black;
+  }
+
+  &--cancel &__icon,
+  &--cancel &__status {
+    color: $color-danger;
   }
 }

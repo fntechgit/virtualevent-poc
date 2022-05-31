@@ -20,46 +20,62 @@ export const OrderTicketDetails = ({ ticket, summit, order, className }) => {
     return (
         <>
             <div
-                className={classNames('order-ticket-details', {
-                    'disabled': isUnassigned && !isReassignable,
-                    [status.className]: isReassignable,
-                }, className)}
+                className={classNames(
+                    'order-ticket-details',
+                    `order-ticket-details--${status.className}`,
+                    {
+                        'disabled': isUnassigned && !isReassignable,
+                        [status.className]: isReassignable,
+                    },
+                    className
+                )}
                 onClick={handleClick}
             >
-                <div className="col-sm-1">
-                    <i
-                        className={classNames(
-                            'order-ticket-details-icon',
-                            `ticket-${status.className}`,
-                            status.icon,
-                            `fa fa-2x`
-                        )}
-                    />
-                </div>
-
-                <div className="col-sm-5">
-                    <h4>{role}</h4>
-
-                    {ticket.discount > 0 && (
-                        <>
-                            {(ticket.discount * 100) / ticket.raw_cost}% discount
-                        </>
+                <i
+                    className={classNames(
+                        'order-ticket-details__icon',
+                        status.icon,
+                        `fa fa-2x`
                     )}
+                />
 
-                    <p className={`status ticket-${status.className}`}>
-                        {status.text}
-                    </p>
+                <div className="order-ticket-details__content">
+                    <div className="order-ticket-details__header">
+                        <div>
+                            <h4 className="order-ticket-details__role">
+                                {role}
+                            </h4>
 
-                    <h5><br />{ticket.number}</h5>
+                            {ticket.discount > 0 && (
+                                <div className="order-ticket-details__role">
+                                    {(ticket.discount * 100) / ticket.raw_cost}% discount
+                                </div>
+                            )}
+
+                            <div className="order-ticket-details__status">
+                                {status.text}
+                            </div>
+                        </div>
+
+                        <div>
+                            {ticket.owner?.email && (
+                                <h5 className="order-ticket-details__email">
+                                    {ticket.owner?.email}
+                                </h5>
+                            )}
+                        </div>
+                    </div>
+
+                    <div className="order-ticket-details__meta">
+                        <h5 className="order-ticket-details__number">
+                            {ticket.number}
+                        </h5>
+                    </div>
                 </div>
 
-                <div className="col-sm-5">
-                    <h5>{ticket.owner?.email || ''}</h5>
-                </div>
-
-                <div className="col-sm-1">
+                <div className="order-ticket-details__footer">
                     {isActive && (
-                        <i className="fa fa-angle-right" />
+                        <i className="order-ticket-details__arrow fa fa-angle-right" />
                     )}
                 </div>
             </div>

@@ -13,11 +13,10 @@
     height: 100%;
     width: 100%;
     overflow-y: scroll;
-    // height: calc(100vh - 140px);
   }
 
-  .closed {
-    display: none;
+  &.closed {
+    border-radius: 0 0 4px 4px;
   }
 
   &-title {

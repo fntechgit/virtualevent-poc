@@ -1,12 +1,29 @@
 @import "../../styles/variables";
 
 .order-ticket-details {
+  position: relative;
   display: flex;
+  flex-flow: row nowrap;
   background-color: $color-white;
   border: 1px solid $color-gray-light;
   border-radius: 4px;
   margin-top: 0.5em;
   min-height: 6em;
+  padding: 16px 16px 16px 32px;
+  cursor: pointer;
+  gap: 12px;
+
+  @media screen and (min-width: 768px) {
+    padding-left: 48px;
+  }
+
+  &:hover {
+    background-color: $color-gray-lighter;
+  }
+
+  * {
+    margin: 0;
+  }
 
   ul {
     padding: 0;
@@ -15,97 +32,83 @@
 
   h4 {
     font-size: 12px;
-    margin-bottom: 0px;
   }
 
-  div:first-of-type {
-    margin-top: 10px;
-    margin-left: -30px;
-    padding-right: 0px;
-
-    .ticket-warning {
-      color: $color-warning;
-
-      &::before {
-        background: $color-white;
-        border-radius: 50%;
-        height: 1em;
-        width: 1em;
-      }
-    }
-
-    .ticket-complete {
-      color: $color-success;
-
-      &::before {
-        background: $color-white;
-        border-radius: 50%;
-        height: 1em;
-        width: 1em;
-      }
-    }
-
-    .ticket-unset {
-      color: $color-black;
-
-      &::before {
-        background: $color-white;
-        border-radius: 50%;
-        height: 1em;
-        width: 1em;
-      }
-    }
-  }
-
-  div:nth-child(2) {
+  &__content {
     display: flex;
     flex-direction: column;
-    margin-left: 10px;
+    flex-basis: calc(80% - 6px);
+    max-width: calc(80% - 6px);
+    gap: 12px;
+  }
 
-    h4 {
-      font-weight: bold;
-      text-transform: uppercase;
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    @media screen and (min-width: 768px) {
+      flex-flow: row nowrap;
+    }
+
+    > div {
+      @media screen and (min-width: 768px) {
+        flex-basis: calc(50% - 6px);
+        max-width: calc(50% - 6px);
+      }
     }
   }
 
-  div:nth-child(3) {
-    h5 {
-      margin-top: 8px;
-    }
-  }
-
-  div:last-child {
-    margin-left: auto;
-    align-self: center;
-    font-size: 1.5em;
+  &__footer {
+    display: flex;
+    flex-basis: calc(20% - 6px);
+    max-width: calc(20% - 6px);
     text-align: right;
-    h4 {
-      margin-top: 0px;
+    justify-content: end;
+    text-align: right;
+
+    @media screen and (min-width: 768px) {
+      align-items: center;
     }
   }
 
-  .status {
+  &__icon {
+    position: absolute;
+    top: 20px;
+    left: -12px;
+
+    &::before {
+      background: $color-white;
+      border-radius: 50%;
+      height: 1em;
+      width: 1em;
+    }
+  }
+
+  &__status {
     margin-top: auto;
     font-size: 0.7em;
     color: $color-black;
     text-transform: uppercase;
     margin-bottom: 5px;
-
-    &.ticket-warning {
-      color: $color-warning;
-    }
-
-    &.ticket-complete {
-      color: $color-success;
-    }
-
-    &.ticket-unset {
-      color: $color-black;
-    }
   }
 
-  &:hover {
-    background-color: $color-gray-lighter;
-    cursor: pointer;
+  &__number {
+    word-wrap: break-word;
+  }
+
+  &--warning &__icon,
+  &--warning &__status {
+    color: $color-warning;
+  }
+
+  &--complete &__icon,
+  &--complete &__status {
+    color: $color-success;
+  }
+
+  &--unset &__icon,
+  &--unset &__status {
+    color: $color-black;
   }
 }
