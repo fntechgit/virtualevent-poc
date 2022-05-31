@@ -17,6 +17,7 @@ export const OrderList = ({ className }) => {
         current_page: currentPage,
         last_page: lastPage,
         per_page: perPage,
+        total,
         loading: orderLoading
     } = useSelector(state => state.orderState || {});
 
@@ -34,8 +35,7 @@ export const OrderList = ({ className }) => {
     const isLoading = orderLoading || summitLoading;
     const hasOrders = orders.length > 0;
     const hasSummits = summits.length > 0;
-    const hasMultiplePages = orders.length > perPage;
-
+    const hasMultiplePages = total > perPage;
 
     return (
         <>

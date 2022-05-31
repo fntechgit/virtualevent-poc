@@ -17,6 +17,7 @@ export const TicketList = ({ className }) => {
         current_page: currentPage,
         last_page: lastPage,
         per_page: perPage,
+        total,
         loading: ticketLoading
     } = useSelector(state => state.ticketState || {});
 
@@ -34,7 +35,7 @@ export const TicketList = ({ className }) => {
     const isLoading = ticketLoading || summitLoading;
     const hasTickets = tickets.length > 0;
     const hasSummits = summits.length > 0;
-    const hasMultiplePages = tickets.length > perPage;
+    const hasMultiplePages = total > perPage;
 
     return (
         <>
