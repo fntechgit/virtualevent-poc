@@ -65,6 +65,8 @@ const SchedulePage = ({summit, scheduleState, summitPhase, isLoggedUser, locatio
     timezone,
     colorSource,
     schedKey,
+    modalSyncText: `Use the link below to add your saved sessions (found in My Schedule) to your personal 
+      calendar. Should you make changes later, use the Calendar Sync button to ensure these items are updated everywhere.`,
     ...scheduleProps
   };
 
