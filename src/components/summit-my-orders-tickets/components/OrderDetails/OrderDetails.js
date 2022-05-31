@@ -1,4 +1,4 @@
-import React, { useRef } from "react"
+import React, { useEffect, useRef } from "react"
 import { useDispatch } from "react-redux";
 import { useTranslation } from "react-i18next";
 import classNames from 'classnames';
@@ -40,6 +40,9 @@ export const OrderDetails = ({ order, summit, className }) => {
             });
         }, 50);
     };
+
+    // Clear active order on unmount.
+    useEffect(() => () => actions.setActiveOrderId(null), []);
 
     return (
         <div ref={elementRef} className={classNames('order-details', `order-details--${statusData.className}`)} onClick={handleClick}>
