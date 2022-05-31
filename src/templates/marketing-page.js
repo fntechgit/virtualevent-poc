@@ -17,6 +17,7 @@ import Content, { HTMLContent } from '../components/Content'
 import Countdown from '../components/Countdown'
 import Link from '../components/Link'
 import { PHASES } from '../utils/phasesUtils'
+import { formatMasonry } from '../utils/masonry'
 
 import settings from '../content/settings';
 
@@ -96,7 +97,7 @@ export const MarketingPageTemplate = class extends React.Component {
               breakpointCols={2}
               className="my-masonry-grid"
               columnClassName="my-masonry-grid_column">
-              {siteSettings.sponsors.map((item, index) => {
+              {formatMasonry(siteSettings.sponsors).map((item, index) => {
                 if (item.images && item.images.length === 1) {
                   return (
                     <div className={'single'} key={index}>

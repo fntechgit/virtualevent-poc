@@ -5,6 +5,7 @@ const {createFilePath} = require('gatsby-source-filesystem');
 const {fmImagesToRelative} = require('gatsby-remark-relative-images');
 const {ClientCredentials} = require('simple-oauth2');
 const URI = require('urijs');
+const sizeOf = require('image-size');
 
 const colorsFilepath = 'src/content/colors.json';
 const disqusFilepath = 'src/content/disqus-settings.json';
@@ -177,6 +178,22 @@ exports.onPreBootstrap = async () => {
 
         if (key === 'schedule_default_image') homeSettings.schedule_default_image = value;
         if (key === 'registration_in_person_disclaimer') marketingSite[key] = value;
+    });
+
+    // Set the size property on marketing settings masonry if it's needed
+    const migrateMasonry = (masonry) => {
+        const sizeRequired = masonry.some(i => !i.hasOwnProperty("size"));
+        if (sizeRequired) {
+            return masonry.map((i) => {
+                isSingle = masonry.some(img => sizeOf(`./static${img.images[0].image}`).height > sizeOf(`./static${i.images[0].image}`).height);
+                return { ...i, size: isSingle ? 1: 2 }
+            })
+        }
+        return masonry;
+    }
+
+    Object.keys(marketingSite).map((key) => {
+        if (key === 'sponsors') marketingSite[key] = migrateMasonry(marketingSite[key]);
     });
 
     globalSettings.lastBuild = Date.now();
