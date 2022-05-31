@@ -8,7 +8,10 @@
   "homeHero": {
     "title": "Stars Day",
     "subTitle": "Collaboration and learning for Stars creators",
-    "image": "/img/sf21-lobby-header-right.png",
+    "image": {
+      "file": "/img/sf21-lobby-header-right.png",
+      "alt": ""
+    },
     "copy": ""
   },
   "live_now_featured_event_id": 2377,

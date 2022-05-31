@@ -15,10 +15,14 @@
         "display": false
       }
     },
-    "background": "/img/sf21-header-left.png",
+    "background": {
+      "file": "/img/sf21-header-left.png",
+      "alt": ""
+    },
     "images": [
       {
-        "image": "/img/sf21-header-right_120221.png"
+        "file": "/img/sf21-header-right_120221.png",
+        "alt": ""
       }
     ]
   },
@@ -35,7 +39,8 @@
       "display": true,
       "title": "",
       "src": "/img/sf21-calendar_120721.png",
-      "mobileSrc": "/img/sf21-calendar-mobile_120721.png"
+      "mobileSrc": "/img/sf21-calendar-mobile_120721.png",
+      "alt": ""
     }
   },
   "sponsors": [
@@ -43,7 +48,8 @@
       "images": [
         {
           "image": "/img/sf21-mrkt-space-1.png",
-          "link": "/creator-competition"
+          "link": "/creator-competition",
+          "alt": ""
         }
       ]
     },
@@ -51,7 +57,8 @@
       "images": [
         {
           "image": "/img/sf21-mrkt-space-2.png",
-          "link": "/a/programming"
+          "link": "/a/programming",
+          "alt": ""
         }
       ]
     },
@@ -59,7 +66,8 @@
       "images": [
         {
           "image": "/img/sf21-mrkt-space-3_113021.png",
-          "link": "https://www.facebook.com/creators/stars-fest-is-here"
+          "link": "https://www.facebook.com/creators/stars-fest-is-here",
+          "alt": ""
         }
       ]
     },
@@ -67,7 +75,8 @@
       "images": [
         {
           "image": "/img/sf21-mrkt-space-4_120321.png",
-          "link": "https://www.facebook.com/stars"
+          "link": "https://www.facebook.com/stars",
+          "alt": ""
         }
       ]
     }
