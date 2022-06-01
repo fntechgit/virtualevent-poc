@@ -530,8 +530,6 @@ export const TicketPopupEditDetailsForm = ({ ticket, summit, order, allowExtraQu
                         </>
                     )}
 
-                    {console.log('formik.isSubmitting', formik.isSubmitting)}
-
                     <div className="ticket-popup-footer-save">
                         <button
                             type="button"

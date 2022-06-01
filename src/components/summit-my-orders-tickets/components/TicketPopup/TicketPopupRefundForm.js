@@ -39,12 +39,9 @@ export const TicketPopupRefundForm = ({ ticket, summit, order, closePopup }) => 
                     timeout={2000}
                     classNames="fade-in-out"
                 >
-                    <>
-                        <br />
-                        <Alert bsStyle="success">
-                            {t("tickets.refund_request_success_message")}
-                        </Alert>
-                    </>
+                    <Alert bsStyle="success">
+                        {t("tickets.refund_request_success_message")}
+                    </Alert>
                 </CSSTransition>
 
                 <div className="row">

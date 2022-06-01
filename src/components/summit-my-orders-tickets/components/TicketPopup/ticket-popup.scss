@@ -14,8 +14,7 @@
 }
 
 .ticket-popup-scroll {
-  padding-left: 15px;
-  padding-right: 15px;
+  padding: 20px 15px;
 }
 
 .ticket-popup-content {
@@ -191,10 +190,6 @@
       padding: 0 15%;
     }
 
-    p:first-of-type {
-      margin: 40px 0 20px;
-    }
-
     p.error-label {
       width: 60%;
       margin: 0px auto 5px auto;
@@ -294,6 +289,10 @@
       margin-top: 15px;
     }
   }
+
+  &--refund {
+    padding: 0 10%;
+  }
 }
 
 .ticket-refund-button {
@@ -301,9 +300,12 @@
   margin-top: 20px;
   padding: 15px;
   font-weight: bold;
-  width: 50%;
   margin-right: auto;
   margin-left: auto;
+
+  @media screen and (min-width: 768px) {
+    width: 50%;
+  }
 
   a {
     line-height: 2em;
@@ -344,6 +346,10 @@
         margin-left: 10px;
       }
     }
+  }
+
+  .ticket-popup-panel--refund {
+    padding: 0;
   }
 
   .ticket-popup-panel--assign {

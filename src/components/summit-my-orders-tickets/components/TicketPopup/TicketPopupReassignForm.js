@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
+import { CSSTransition } from "react-transition-group";
+import Alert from 'react-bootstrap/lib/Alert';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { Input } from 'openstack-uicore-foundation/lib/components'
 import { removeAttendee } from "../../store/actions/ticket-actions";
-import { getSummitFormattedReassignDate } from "../../util";
 import { ConfirmPopup, CONFIRM_POPUP_CASE } from "../ConfirmPopup/ConfirmPopup";
 
 const initialValues = {
@@ -22,16 +23,17 @@ export const TicketPopupReassignForm = ({ ticket, summit, order, closePopup }) =
     const userProfile = useSelector(state => state.userState.userProfile);
     const [showConfirm, setShowConfirm] = useState(false);
     const [newAttendeeEmail, setNewAttendeeEmail] = useState('');
+    const [showSaveMessage, setShowSaveMessage] = useState(false);
 
     const isUserTicketOwner = userProfile.email === ticket.owner?.email;
 
-    const handleSubmit = (values, formikHelpers) => {
-        setNewAttendeeEmail(values.attendee_email);
-        setShowConfirm(true);
+    const toggleSaveMessage = () => {
+        setTimeout(() => setShowSaveMessage(true), 50);
+        setTimeout(() => setShowSaveMessage(false), 5000);
     };
 
-    const assignTicketToSelf = () => {
-        setNewAttendeeEmail(userProfile.email);
+    const handleSubmit = (values, formikHelpers) => {
+        setNewAttendeeEmail(values.attendee_email);
         setShowConfirm(true);
     };
 
@@ -40,6 +42,12 @@ export const TicketPopupReassignForm = ({ ticket, summit, order, closePopup }) =
         onSubmit: handleSubmit,
         validationSchema
     });
+
+    const assignTicketToSelf = () => {
+        formik.resetForm();
+        setNewAttendeeEmail(userProfile.email);
+        setShowConfirm(true);
+    };
 
     const handleConfirmAccept = async () => {
         setShowConfirm(false);
@@ -50,7 +58,9 @@ export const TicketPopupReassignForm = ({ ticket, summit, order, closePopup }) =
             ticket,
             order,
             data: { attendee_email: newAttendeeEmail }
-        }));
+        })).then(() => {
+            toggleSaveMessage();
+        });
     };
 
     const handleConfirmReject = () => {
@@ -62,6 +72,19 @@ export const TicketPopupReassignForm = ({ ticket, summit, order, closePopup }) =
     return (
         <>
             <form className="ticket-reassign-form" onSubmit={formik.handleSubmit}>
+                {showSaveMessage && (
+                    <CSSTransition
+                        unmountOnExit
+                        in={showSaveMessage}
+                        timeout={2000}
+                        classNames="fade-in-out"
+                    >
+                        <Alert bsStyle="success" className="text-center">
+                            {t("tickets.reassign_success_message")}
+                        </Alert>
+                    </CSSTransition>
+                )}
+
                 {!isUserTicketOwner && (
                     <>
                         <p>
@@ -69,7 +92,9 @@ export const TicketPopupReassignForm = ({ ticket, summit, order, closePopup }) =
                             <br />
                             <b>{ticket.owner.email}</b>
                         </p>
-                        <button className="btn btn-primary" onClick={assignTicketToSelf}>{t("ticket_popup.reassign_me")}</button>
+                        <button className="btn btn-primary" onClick={assignTicketToSelf} type="button">
+                            {t("ticket_popup.reassign_me")}
+                        </button>
 
                         <div className="ticket-popup-separator">
                             <div><hr /></div>
