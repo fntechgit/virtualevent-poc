@@ -22,7 +22,6 @@ export const OrderList = ({ className }) => {
     } = useSelector(state => state.orderState || {});
 
     const {
-        summits,
         loading: summitLoading
     } = useSelector(state => state.summitState || {});
 
@@ -34,7 +33,6 @@ export const OrderList = ({ className }) => {
 
     const isLoading = orderLoading || summitLoading;
     const hasOrders = orders.length > 0;
-    const hasSummits = summits.length > 0;
     const hasMultiplePages = total > perPage;
 
     return (
@@ -47,11 +45,11 @@ export const OrderList = ({ className }) => {
             )}
 
             {/* TODO: Replace with `Empty` component. */}
-            {(!isLoading && (!hasOrders || !hasSummits)) && (
+            {(!isLoading && !hasOrders) && (
                 <div className="order-list-empty">{t("orders.empty")}</div>
             )}
 
-            {(hasOrders && hasSummits) && (
+            {hasOrders && (
                 <>
                     <ul className={classNames('order-list', className)}>
                         {orders.map(order => (

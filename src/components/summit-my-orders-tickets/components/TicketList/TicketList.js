@@ -22,7 +22,6 @@ export const TicketList = ({ className }) => {
     } = useSelector(state => state.ticketState || {});
 
     const {
-        summits,
         loading: summitLoading
     } = useSelector(state => state.summitState || {});
 
@@ -34,7 +33,6 @@ export const TicketList = ({ className }) => {
 
     const isLoading = ticketLoading || summitLoading;
     const hasTickets = tickets.length > 0;
-    const hasSummits = summits.length > 0;
     const hasMultiplePages = total > perPage;
 
     return (
@@ -49,11 +47,11 @@ export const TicketList = ({ className }) => {
             )}
 
             {/* TODO: Replace with `Empty` component. */}
-            {(!isLoading && (!hasTickets || !hasSummits)) && (
+            {(!isLoading && !hasTickets) && (
                 <div className="ticket-list-empty">{t('tickets.empty')}</div>
             )}
 
-            {(hasTickets && hasSummits) && (
+            {hasTickets && (
                 <>
                     <ul className={classNames('ticket-list', className)}>
                         {tickets.map(ticket => (

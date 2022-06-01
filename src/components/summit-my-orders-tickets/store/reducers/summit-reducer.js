@@ -1,5 +1,5 @@
 /**
- * Copyright 2020
+ * Copyright 2022
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -10,28 +10,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **/
-
 import { START_LOADING, STOP_LOADING, LOGOUT_USER } from "openstack-uicore-foundation/lib/utils/actions";
-import {
-    GET_SUMMIT_BY_ID,
-    GET_SUMMIT_BY_SLUG,
-    SELECT_SUMMIT,
-    SUMMIT_NOT_FOUND,
-    SELECT_PURCHASE_SUMMIT,
-    GET_SUMMIT_REFUND_POLICY,
-    GET_SUGGESTED_SUMMITS,
-    GET_MAIN_EXTRA_QUESTIONS
-} from "../actions/summit-actions";
-
+import { GET_MAIN_EXTRA_QUESTIONS } from "../actions/summit-actions";
 
 const DEFAULT_STATE = {
     loading: true,
-    purchaseSummit: {},
-    selectedSummit: {
-        refund_policy: null,
-    },
-    summits: [],
-    suggestedSummits: []
+    summit: null,
+    extra_questions: []
 };
 
 const summitReducer = (state = DEFAULT_STATE, action) => {
@@ -46,38 +31,6 @@ const summitReducer = (state = DEFAULT_STATE, action) => {
         case STOP_LOADING:
             return { ...state, loading: false };
             break;
-        case GET_SUMMIT_BY_SLUG:
-            let entity = payload.response ? { ...payload.response } : { ...payload };
-
-            for (var key in entity) {
-                if (entity.hasOwnProperty(key)) {
-                    entity[key] = (entity[key] == null) ? '' : entity[key];
-                }
-            }
-
-            let cachedSummits = [...new Set(state.summits.filter(s => s.id !== entity.id))];
-
-            // from now on, all shows/summits are marked as virtual
-            if (payload.response) {
-                return { ...state, purchaseSummit: { ...entity, is_virtual: true }, summits: [...cachedSummits, entity] };
-            }
-            return { ...state, purchaseSummit: { ...entity, is_virtual: true }, summits: [...cachedSummits] };
-            break;
-        case SUMMIT_NOT_FOUND:
-            return { ...state, purchaseSummit: {} };
-        case SELECT_PURCHASE_SUMMIT:
-            return { ...state, purchaseSummit: payload };
-        case GET_SUMMIT_BY_ID:
-            let summit = payload.response;
-            return { ...state, summits: [...state.summits, summit] };
-        case SELECT_SUMMIT:
-            // from now on, all shows/summits are marked as virtual
-            return { ...state, selectedSummit: { ...payload, is_virtual: true } };
-            break;
-        case GET_SUMMIT_REFUND_POLICY:
-            return { ...state, selectedSummit: { ...state.selectedSummit, refund_policy: payload.response } };
-        case GET_SUGGESTED_SUMMITS:
-            return { ...state, suggestedSummits: payload.response.data };
         case GET_MAIN_EXTRA_QUESTIONS: {
             const extraQuestions = payload.response.data;
             return { ...state, loading: false, extra_questions: extraQuestions }

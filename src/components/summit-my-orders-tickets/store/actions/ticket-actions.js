@@ -25,8 +25,7 @@ import {
     startLoading
 } from 'openstack-uicore-foundation/lib/utils/actions';
 import { objectToQueryString } from 'openstack-uicore-foundation/lib/utils/methods';
-import { getAccessToken, getIdToken } from 'openstack-uicore-foundation/lib/security/methods';
-import { getUserSummits, selectSummitById } from "./summit-actions";
+import { getIdToken } from 'openstack-uicore-foundation/lib/security/methods';
 import { getUserOrders } from "./order-actions";
 import { updateProfile } from "./user-actions";
 
@@ -64,9 +63,10 @@ const customFetchErrorHandler = (response) => {
     }
 };
 
-export const getUserTickets = (ticketRefresh, page = 1, per_page = 5) => async (dispatch, getState, { apiBaseUrl, summitId, loginUrl }) => {
+export const getUserTickets = (ticketRefresh, page = 1, per_page = 5) => async (dispatch, getState, { getAccessToken, apiBaseUrl, loginUrl }) => {
+    const { userState: { userProfile }, summitState: { summit } } = getState();
+
     const accessToken = await getAccessToken().catch(_ => history.replace(loginUrl));
-    const { userState: { userProfile } } = getState();
 
     if (!accessToken) return;
 
@@ -84,38 +84,12 @@ export const getUserTickets = (ticketRefresh, page = 1, per_page = 5) => async (
     return getRequest(
         null,
         createAction(GET_TICKETS),
-        `${apiBaseUrl}/api/v1/summits/${summitId}/orders/all/tickets/me`,
+        `${apiBaseUrl}/api/v1/summits/${summit.id}/orders/all/tickets/me`,
         authErrorHandler
-    )(params)(dispatch).then(() => {
-        if (ticketRefresh) {
-            dispatch(selectTicket({}, false, ticketRefresh))
-        } else {
-            dispatch(getUserSummits('tickets'));
-        }
-    }
-    ).catch(e => {
+    )(params)(dispatch).catch(e => {
         dispatch(stopLoading());
         return (e);
     });
-};
-
-export const selectTicket = (ticket, ticketList = false, ticketRefresh) => (dispatch, getState) => {
-    dispatch(startLoading());
-
-    if (ticketList) {
-        dispatch(selectSummitById(ticket.order.summit_id));
-        if (ticketRefresh) {
-            let { ticketState: { memberTickets } } = getState();
-            let memberTicket = memberTickets.find(t => t.id === ticketRefresh);
-            dispatch(createAction(SELECT_TICKET)(memberTicket));
-        }
-        dispatch(createAction(SELECT_TICKET)(ticket));
-    } else if (Object.entries(ticket).length === 0 && ticket.constructor === Object) {
-        dispatch(stopLoading());
-    } else {
-        dispatch(createAction(SELECT_TICKET)(ticket));
-        dispatch(stopLoading());
-    }
 };
 
 export const assignAttendee = ({
@@ -131,7 +105,7 @@ export const assignAttendee = ({
         reassignOrderId = null,
         refreshTickets = false
     }
-}) => async (dispatch, getState, { apiBaseUrl, loginUrl }) => {
+}) => async (dispatch, getState, { getAccessToken, apiBaseUrl, loginUrl }) => {
     const accessToken = await getAccessToken().catch(_ => history.replace(loginUrl));
 
     if (!accessToken) return;
@@ -139,20 +113,9 @@ export const assignAttendee = ({
     dispatch(startLoading());
 
     const {
-        orderState: {
-            selectedOrder,
-            current_page: orderPage
-        },
-        ticketState: {
-            selectedTicket,
-            current_page: ticketPage
-        }
+        orderState: { current_page: orderPage },
+        ticketState: { current_page: ticketPage }
     } = getState();
-
-    // NOTE: Allows consumer to pass in a specific ticket and order.
-    // TODO: Consider removing `selectedTicket` and `selectedOrder`  altogether.
-    ticket = ticket || selectedTicket;
-    order = order || selectedOrder;
 
     const params = {
         access_token: accessToken,
@@ -206,7 +169,7 @@ export const editOwnedTicket = ({
         extra_questions,
         updateOrder = false
     }
-}) => async (dispatch, getState, { apiBaseUrl, loginUrl }) => {
+}) => async (dispatch, getState, { getAccessToken, apiBaseUrl, loginUrl }) => {
     const accessToken = await getAccessToken().catch(_ => history.replace(loginUrl));
 
     if (!accessToken) return;
@@ -215,20 +178,9 @@ export const editOwnedTicket = ({
 
     const {
         userState: { userProfile },
-        orderState: {
-            selectedOrder,
-            current_page: orderPage
-        },
-        ticketState: {
-            selectedTicket,
-            current_page: ticketPage
-        },
+        orderState: { current_page: orderPage },
+        ticketState: { current_page: ticketPage }
     } = getState();
-
-    // NOTE: Allows consumer to pass in a specific ticket and order.
-    // TODO: Consider removing `selectedTicket` and `selectedOrder`  altogether.
-    ticket = ticket || selectedTicket;
-    order = order || selectedOrder;
 
     const params = {
         access_token: accessToken,
@@ -281,18 +233,12 @@ export const editOwnedTicket = ({
     });
 };
 
-export const resendNotification = ({ ticket }) => async (dispatch, getState, { apiBaseUrl, loginUrl }) => {
+export const resendNotification = ({ ticket }) => async (dispatch, getState, { getAccessToken, apiBaseUrl, loginUrl }) => {
     const accessToken = await getAccessToken().catch(_ => history.replace(loginUrl));
 
     if (!accessToken) return;
 
     dispatch(startLoading());
-
-    const { ticketState: { selectedTicket } } = getState();
-
-    // NOTE: Allows consumer to pass in a specific ticket.
-    // TODO: Consider removing `selectedTicket`  altogether.
-    ticket = ticket || selectedTicket;
 
     const orderId = ticket.order ? ticket.order.id : ticket.order_id;
 
@@ -317,18 +263,12 @@ export const removeAttendee = ({
     ticket,
     order,
     data: { attendee_email, fromTicket = false }
-}) => async (dispatch, getState, { apiBaseUrl, loginUrl }) => {
+}) => async (dispatch, getState, { getAccessToken, apiBaseUrl, loginUrl }) => {
     const accessToken = await getAccessToken().catch(_ => history.replace(loginUrl));
 
     if (!accessToken) return;
 
     dispatch(startLoading());
-
-    const { ticketState: { selectedTicket } } = getState();
-
-    // NOTE: Allows consumer to pass in a specific ticket.
-    // TODO: Consider removing `selectedTicket`  altogether.
-    ticket = ticket || selectedTicket;
 
     const params = {
         access_token: accessToken,
@@ -365,18 +305,12 @@ export const removeAttendee = ({
     });
 };
 
-export const getTicketPDF = ({ ticket }) => async (dispatch, getState, { apiBaseUrl, loginUrl }) => {
+export const getTicketPDF = ({ ticket }) => async (dispatch, getState, { getAccessToken, apiBaseUrl, loginUrl }) => {
     const accessToken = await getAccessToken().catch(_ => history.replace(loginUrl));
 
     if (!accessToken) return;
 
     dispatch(startLoading());
-
-    const { ticketState: { selectedTicket } } = getState();
-
-    // NOTE: Allows consumer to pass in a specific ticket.
-    // TODO: Consider removing `selectedTicket`  altogether.
-    ticket = ticket || selectedTicket;
 
     const params = {
         access_token: accessToken
@@ -407,7 +341,7 @@ export const getTicketPDF = ({ ticket }) => async (dispatch, getState, { apiBase
         .catch(customFetchErrorHandler);
 };
 
-export const refundTicket = ({ ticket, order }) => async (dispatch, getState, { apiBaseUrl, loginUrl }) => {
+export const refundTicket = ({ ticket, order }) => async (dispatch, getState, { getAccessToken, apiBaseUrl, loginUrl }) => {
     const accessToken = await getAccessToken().catch(_ => history.replace(loginUrl));
 
     if (!accessToken) return;
@@ -415,20 +349,9 @@ export const refundTicket = ({ ticket, order }) => async (dispatch, getState, { 
     dispatch(startLoading());
 
     const {
-        orderState: {
-            selectedOrder,
-            current_page: orderPage
-        },
-        ticketState: {
-            selectedTicket,
-            current_page: ticketPage
-        }
+        orderState: { current_page: orderPage },
+        ticketState: { current_page: ticketPage }
     } = getState();
-
-    // NOTE: Allows consumer to pass in a specific ticket and order.
-    // TODO: Consider removing `selectedTicket` and `selectedOrder`  altogether.
-    ticket = ticket || selectedTicket;
-    order = order || selectedOrder;
 
     const orderId = ticket.order ? ticket.order.id : ticket.order_id;
 

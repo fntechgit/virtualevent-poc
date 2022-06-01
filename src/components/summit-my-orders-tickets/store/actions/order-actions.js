@@ -19,7 +19,6 @@ import {
     stopLoading,
     startLoading
 } from 'openstack-uicore-foundation/lib/utils/actions';
-import { getAccessToken } from 'openstack-uicore-foundation/lib/security/methods';
 import history from '../history';
 import { getUserSummits } from './summit-actions';
 
@@ -39,14 +38,17 @@ export const SELECT_ORDER = 'SELECT_ORDER';
 export const REFUND_ORDER = 'REFUND_ORDER';
 export const CLEAR_RESERVATION = 'CLEAR_RESERVATION';
 
-export const getUserOrders = (updateId, page = 1, per_page = 5) => async (dispatch, getState, { apiBaseUrl, summitId, loginUrl }) => {
+export const getUserOrders = (updateId, page = 1, per_page = 5) => async (dispatch, getState, { getAccessToken, apiBaseUrl, loginUrl }) => {
+    const { summitState: { summit } } = getState();
+
     const accessToken = await getAccessToken().catch(_ => history.replace(loginUrl));
 
     if (!accessToken) return;
 
     dispatch(startLoading());
 
-    let params = {
+
+    const params = {
         access_token: accessToken,
         expand: 'extra_questions, tickets, tickets.refund_requests, tickets.owner, tickets.owner.extra_questions, tickets.badge, tickets.badge.features',
         order: '-id',
@@ -58,7 +60,7 @@ export const getUserOrders = (updateId, page = 1, per_page = 5) => async (dispat
     return getRequest(
         null,
         createAction(GET_USER_ORDERS),
-        `${apiBaseUrl}/api/v1/summits/${summitId}/orders/me`,
+        `${apiBaseUrl}/api/v1/summits/${summit.id}/orders/me`,
         authErrorHandler
     )(params)(dispatch).then(() => {
         if (updateId) {
@@ -89,8 +91,8 @@ export const selectOrder = (order, updateId = null) => (dispatch, getState) => {
     return Promise.resolve();
 }
 
-export const cancelOrder = ({ order }) => async (dispatch, getState, { apiBaseUrl, loginUrl }) => {
-    let { orderState: { current_page } } = getState();
+export const cancelOrder = ({ order }) => async (dispatch, getState, { getAccessToken, apiBaseUrl, loginUrl }) => {
+    const { orderState: { current_page } } = getState();
 
     const accessToken = await getAccessToken().catch(_ => history.replace(loginUrl));
 
@@ -98,7 +100,7 @@ export const cancelOrder = ({ order }) => async (dispatch, getState, { apiBaseUr
 
     dispatch(startLoading());
 
-    let params = {
+    const params = {
         access_token: accessToken
     };
 

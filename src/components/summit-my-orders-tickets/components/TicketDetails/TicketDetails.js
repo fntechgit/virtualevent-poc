@@ -1,11 +1,14 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import classNames from 'classnames';
 import { useTicketDetails } from "../../util";
 import { TicketPopup } from '../TicketPopup/TicketPopup';
 
 import './ticket-details.scss';
 
-export const TicketDetails = ({ ticket, summit, className }) => {
+export const TicketDetails = ({ ticket, className }) => {
+    const summit = useSelector(state => state.summitState.summit);
+
     const {
         status,
         type,

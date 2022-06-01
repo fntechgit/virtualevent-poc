@@ -14,8 +14,9 @@ export const MyOrdersTicketsComponent = () => {
     const widgetProps = {
         apiBaseUrl: getEnvVariable(SUMMIT_API_BASE_URL),
         clientId: getEnvVariable(OAUTH2_CLIENT_ID),
+        loginUrl: '/',
         getAccessToken,
-        summitId: summit.id,
+        summit,
         user
     };
 

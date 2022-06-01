@@ -16,7 +16,6 @@ import { RECEIVE_MARKETING_SETTINGS, CLEAR_MARKETING_SETTINGS } from '../actions
 
 const DEFAULT_STATE = {
     loading: false,
-    countries: [],
     marketingSettings: null,
     favicon: null,
 }
@@ -37,8 +36,6 @@ const baseReducer = (state = DEFAULT_STATE, action) => {
             // reset state we are getting new summits
             return { ...state, marketingSettings: [], favicon: window.DEFAULT_FAV_ICON };
         }
-        case RECEIVE_COUNTRIES:
-            return { ...state, countries: payload };
         case RECEIVE_MARKETING_SETTINGS: {
             const { data } = payload.response;
             // default one

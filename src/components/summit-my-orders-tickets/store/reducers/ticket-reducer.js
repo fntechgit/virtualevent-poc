@@ -22,7 +22,6 @@ import {
 const DEFAULT_STATE = {
     loading: false,
     memberTickets: [],
-    selectedTicket: {},
     errors: {},
     current_page: 1,
     last_page: 1,
@@ -43,8 +42,6 @@ const ticketReducer = (state = DEFAULT_STATE, action) => {
         case GET_TICKETS:
             let { data, current_page, total, last_page } = payload.response;
             return { ...state, memberTickets: data, current_page, total, last_page };
-        case SELECT_TICKET:
-            return { ...state, selectedTicket: payload };
         case ASSIGN_TICKET:
             return { ...state, selectedTicket: payload.response };
         case REMOVE_TICKET_ATTENDEE:

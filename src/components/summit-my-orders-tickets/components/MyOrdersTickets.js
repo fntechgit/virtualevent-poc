@@ -1,6 +1,6 @@
 import React from 'react';
-import classNames from 'classnames';
 import { useSelector } from 'react-redux';
+import classNames from 'classnames';
 import { AjaxLoader } from "openstack-uicore-foundation/lib/components";
 import { OrderList } from './OrderList/OrderList';
 import { OrderListContextProvider } from './OrderList/OrderList.helpers';

@@ -8,7 +8,7 @@ import { OrderOptions } from "../OrderOptions/OrderOptions";
 import { useOrderListContext } from "./OrderList.helpers";
 
 export const OrderListItem = ({ order, className }) => {
-    const summit = useSelector(state => state.summitState.summits.find(summit => summit.id == order.summit_id));
+    const summit = useSelector(state => state.summitState.summit);
     const { state } = useOrderListContext();
 
     const isActive = state.activeOrderId === order.id;
