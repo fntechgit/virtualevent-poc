@@ -25,9 +25,10 @@ export const OrderDetails = ({ order, summit, className }) => {
     const ticketQuantities = getOrderTicketQuantities(order, summit);
     const isSummitPast = checkSummitPast(summit, dispatch(getNow()));
     const statusData = getOrderStatusData(order, isSummitPast);
+    const isActive = state.activeOrderId === order.id;
 
     const handleClick = (event) => {
-        if (state.activeOrderId === order.id) return actions.setActiveOrderId(null);
+        if (isActive) return actions.setActiveOrderId(null);
 
         actions.setActiveOrderId(order.id);
 
@@ -45,7 +46,15 @@ export const OrderDetails = ({ order, summit, className }) => {
     useEffect(() => () => actions.setActiveOrderId(null), []);
 
     return (
-        <div ref={elementRef} className={classNames('order-details', `order-details--${statusData.className}`)} onClick={handleClick}>
+        <div
+            ref={elementRef}
+            className={classNames(
+                'order-details',
+                `order-details--${statusData.className}`,
+                { 'order-details--active': isActive }
+            )}
+            onClick={handleClick}
+        >
             <i className={classNames(`order-details__icon fa fa-2x ${statusData.icon}`)} />
 
             <div className="order-details__content">
