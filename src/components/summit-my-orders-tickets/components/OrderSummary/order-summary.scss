@@ -154,7 +154,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 991px) {
   .order-summary-mobile {
     .order-summary-table {
       display: block;
@@ -166,7 +166,7 @@
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 992px) {
   .order-summary-mobile {
     display: none;
   }

@@ -103,6 +103,11 @@
     color: $color-black;
   }
 
+  &--pending &__icon,
+  &--pending &__status {
+    color: $color-black;
+  }
+
   &--cancel &__icon,
   &--cancel &__status {
     color: $color-danger;
