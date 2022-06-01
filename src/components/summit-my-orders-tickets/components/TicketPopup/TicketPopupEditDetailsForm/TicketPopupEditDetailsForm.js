@@ -45,7 +45,7 @@ const getInitialValues = (ticket) => {
     };
 };
 
-export const TicketPopupEditDetailsForm = ({ ticket, summit, order, allowExtraQuestionsEdit, shouldEditBasicInfo = true, closePopup }) => {
+export const TicketPopupEditDetailsForm = ({ ticket, summit, order, allowExtraQuestionsEdit, shouldEditBasicInfo = true }) => {
     const formRef = useRef(null);
     const { t } = useTranslation();
     const dispatch = useDispatch();

@@ -17,7 +17,7 @@ const validationSchema = Yup.object().shape({
     attendee_email: Yup.string().email('Please enter a valid email.').required('Email is required.'),
 });
 
-export const TicketPopupReassignForm = ({ ticket, summit, order, closePopup }) => {
+export const TicketPopupReassignForm = ({ ticket, order }) => {
     const { t } = useTranslation();
     const dispatch = useDispatch();
     const userProfile = useSelector(state => state.userState.userProfile);

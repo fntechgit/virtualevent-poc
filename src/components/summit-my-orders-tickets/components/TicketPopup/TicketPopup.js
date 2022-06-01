@@ -120,7 +120,7 @@ export const TicketPopup = ({ ticket, order, summit, onClose, fromTicketList, fr
                         {isUnassigned && (
                             <TabPanel className="ticket-popup-panel ticket-popup-panel--assign">
                                 <div className="ticket-popup-scroll">
-                                    <TicketPopupAssignForm ticket={ticket} summit={summit} order={order} closePopup={closePopup} />
+                                    <TicketPopupAssignForm ticket={ticket} summit={summit} order={order} />
                                 </div>
                             </TabPanel>
                         )}
@@ -131,7 +131,6 @@ export const TicketPopup = ({ ticket, order, summit, onClose, fromTicketList, fr
                                     ticket={ticket}
                                     summit={summit}
                                     order={order}
-                                    closePopup={closePopup}
                                     allowExtraQuestionsEdit={allowExtraQuestionsEdit} />
                             </div>
                         </TabPanel>
@@ -139,7 +138,7 @@ export const TicketPopup = ({ ticket, order, summit, onClose, fromTicketList, fr
                         {!isUnassigned && isReassignable && (!fromTicketList || (fromTicketList && isUserOrderOwner)) && (
                             <TabPanel className="ticket-popup-panel ticket-popup-panel--reassign">
                                 <div className="ticket-popup-scroll">
-                                    <TicketPopupReassignForm ticket={ticket} summit={summit} order={order} closePopup={closePopup} />
+                                    <TicketPopupReassignForm ticket={ticket} summit={summit} order={order} />
                                 </div>
                             </TabPanel>
                         )}
@@ -147,7 +146,7 @@ export const TicketPopup = ({ ticket, order, summit, onClose, fromTicketList, fr
                         {!isUnassigned && isReassignable && (!fromTicketList || (fromTicketList && isUserOrderOwner)) && (
                             <TabPanel className="ticket-popup-panel ticket-popup-panel--notify">
                                 <div className="ticket-popup-scroll">
-                                    <TicketPopupNotifyForm ticket={ticket} summit={summit} order={order} closePopup={closePopup} />
+                                    <TicketPopupNotifyForm ticket={ticket} summit={summit} order={order} />
                                 </div>
                             </TabPanel>
                         )}
@@ -155,7 +154,7 @@ export const TicketPopup = ({ ticket, order, summit, onClose, fromTicketList, fr
                         {isUserOrderOwner && !isSummitStarted && isRefundable && (
                             <TabPanel className="ticket-popup-panel ticket-popup-panel--refund">
                                 <div className="ticket-popup-scroll">
-                                    <TicketPopupRefundForm ticket={ticket} summit={summit} order={order} closePopup={closePopup} />
+                                    <TicketPopupRefundForm ticket={ticket} summit={summit} order={order} />
                                 </div>
                             </TabPanel>
                         )}

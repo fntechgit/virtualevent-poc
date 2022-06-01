@@ -6,7 +6,7 @@ import Alert from 'react-bootstrap/lib/Alert';
 import { refundTicket } from '../../store/actions/ticket-actions';
 import { ConfirmPopup, CONFIRM_POPUP_CASE } from '../ConfirmPopup/ConfirmPopup';
 
-export const TicketPopupRefundForm = ({ ticket, summit, order, closePopup }) => {
+export const TicketPopupRefundForm = ({ ticket, order }) => {
     const { t } = useTranslation();
     const dispatch = useDispatch();
     const [showConfirm, setShowConfirm] = useState(false);

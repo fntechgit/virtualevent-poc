@@ -6,7 +6,7 @@ import Alert from 'react-bootstrap/lib/Alert';
 import { resendNotification } from '../../store/actions/ticket-actions';
 import { getSummitFormattedReassignDate } from '../../util';
 
-export const TicketPopupNotifyForm = ({ ticket, summit, order, closePopup }) => {
+export const TicketPopupNotifyForm = ({ ticket, summit }) => {
     const { t } = useTranslation();
     const dispatch = useDispatch();
     const [showSaveMessage, setShowSaveMessage] = useState(false);

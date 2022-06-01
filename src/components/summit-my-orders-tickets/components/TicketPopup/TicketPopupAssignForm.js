@@ -24,7 +24,7 @@ const emptyAttendee = {
     attendee_company: ''
 };
 
-export const TicketPopupAssignForm = ({ ticket, summit, order, closePopup }) => {
+export const TicketPopupAssignForm = ({ ticket, summit, order }) => {
     const { t } = useTranslation();
     const dispatch = useDispatch();
     const userProfile = useSelector(state => state.userState.userProfile);
@@ -46,7 +46,6 @@ export const TicketPopupAssignForm = ({ ticket, summit, order, closePopup }) => 
         })).then(() => {
             toggleSaveMessage();
         });
-        closePopup();
     };
 
     const formik = useFormik({
@@ -67,7 +66,6 @@ export const TicketPopupAssignForm = ({ ticket, summit, order, closePopup }) => 
         })).then(() => {
             toggleSaveMessage();
         });
-        closePopup();
     };
 
     return (
