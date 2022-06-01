@@ -8,7 +8,6 @@ import './ticket-details.scss';
 
 export const TicketDetails = ({ ticket, className }) => {
     const summit = useSelector(state => state.summitState.summit);
-
     const {
         status,
         type,
