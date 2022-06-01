@@ -53,7 +53,7 @@ export const TicketPopup = ({ ticket, order, summit, onClose, fromTicketList, fr
     };
 
     const handleDownloadClick = () => {
-        dispatch(getTicketPDF(ticket));
+        dispatch(getTicketPDF({ ticket }));
     };
 
     const handleCloseClick = () => {

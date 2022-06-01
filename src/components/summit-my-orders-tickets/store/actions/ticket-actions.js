@@ -365,7 +365,7 @@ export const removeAttendee = ({
     });
 };
 
-export const getTicketPDF = (ticket) => async (dispatch, getState, { apiBaseUrl, loginUrl }) => {
+export const getTicketPDF = ({ ticket }) => async (dispatch, getState, { apiBaseUrl, loginUrl }) => {
     const accessToken = await getAccessToken().catch(_ => history.replace(loginUrl));
 
     if (!accessToken) return;
