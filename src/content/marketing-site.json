@@ -44,7 +44,15 @@
       "mobileAlt": ""
     }
   },
-  "sponsors": [],
+  "sponsors": [
+    {
+      "images": [
+        {
+          "image": "/img/sf21-mrkt-space-4_120321.png"
+        }
+      ]
+    }
+  ],
   "registration_in_person_disclaimer": null,
   "summit_delta_start_time": "900",
   "countdown": {
