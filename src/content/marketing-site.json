@@ -1,9 +1,9 @@
 {
   "heroBanner": {
     "title": "Stars Fest",
-    "subTitle": "",
+    "subTitle": "A monthlong Stars content celebration!",
     "date": "",
-    "time": "A monthlong Stars content celebration!",
+    "time": "",
     "dateLayout": false,
     "buttons": {
       "registerButton": {
