@@ -625,13 +625,17 @@ h2 {
   justify-content: space-between;
   margin-top: 40px;
   .video-container {
+    iframe {
+      width: 320px;
+      height: 570px;
+    }
     p {
       font-size: 18px;
     }
     p:first-of-type {
       color: $color_text_dark;
       font-size: 22px;
-      font-weight: bold; 
+      font-weight: bold;
       margin-top: 15px;
     }
   }
@@ -640,6 +644,10 @@ h2 {
     .video-container {
       width: 100%;
       margin-bottom: 20px;
+      iframe {
+        width: 270px;
+        height: 530px;
+      }
     }
   }
 }
