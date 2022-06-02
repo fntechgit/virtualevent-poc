@@ -586,9 +586,9 @@ h2 {
 .extra-question-error {
   display: block;
   color: red;
-  margin: 5px 0 10px;
   font-weight: bold;
-  padding-left: 1em;
+  padding: 0;
+  margin: auto 0;
 }
 
 .questions-form {
@@ -597,5 +597,8 @@ h2 {
   }
   .abc-checkbox{
     padding: 0 !important;
+  }
+  .form-check-label{
+    font-weight: normal !important;
   }
 }
