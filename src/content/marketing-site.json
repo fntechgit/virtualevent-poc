@@ -1,7 +1,7 @@
 {
   "heroBanner": {
     "title": "Stars Fest",
-    "subTitle": "A monthlong Stars content celebration!",
+    "subTitle": "",
     "date": "",
     "time": "",
     "dateLayout": false,
@@ -38,50 +38,13 @@
     "image": {
       "display": true,
       "title": "",
-      "src": "/img/sf21-calendar_120721.png",
-      "mobileSrc": "/img/sf21-calendar-mobile_120721.png",
+      "src": "",
+      "mobileSrc": "",
       "alt": "",
       "mobileAlt": ""
     }
   },
-  "sponsors": [
-    {
-      "images": [
-        {
-          "image": "/img/sf21-mrkt-space-1.png",
-          "link": "/creator-competition",
-          "alt": ""
-        }
-      ]
-    },
-    {
-      "images": [
-        {
-          "image": "/img/sf21-mrkt-space-2.png",
-          "link": "/a/programming",
-          "alt": ""
-        }
-      ]
-    },
-    {
-      "images": [
-        {
-          "image": "/img/sf21-mrkt-space-3_113021.png",
-          "link": "https://www.facebook.com/creators/stars-fest-is-here",
-          "alt": ""
-        }
-      ]
-    },
-    {
-      "images": [
-        {
-          "image": "/img/sf21-mrkt-space-4_120321.png",
-          "link": "https://www.facebook.com/stars",
-          "alt": ""
-        }
-      ]
-    }
-  ],
+  "sponsors": [],
   "registration_in_person_disclaimer": null,
   "summit_delta_start_time": "900",
   "countdown": {
