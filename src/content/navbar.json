@@ -48,17 +48,6 @@
       "pageRestriction": [
         "ANY"
       ]
-    },
-    {
-      "title": "My Profile",
-      "link": "/a/profile",
-      "display": false,
-      "requiresAuth": true,
-      "pageRestriction": [
-        "ACTIVITY",
-        "MARKETING"
-      ],
-      "showOnlyAtShowTime": false
     }
   ]
 }
