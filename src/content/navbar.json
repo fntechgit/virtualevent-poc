@@ -8,16 +8,6 @@
       ],
       "title": "Home",
       "link": "/a/event/2377",
-      "display": true
-    },
-    {
-      "requiresAuth": false,
-      "showOnlyAtShowTime": false,
-      "pageRestriction": [
-        "ANY"
-      ],
-      "title": "Stars Day",
-      "link": "/stars-day",
       "display": false
     },
     {
@@ -28,7 +18,7 @@
       ],
       "title": "Creator Competition",
       "link": "/creator-competition",
-      "display": true
+      "display": false
     },
     {
       "requiresAuth": false,
@@ -38,7 +28,7 @@
       ],
       "title": "Programming",
       "link": "/a/programming",
-      "display": true
+      "display": false
     },
     {
       "requiresAuth": false,
@@ -49,15 +39,6 @@
       "title": "Buy Stars",
       "link": "https://www.facebook.com/stars",
       "display": true
-    },
-    {
-      "requiresAuth": false,
-      "showOnlyAtShowTime": false,
-      "pageRestriction": [
-        "ANY"
-      ],
-      "title": "Top Weekly Creator",
-      "link": "/top-weekly-creator"
     },
     {
       "title": "Help",
@@ -71,7 +52,7 @@
     {
       "title": "My Profile",
       "link": "/a/profile",
-      "display": true,
+      "display": false,
       "requiresAuth": true,
       "pageRestriction": [
         "ACTIVITY",
