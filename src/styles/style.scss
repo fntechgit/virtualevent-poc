@@ -631,7 +631,7 @@ h2 {
     p:first-of-type {
       color: $color_text_dark;
       font-size: 22px;
-      font-weight: bold; 
+      font-weight: bold;
       margin-top: 15px;
     }
   }
@@ -640,6 +640,10 @@ h2 {
     .video-container {
       width: 100%;
       margin-bottom: 20px;
+      iframe {
+        width: 270px;
+        height: 530px;
+      }
     }
   }
 }
