@@ -18,7 +18,6 @@
     "browser-tabs-lock": "^1.2.11",
     "bulma": "^0.9.0",
     "canvas": "^2.6.1",
-    "clean-html": "^1.5.0",
     "codemirror": "^5.55.0",
     "core-js": "^2.6.11",
     "cross-env": "^7.0.3",
@@ -84,6 +83,7 @@
     "redux": "^4.0.5",
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.3.0",
+    "sanitize-html": "^2.7.0",
     "schedule-filter-widget": "^1.2.9",
     "simple-chat-widget": "^1.0.31",
     "simple-oauth2": "^4.1.0",
@@ -103,8 +103,8 @@
     "video.js": "^7.8.2",
     "videojs-mux": "^3.1.0",
     "videojs-youtube": "^2.6.1",
-    "xmlhttprequest": "^1.8.0",
-    "what-input": "^5.2.10"
+    "what-input": "^5.2.10",
+    "xmlhttprequest": "^1.8.0"
   },
   "keywords": [
     "gatsby"

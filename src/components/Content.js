@@ -1,21 +1,26 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
-import cleaner from 'clean-html'
+import sanitizeHtml from 'sanitize-html';
 
 export const HTMLContent = ({ content, className }) => {
   const [cleanHTML, setCleanHTML] = useState(content);
-  
+
   useEffect(() => {
-    const options = {
-      'remove-empty-tags': ['a', 'p'],
-      'indent': '',
-      'break-around-tags': []
-    }
-    cleaner.clean(content, options, cleaned => {
-      setCleanHTML(cleaned)
-    })
+    const clean = sanitizeHtml(content, {
+      allowedTags: sanitizeHtml.defaults.allowedTags.concat(['iframe', 'img']),
+      allowedAttributes: {...sanitizeHtml.defaults.allowedAttributes, 
+        'iframe': [ 'src', 'width', 'height', 'frameborder', 'allow', 'allowfullscreen' ],
+        'a': ['target'],
+        '*': ['href', 'class']
+      },
+      exclusiveFilter: (frame) => {
+        // removing a and p tags with no text or media childrens
+        return (frame.tag === 'a' || frame.tag === 'p') && !frame.text.trim() && !frame.mediaChildren;
+      }
+    });
+    setCleanHTML(clean);
   }, [content])
-  
+
   return (
     <div className={className} dangerouslySetInnerHTML={{ __html: cleanHTML }} />
   )
