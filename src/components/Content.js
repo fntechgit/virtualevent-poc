@@ -7,6 +7,7 @@ export const HTMLContent = ({ content, className }) => {
 
   useEffect(() => {
     const clean = sanitizeHtml(content, {
+      // adds custom settings to default settings (https://www.npmjs.com/package/sanitize-html#default-options)
       allowedTags: sanitizeHtml.defaults.allowedTags.concat(['iframe', 'img']),
       allowedAttributes: {...sanitizeHtml.defaults.allowedAttributes, 
         'iframe': [ 'src', 'width', 'height', 'frameborder', 'allow', 'allowfullscreen' ],
