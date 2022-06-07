@@ -18,7 +18,7 @@
       ],
       "title": "Creator Competition",
       "link": "/creator-competition",
-      "display": false
+      "display": true
     },
     {
       "requiresAuth": false,
