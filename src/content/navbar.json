@@ -1,14 +1,14 @@
 {
   "items": [
     {
-      "requiresAuth": true,
-      "showOnlyAtShowTime": true,
+      "requiresAuth": false,
+      "showOnlyAtShowTime": false,
       "pageRestriction": [
         "ANY"
       ],
       "title": "Home",
-      "link": "/a/event/2377",
-      "display": false
+      "link": "/",
+      "display": true
     },
     {
       "requiresAuth": false,
