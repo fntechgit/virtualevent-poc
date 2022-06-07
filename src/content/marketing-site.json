@@ -49,16 +49,28 @@
       "images": [
         {
           "image": "/img/sf22-mrkt-space-4-blank.png"
-        },
+        }
+      ]
+    },
+    {
+      "images": [
         {
           "image": "/img/sf22-mrkt-space-4-blank.png"
-        },
+        }
+      ]
+    },
+    {
+      "images": [
         {
-          "image": "/img/sf22-mrkt-space-1-comp.png"
-        },
+          "image": "/img/sf22-mrkt-space-1-comp.png",
+          "link": "/creator-competition"
+        }
+      ]
+    },
+    {
+      "images": [
         {
-          "image": "/img/sf21-mrkt-space-4_120321.png",
-          "link": "https://www.facebook.com/stars"
+          "image": "/img/sf21-mrkt-space-4_120321.png"
         }
       ]
     }
