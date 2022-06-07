@@ -2,7 +2,7 @@
   "heroBanner": {
     "title": "Stars Fest",
     "subTitle": "",
-    "date": "June 15 - July 15, 2022",
+    "date": "June 15–July 15, 2022",
     "time": "",
     "dateLayout": false,
     "buttons": {
@@ -70,7 +70,8 @@
     {
       "images": [
         {
-          "image": "/img/sf21-mrkt-space-4_120321.png"
+          "image": "/img/sf21-mrkt-space-4_120321.png",
+          "link": "https://www.facebook.com/stars"
         }
       ]
     }
