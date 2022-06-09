@@ -1,11 +1,13 @@
 ---
 templateKey: custom-page
-title: Stars Fest Competition
+title: "#StarsEverywhere Competition"
 userRequirement: NONE
 desktopImagePage: ""
-mobileImagePage: /img/sf22-creatorprog-headerimage-expopage-copy-2.png
+mobileImagePage: /img/sf22-creatorprog-headerimage-expopage-copy-2_v2.png
 ---
-![](/img/sf22-creatorprog-page-image.png)
+###### <a href="https://www.facebook.com/legal/StarsEverywhereCompetition" target="_blank">Access rules in different languages here!</a>
+
+![](/img/sf22-creatorprog-page-image_v2.png)
 
 ###### <a href="https://www.facebook.com/legal/stars_streamer_terms" target="_blank">Stars Streamers Terms</a>
 
