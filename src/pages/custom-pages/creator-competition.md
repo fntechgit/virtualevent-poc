@@ -5,7 +5,7 @@ userRequirement: NONE
 desktopImagePage: ""
 mobileImagePage: /img/sf22-creatorprog-headerimage-expopage-copy-2_v3.png
 ---
-<a href="https://www.facebook.com/legal/StarsEverywhereCompetition" target="_blank"  style="color:#5A73F9">Access rules in different languages here!</a>
+<a href="https://www.facebook.com/legal/StarsEverywhereCompetition" target="_blank"  style="color:#5A73F9">Access translated rules here.</a>
 
 ![](/img/sf22-creatorprog-page-image_v3.png)
 
