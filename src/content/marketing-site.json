@@ -1,9 +1,9 @@
 {
   "heroBanner": {
-    "title": "Stars Fest",
+    "title": "Stars Fest 2022",
     "subTitle": "Celebrate with Stars on Reels",
-    "date": "June 15–July 15, 2022",
-    "time": "",
+    "date": "",
+    "time": "June 15–July 15, 2022",
     "dateLayout": false,
     "buttons": {
       "registerButton": {
