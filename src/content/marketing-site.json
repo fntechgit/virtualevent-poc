@@ -38,8 +38,8 @@
     "image": {
       "display": true,
       "title": "",
-      "src": "/img/sf22-fnv-calendar_v2.png",
-      "mobileSrc": "",
+      "src": "/img/sf22-fnv-calendar_v4.png",
+      "mobileSrc": "/img/sf22-fnv-calendar-mobile_v4.png",
       "alt": "",
       "mobileAlt": ""
     }
