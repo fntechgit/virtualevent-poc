@@ -11,7 +11,7 @@ userRequirement: NONE
 
 VIDEO 1
 
-Video description here
+Enter video description here
 
 </div>
 
