@@ -1,1 +1,19 @@
-{"centerColumn":{"speakers":{"showTodaySpeakers":false,"showFeatureSpeakers":false}},"homeHero":{"title":"Stars Day","subTitle":"Collaboration and learning for Stars creators","image":{"file":"/img/sf21-lobby-header-right.png","alt":""},"copy":""},"live_now_featured_event_id":2377,"schedule_default_image":"https://fntech.sfo2.cdn.digitaloceanspaces.com/SamsungTechDay2021/Samsumg-FNv-Custom-SessionThumbnail.png"}
+{
+  "centerColumn": {
+    "speakers": {
+      "showTodaySpeakers": true,
+      "showFeatureSpeakers": false
+    }
+  },
+  "homeHero": {
+    "title": "Stars Day",
+    "subTitle": "Collaboration and learning for Stars creators",
+    "image": {
+      "file": "/img/sf21-lobby-header-right.png",
+      "alt": ""
+    },
+    "copy": ""
+  },
+  "live_now_featured_event_id": 2377,
+  "schedule_default_image": "https://fntech.sfo2.cdn.digitaloceanspaces.com/SamsungTechDay2021/Samsumg-FNv-Custom-SessionThumbnail.png"
+}
