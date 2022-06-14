@@ -15,12 +15,12 @@
     [headers.values]
      Referrer-Policy = "strict-origin-when-cross-origin"
 [[redirects]]
-from = "https://starfest2022.com/*" 
-to = "https://starfest2022.fnvirtual.app:splat"
+from = "https://starsfest2022.com/*" 
+to = "https://starsfest2022.fnvirtual.app:splat"
 status = 301
 force = true
 [[redirects]]
-from = "https://www.starfest2022.com/*"
-to = "https://starfest2022.fnvirtual.app:splat"
+from = "https://www.starsfest2022.com/*"
+to = "https://starsfest2022.fnvirtual.app:splat"
 status = 301
 force = true
