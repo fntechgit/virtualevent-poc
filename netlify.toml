@@ -14,3 +14,6 @@
   for = "/*"
     [headers.values]
      Referrer-Policy = "strict-origin-when-cross-origin"
+[[redirects]]
+https://starfest2022.com/* https://starfest2022.fnvirtual.app:splat 301!
+https://www.starfest2022.com/* https://starfest2022.fnvirtual.app:splat 301!
