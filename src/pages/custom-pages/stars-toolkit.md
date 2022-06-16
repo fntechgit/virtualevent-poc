@@ -17,4 +17,4 @@ We have built fun new ways for you to let your community know you are using Star
 
 **<br>**
 
-**3. Stars on Reels Filter:**  We have also launched a Stars Filter, to add to your Reels content, click here to access it
+**3. Stars on Reels Filter:**  We have also launched a Stars Filter! Click the link below to add to your Reels content.
