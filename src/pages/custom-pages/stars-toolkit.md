@@ -23,4 +23,8 @@ We have built fun new ways for you to let your community know you are using Star
 
 <center>We have also launched a Stars Filter! </center>
 
-<center>Click the link below to add to your Reels content.</center>
+<center>Click the link below to add to your Reels content.</center><br>
+
+<center>
+
+![](https://fntech.sfo2.cdn.digitaloceanspaces.com/fb_starsfest/Viewer.gif)
