@@ -11,13 +11,13 @@ We have built fun new ways for you to let your community know you are using Star
 
 <center>Follow these steps to post, available only on New Page Experience:</center>
 
-![](/img/sf22-fnv-toolkit-launchpost.png)
+![](/img/sf22-fnv-toolkit-launchpost_v3.png)
 
 #### **<br><br><br>**<center>**Stars on Reel Stickers:**
 
 <center>If you are using Stars on Reels (currently only available to limited partners), you can use our new Stars stickers, find them here: </center><br>
 
-![](/img/sf22-fnv-toolkit-stickers.png)
+![](/img/sf22-fnv-toolkit-stickers_v2.png)
 
 #### **<br><br><br>**<center>**Stars on Reels Filter:**  
 
