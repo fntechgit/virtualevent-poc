@@ -17,7 +17,15 @@ If you onboarded after June 15, 2022 you can use this post to participate in the
 
 Follow these steps to post:
 
-![](/img/sf22-fnv-toolkit-launchpost_v2.png)
+<div class="image-row">
+
+![](/img/SF22-StarsTooklit-LaunchPost-1.png)
+
+![](/img/SF22-StarsTooklit-LaunchPost-2.png)
+
+![](/img/SF22-StarsTooklit-LaunchPost-3.png)
+
+</div>
 
 #### **<br><br><br>Stars on Reel Stickers**
 
@@ -25,7 +33,16 @@ Follow these steps to post:
 
 If you are using Stars on Reels, you can use our new Stars stickers, find them here: <br>
 
-![](/img/sf22-fnv-toolkit-stickers_v2.png)
+<div class="image-row">
+
+![](/img/SF22-StarsTooklit-Stickers-1.png)
+
+![](/img/SF22-StarsTooklit-Stickers-2.png)
+
+![](/img/SF22-StarsTooklit-Stickers-3.png)
+
+</div>
+
 
 #### **<br><br><br>Stars on Reels Filter**  
 
@@ -33,14 +50,10 @@ We have also launched a Stars Filter that you can add to your Reels!
 
 <a href="https://www.facebook.com/fbcameraeffects/tryit/385574190198163/" target="_blank">Click here to add to your Reels content.</a><br>
 
-<div class="gif-row">
-<div>
+<div class="image-row">
 
-![](https://fntech.sfo2.cdn.digitaloceanspaces.com/fb_starsfest/Viewer.gif)
+![](/img/SF22-StarsToolkit-Filter.gif)
 
-</div>
-<div>   
-</div>
 </div>
 
 <div>
