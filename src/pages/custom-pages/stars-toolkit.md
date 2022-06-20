@@ -3,6 +3,8 @@ templateKey: custom-page
 title: Stars Toolkit
 userRequirement: NONE
 ---
+<div class="stars-toolkit">
+
 We have built fun new ways for you to let your community know you are using Stars!
 
 #### **<br><br><br>Stars Launch Post**
@@ -27,4 +29,15 @@ We have also launched a Stars Filter!
 
 Click the link below to add to your Reels content.<br>
 
+<div class="gif-row">
+<div>
+
 ![](https://fntech.sfo2.cdn.digitaloceanspaces.com/fb_starsfest/Viewer.gif)
+
+</div>
+<div>   
+</div>
+</div>
+
+
+<div>

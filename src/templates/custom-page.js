@@ -6,6 +6,8 @@ import Layout from '../components/Layout'
 import { connect } from 'react-redux'
 import Content, { HTMLContent } from '../components/Content'
 
+import '../styles/custom-pages.scss'
+
 export const CustomPageTemplate = ({
   title,
   content,

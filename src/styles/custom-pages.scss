@@ -1,0 +1,14 @@
+.stars-toolkit {    
+    img {
+        max-height: 900px;
+    }
+    .gif-row {
+        display: flex;
+        div:first-of-type{
+            width: 35%;
+        }
+    }
+    @media (min-width: 992px) {
+        padding-right: 10vw;
+    }
+}
