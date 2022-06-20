@@ -13,7 +13,7 @@ We have built fun new ways for you to let your community know you are using Star
 
 If you are new to Stars, you can post a launch video to let your community know you are now using Stars.
 
-If you onboarded after June 15, 2022 you can use this post to participate in the<a href="https://starsfest2022.fnvirtual.app/creator-competition" target="_blank">creator competition</a> by including #StarsEverywhere. Terms apply.
+If you onboarded after June 15, 2022 you can use this post to participate in the <a href="https://starsfest2022.fnvirtual.app/creator-competition" target="_blank">creator competition</a> by including #StarsEverywhere. Terms apply.
 
 Follow these steps to post:
 
@@ -31,7 +31,7 @@ If you are using Stars on Reels, you can use our new Stars stickers, find them h
 
 We have also launched a Stars Filter that you can add to your Reels!
 
-Click the link below to add to your Reels content:<br>
+<a href="https://www.facebook.com/fbcameraeffects/tryit/385574190198163/" target="_blank">Click here to add to your Reels content.</a><br>
 
 <div class="gif-row">
 <div>
