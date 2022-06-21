@@ -43,8 +43,9 @@ If you are using Stars on Reels, you can use our new Stars stickers, find them h
 
 </div>
 
-
 #### **<br><br><br>Stars on Reels Filter**  
+
+*(Currently only available to limited partners)*
 
 We have also launched a Stars Filter that you can add to your Reels!
 
