@@ -26,6 +26,16 @@
       "pageRestriction": [
         "ANY"
       ],
+      "title": "Stars Toolkit",
+      "link": "/stars-toolkit",
+      "display": true
+    },
+    {
+      "requiresAuth": false,
+      "showOnlyAtShowTime": false,
+      "pageRestriction": [
+        "ANY"
+      ],
       "title": "Programming",
       "link": "/a/programming",
       "display": false
