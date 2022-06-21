@@ -48,6 +48,14 @@
     {
       "images": [
         {
+          "image": "/img/sf22-mrkt-space-3-toolkit.png",
+          "link": "/stars-toolkit"
+        }
+      ]
+    },
+    {
+      "images": [
+        {
           "image": "/img/sf22-mrkt-space-1-comp_v4.png",
           "link": "/creator-competition"
         }
@@ -58,14 +66,6 @@
         {
           "image": "/img/sf21-mrkt-space-4_120321.png",
           "link": "https://www.facebook.com/stars"
-        }
-      ]
-    },
-    {
-      "images": [
-        {
-          "image": "/img/sf22-mrkt-space-3-toolkit.png",
-          "link": "/stars-toolkit"
         }
       ]
     },
