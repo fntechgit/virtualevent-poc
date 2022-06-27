@@ -9,9 +9,11 @@ userRequirement: NONE
 
 <iframe src="https://player.vimeo.com/video/716159025?h=40609fbe10" width="320px" height="570px" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
-VIDEO 1
+Stars on Reels
 
-Enter video description here
+Featuring Chad Ehlers 
+
+<br><br><br>
 
 </div>
 
@@ -19,27 +21,31 @@ Enter video description here
 
 <iframe src="https://player.vimeo.com/video/716159025?h=40609fbe10" width="320px" height="570px" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
-VIDEO 2
+Interacting with Fans
 
-Video description here
+Featuring Kojo Sarfo
 
-</div>
-<div class="video-container">
-
-<iframe src="https://player.vimeo.com/video/716159025?h=40609fbe10" width="320px" height="570px" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-
-VIDEO 3
-
-Video description here
+<br><br><br>
 
 </div>
 <div class="video-container">
 
 <iframe src="https://player.vimeo.com/video/716159025?h=40609fbe10" width="320px" height="570px" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
-VIDEO 4
+Onboarding to Stars
 
-Video description here
+Featuring Dr. Jennifer Caudle
+
+<br><br><br>
+
+</div>
+<div class="video-container">
+
+<iframe src="https://player.vimeo.com/video/716159025?h=40609fbe10" width="320px" height="570px" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+Using Stars
+
+Featuring Hilary Klug
 
 </div>
 
