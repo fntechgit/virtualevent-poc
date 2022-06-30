@@ -9,9 +9,9 @@ userRequirement: NONE
 
 <iframe src="https://player.vimeo.com/video/716159025?h=40609fbe10" width="420px" height="670px" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
-Stars on Reels
+Stars on Reels character limit is 37
 
-Featuring Chad Ehlers Stars on Reels Stars on Reels Stars on ReelsStars on Reels Stars on Reels What wil happen with the length of this if it goes over 10 characters! 
+Featuring Chad Ehlers Limit of Characters is 44
 
 <br><br><br>
 
@@ -21,9 +21,9 @@ Featuring Chad Ehlers Stars on Reels Stars on Reels Stars on ReelsStars on Reels
 
 <iframe src="https://player.vimeo.com/video/716159025?h=40609fbe10" width="420px" height="670px" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
-Interacting with Fans All The Time We Will Push!
+Interacting with Fans limit is 37
 
-Featuring Kojo Sarfo Stars on Reels Stars on Reels Stars on Reels Stars on Reels
+Featuring Kojo Sarfo Character Limit 44
 
 <br><br><br>
 
