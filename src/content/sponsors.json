@@ -150,6 +150,98 @@
           "companyId": 81,
           "id": 81,
           "showLogoInEventPage": true
+        },
+        {
+          "sideImage": {
+            "file": ""
+          },
+          "externalLink": "https://www.facebook.com/officialHyperfate88",
+          "logo": {
+            "file": "/img/sf22-fnv-creatorprogramming-july8-hyperfate.png"
+          },
+          "name": "Hyperfate88 Gaming",
+          "headerImage": {
+            "file": ""
+          },
+          "headerImageMobile": {
+            "file": ""
+          },
+          "advertiseImage": {
+            "file": ""
+          },
+          "sponsorId": 82,
+          "companyId": 82,
+          "id": 82,
+          "showLogoInEventPage": true
+        },
+        {
+          "sideImage": {
+            "file": ""
+          },
+          "externalLink": "https://www.facebook.com/Siefe",
+          "logo": {
+            "file": "/img/sf22-fnv-creatorprogramming-july8-siefe.png"
+          },
+          "name": "Siefe - GP",
+          "headerImage": {
+            "file": ""
+          },
+          "headerImageMobile": {
+            "file": ""
+          },
+          "advertiseImage": {
+            "file": ""
+          },
+          "sponsorId": 83,
+          "companyId": 83,
+          "id": 83,
+          "showLogoInEventPage": true
+        },
+        {
+          "sideImage": {
+            "file": ""
+          },
+          "externalLink": "https://www.facebook.com/SerafinPeziol/",
+          "logo": {
+            "file": "/img/sf22-fnv-creatorprogramming-july8-serafin.png"
+          },
+          "name": "Serafin",
+          "headerImage": {
+            "file": ""
+          },
+          "headerImageMobile": {
+            "file": ""
+          },
+          "advertiseImage": {
+            "file": ""
+          },
+          "sponsorId": 83,
+          "companyId": 83,
+          "id": 83,
+          "showLogoInEventPage": true
+        },
+        {
+          "sideImage": {
+            "file": ""
+          },
+          "externalLink": "https://www.facebook.com/ms.rainbow.ff",
+          "logo": {
+            "file": "/img/sf22-fnv-creatorprogramming-july8-msrainbow.png"
+          },
+          "name": "Ms Rainbow",
+          "headerImage": {
+            "file": ""
+          },
+          "headerImageMobile": {
+            "file": ""
+          },
+          "advertiseImage": {
+            "file": ""
+          },
+          "sponsorId": 85,
+          "companyId": 85,
+          "id": 85,
+          "showLogoInEventPage": true
         }
       ]
     }
