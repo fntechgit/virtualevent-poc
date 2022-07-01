@@ -186,6 +186,51 @@
           "sponsorId": 1,
           "id": 74,
           "showLogoInEventPage": true
+        },
+        {
+          "sideImage": {
+            "file": ""
+          },
+          "externalLink": "https://www.facebook.com/DKKhi69",
+          "logo": {
+            "file": "/img/sf22-fnv-creatorprogramming-july7-dk.png"
+          },
+          "name": "DK Khi",
+          "headerImage": {
+            "file": ""
+          },
+          "headerImageMobile": {
+            "file": ""
+          },
+          "advertiseImage": {
+            "file": ""
+          },
+          "id": 75,
+          "showLogoInEventPage": true
+        },
+        {
+          "sideImage": {
+            "file": ""
+          },
+          "externalLink": "https://www.facebook.com/Highmantv",
+          "featuredEventId": "",
+          "logo": {
+            "file": "/img/sf22-fnv-creatorprogramming-july7-highman.png"
+          },
+          "name": "Highmantv",
+          "headerImage": {
+            "file": ""
+          },
+          "headerImageMobile": {
+            "file": ""
+          },
+          "advertiseImage": {
+            "file": ""
+          },
+          "sponsorId": 5,
+          "companyId": 5,
+          "id": 76,
+          "showLogoInEventPage": true
         }
       ]
     },
