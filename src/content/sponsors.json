@@ -799,9 +799,9 @@
           "advertiseImage": {
             "file": "/img/sf22-sponsor-july8.png"
           },
-          "sponsorId": 5,
-          "companyId": 6,
-          "id": 80,
+          "sponsorId": "",
+          "companyId": "",
+          "id": 800,
           "showLogoInEventPage": true
         },
         {
