@@ -11,16 +11,16 @@
           "banner": false
         }
       },
-      "name": "DEC 13",
+      "name": "JULY 5",
       "expoHallSize": "large",
       "eventTemplate": "small-images",
       "widgetTitle": "",
       "lobby": {
         "lobbyTemplate": "big-images",
-        "display": true
+        "display": false
       },
       "expoHallPage": {
-        "expoHallTemplate": "big-images",
+        "expoHallTemplate": "medium-images",
         "display": true
       },
       "id": "tier-cYGYq5-ae"
@@ -36,7 +36,7 @@
           "banner": false
         }
       },
-      "name": "DEC 14",
+      "name": "JULY 6",
       "expoHallSize": "medium",
       "eventTemplate": "",
       "widgetTitle": "",
@@ -61,7 +61,7 @@
           "banner": false
         }
       },
-      "name": "DEC 15",
+      "name": "JULY 7",
       "expoHallSize": "small",
       "eventTemplate": "",
       "widgetTitle": "",
@@ -96,30 +96,7 @@
       },
       "eventTemplate": null,
       "id": "tier-YmCF3KhTU",
-      "name": "DEC 16"
-    },
-    {
-      "badge": "",
-      "lobby": {
-        "lobbyTemplate": "big-images",
-        "display": false
-      },
-      "expoHallPage": {
-        "expoHallTemplate": "big-images",
-        "display": true
-      },
-      "sponsorPage": {
-        "sponsorTemplate": "small-header",
-        "widgets": {
-          "disqus": false,
-          "liveEvent": false,
-          "schedule": false,
-          "banner": false
-        }
-      },
-      "eventTemplate": null,
-      "id": "tier-Ki3GMmOln",
-      "name": "DEC 17"
+      "name": "JULY 8"
     }
   ],
   "imageHeader": "/img/sf21-creatorprog-headerimage-expopage.png",
