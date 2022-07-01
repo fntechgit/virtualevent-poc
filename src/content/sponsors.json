@@ -127,6 +127,29 @@
           "companyId": 6,
           "id": 4,
           "showLogoInEventPage": true
+        },
+        {
+          "sideImage": {
+            "file": ""
+          },
+          "externalLink": "https://www.facebook.com/STRID3RSX",
+          "logo": {
+            "file": "/img/sf22-fnv-creatorprogramming-july8-strid3.png"
+          },
+          "name": "STRID3RSX",
+          "headerImage": {
+            "file": ""
+          },
+          "headerImageMobile": {
+            "file": ""
+          },
+          "advertiseImage": {
+            "file": ""
+          },
+          "sponsorId": 81,
+          "companyId": 81,
+          "id": 81,
+          "showLogoInEventPage": true
         }
       ]
     }
