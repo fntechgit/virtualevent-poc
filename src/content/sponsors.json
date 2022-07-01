@@ -60,7 +60,134 @@
           },
           "sponsorId": 3,
           "companyId": -12,
-          "id": 2,
+          "id": 60,
+          "showLogoInEventPage": true
+        },
+        {
+          "sideImage": {
+            "file": ""
+          },
+          "externalLink": "https://www.facebook.com/stevehofstetter",
+          "logo": {
+            "file": "/img/sf22-fnv-creatorprogramming-july6-steve.png"
+          },
+          "name": "Steve Hofstetter",
+          "headerImage": {
+            "file": ""
+          },
+          "headerImageMobile": {
+            "file": ""
+          },
+          "advertiseImage": {
+            "file": ""
+          },
+          "sponsorId": 550,
+          "id": 661,
+          "showLogoInEventPage": true
+        },
+        {
+          "sideImage": {
+            "file": ""
+          },
+          "externalLink": "https://www.facebook.com/baturgame",
+          "logo": {
+            "file": "/img/sf22-fnv-creatorprogramming-july6-batur.png"
+          },
+          "name": "Batur Game",
+          "headerImage": {
+            "file": ""
+          },
+          "headerImageMobile": {
+            "file": ""
+          },
+          "advertiseImage": {
+            "file": ""
+          },
+          "id": 626,
+          "showLogoInEventPage": true
+        },
+        {
+          "sideImage": {
+            "file": ""
+          },
+          "externalLink": "https://www.facebook.com/braannxo",
+          "logo": {
+            "file": "/img/sf22-fnv-creatorprogramming-july6-braannxo.png"
+          },
+          "name": "Braannxo",
+          "headerImage": {
+            "file": ""
+          },
+          "headerImageMobile": {
+            "file": ""
+          },
+          "advertiseImage": {
+            "file": ""
+          },
+          "id": 642,
+          "showLogoInEventPage": true
+        },
+        {
+          "sideImage": {
+            "file": ""
+          },
+          "externalLink": "https://www.facebook.com/Lupobiancotv",
+          "logo": {
+            "file": "/img/sf22-fnv-creatorprogramming-july6-lupobianco.png"
+          },
+          "name": "LupoBiancoTV",
+          "headerImage": {
+            "file": ""
+          },
+          "headerImageMobile": {
+            "file": ""
+          },
+          "advertiseImage": {
+            "file": ""
+          },
+          "id": 631,
+          "showLogoInEventPage": true
+        },
+        {
+          "sideImage": {
+            "file": ""
+          },
+          "externalLink": "https://www.facebook.com/jordanandtatiana",
+          "logo": {
+            "file": "/img/sf22-fnv-creatorprogramming-july6-jordan.png"
+          },
+          "name": "Jordan Frisbee and Tatiana Mollmann",
+          "headerImage": {
+            "file": ""
+          },
+          "headerImageMobile": {
+            "file": ""
+          },
+          "advertiseImage": {
+            "file": ""
+          },
+          "id": 667,
+          "showLogoInEventPage": true
+        },
+        {
+          "sideImage": {
+            "file": ""
+          },
+          "externalLink": "https://www.facebook.com/jasonthegreat777",
+          "logo": {
+            "file": "/img/sf22-fnv-creatorprogramming-july6-jasonthegreat.png"
+          },
+          "name": "Jason the great",
+          "headerImage": {
+            "file": ""
+          },
+          "headerImageMobile": {
+            "file": ""
+          },
+          "advertiseImage": {
+            "file": ""
+          },
+          "id": 668,
           "showLogoInEventPage": true
         }
       ]
