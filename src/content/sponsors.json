@@ -304,44 +304,48 @@
           "showLogoInEventPage": true
         },
         {
+          "sideImage": {
+            "file": ""
+          },
+          "externalLink": "https://www.facebook.com/maxrhyms",
           "logo": {
-            "file": ""
+            "file": "/img/sf22-fnv-creatorprogramming-july7-max.png"
           },
-          "advertiseImage": {
-            "file": ""
-          },
+          "name": "Max Rhyms",
           "headerImage": {
             "file": ""
           },
           "headerImageMobile": {
             "file": ""
           },
-          "sideImage": {
+          "advertiseImage": {
             "file": ""
           },
-          "showLogoInEventPage": true,
-          "name": "Max Rhyms",
-          "id": 80
+          "id": 80,
+          "showLogoInEventPage": true
         },
         {
+          "sideImage": {
+            "file": ""
+          },
+          "externalLink": "https://www.facebook.com/israaxtv",
           "logo": {
-            "file": ""
+            "file": "/img/sf22-fnv-creatorprogramming-july7-israa.png"
           },
-          "advertiseImage": {
-            "file": ""
-          },
+          "name": "Israa",
           "headerImage": {
             "file": ""
           },
           "headerImageMobile": {
             "file": ""
           },
-          "sideImage": {
+          "advertiseImage": {
             "file": ""
           },
-          "showLogoInEventPage": true,
-          "name": "Israa",
-          "id": 791
+          "sponsorId": 1,
+          "companyId": 1,
+          "id": 791,
+          "showLogoInEventPage": true
         },
         {
           "sideImage": {
