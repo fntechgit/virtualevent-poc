@@ -52,184 +52,193 @@
           "showLogoInEventPage": true
         },
         {
-          "logo": {
-            "file": ""
-          },
-          "advertiseImage": {
-            "file": ""
-          },
-          "headerImage": {
-            "file": ""
-          },
-          "headerImageMobile": {
-            "file": ""
-          },
           "sideImage": {
             "file": ""
           },
-          "showLogoInEventPage": true,
+          "externalLink": "https://www.facebook.com/48THGameCaster",
+          "logo": {
+            "file": "/img/sf22-fnv-creatorprogramming-july5-48thgame.png"
+          },
           "name": "48TH GAME CASTER",
-          "id": 502
-        },
-        {
-          "logo": {
-            "file": ""
-          },
-          "advertiseImage": {
-            "file": ""
-          },
           "headerImage": {
             "file": ""
           },
           "headerImageMobile": {
             "file": ""
           },
+          "advertiseImage": {
+            "file": ""
+          },
+          "id": 502,
+          "showLogoInEventPage": true
+        },
+        {
           "sideImage": {
             "file": ""
           },
-          "showLogoInEventPage": true,
+          "externalLink": "https://www.facebook.com/TheRealSlimJade",
+          "logo": {
+            "file": "/img/sf22-fnv-creatorprogramming-july5-therealslim.png"
+          },
           "name": "TheRealSlimJadey",
-          "id": 503
-        },
-        {
-          "logo": {
-            "file": ""
-          },
-          "advertiseImage": {
-            "file": ""
-          },
           "headerImage": {
             "file": ""
           },
           "headerImageMobile": {
             "file": ""
           },
+          "advertiseImage": {
+            "file": ""
+          },
+          "id": 503,
+          "showLogoInEventPage": true
+        },
+        {
           "sideImage": {
             "file": ""
           },
-          "showLogoInEventPage": true,
+          "externalLink": "https://www.facebook.com/SetupSpawn",
+          "logo": {
+            "file": "/img/sf22-fnv-creatorprogramming-july5-matt.png"
+          },
           "name": "Matty McTech",
-          "id": 504
-        },
-        {
-          "logo": {
-            "file": ""
-          },
-          "advertiseImage": {
-            "file": ""
-          },
           "headerImage": {
             "file": ""
           },
           "headerImageMobile": {
             "file": ""
           },
+          "advertiseImage": {
+            "file": ""
+          },
+          "id": 504,
+          "showLogoInEventPage": true
+        },
+        {
           "sideImage": {
             "file": ""
           },
-          "showLogoInEventPage": true,
+          "externalLink": "https://www.facebook.com/TheJDevise",
+          "logo": {
+            "file": "/img/sf22-fnv-creatorprogramming-july5-thejdevise.png"
+          },
           "name": "TheJDevise",
-          "id": 505
-        },
-        {
-          "logo": {
-            "file": ""
-          },
-          "advertiseImage": {
-            "file": ""
-          },
           "headerImage": {
             "file": ""
           },
           "headerImageMobile": {
             "file": ""
           },
+          "advertiseImage": {
+            "file": ""
+          },
+          "id": 505,
+          "showLogoInEventPage": true
+        },
+        {
           "sideImage": {
             "file": ""
           },
-          "showLogoInEventPage": true,
+          "externalLink": "https://www.facebook.com/LingAndLamb",
+          "logo": {
+            "file": "/img/sf22-fnv-creatorprogramming-july5-lingandlamb.png"
+          },
           "name": "LingandLamb",
-          "id": 506
-        },
-        {
-          "logo": {
-            "file": ""
-          },
-          "advertiseImage": {
-            "file": ""
-          },
           "headerImage": {
             "file": ""
           },
           "headerImageMobile": {
             "file": ""
           },
+          "advertiseImage": {
+            "file": ""
+          },
+          "id": 506,
+          "showLogoInEventPage": true
+        },
+        {
           "sideImage": {
             "file": ""
           },
-          "showLogoInEventPage": true,
+          "externalLink": "https://www.facebook.com/verosweethobby",
+          "logo": {
+            "file": "/img/sf22-fnv-creatorprogramming-july5-verosweet.png"
+          },
           "name": "Verosweethobby",
-          "id": 507
-        },
-        {
-          "logo": {
-            "file": ""
-          },
-          "advertiseImage": {
-            "file": ""
-          },
           "headerImage": {
             "file": ""
           },
           "headerImageMobile": {
             "file": ""
           },
+          "advertiseImage": {
+            "file": ""
+          },
+          "id": 507,
+          "showLogoInEventPage": true
+        },
+        {
           "sideImage": {
             "file": ""
           },
-          "showLogoInEventPage": true,
+          "externalLink": "https://www.facebook.com/hardwaresavvyfb",
+          "logo": {
+            "file": "/img/sf22-fnv-creatorprogramming-july5-hardware.png"
+          },
           "name": "Hardware Savvy ",
-          "id": 508
-        },
-        {
-          "logo": {
-            "file": ""
-          },
-          "advertiseImage": {
-            "file": ""
-          },
           "headerImage": {
             "file": ""
           },
           "headerImageMobile": {
             "file": ""
           },
+          "advertiseImage": {
+            "file": ""
+          },
+          "id": 508,
+          "showLogoInEventPage": true
+        },
+        {
           "sideImage": {
             "file": ""
           },
-          "showLogoInEventPage": true,
+          "externalLink": "https://www.facebook.com/GGMizu",
+          "logo": {
+            "file": "/img/sf22-fnv-creatorprogramming-july5-mizu.png"
+          },
           "name": "Mizu - CA NA GVC",
-          "id": 509
-        },
-        {
-          "logo": {
-            "file": ""
-          },
-          "advertiseImage": {
-            "file": ""
-          },
           "headerImage": {
             "file": ""
           },
           "headerImageMobile": {
             "file": ""
           },
+          "advertiseImage": {
+            "file": ""
+          },
+          "id": 509,
+          "showLogoInEventPage": true
+        },
+        {
           "sideImage": {
             "file": ""
           },
-          "showLogoInEventPage": true,
+          "externalLink": "https://www.facebook.com/LILJACOBWALKER",
+          "logo": {
+            "file": "/img/sf22-fnv-creatorprogramming-july5-liljacob.png"
+          },
           "name": "Lil' Jacob Walker",
-          "id": 510
+          "headerImage": {
+            "file": ""
+          },
+          "headerImageMobile": {
+            "file": ""
+          },
+          "advertiseImage": {
+            "file": ""
+          },
+          "id": 510,
+          "showLogoInEventPage": true
         },
         {
           "sideImage": {
