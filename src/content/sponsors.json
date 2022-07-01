@@ -77,7 +77,7 @@
           "sideImage": {
             "file": ""
           },
-          "featuredEventId": -20,
+          "featuredEventId": "",
           "logo": {
             "file": "/img/sf22-sponsor-july7.png"
           },
@@ -93,7 +93,76 @@
           },
           "sponsorId": 4,
           "companyId": 5,
-          "id": 3,
+          "id": 70,
+          "showLogoInEventPage": true
+        },
+        {
+          "sideImage": {
+            "file": ""
+          },
+          "externalLink": "https://www.facebook.com/soldadoperneta",
+          "featuredEventId": "",
+          "logo": {
+            "file": "/img/sf22-fnv-creatorprogramming-july7-soldado.png"
+          },
+          "name": "SoldadoPerneta",
+          "headerImage": {
+            "file": ""
+          },
+          "headerImageMobile": {
+            "file": ""
+          },
+          "advertiseImage": {
+            "file": ""
+          },
+          "sponsorId": 5,
+          "companyId": 5,
+          "id": 71,
+          "showLogoInEventPage": true
+        },
+        {
+          "sideImage": {
+            "file": ""
+          },
+          "externalLink": "https://www.facebook.com/ROV.Chicken.TH",
+          "logo": {
+            "file": "/img/sf22-fnv-creatorprogramming-july7-chickenv.png"
+          },
+          "name": "Chicken V",
+          "headerImage": {
+            "file": ""
+          },
+          "headerImageMobile": {
+            "file": ""
+          },
+          "advertiseImage": {
+            "file": ""
+          },
+          "id": 72,
+          "showLogoInEventPage": true
+        },
+        {
+          "sideImage": {
+            "file": ""
+          },
+          "externalLink": "https://www.facebook.com/Muhabeno",
+          "featuredEventId": "",
+          "logo": {
+            "file": "/img/sf22-fnv-creatorprogramming-july7-muhabeno.png"
+          },
+          "name": "Muhabeno",
+          "headerImage": {
+            "file": ""
+          },
+          "headerImageMobile": {
+            "file": ""
+          },
+          "advertiseImage": {
+            "file": ""
+          },
+          "sponsorId": 5,
+          "companyId": 5,
+          "id": 73,
           "showLogoInEventPage": true
         }
       ]
@@ -125,7 +194,7 @@
           },
           "sponsorId": 5,
           "companyId": 6,
-          "id": 4,
+          "id": 80,
           "showLogoInEventPage": true
         },
         {
