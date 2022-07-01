@@ -242,6 +242,76 @@
           "companyId": 85,
           "id": 85,
           "showLogoInEventPage": true
+        },
+        {
+          "sideImage": {
+            "file": ""
+          },
+          "externalLink": "https://www.facebook.com/kingseby12",
+          "featuredEventId": "",
+          "logo": {
+            "file": "/img/sf22-fnv-creatorprogramming-july8-sebastian.png"
+          },
+          "name": "Sebastian Badea",
+          "headerImage": {
+            "file": ""
+          },
+          "headerImageMobile": {
+            "file": ""
+          },
+          "advertiseImage": {
+            "file": ""
+          },
+          "sponsorId": 85,
+          "companyId": 85,
+          "id": 85,
+          "showLogoInEventPage": true
+        },
+        {
+          "sideImage": {
+            "file": ""
+          },
+          "externalLink": "https://www.facebook.com/gamerdoll",
+          "logo": {
+            "file": "/img/sf22-fnv-creatorprogramming-july8-flavia.png"
+          },
+          "name": "Flávia Bárbara",
+          "headerImage": {
+            "file": ""
+          },
+          "headerImageMobile": {
+            "file": ""
+          },
+          "advertiseImage": {
+            "file": ""
+          },
+          "sponsorId": 86,
+          "companyId": 86,
+          "id": 86,
+          "showLogoInEventPage": true
+        },
+        {
+          "sideImage": {
+            "file": ""
+          },
+          "externalLink": "https://www.facebook.com/KaptiveGaming",
+          "logo": {
+            "file": "/img/sf22-fnv-creatorprogramming-july8-kaptive.png"
+          },
+          "name": "Kaptive Gaming",
+          "headerImage": {
+            "file": ""
+          },
+          "headerImageMobile": {
+            "file": ""
+          },
+          "advertiseImage": {
+            "file": ""
+          },
+          "sponsorId": 87,
+          "companyId": 87,
+          "id": 87,
+          "showLogoInEventPage": true
         }
       ]
     }
