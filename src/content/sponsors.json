@@ -4,85 +4,31 @@
       "tier": [
         {
           "value": "tier-cYGYq5-ae",
-          "label": "DEC 13"
+          "label": "JULY 5"
         }
       ],
       "sponsors": [
         {
-          "marquee": "",
-          "externalLink": "",
-          "sponsorColor": "",
-          "logo": {
-            "file": "/img/sf21-sponsor-dec13_113021.png",
-            "alt": ""
+          "sideImage": {
+            "file": ""
           },
-          "name": "DEC 13 TOP WEEKLY CREATORS",
-          "intro": "",
-          "headerVideo": "",
-          "headerImage": "",
-          "headerImageMobile": "",
-          "chatLink": "",
-          "advertiseImage": "",
-          "sponsorId": "",
-          "companyId": "",
-          "documents": {
-            "links": [],
-            "videos": []
-          },
-          "columnAds": [],
-          "id": 5,
-          "email": "",
-          "usesSponsorPage": false
-        },
-        {
-          "externalLink": "https://www.facebook.com/FiddleAndDance",
-          "featuredEventId": "",
           "logo": {
-            "file": "/img/sf21-sponsor-dec13-9am.png",
-            "alt": ""
+            "file": "/img/sf22-sponsor-july5.png"
           },
-          "name": "Dec 13 Hillary Klug 9AM",
-          "advertiseImage": "",
-          "sponsorId": "",
-          "companyId": "",
-          "id": 6,
-          "showLogoInEventPage": false
-        },
-        {
-          "advertiseImage": "",
-          "showLogoInEventPage": false,
-          "name": "Dec 13 GreenBay Packer Nation 10AM",
-          "id": 7,
-          "sponsorId": "",
-          "companyId": "",
-          "externalLink": "https://www.facebook.com/GreenBayPackerNation",
-          "logo": {
-            "file": "/img/sf21-sponsor-dec13-10am.png",
-            "alt": ""
-          }
-        },
-        {
-          "advertiseImage": "",
-          "showLogoInEventPage": false,
-          "name": "Dec 13 Lil Jacob Walker 1PM",
-          "id": 8,
-          "sponsorId": "",
-          "logo": {
-            "file": "/img/sf21-sponsor-dec13-1pm.png",
-            "alt": ""
+          "name": "JULY 5 CREATORS",
+          "headerImage": {
+            "file": ""
           },
-          "externalLink": "https://www.facebook.com/LILJACOBWALKER"
-        },
-        {
-          "advertiseImage": "",
-          "showLogoInEventPage": false,
-          "name": "Dec 13 La Fatshionista 3PM",
-          "id": 9,
-          "logo": {
-            "file": "/img/sf21-sponsor-dec13-3pm.png",
-            "alt": ""
+          "headerImageMobile": {
+            "file": ""
           },
-          "externalLink": "https://www.facebook.com/LaFatshionistaMX"
+          "advertiseImage": {
+            "file": ""
+          },
+          "sponsorId": 1,
+          "companyId": 1,
+          "id": 1,
+          "showLogoInEventPage": true
         }
       ]
     },
@@ -90,92 +36,32 @@
       "tier": [
         {
           "value": "tier-DHcI3dWGk",
-          "label": "DEC 14"
+          "label": "JULY 6"
         }
       ],
       "sponsors": [
         {
-          "advertiseImage": "",
-          "name": "DEC 14 TOP WEEKLY CREATORS",
-          "id": 4,
-          "logo": {
-            "file": "/img/sf21-sponsor-dec14_113021.png",
-            "alt": ""
+          "sideImage": {
+            "file": ""
           },
-          "externalLink": ""
-        },
-        {
-          "advertiseImage": "",
-          "showLogoInEventPage": false,
-          "name": "Dec 14 Verosweethobby 9AM",
-          "id": 10,
-          "externalLink": "https://www.facebook.com/verosweethobby",
+          "featuredEventId": "",
           "logo": {
-            "file": "/img/sf21-sponsor-dec14-9am.png",
-            "alt": ""
+            "file": "/img/sf22-sponsor-july6.png"
           },
-          "sponsorId": 10
-        },
-        {
-          "advertiseImage": "",
-          "showLogoInEventPage": false,
-          "name": "Dec 14 Iammoshow 10AM",
-          "id": 50,
-          "sponsorId": -1,
-          "logo": {
-            "file": "/img/sf21-sponsor-dec14-10am.png",
-            "alt": ""
+          "name": "JULY 6 CREATORS",
+          "headerImage": {
+            "file": ""
           },
-          "externalLink": "https://www.facebook.com/iammoshow"
-        },
-        {
-          "advertiseImage": "",
-          "showLogoInEventPage": false,
-          "name": "Dec 14 John Nonny from The Pun Guys 11AM",
-          "id": 11,
-          "sponsorId": 11,
-          "logo": {
-            "file": "/img/sf21-sponsor-dec14-11am.png",
-            "alt": ""
+          "headerImageMobile": {
+            "file": ""
           },
-          "externalLink": "https://www.facebook.com/johnnonnyofficial"
-        },
-        {
-          "advertiseImage": "",
-          "showLogoInEventPage": false,
-          "name": "Dec 14 Adriana Meaury 2PM",
-          "id": 12,
-          "sponsorId": 12,
-          "logo": {
-            "file": "/img/sf21-sponsor-dec14-2pm.png",
-            "alt": ""
+          "advertiseImage": {
+            "file": ""
           },
-          "externalLink": "https://www.facebook.com/adrianameauryfit"
-        },
-        {
-          "advertiseImage": "",
-          "showLogoInEventPage": false,
-          "name": "Dec 14 Roccibella 4PM",
-          "id": 13,
-          "sponsorId": 13,
-          "logo": {
-            "file": "/img/sf21-sponsor-dec14-4pm.png",
-            "alt": ""
-          },
-          "externalLink": "https://www.facebook.com/roccibella"
-        },
-        {
-          "advertiseImage": "",
-          "showLogoInEventPage": false,
-          "name": "Dec 14 Makeup by Paul & Jenn 5PM",
-          "id": 14,
-          "sponsorId": 14,
-          "featuredEventId": -1,
-          "logo": {
-            "file": "/img/sf21-sponsor-dec14-5pm.png",
-            "alt": ""
-          },
-          "externalLink": "https://www.facebook.com/makeupbypaulandjenn"
+          "sponsorId": 3,
+          "companyId": -12,
+          "id": 2,
+          "showLogoInEventPage": true
         }
       ]
     },
@@ -183,104 +69,32 @@
       "tier": [
         {
           "value": "tier-U_wEwGX8a",
-          "label": "DEC 15"
+          "label": "JULY 7"
         }
       ],
       "sponsors": [
         {
-          "marquee": "",
-          "sponsorColor": "",
-          "logo": {
-            "file": "/img/sf21-sponsor-dec15_113021.png",
-            "alt": ""
+          "sideImage": {
+            "file": ""
           },
-          "name": "DEC 15 TOP WEEKLY CREATORS",
-          "intro": "",
-          "headerImage": "",
-          "headerImageMobile": "",
-          "advertiseImage": "",
-          "sponsorId": "",
-          "title": "",
-          "companyId": "",
-          "documents": {
-            "links": []
-          },
-          "columnAds": [],
-          "id": 29,
-          "showLogoInEventPage": false,
-          "email": "",
-          "usesSponsorPage": false
-        },
-        {
-          "advertiseImage": "",
-          "showLogoInEventPage": false,
-          "name": "Dec 15 Erica Derrickson 9AM",
-          "id": 16,
-          "sponsorId": 16,
+          "featuredEventId": -20,
           "logo": {
-            "file": "/img/sf21-sponsor-dec15-9am-erica.png",
-            "alt": ""
+            "file": "/img/sf22-sponsor-july7.png"
           },
-          "externalLink": "https://www.facebook.com/withErica"
-        },
-        {
-          "advertiseImage": "",
-          "showLogoInEventPage": false,
-          "name": "Dec 15 Ali Spagnola 9AM",
-          "id": 17,
-          "sponsorId": 17,
-          "logo": {
-            "file": "/img/sf21-sponsor-dec15-9am-ali.png",
-            "alt": ""
+          "name": "JULY 7",
+          "headerImage": {
+            "file": ""
           },
-          "externalLink": "https://www.facebook.com/alispagnola"
-        },
-        {
-          "advertiseImage": "",
-          "showLogoInEventPage": false,
-          "name": "Dec 15 Idressitalian 12:30PM",
-          "id": 18,
-          "sponsorId": 18,
-          "logo": {
-            "file": "/img/sf21-sponsor-dec15-12-30pm.png",
-            "alt": ""
+          "headerImageMobile": {
+            "file": ""
           },
-          "externalLink": "https://www.facebook.com/Idressitalian"
-        },
-        {
-          "advertiseImage": "",
-          "showLogoInEventPage": false,
-          "name": "Dec 15 Yeri MUA 1PM",
-          "id": 19,
-          "sponsorId": 19,
-          "companyId": -1,
-          "logo": {
-            "file": "/img/sf21-sponsor-dec15-1pm.png",
-            "alt": ""
+          "advertiseImage": {
+            "file": ""
           },
-          "externalLink": "https://www.facebook.com/yerimua"
-        },
-        {
-          "advertiseImage": "",
-          "showLogoInEventPage": true,
-          "name": "Dec 15 Rellik the Clown 4PM",
-          "externalLink": "https://www.facebook.com/relliktheclown1",
-          "id": 20,
-          "logo": {
-            "file": "/img/sf21-sponsor-dec15-4pm.png",
-            "alt": ""
-          }
-        },
-        {
-          "advertiseImage": "",
-          "showLogoInEventPage": false,
-          "name": "Dec 15 Candylover89 5PM",
-          "id": 21,
-          "logo": {
-            "file": "/img/sf21-sponsor-dec15-5pm.png",
-            "alt": ""
-          },
-          "externalLink": "https://www.facebook.com/Candylover89Official"
+          "sponsorId": 4,
+          "companyId": 5,
+          "id": 3,
+          "showLogoInEventPage": true
         }
       ]
     },
@@ -288,168 +102,31 @@
       "tier": [
         {
           "value": "tier-YmCF3KhTU",
-          "label": "DEC 16"
+          "label": "JULY 8"
         }
       ],
       "sponsors": [
         {
-          "advertiseImage": "",
-          "showLogoInEventPage": true,
-          "name": "DEC 16 TOP WEEKLY CREATORS",
-          "id": 30,
-          "logo": {
-            "file": "/img/sf21-sponsor-dec16_113021.png",
-            "alt": ""
-          }
-        },
-        {
-          "advertiseImage": "",
-          "showLogoInEventPage": false,
-          "name": "Dec 16 ARMRgarden 9AM",
-          "id": 22,
-          "sponsorId": -1,
-          "logo": {
-            "file": "/img/sf21-sponsor-dec16-9am.png",
-            "alt": ""
+          "sideImage": {
+            "file": ""
           },
-          "externalLink": "https://www.facebook.com/armrgarden"
-        },
-        {
-          "advertiseImage": "",
-          "showLogoInEventPage": false,
-          "name": "Dec 16 Bevan 1PM",
-          "id": 23,
-          "sponsorId": 1,
-          "companyId": -1,
           "logo": {
-            "file": "/img/sf21-sponsor-dec16-1pm.png",
-            "alt": ""
+            "file": ""
           },
-          "externalLink": "https://www.facebook.com/GibsonsGaming/"
-        },
-        {
-          "advertiseImage": "",
-          "showLogoInEventPage": false,
-          "name": "Dec 16 Agustin Unaplay 5PM",
-          "id": 25,
-          "logo": {
-            "file": "/img/sf21-sponsor-dec16-5pm.png",
-            "alt": ""
+          "name": "JULY 8 CREATORS",
+          "headerImage": {
+            "file": ""
           },
-          "externalLink": "https://www.facebook.com/AgustinUnaplay8"
-        },
-        {
-          "advertiseImage": "",
-          "showLogoInEventPage": false,
-          "name": "Dec 16 ChooxTv 6PM",
-          "id": 28,
-          "logo": {
-            "file": "/img/sf21-sponsor-dec16-6pm.png",
-            "alt": ""
+          "headerImageMobile": {
+            "file": ""
           },
-          "externalLink": "https://www.facebook.com/ChooxTv"
-        },
-        {
-          "advertiseImage": "",
-          "showLogoInEventPage": true,
-          "name": "Dec 16 Minks 7PM",
-          "id": 100,
-          "sponsorId": 100,
-          "externalLink": "https://www.facebook.com/xMinks",
-          "logo": {
-            "file": "/img/sf21-sponsor-dec16-7pm.png",
-            "alt": ""
-          }
-        }
-      ]
-    },
-    {
-      "tier": [
-        {
-          "value": "tier-Ki3GMmOln",
-          "label": "DEC 17"
-        }
-      ],
-      "sponsors": [
-        {
-          "advertiseImage": "",
-          "showLogoInEventPage": true,
-          "name": "DEC 17 TOP WEEKLY CREATORS",
-          "id": 31,
-          "logo": {
-            "file": "/img/sf21-sponsor-dec17_113021.png",
-            "alt": ""
-          }
-        },
-        {
-          "advertiseImage": "",
-          "showLogoInEventPage": false,
-          "name": "Dec 17 Pew Pew 4AM",
-          "id": 32,
-          "sponsorId": -1,
-          "logo": {
-            "file": "/img/sf21-sponsor-dec17-4am.png",
-            "alt": ""
+          "advertiseImage": {
+            "file": "/img/sf22-sponsor-july8.png"
           },
-          "externalLink": "https://www.facebook.com/PewPewReal"
-        },
-        {
-          "advertiseImage": "",
-          "showLogoInEventPage": false,
-          "name": "Dec 17 Rexzilla 9AM",
-          "logo": {
-            "file": "/img/sf21-sponsor-dec17-9am.png",
-            "alt": ""
-          },
-          "externalLink": "https://www.facebook.com/profile.php?id=100052765274608",
-          "id": 33
-        },
-        {
-          "advertiseImage": "",
-          "showLogoInEventPage": false,
-          "name": "Dec 17 Trixx TV 11AM",
-          "id": 34,
-          "sponsorId": -1,
-          "logo": {
-            "file": "/img/sf21-sponsor-dec17-11am.png",
-            "alt": ""
-          },
-          "externalLink": "https://www.facebook.com/trixxtv"
-        },
-        {
-          "advertiseImage": "",
-          "showLogoInEventPage": false,
-          "name": "Dec 17 Mystic Ignite 1PM",
-          "id": 35,
-          "sponsorId": -1,
-          "logo": {
-            "file": "/img/sf21-sponsor-dec17-1pm.png",
-            "alt": ""
-          },
-          "externalLink": "https://www.facebook.com/MysticIgnite99"
-        },
-        {
-          "advertiseImage": "",
-          "showLogoInEventPage": false,
-          "name": "Dec 17 MirreyTv 5PM",
-          "id": 35,
-          "sponsorId": -1,
-          "logo": {
-            "file": "/img/sf21-sponsor-dec17-5pm.png",
-            "alt": ""
-          },
-          "externalLink": "https://www.facebook.com/MirreyTv"
-        },
-        {
-          "advertiseImage": "",
-          "showLogoInEventPage": false,
-          "name": "Dec 17 NatChats 7PM",
-          "id": 35,
-          "logo": {
-            "file": "/img/sf21-sponsor-dec17-7pm.png",
-            "alt": ""
-          },
-          "externalLink": "https://www.facebook.com/NatChats"
+          "sponsorId": 5,
+          "companyId": 6,
+          "id": 4,
+          "showLogoInEventPage": true
         }
       ]
     }
