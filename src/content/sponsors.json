@@ -29,6 +29,228 @@
           "companyId": 1,
           "id": 1,
           "showLogoInEventPage": true
+        },
+        {
+          "sideImage": {
+            "file": ""
+          },
+          "externalLink": "https://www.facebook.com/Nervosinha2021",
+          "logo": {
+            "file": "/img/sf22-fnv-creatorprogramming-july5-nervosinha.png"
+          },
+          "name": "Nervosinha - Felícia Fink",
+          "headerImage": {
+            "file": ""
+          },
+          "headerImageMobile": {
+            "file": ""
+          },
+          "advertiseImage": {
+            "file": ""
+          },
+          "id": 501,
+          "showLogoInEventPage": true
+        },
+        {
+          "logo": {
+            "file": ""
+          },
+          "advertiseImage": {
+            "file": ""
+          },
+          "headerImage": {
+            "file": ""
+          },
+          "headerImageMobile": {
+            "file": ""
+          },
+          "sideImage": {
+            "file": ""
+          },
+          "showLogoInEventPage": true,
+          "name": "48TH GAME CASTER",
+          "id": 502
+        },
+        {
+          "logo": {
+            "file": ""
+          },
+          "advertiseImage": {
+            "file": ""
+          },
+          "headerImage": {
+            "file": ""
+          },
+          "headerImageMobile": {
+            "file": ""
+          },
+          "sideImage": {
+            "file": ""
+          },
+          "showLogoInEventPage": true,
+          "name": "TheRealSlimJadey",
+          "id": 503
+        },
+        {
+          "logo": {
+            "file": ""
+          },
+          "advertiseImage": {
+            "file": ""
+          },
+          "headerImage": {
+            "file": ""
+          },
+          "headerImageMobile": {
+            "file": ""
+          },
+          "sideImage": {
+            "file": ""
+          },
+          "showLogoInEventPage": true,
+          "name": "Matty McTech",
+          "id": 504
+        },
+        {
+          "logo": {
+            "file": ""
+          },
+          "advertiseImage": {
+            "file": ""
+          },
+          "headerImage": {
+            "file": ""
+          },
+          "headerImageMobile": {
+            "file": ""
+          },
+          "sideImage": {
+            "file": ""
+          },
+          "showLogoInEventPage": true,
+          "name": "TheJDevise",
+          "id": 505
+        },
+        {
+          "logo": {
+            "file": ""
+          },
+          "advertiseImage": {
+            "file": ""
+          },
+          "headerImage": {
+            "file": ""
+          },
+          "headerImageMobile": {
+            "file": ""
+          },
+          "sideImage": {
+            "file": ""
+          },
+          "showLogoInEventPage": true,
+          "name": "LingandLamb",
+          "id": 506
+        },
+        {
+          "logo": {
+            "file": ""
+          },
+          "advertiseImage": {
+            "file": ""
+          },
+          "headerImage": {
+            "file": ""
+          },
+          "headerImageMobile": {
+            "file": ""
+          },
+          "sideImage": {
+            "file": ""
+          },
+          "showLogoInEventPage": true,
+          "name": "Verosweethobby",
+          "id": 507
+        },
+        {
+          "logo": {
+            "file": ""
+          },
+          "advertiseImage": {
+            "file": ""
+          },
+          "headerImage": {
+            "file": ""
+          },
+          "headerImageMobile": {
+            "file": ""
+          },
+          "sideImage": {
+            "file": ""
+          },
+          "showLogoInEventPage": true,
+          "name": "Hardware Savvy ",
+          "id": 508
+        },
+        {
+          "logo": {
+            "file": ""
+          },
+          "advertiseImage": {
+            "file": ""
+          },
+          "headerImage": {
+            "file": ""
+          },
+          "headerImageMobile": {
+            "file": ""
+          },
+          "sideImage": {
+            "file": ""
+          },
+          "showLogoInEventPage": true,
+          "name": "Mizu - CA NA GVC",
+          "id": 509
+        },
+        {
+          "logo": {
+            "file": ""
+          },
+          "advertiseImage": {
+            "file": ""
+          },
+          "headerImage": {
+            "file": ""
+          },
+          "headerImageMobile": {
+            "file": ""
+          },
+          "sideImage": {
+            "file": ""
+          },
+          "showLogoInEventPage": true,
+          "name": "Lil' Jacob Walker",
+          "id": 510
+        },
+        {
+          "sideImage": {
+            "file": ""
+          },
+          "externalLink": "https://www.facebook.com/nicholassafier",
+          "logo": {
+            "file": "/img/sf22-fnv-creatorprogramming-july5-nicholassaf.png"
+          },
+          "name": "Nicholas Safier",
+          "headerImage": {
+            "file": ""
+          },
+          "headerImageMobile": {
+            "file": ""
+          },
+          "advertiseImage": {
+            "file": ""
+          },
+          "id": 511,
+          "showLogoInEventPage": true
         }
       ]
     },
