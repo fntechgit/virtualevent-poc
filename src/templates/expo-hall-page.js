@@ -8,20 +8,20 @@ import AttendanceTrackerComponent from '../components/AttendanceTrackerComponent
 import AccessTracker from '../components/AttendeeToAttendeeWidgetComponent'
 import styles from '../styles/expo-hero.module.scss'
 
-const ExpoHallPage = ({ location, imageHeader }) => {
+const ExpoHallPage = ({ location, expoHallHeader }) => {
 
   return (
     <Layout location={location}>
       <AttendanceTrackerComponent />
       <AccessTracker />
-        <section className="hero is-large sponsors-header" style={{ backgroundImage: `url(${imageHeader.file})` }}>
+        <section className="hero is-large sponsors-header" style={{ backgroundImage: `url(${expoHallHeader.image})` }}>
           <div className="hero-body">
             <div className={styles.heroContainer}>
               <h1 className={styles.title}>
-                Sponsors
+                {expoHallHeader.title}
               </h1>
               <span className={styles.subtitle}>
-                See the schedule to join live sessions and meet representatives from the sponsor companies.
+                {expoHallHeader.subtitle}
               </span>
             </div>
           </div>
@@ -34,7 +34,7 @@ const ExpoHallPage = ({ location, imageHeader }) => {
 }
 
 const mapStateToProps = ({ sponsorState }) => ({
-  imageHeader: sponsorState.imageHeader
+  expoHallHeader: sponsorState.expoHallHeader
 });
 
 export default connect(mapStateToProps, {})(ExpoHallPage);
