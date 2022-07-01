@@ -164,6 +164,28 @@
           "companyId": 5,
           "id": 73,
           "showLogoInEventPage": true
+        },
+        {
+          "sideImage": {
+            "file": ""
+          },
+          "externalLink": "https://www.facebook.com/cantikacit",
+          "logo": {
+            "file": "/img/sf22-fnv-creatorprogramming-july7-cantika.png"
+          },
+          "name": "Cantika Gaming",
+          "headerImage": {
+            "file": ""
+          },
+          "headerImageMobile": {
+            "file": ""
+          },
+          "advertiseImage": {
+            "file": ""
+          },
+          "sponsorId": 1,
+          "id": 74,
+          "showLogoInEventPage": true
         }
       ]
     },
