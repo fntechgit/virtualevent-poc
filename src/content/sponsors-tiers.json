@@ -45,7 +45,7 @@
         "display": false
       },
       "expoHallPage": {
-        "expoHallTemplate": "big-images",
+        "expoHallTemplate": "medium-images",
         "display": true
       },
       "id": "tier-DHcI3dWGk"
@@ -70,7 +70,7 @@
         "display": true
       },
       "expoHallPage": {
-        "expoHallTemplate": "big-images",
+        "expoHallTemplate": "medium-images",
         "display": true
       },
       "id": "tier-U_wEwGX8a"
@@ -82,7 +82,7 @@
         "display": false
       },
       "expoHallPage": {
-        "expoHallTemplate": "big-images",
+        "expoHallTemplate": "medium-images",
         "display": true
       },
       "sponsorPage": {
