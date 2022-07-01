@@ -787,7 +787,7 @@
             "file": ""
           },
           "logo": {
-            "file": ""
+            "file": "/img/sf22-sponsor-july8.png"
           },
           "name": "JULY 8 CREATORS",
           "headerImage": {
@@ -797,11 +797,10 @@
             "file": ""
           },
           "advertiseImage": {
-            "file": "/img/sf22-sponsor-july8.png"
+            "file": ""
           },
-          "sponsorId": "",
-          "companyId": "",
-          "id": 800,
+          "sponsorId": -29,
+          "id": 500,
           "showLogoInEventPage": true
         },
         {
