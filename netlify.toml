@@ -14,18 +14,3 @@
   for = "/*"
     [headers.values]
      Referrer-Policy = "strict-origin-when-cross-origin"
-[[redirects]]
-from = "https://starsfest2022.com/*" 
-to = "https://starsfest2022.fnvirtual.app/:splat"
-status = 301
-force = true
-[[redirects]]
-from = "https://www.starsfest2022.com/*"
-to = "https://starsfest2022.fnvirtual.app/:splat"
-status = 301
-force = true
-[[redirects]]
-from = "/competition"
-to = "/creator-competition"
-status = 301
-force = true
