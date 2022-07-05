@@ -38,7 +38,7 @@
       ],
       "title": "Programming",
       "link": "/a/programming",
-      "display": false
+      "display": true
     },
     {
       "requiresAuth": false,
