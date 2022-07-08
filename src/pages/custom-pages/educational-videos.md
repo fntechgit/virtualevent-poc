@@ -7,11 +7,11 @@ userRequirement: NONE
 
 <div class="video-container">
 
-<iframe src="https://player.vimeo.com/video/716159025?h=40609fbe10" width="420px" height="670px" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+<iframe src="https://player.vimeo.com/video/728214671?h=61bb0e3158" width="420px" height="670px" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
-Stars on Reels character limit is 37
+Engaging with Fans on Stars
 
-Featuring Chad Ehlers Limit of Characters is 44
+Featuring Dr. Kojo Sarfo
 
 <br><br><br>
 
@@ -19,20 +19,20 @@ Featuring Chad Ehlers Limit of Characters is 44
 
 <div class="video-container">
 
-<iframe src="https://player.vimeo.com/video/716159025?h=40609fbe10" width="420px" height="670px" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+<iframe src="https://player.vimeo.com/video/728220020?h=de61408c28" width="420px" height="670px" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
-Interacting with Fans limit is 37
+Making the most out of Stars
 
-Featuring Kojo Sarfo Character Limit 44
+Featuring Hillary Klug
 
 <br><br><br>
 
 </div>
 <div class="video-container">
 
-<iframe src="https://player.vimeo.com/video/716159025?h=40609fbe10" width="420px" height="670px" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+<iframe src="https://player.vimeo.com/video/728216900?h=458b6178bb" width="420px" height="670px" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
-Onboarding to Stars
+Setting Up Facebook Stars - Part I
 
 Featuring Dr. Jennifer Caudle
 
@@ -41,11 +41,11 @@ Featuring Dr. Jennifer Caudle
 </div>
 <div class="video-container">
 
-<iframe src="https://player.vimeo.com/video/716159025?h=40609fbe10" width="320px" height="570px" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+<iframe src="https://player.vimeo.com/video/728219364?h=e1b75ccd7b" width="420px" height="670px" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
-Using Stars
+Setting Up Facebook Stars - Part II
 
-Featuring Hilary Klug
+Featuring Dr. Jennifer Caudle
 
 </div>
 
