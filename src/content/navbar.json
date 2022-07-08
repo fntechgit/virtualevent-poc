@@ -36,6 +36,15 @@
       "pageRestriction": [
         "ANY"
       ],
+      "title": "Educational Videos",
+      "link": "/educational-videos"
+    },
+    {
+      "requiresAuth": false,
+      "showOnlyAtShowTime": false,
+      "pageRestriction": [
+        "ANY"
+      ],
       "title": "Programming",
       "link": "/a/programming",
       "display": true
