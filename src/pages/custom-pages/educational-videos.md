@@ -1,6 +1,6 @@
 ---
 templateKey: custom-page
-title: Educational Videos
+title: '"How to" Stars Educational Videos'
 userRequirement: NONE
 ---
 <div class="videos-wrapper">
