@@ -37,7 +37,8 @@
         "ANY"
       ],
       "title": "Educational Videos",
-      "link": "/educational-videos"
+      "link": "/educational-videos",
+      "display": true
     },
     {
       "requiresAuth": false,
@@ -47,7 +48,7 @@
       ],
       "title": "Programming",
       "link": "/a/programming",
-      "display": true
+      "display": false
     },
     {
       "requiresAuth": false,
