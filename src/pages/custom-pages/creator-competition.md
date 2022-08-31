@@ -5,6 +5,6 @@ userRequirement: NONE
 desktopImagePage: ""
 mobileImagePage: /img/sf22_fnv_creatorcomp-winners-desktop-080522.png
 ---
-
+We will begin outreach to the #STARSEVERYWHERE competition winners soon!
 
 ![](/img/sf22_fnv_creatorcomp-winners-desktop-080522.png)
